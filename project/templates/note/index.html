@@ -1,0 +1,489 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Notes" %}: {{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-content">
+                            {% include 'section/project_navbar.html' %}
+                            <div class="card-inner">
+                                <div class="nk-block-head">
+                                    <div class="nk-block-between g-3">
+                                        <div class="nk-block-head-content">
+                                            <h3 class="nk-block-title page-title"><em class="icon ni ni-todo"></em>
+                                                {% trans "Notes" %}</h3>
+                                            <div class="nk-block-des text-soft">
+                                                <p>{% blocktrans %}Below can find all the notes related
+                                                    to the
+                                                    {%endblocktrans %}
+                                                    <strong>{{project.name}}</strong>.
+                                                    {% blocktrans %}Notes can not be edited or removed, only archivated.
+                                                    You
+                                                    can create a new not anytime by clicking the plus button on the
+                                                    right corner.{% endblocktrans %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {% if x.role == '2' %}
+                                        <div class="nk-block-head-content">
+                                            <ul class="nk-block-tools g-3">
+                                                <li>
+                                                    <div class="drodown"><a href="#"
+                                                            class="dropdown-toggle btn btn-icon btn-primary"
+                                                            data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <li><a
+                                                                        href="{% url 'project:project_note_create' project.id %}">
+                                                                        <span>
+                                                                            {%trans "Add new note" %}
+                                                                        </span></a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+
+
+                                <div class="nk-block">
+                                    <div class="bq-note">
+
+                                        {% for note in notes %}
+
+                                        {% if note.private == False %}
+
+                                        <div class="bq-note-item">
+
+                                            {% if note.user.profile.user_role == 1 %}
+                                            <div class="bq-note-text shadow-sm" style="border-left: 5px solid #3c8efe;">
+                                                {% elif note.user.profile.user_role > 1 %}
+                                                <div class="bq-note-text shadow-sm"
+                                                    style="border-left: 5px solid #FDB913;">
+                                                    {% endif %}
+
+                                                    <!--Private end-->
+
+                                                    <p>{{note.content|safe}}</p>
+
+                                                    {% if note.file_note.count > 0 %}
+                                                    <hr
+                                                        style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid #e5e5e5">
+                                                    <span>Uploaded files: </span>
+
+                                                    <ul>
+                                                        <li>{% for x in note.file_note.all %}</li>
+                                                    </ul>
+                                                    {{x.project_file_name}}
+                                                    {% if x.archived == False %}
+                                                    <a href="{{x.project_file.url}}"><span
+                                                            class="badge badge-outline-dark"><em
+                                                                class="icon ni ni-file-text-fill"></em>&nbsp;<strong>{{x}}</strong></span>
+                                                    </a>
+                                                    {% else %}
+                                                    <span class="badge badge-outline-danger"><em
+                                                            class="icon ni ni-file-text-fill"></em>&nbsp;<strong>{{x}}
+                                                            - {% trans "Archived" %}/strong></span>
+
+                                                    {% endif %}
+                                                    <!--Ha van archive file-->
+
+
+                                                    {% endfor %}
+                                                    <!--File for end-->
+                                                    {% endif %}
+                                                    <!--Ha egyáltalán létezik a file vége-->
+
+
+                                                </div>
+                                                <!--Block 1/3 vége-->
+
+                                                <div class="bq-note-meta" align="right">
+                                                    <span class="bq-note-added">{% trans "Added on" %} <span
+                                                            class="date">{{note.created_at}}
+                                                            <span class="bq-note-sep sep">|</span>
+                                                            <span class="text-primary font-weight-bold">by
+                                                                {{note.user.first_name}}
+                                                                {{note.user.last_name}}</span>
+                                                            {% if note.user == request.user %}
+                                                            <a href="{% url 'project:project_note_create_file' project_id=project.id id=note.id %}?task_id={{task.id}}"
+                                                                class="btn btn-primary btn-xs">
+                                                                {% trans "Upload file for this note" %}
+                                                            </a>
+
+                                                            <!--
+                                                                        <a href="{% url 'project:project_note_edit' project_id=project.id id=note.id %}?task_id={{task.id}}"
+                                                                        class="btn btn-warning btn-xs">Edit Note</a>
+                                                                    -->
+
+                                                            {% endif %}
+                                                </div> <!-- Block 2/3 vége-->
+                                            </div>
+
+                                            <!--nagy elváalszto private-->
+                                            {% elif note.private == True and note.user == request.user %}
+                                            <!--nagy elváalszto private-->
+                                            <div class="bq-note-item">
+                                                <div class="bq-note-text shadow-sm bg-secondary text-white">
+                                                    <p>{{note.content|safe}}</p>
+
+                                                    {% if note.file_note.count > 0 %}
+                                                    <hr
+                                                        style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid #e5e5e5">
+                                                    <span>Uploaded files: </span>
+
+                                                    <ul>
+                                                        <li>{% for x in note.file_note.all %}</li>
+                                                    </ul>
+                                                    {{x.project_file_name}}
+                                                    {% if x.archived == False %}
+                                                    <a href="{{x.project_file.url}}"><span
+                                                            class="badge badge-outline-dark"><em
+                                                                class="icon ni ni-file-text-fill"></em>&nbsp;<strong>{{x}}</strong></span>
+                                                    </a>
+                                                    {% else %}
+                                                    <span class="badge badge-outline-danger"><em
+                                                            class="icon ni ni-file-text-fill"></em>&nbsp;<strong>{{x}}
+                                                            - {% trans "Archived" %}</strong></span>
+
+                                                    {% endif %}
+                                                    <!--Ha van archive file-->
+
+
+                                                    {% endfor %}
+                                                    <!--File for end-->
+                                                    {% endif %}
+                                                    <!--Ha egyáltalán létezik a file vége-->
+
+
+                                                </div>
+                                                <!--Block 1/3 vége-->
+
+                                                <div class="bq-note-meta" align="right">
+                                                    <span class="bq-note-added">{% trans "Private note added on" %}
+                                                        <span class="date">{{note.created_at}}
+                                                            <span class="bq-note-sep sep">|</span>
+                                                            <span class="text-primary font-weight-bold">by
+                                                                {{note.user.first_name}}
+                                                                {{note.user.last_name}}</span>
+                                                            <!--
+                                                            {% if note.user == request.user %}
+                                                            <a href="{% url 'project:project_note_create_file' project_id=project.id id=note.id %}?task_id={{task.id}}"
+                                                                class="btn btn-primary btn-xs">
+                                                                {% trans "Upload file for this note" %}
+                                                            </a>
+                                                        -->
+                                                            <!--
+                                                                        <a href="{% url 'project:project_note_edit' project_id=project.id id=note.id %}?task_id={{task.id}}"
+                                                                        class="btn btn-warning btn-xs">Edit Note</a>
+                                                                    -->
+
+                                                            {% endif %}
+                                                </div> <!-- Block 2/3 vége-->
+                                            </div>
+                                            {% endif %}
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="nk-block mt-5">
+                    <div class="card">
+                        <div class="card-content">
+
+                            <div class="card-inner">
+                                <div class="nk-block-head">
+                                    <div class="nk-block-between g-3">
+                                        <div class="nk-block-head-content">
+                                            <h3 class="nk-block-title page-title">Note / <strong
+                                                    class="text-primary small">Files</strong></h3>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <table class="datatable-init nk-tb-list nk-tb-ulist dataTable no-footer"
+                                    data-auto-responsive="false" id="DataTables_Table_1"
+                                    aria-describedby="DataTables_Table_1_info">
+                                    <thead>
+                                        <tr class="nk-tb-item nk-tb-head">
+                                            <th class="nk-tb-col sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="User: activate to sort column ascending"><span
+                                                    class="sub-text">ID</span></th>
+                                            <th class="nk-tb-col sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="User: activate to sort column ascending"><span
+                                                    class="sub-text">Filename</span></th>
+                                            <th class="nk-tb-col tb-col-mb sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Balance: activate to sort column ascending">
+                                                <span class="sub-text">Description</span>
+                                            </th>
+                                            <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Phone: activate to sort column ascending"><span
+                                                    class="sub-text">Uploaded by</span></th>
+                                            <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Verified: activate to sort column ascending">
+                                                <span class="sub-text">Last update</span>
+                                            </th>
+                                            <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Status: activate to sort column ascending"><span
+                                                    class="sub-text">Final release</span></th>
+                                            <th class="nk-tb-col nk-tb-col-tools text-right sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label=": activate to sort column ascending"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for file in file_qs %}
+                                        <tr class="nk-tb-item odd">
+                                            <td class="nk-tb-col"><span class="tb-lead">{{file.id}} </span>
+                            </div>
+                            </td>
+                            <td class="nk-tb-col">
+                                {% if file.archived == False %}
+                                <span class="tb-lead"><a class="gallery-image popup-image"
+                                        href="{{file.project_file.url}}">{{file.name}}</a> <a
+                                        href="{{file.project_file.url}}" target="_blank" data-toggle="tooltip"
+                                        data-placement="top" title="Open in new tab"><em
+                                            class="icon ni ni-external"></em></a>
+                                    {% else %}
+                                    <span class="tb-lead" data-toggle="tooltip" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="{% blocktranslate %}File has been archived. Please unarchive if is you would like to view it.{% endblocktranslate %}">{{file.name}}</span>
+                                    {% endif %}
+                                    {% if file.is_relase == True %}
+                                    <span class="dot dot-success d-md-none ml-1" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="{% blocktranslate %}Final release file.{% endblocktranslate %}"></span>
+                                    {% else %}
+                                    <span class="dot dot-primary d-md-none ml-1" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="{% blocktranslate %}Preparatory version.{% endblocktranslate %}"></span>
+                                    {% endif %}
+                                </span>
+                                <span><small><em
+                                            class="icon ni ni-calender-date"></em>&nbsp;{{file.created_at}}</small></span>
+                        </div>
+                    </div>
+                    </td>
+                    <td class="nk-tb-col tb-col-mb"><span> {{file.description|truncatechars:50|safe}} </span></td>
+                    <td class="nk-tb-col tb-col-md"><span>{{file.uploaded_by.first_name}}
+                            {{file.uploaded_by.last_name}}</span>
+                    </td>
+                    <td class="nk-tb-col tb-col-lg"><span data-toggle="tooltip" data-placement="top"
+                            title="{% blocktranslate %}Date the file was updated.{% endblocktranslate %}"><small><em
+                                    class="icon ni ni-update"></em>&nbsp;{{file.updated_at}}</small>
+                        </span></td>
+                    {% if file.is_relase == True %}
+                    <td class="nk-tb-col tb-col-md">
+                        <span class="tb-status text-success">
+                            <span class="badge badge-pill badge-success">FINAL RELEASE</span>
+                        </span>
+                    </td>
+                    {% else %}
+                    <td class="nk-tb-col tb-col-md">
+                        <span class="tb-status text-danger">
+                            <span class="badge badge-pill badge-primary" data-toggle="tooltip" data-placement="top"
+                                title="{% blocktranslate %}This has has not been set as the final version of the uploaded files.{% endblocktranslate %}">No</span>
+                        </span>
+                    </td>
+                    {% endif %}
+
+                    {% if file.archived == False %}
+                    <td class="nk-tb-col nk-tb-col-tools">
+                        <ul class="nk-tb-actions gx-1">
+                            <li class="nk-tb-action-hidden"><a href="{{file.project_file.url}}"
+                                    class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Open"><em class="icon ni ni-zoom-in"></em></a>
+                            </li>
+                            <li class="nk-tb-action-hidden"><a
+                                    href="{% url 'project:project_file_detail' project.id file.id%}"
+                                    class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Details"><em class="icon ni ni-info"></em></a>
+                            </li>
+                            <li class="nk-tb-action-hidden"><a
+                                    href="{% url 'project:project_file_edit' project.id file.id%}"
+                                    class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit"><em class="icon ni ni-edit"></em></a>
+                            </li>
+                            <div class="drodown"><a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
+                                    data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                        <li><a
+                                                href="{% url 'project:project_file_archive' project_id=project.id id=file.id%}"><em
+                                                    class="icon ni ni-archive"></em><span>Archive</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </li>
+                        </ul>
+                    </td>
+                    {% else %}
+                    <td class="nk-tb-col nk-tb-col-tools">
+                        <ul class="nk-tb-actions gx-1">
+                            <span class="badge badge-pill badge-danger" data-toggle="tooltip" data-placement="top"
+                                title="{% blocktranslate %}This is an archivated file. Click here to unarchive it.{% endblocktranslate %}">Archived</span>
+                            <li class="nk-tb-action-hidden"><a
+                                    href="{% url 'project:project_file_unarchive' project_id=project.id id=file.id%}"
+                                    class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Unarchive"><em class="icon ni ni-unarchive"></em></a>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+            </li>
+            </ul>
+            </td>
+            {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+
+            <!--
+
+                                <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>File name</th>
+                                            <th>Description</th>
+                                            <th>Uploaded by</th>
+                                            <th>Upload date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for file in file_qs %}
+                                        <tr class="nk-tb-item">
+                                            <td>
+                                                {{file.id}}
+                                            </td>
+                                            <td>
+                                            {% if file.archived == True %}
+                                            <span style="font-weight: 400;" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}This is an archivated file, that means it is inactive. Unarchivate it if you would like to set it active again.{% endblocktranslate %}">{{file.name}}&nbsp;<em class="icon ni ni-archived-fill"></em></span>
+                                            {% else %}
+                                            <a href="{% url 'project:project_file_detail' project_id=project.id id=file.id %}"><strong>{{file.name}}</stong></a>
+                                            {% endif %}
+                                            </td>
+                                            <td>{{file.description|truncatechars:50}} </td>
+                                            <td>{{file.uploaded_by.first_name}} {{file.uploaded_by.last_name}}</td>
+                                            <td>{{file.created_at}}</td>
+                                            <td>
+                                                {% if file.archived == False %}
+                                                <a href="{{file.project_file.url}}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Open file in browser{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-search"></em></a>
+                                                <a href="{% url 'project:project_file_detail' project.id file.id%}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}View details of this file.{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-eye"></em></a>
+                                                {% if x.role == '2' %}
+                                                <a href="{% url 'project:project_file_edit' project.id file.id%}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Edit file properties, like name, description, etc...{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-edit"></em></a>
+                                                <a href="{% url 'project:project_file_archive' project.id file.id%}?note_id=0" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Move to archives. File will not be deleted and can be unarchive anytime.{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-archive-fill"></em></a>
+                                                {% endif %}
+                                                {% else %}
+                                                {% if x.role == '2' %}
+                                                <a href="{% url 'project:project_file_unarchive' project.id file.id%}?note_id=0" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title='{% blocktranslate %}This is an archivated file. Click here to unarchive it.{% endblocktranslate %}' style="margin:2px;"><em class="icon ni ni-unarchive"></em></a>
+                                                {% endif %}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                -->
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+<!--
+    <h2>Megjegyzések</h2>
+<a href="{% url 'project:project_note_create' project.id %}">Létrehozás</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Leírás</th>
+            <th scope="col">Project</th>
+            <th scope="col">Létrehozta</th>
+            <th scope="col">Privát?</th>
+            <th scope="col">Fájlok</th>
+            <th scope="col">Létrehozva</th>
+            <th scope="col">Művelet</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for note in notes %}
+        <tr>
+            <th scope="row">
+
+                {{note.id}}
+
+            </th>
+            <td>{{note.content}}</td>
+            <td>{{note.project}}</td>
+            <td>{{note.user}}</td>
+            <td>{{note.private}}</td>
+            <td>
+                {% for x in note.file_note.all %}
+                <a href="{% url 'project:project_file_detail' project_id=project.id id=x.id %}">{{x}}</a>
+
+                {% endfor %}
+            </td>
+            <td>{{note.created_at}}</td>
+            <td>
+                <a href="{% url 'project:project_note_create_file' project_id=project.id id=note.id %}">Fájl
+                    feltöltése</a>
+                <a href="">Törlés</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+-->

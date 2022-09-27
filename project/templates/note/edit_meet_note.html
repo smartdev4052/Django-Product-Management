@@ -1,0 +1,72 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Edit note" %}: {{note.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">{% trans "Edit note" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content"><a
+                                                    href="{% url 'project:project_note_index' project.id %}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left"></em><span>{% trans "Back"
+                                                        %}</span></a><a
+                                                    href="{% url 'project:project_note_index' project.id %}"
+                                                    class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                                        class="icon ni ni-arrow-left"></em></a></div>
+                                        </div>
+                                    </div>
+
+                                    <form method="post" enctype="multipart/form-data" id="form">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <button type="submit" id="btn-save" class="btn btn-primary">
+                                            {% trans "Save"%}</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+<script>
+    const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-save')
+
+    form.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+</script>
+
+{% endblock %}

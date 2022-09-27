@@ -1,0 +1,313 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% load i18n %}
+{% trans "Files: " %}{{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"><em
+                                                        class="icon ni ni-folder"></em>&nbsp;{% trans "Files" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktrans %}Below can find all the files uploaded to the"
+                                                        {%endblocktrans %}
+                                                        <strong>{{project.name}}</strong>.
+                                                        {% blocktrans %}Click on the file name to check the details or
+                                                        upload
+                                                        a new file anytime by clicking on the plus button on the right
+                                                        corner.{% endblocktrans %}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <!--
+                                    <div id="DataTables_Table_1_wrapper"
+                                        class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                        <div class="row justify-between g-2">
+                                            <div class="col-7 col-sm-4 text-left">
+                                                <div id="DataTables_Table_1_filter" class="dataTables_filter">
+                                                    <label><input type="search" class="form-control form-control-sm"
+                                                            placeholder="Type in to Search"
+                                                            aria-controls="DataTables_Table_1"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 col-sm-8 text-right">
+                                                <div class="datatable-filter">
+                                                    <div class="d-flex justify-content-end g-2">
+                                                        <div class="dataTables_length" id="DataTables_Table_1_length">
+                                                            <label><span class="d-none d-sm-inline-block">Show</span>
+                                                                <div class="form-control-select"> <select
+                                                                        name="DataTables_Table_1_length"
+                                                                        aria-controls="DataTables_Table_1"
+                                                                        class="custom-select custom-select-sm form-control form-control-sm">
+                                                                        <option value="10">10</option>
+                                                                        <option value="25">25</option>
+                                                                        <option value="50">50</option>
+                                                                        <option value="100">100</option>
+                                                                    </select> </div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    -->
+
+
+                                    <table class="datatable-init nk-tb-list nk-tb-ulist dataTable no-footer"
+                                        data-auto-responsive="false" id="DataTables_Table_1"
+                                        aria-describedby="DataTables_Table_1_info">
+                                        <thead>
+                                            <tr class="nk-tb-item nk-tb-head">
+                                                <th class="nk-tb-col sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="User: activate to sort column ascending"><span
+                                                        class="sub-text">ID</span></th>
+                                                <th class="nk-tb-col sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="User: activate to sort column ascending"><span
+                                                        class="sub-text">Filename</span></th>
+                                                <th class="nk-tb-col tb-col-mb sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Balance: activate to sort column ascending">
+                                                    <span class="sub-text">Uploaded by</span>
+                                                </th>
+                                                <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Phone: activate to sort column ascending"><span
+                                                        class="sub-text">Category</span></th>
+                                                <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Verified: activate to sort column ascending">
+                                                    <span class="sub-text">Last update</span>
+                                                </th>
+                                                <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Status: activate to sort column ascending"><span
+                                                        class="sub-text">Final release</span></th>
+                                                <th class="nk-tb-col nk-tb-col-tools text-right sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label=": activate to sort column ascending"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for file in file_obj %}
+                                            <tr class="nk-tb-item odd">
+                                                <td class="nk-tb-col"><span class="tb-lead">{{file.id}} </span>
+                                </div>
+                                </td>
+                                <td class="nk-tb-col">
+                                    {% if file.archived == False %}
+                                    <span class="tb-lead"><a class="gallery-image popup-image"
+                                            href="{{file.project_file.url}}">{{file.name}}</a> <a
+                                            href="{{file.project_file.url}}" target="_blank" data-toggle="tooltip"
+                                            data-placement="top" title="Open in new tab"><em
+                                                class="icon ni ni-external"></em></a>
+                                        {% else %}
+                                        <span class="tb-lead" data-toggle="tooltip" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{% blocktranslate %}File has been archived. Please unarchive if is you would like to view it.{% endblocktranslate %}">{{file.name}}</span>
+                                        {% endif %}
+                                        {% if file.is_relase == True %}
+                                        <span class="dot dot-success d-md-none ml-1" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{% blocktranslate %}Final release file.{% endblocktranslate %}"></span>
+                                        {% else %}
+                                        <span class="dot dot-primary d-md-none ml-1" data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{% blocktranslate %}Preparatory version.{% endblocktranslate %}"></span>
+                                        {% endif %}
+                                    </span>
+                                    <span><small><em
+                                                class="icon ni ni-calender-date"></em>&nbsp;{{file.created_at}}</small></span>
+                            </div>
+                        </div>
+                        </td>
+                        <td class="nk-tb-col tb-col-mb"><span>{{file.uploaded_by.first_name}}
+                                {{file.uploaded_by.last_name}}</span></td>
+                        <td class="nk-tb-col tb-col-md"><span><span
+                                    class="badge badge-pill badge-primary">{{file.get_file_type_display}}</span></span>
+                        </td>
+                        <td class="nk-tb-col tb-col-lg"><span><small><em class="icon ni ni-update" data-toggle="tooltip"
+                                        data-placement="top"
+                                        tooltip="{% blocktranslate %}Date and time when the file has updated.{% endblocktranslate %}"></em>&nbsp;{{file.updated_at}}</small>
+                            </span></td>
+                        {% if file.is_relase == True %}
+                        <td class="nk-tb-col tb-col-md">
+                            <span class="tb-status text-success">
+                                <span class="badge badge-pill badge-success">FINAL RELEASE</span>
+                            </span>
+                        </td>
+                        {% else %}
+                        <td class="nk-tb-col tb-col-md">
+                            <span class="tb-status text-danger">
+                                <span class="badge badge-pill badge-primary" data-toggle="tooltip" data-placement="top"
+                                    title="{% blocktranslate %}This has has not been set as the final version of the uploaded files.{% endblocktranslate %}">No</span>
+                            </span>
+                        </td>
+                        {% endif %}
+
+                        {% if file.archived == False %}
+                        <td class="nk-tb-col nk-tb-col-tools">
+                            <ul class="nk-tb-actions gx-1">
+                                <li class="nk-tb-action-hidden"><a href="{{file.project_file.url}}"
+                                        class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top"
+                                        title="" data-original-title="Open"><em class="icon ni ni-zoom-in"></em></a>
+                                </li>
+                                <li class="nk-tb-action-hidden"><a
+                                        href="{% url 'project:project_file_detail' project.id file.id%}"
+                                        class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top"
+                                        title="" data-original-title="Details"><em class="icon ni ni-info"></em></a>
+                                </li>
+                                <li class="nk-tb-action-hidden"><a
+                                        href="{% url 'project:project_file_edit' project.id file.id%}"
+                                        class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top"
+                                        title="" data-original-title="Edit"><em class="icon ni ni-edit"></em></a>
+                                </li>
+                                <div class="drodown"><a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
+                                        data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <ul class="link-list-opt no-bdr">
+                                            <li><a
+                                                    href="{% url 'project:project_file_archive' project_id=project.id id=file.id%}"><em
+                                                        class="icon ni ni-archive"></em><span>Archive</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </li>
+                            </ul>
+                        </td>
+                        {% else %}
+                        <td class="nk-tb-col nk-tb-col-tools">
+                            <ul class="nk-tb-actions gx-1">
+                                <span class="badge badge-pill badge-danger" data-toggle="tooltip" data-placement="top"
+                                    title="{% blocktranslate %}This is an archivated file. Click here to unarchive it.{% endblocktranslate %}">Archived</span>
+                                <li class="nk-tb-action-hidden"><a
+                                        href="{% url 'project:project_file_unarchive' project_id=project.id id=file.id%}"
+                                        class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top"
+                                        title="" data-original-title="Unarchive"><em
+                                            class="icon ni ni-unarchive"></em></a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+                </li>
+                </ul>
+                </td>
+                {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+        <!--
+                                    <table class="datatable-init table">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans "Id" %}</th>
+                                                <th>{% trans "Filename" %}</th>
+                                                <th>{% trans "Uploaded by" %}</th>
+                                                <th>{% trans "Upload date" %}</th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="Files are categorized automaticaly regarding the uploading subpage, such as Tasks, Notes, Google Meets, etc.">
+                                                    {% trans "Category" %} <index><em class="icon ni ni-help-fill"></em>
+                                                    </index>
+                                                </th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="Final release means the file is marked as the definitive 'product' of the project.">
+                                                    {% trans "Final relase?" %} <index><em
+                                                            class="icon ni ni-help-fill"></em></index>
+                                                </th>
+                                                <th>{% trans "Action" %}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for file in file_obj %}
+                                            <tr class="nk-tb-item">
+                                                <td>
+                                                    {{file.id}}
+                                                </td>
+                                                <td>
+                                                    {% if file.archived == False %}
+                                                    <strong><a
+                                                            href="{% url 'project:project_file_detail' project.id file.id%}">{{file.name}}</a></strong>
+                                                    {% else %}
+                                                    <span style="font-weight: 400;" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{% blocktranslate %}This is an archivated file, that means it is inactive. Unarchive it if you would like to set it active again.{% endblocktranslate %}">{{file.name}}&nbsp;<em
+                                                            class="icon ni ni-archived-fill"></em></span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{file.uploaded_by.first_name}} {{file.uploaded_by.last_name}}</td>
+                                                <td>{{file.created_at}}</td>
+                                                <td>
+                                                    <span class="badge badge-pill badge-primary">
+                                                        {{file.get_file_type_display}}
+                                                    </span>
+
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{file.is_relase}}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {% if file.archived == False %}
+                                                    <a href="{{file.project_file.url}}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Open file in browser{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-search"></em></a>
+                                                    <a href="{% url 'project:project_file_detail' project.id file.id%}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}View details of this file.{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-eye"></em></a>
+                                                    <a href="{% url 'project:project_file_edit' project.id file.id%}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Edit file properties, like name, description, etc...{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-edit"></em></a>
+                                                    <a href="{% url 'project:project_file_archive' project_id=project.id id=file.id%}" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Move to archives. File will not be deleted and can be unarchive anytime.{% endblocktranslate %}" style="margin:2px;"><em class="icon ni ni-archive-fill"></em></a>
+                                                    {% else %}
+                                                    <a href="{% url 'project:project_file_unarchive' project_id=project.id id=file.id%}" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title='{% blocktranslate %}This is an archivated file. Click here to unarchive it.{% endblocktranslate %}' style="margin:2px;"><em class="icon ni ni-unarchive"></em></a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>-->
+    </div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- content @e -->
+
+
+
+{% endblock %}

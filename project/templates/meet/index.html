@@ -1,0 +1,192 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Consultations" %}: {{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"><em class="icon ni ni-video"></em>
+                                                    {% trans "Consultations" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktranslate %}
+                                                        Below you can listed all the future and past
+                                                        consultations for the
+                                                        <strong>{{project.name}}</strong>.
+                                                        Click on the join button to join the meeting.
+                                                        {% endblocktranslate %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            {% if request.user.profile.user_role == 2 %}
+                                            <div class="nk-block-head-content">
+                                                <ul class="nk-block-tools g-3">
+                                                    <li>
+                                                        <div class="drodown"><a href="#"
+                                                                class="dropdown-toggle btn btn-icon btn-primary"
+                                                                data-toggle="dropdown"><em
+                                                                    class="icon ni ni-plus"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a
+                                                                            href="{% url 'project:project_meet_create' project.id %}">
+                                                                            <span>
+                                                                                {% trans "Add New consultation"%}
+                                                                            </span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+
+                                    <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans "Id" %}</th>
+                                                <th>{% trans "Name" %}</th>
+                                                <th>{% trans "Created by" %}</th>
+                                                <th>{% trans "Participants" %}</th>
+                                                <th>{% trans "Start - end time" %}</th>
+                                                <th>{% trans "Files" %}</th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="{% blocktranslate %}Need help? Move your cursor over the action button for more information.{% endblocktranslate %}">
+                                                    {% trans "Action" %} <index><em class="icon ni ni-help-fill"></em>
+                                                    </index>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for meet in meets %}
+                                            <tr class="nk-tb-item">
+                                                <td>{{meet.id}}</td>
+                                                <td><a
+                                                        href="{% url 'project:project_meet_detail' project_id=project.id id=meet.id %}"><strong>{{meet.name}}</strong></a>
+                                                </td>
+                                                <td>{{meet.from_user.first_name}} {{meet.from_user.last_name}}</td>
+
+                                                <td>
+                                                    <div class="user-avatar-group">
+                                                        {% for x in meet.to_user.all %}
+
+                                                        {% if x %}
+
+
+                                                        <div class="user-avatar sm bg-primary">
+                                                            <span style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{{x.first_name}} {{x.last_name}}">
+                                                                {{x.first_name|make_list|first}}
+                                                                {{x.last_name|make_list|first}}</span>
+                                                        </div>
+
+                                                        {% endif %}
+                                                        {% endfor %}
+
+                                                    </div>
+                                                </td>
+                                                <td>{{meet.meet_start}} - {{meet.meet_end}} </td>
+                                                <td>
+                                                    {% if meet.file_meet.count > 0 %}
+                                                    {{ meet.file_meet.count }}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% now "Y-m-d H:i:s" as todays_date %}
+                                                    {% if meet.meet_start|date:"Y-m-d H:i:s" > todays_date %}
+                                                    <div class="btn-group" style="margin:2px;">
+                                                        <a href="{{meet.url}}" target="_blank" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="{% blocktranslate %}Click to open this consultation in a new window within your webbrowser.{% endblocktranslate %}">
+                                                            <button type="button"
+                                                                class="btn btn-primary btn-sm mr-1"><em
+                                                                    class="icon ni ni-arrow-right-round-fill">
+                                                                </em>&nbsp{% trans "Join" %}
+                                                            </button></a>
+                                                        <button type="button"
+                                                            class="btn btn-primary dropdown-toggle dropdown-toggle-split btn-sm"
+                                                            data-toggle="dropdown" aria-expanded="false"><em
+                                                                class="icon ni ni-more-h"></em><span
+                                                                class="sr-only">Toggle Dropdown</span></button>
+                                                        <div class="dropdown-menu" style="">
+                                                            <ul class="link-list-opt">
+                                                                <li><a href="#"><span><em
+                                                                                class="icon ni ni-copy"></em>&nbsp;Copy
+                                                                            link</span></a></li>
+                                                                <li><a href="#"><span><em
+                                                                                class="icon ni ni-help-fill"></em>&nbsp;How
+                                                                            to join?</span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                    <a href="{% url 'project:project_meet_detail' project_id=project.id id=meet.id %}"
+                                                        class="btn btn-primary btn-sm" data-toggle="tooltip"
+                                                        data-placement="top" title="{% blocktranslate %}View details of this
+                                                        consultation.{% endblocktranslate %}" style="margin:2px;"><em
+                                                            class="icon ni ni-eye"></em></a>
+                                                    <a href="{% url 'project:project_meet_invite' project_id=project.id id=meet.id %}"
+                                                        class="btn btn-secondary btn-sm" data-toggle="tooltip"
+                                                        data-placement="top" title="{% blocktranslate %}Send an invitation to
+                                                        more participants.{% endblocktranslate %}"
+                                                        style="margin:2px;"><em class="icon ni ni-user-add"></em></a>
+                                                    <a href="{% url 'project:project_meet_create_file' project.id meet.id %}"
+                                                        class="btn btn-secondary btn-sm" data-toggle="tooltip"
+                                                        data-placement="top" title="{% blocktranslate %}Upload file for this
+                                                        consultation. Files will be listed under the case\'s Files
+                                                        aswell.{% endblocktranslate %}" style="margin:2px;"><em
+                                                            class="icon ni ni-file-plus"></em></a>
+                                                    {% if request.user.profile.user_role == 2 %}
+                                                    {% if meet.from_user == request.user %}
+                                                    <a href="{% url 'project:project_meet_delete' project_id=project.id id=meet.id %}"
+                                                        class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{% blocktranslate %}Cancel this consultation
+                                                        by deleting it. Warning, this is not reversible{% endblocktranslate %}"
+                                                        style="margin:2px;"><em class="icon ni ni-trash"></em></a>
+                                                    {% endif %}
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+{% endblock %}

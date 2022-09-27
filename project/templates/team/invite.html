@@ -1,0 +1,140 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Inviting participants" %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">{% trans "Inviting participants" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktranslate %}Are more than one person involved in your case? Do you need help from your relatives or co-workers? Send them an invitation to join your cause!</strong>
+                                                        {% endblocktranslate %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content"><a
+                                                    href="{% url 'project:project_team_index' project.id %}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left"></em><span>{% trans "Back" %}</span></a><a
+                                                    href="{% url 'project:project_team_index' project.id %}"
+                                                    class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                                        class="icon ni ni-arrow-left"></em></a></div>
+                                        </div>
+
+                                        <div class="inner-body" style="margin-bottom: 30px;">
+                                            <div class="card-inner">
+    
+                                                <div id="accordion-1" class="accordion accordion-s3">
+                                                <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                                        data-toggle="collapse" data-target="#accordion-item-3-1"
+                                                        aria-expanded="false">
+                                                        <h6 class="title">{% blocktranslate %}How to send an invitation?
+                                                            {% endblocktranslate %}</h6><span
+                                                            class="accordion-icon"></span>
+                                                    </a>
+                                                    <div class="accordion-body collapse" id="accordion-item-3-1"
+                                                        data-parent="#accordion-2">
+                                                        <div class="accordion-inner">
+                                                                <p>{% blocktranslate %}All you need to send the invitation is the recipient's email address. Enter it in the field below, the system will check if the recipient already has a user account, if not, he / she will be able to register immediately. We will notify he / she in an email of your request and what to do.
+                                                                    {% endblocktranslate %}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div id="accordion-2" class="accordion accordion-s3">
+                                                    <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                                            data-toggle="collapse" data-target="#accordion-item-3-2"
+                                                            aria-expanded="false">
+                                                            <h6 class="title">{% blocktranslate %}What can see the invited person of my case?
+                                                                {% endblocktranslate %}</h6><span
+                                                                class="accordion-icon"></span>
+                                                        </a>
+                                                        <div class="accordion-body collapse" id="accordion-item-3-2"
+                                                            data-parent="#accordion-2">
+                                                            <div class="accordion-inner">
+                                                                <p>{% blocktranslate %}We distinguish two user levels:
+                                                                    {% endblocktranslate %}</p>
+    
+                                                                <p>{% blocktranslate %}<strong>Editor:</strong> can send a message, upload files, create a task, etc ... Editors have full interaction on the interface.{% endblocktranslate %}
+                                                                </p>
+                                                                <p>{% blocktranslate %}<strong>Reader:</strong> can access to all information within the case, but can not interact. Can not: send message, write note, create task, fill document, etc... There is one exception: if a task is assigned to a reader person, he / she can interact within the task.</p>
+                                                                {% endblocktranslate %}
+                                                                </p>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="accordion-3" class="accordion accordion-s3">
+                                            <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                                    data-toggle="collapse" data-target="#accordion-item-3-3"
+                                                    aria-expanded="false">
+                                                    <h6 class="title">{% blocktranslate %}Can I remove team members?
+                                                        {% endblocktranslate %}</h6><span
+                                                        class="accordion-icon"></span>
+                                                </a>
+                                                <div class="accordion-body collapse" id="accordion-item-3-3"
+                                                    data-parent="#accordion-2">
+                                                    <div class="accordion-inner">
+                                                        <p>{% blocktranslate %}<strong>The owner of the case is not removable.</strong><br>
+                                                            Everyone else, who had been invited to the case can be removed, by the owner of the case at anytime.{% endblocktranslate %}</p>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <form method="post" enctype="multipart/form-data" id="form">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        {{ field.errors }}
+                                        <button type="submit" id="btn-save" class="btn btn-primary">Send invite</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+<script>
+    const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-save')
+
+    form.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+</script>
+
+{% endblock %}

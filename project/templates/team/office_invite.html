@@ -1,0 +1,202 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Invite lawyer to case" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">
+                                                    {% trans "Invite lawyer to case" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktranslate %}Please choose the correct lawyer to start the
+                                                        case. If the person has no Google Calender ID saved or have no
+                                                        free slot in the target time range the system will show an error
+                                                        message.{% endblocktranslate %}</p>
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content"><a href="{% url 'order:order_index'%}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left"></em>
+                                                    <span>
+                                                        {% trans "Back"%}
+                                                    </span></a><a href="{% url 'order:order_index' %}"
+                                                    class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                                        class="icon ni ni-arrow-left"></em></a></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert alert-pro alert-info">
+                                        <div class="alert-text">
+                                            <h6>{% trans "What will happen?" %}</h6>
+                                            <p>
+                                                {% blocktranslate %}The lawyer of your choice will receive an email
+                                                notification of the invitation, which will include basic information
+                                                about the case. The e-mail also contains the necessary steps to accept
+                                                the case, which you can do or reject under the Invitations tab after
+                                                logging in. The attorney will not see the data stored in the case until
+                                                the invitation is accepted. The following intel will be shared with the
+                                                lawyer:{% endblocktranslate %}
+                                            <ul>
+                                                <li>Case name: {{project.name}}</li>
+                                                <li>Client name: {{project.client.name}}</li>
+                                                {% if order.date_start %}
+                                                <li>Consultation start: {{order.date_start|date:"Y-m-d H:i:s"}}</li>
+                                                <li>Consultation end: {{order.date_end|date:"Y-m-d H:i:s"}}</li>
+                                                {% endif %}
+                                            </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <form method="post" enctype="multipart/form-data" id="form">
+                                        {% csrf_token %}
+                                        {{ form|crispy }}
+                                        <button type="submit" id="btn-save" class="btn btn-primary">
+                                            {% trans "Invite lawyer to the case" %}&nbsp;<em
+                                                class="icon ni ni-bell"></em></button>
+                                    </form>
+
+                                    <br>
+                                    <br>
+
+
+                                    <div id='calendar'></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+<script>
+    $(function () {
+        $("#id_meet_start").datetimepicker({
+            format: 'Y-m-d H:i:s'
+        });
+        $("#id_meet_end").datetimepicker({
+            format: 'Y-m-d H:i:s'
+        });
+    });
+</script>
+
+<script>
+    const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-save')
+
+    form.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+</script>
+
+<script>
+    document.getElementById('id_meet_start').value = '{{order.date_start|date:"Y-m-d H:i:s"}}'
+    document.getElementById('id_meet_end').value = '{{order.date_end|date:"Y-m-d H:i:s"}}'
+
+    $('#id_user').change(function () {
+        var user_id = $(this).val();
+        var calendar = document.getElementById('calendar')
+        ajax_call(user_id)
+
+    });
+
+    function ajax_call(user_id) {
+        var url = "{% url 'project:calendar_by_user' %}";
+
+        payload = {
+            "user_id": user_id,
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            timeout: 5000,
+            dataType: "json",
+            data: payload,
+            success: function (data) {
+                console.log("SUCCESS", data)
+                if (data['response'] == "TRUE") {
+                    console.log(data.event)
+                    events = data.event
+                    user_id = data.user_id
+                    console.log(user_id)
+                    console.log(events)
+                    renderCalendar(events)
+
+
+
+                } else if (data['response'] == "False") {
+
+                } else if (data['response'] != null) {
+                    alert(data['response'])
+                }
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                alert("Calendar ID is blank or not valid")
+            },
+        });
+    }
+
+</script>
+
+<script>
+
+
+    //const mydata = JSON.parse(document.getElementById('mydata').textContent);
+    //console.log(mydata)
+
+    function renderCalendar(eventsData) {
+
+        if (eventsData) {
+            var x = []
+            eventsData.forEach(element => {
+                x.push({ 'id': element.id, 'start': element.start.dateTime, 'end': element.end.dateTime, 'title': element.summary })
+            });
+
+            //console.log(x)
+
+
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                setAllDay: true,
+                events: x
+            })
+            calendar.destroy()
+            calendar.render()
+        } else {
+            alert('No available events data')
+        }
+
+
+
+    }
+
+</script>
+
+
+{% endblock %}

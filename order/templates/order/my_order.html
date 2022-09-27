@@ -1,0 +1,85 @@
+{% extends "base_shop.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "My orders" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h4 class="nk-block-title page-title">{% trans "My orders" %}</h4>
+                            <div class="nk-block-des">
+                                <p>{% blocktranslate %}Below you can find all your orders. Please note, once an order is
+                                    accepted
+                                    by Legisly a new case will be started based on your order. You can check your open
+                                    cases under your{% endblocktranslate %}
+                                    <a href="{% url 'project:project_index' %}">{% trans "Cases" %}</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Buyer" %}</th>
+                                        <th>{% trans "Product" %}</th>
+                                        <th>{% trans "Price" %}</th>
+                                        <th>{% trans "Is paid?" %}</th>
+                                        <th>{% trans "Is active?" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                    <tr class="nk-tb-item">
+                                        <td scope="row">{{order.id}}</td>
+                                        <td>{{order.client}}</td>
+                                        <td>{{order.product}}</td>
+                                        <td>{{order.price}}</td>
+                                        <td>{% if order.paid == True %}
+                                            <span class="badge badge-pill badge-success">{% trans "Paid" %}</span>
+                                            {% else %}
+                                            <span class="badge badge-pill badge-danger">{% trans "No paid" %}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{% if order.active == True %}
+
+                                            <span class="badge badge-pill badge-success">{% trans "Active" %}</span>
+                                            {% else %}
+                                            <span class="badge badge-pill badge-danger">{% trans "Inactive" %}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'order:order_detail' order.id %}"
+                                                class="btn btn-outline-primary btn-sm">{% trans "Order details" %}</a>
+                                        </td>
+
+
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

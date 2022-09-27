@@ -1,0 +1,80 @@
+{% extends "base_notification.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+Kliensek
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Notifications" %}</h3>
+                                <div class="nk-block-des text-soft">
+                                    <p>{% trans "Below you will find important notifications about your account or your cases." %}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Subject" %}</th>
+                                        <th>{% trans "Level" %}</th>
+                                        <th>{% trans "Readed" %}</th>
+
+                                        <th>{% trans "Created at" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for notification in notifications %}
+                                    <tr class="nk-tb-item">
+                                        <td>
+
+                                            {{notification.id}}
+
+                                        </td>
+                                        <td>{{notification.action}}</td>
+                                        <td>{{notification.get_level_display}}</td>
+                                        <td>
+                                            <span
+                                                class="badge badge-pill badge-secondary">{{notification.is_read}}</span>
+
+                                        </td>
+
+                                        <td>{{notification.create_date}}</td>
+
+                                        <td>
+                                            <a href="{% url 'notification:notification_detail' notification.id %}"
+                                                class="btn btn-outline-primary btn-sm">Show details</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

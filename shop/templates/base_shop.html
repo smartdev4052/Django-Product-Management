@@ -1,0 +1,80 @@
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en" class="js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="./images/favicon.png">
+    <!-- Page Title  -->
+    <title>{% block title %} {% endblock title %}</title>
+    <!-- StyleSheets  -->
+    {% if request.LANGUAGE_CODE == 'en' %}
+    <link rel="stylesheet" href="{% static 'theme/assets/css/dashlite.css' %}">
+    {% else %}
+    <link rel="stylesheet" href="{% static 'theme/assets/css/dashlite.rtl.css' %}">
+    {%endif%}
+    <link rel="stylesheet" href="{% static 'theme/assets/css/skins/theme-legisly.css' %}">
+    <link id="skin-default" rel="stylesheet" href="{% static 'theme/assets/css/theme.css' %}">
+</head>
+
+{% if request.LANGUAGE_CODE == 'en' %}
+
+<body class="nk-body bg-lighter npc-default has-sidebar">
+    {% else %}
+
+    <body class="nk-body bg-lighter npc-default has-sidebar has-rtl" dir="rtl">
+        {% endif %}
+    <div class="nk-app-root">
+        {% if user.is_authenticated %}
+        {% if request.user.profile.user_role == 2 %}
+        {% include 'section/sidebar_lawyer.html' %}
+        {% elif request.user.profile.user_role == 3 %}
+        {% include 'section/sidebar_office.html' %}
+        {% elif request.user.profile.user_role == 4 %}
+        {% include 'section/sidebar_admin.html' %}
+        {% else %}
+        {% include 'section/sidebar_user.html' %}
+        {% endif %}
+        {% else %}
+        {% include 'section/sidebar_anonymus.html' %}
+        {% endif %}
+
+        <!-- wrap @s -->
+        <div class="nk-wrap ">
+            {% include 'section/header.html' %}
+
+            {% block content %}
+            {% endblock %}
+
+            {% include 'section/footer.html' %}
+        </div>
+        <!-- wrap @e -->
+    </div>
+    <!-- wrap @e -->
+
+    <!-- JavaScript -->
+    <script src="{% static 'theme/assets/js/bundle.js'%}"></script>
+    <script src="{% static 'theme/assets/js/scripts.js'%}"></script>
+    <script src="{% static 'theme/assets/js/sweetalert.js'%}"></script>
+    {% if messages %}
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+
+        })
+    </script>
+    {% endfor %}
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+{% extends "base_client.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "My clients" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">My Clients</h3>
+                                <div class="nk-block-des text-soft">
+                                    <p>{% trans "Clients (like you as a person or your company) are used to manage and cooperate cases. You can add, remove and manage roles of members of your client anytime. Please allways choose carefuly who to invite to your cases as the persons will see the messages and uploaded files." %}
+                                </div>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <ul class="nk-block-tools g-3">
+                                    <li>
+                                        <a href="{% url 'client:client_create' %}" class="btn btn-primary"><em
+                                                class="icon ni ni-user-add-fill"></em>&nbsp;{% trans "Add client" %}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{% trans "Id" %}</th>
+                                        <th scope="col">{% trans "Client name" %}</th>
+                                        <th scope="col">{% trans "Type" %}</th>
+                                        <th scope="col">{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for client in clients %}
+                                    <tr class="nk-tb-item">
+                                        <td>{{client.id}}</td>
+                                        <td><a
+                                                href="{% url 'client:client_detail' client.id %}"><strong>{{client.name}}</strong></a>
+                                        </td>
+                                        <td>{{client.get_type_display}}</td>
+                                        <td>
+                                            <a href="{% url 'client:client_detail' client.id %}"
+                                                class="btn btn-outline-primary btn-sm"><em
+                                                    class="icon ni ni-eye"></em>&nbsp;{% trans "Details" %}</a>
+                                            <a href="{% url 'client:client_edit' client.id %}"
+                                                class="btn btn-outline-warning btn-sm"><em
+                                                    class="icon ni ni-pen2"></em>&nbsp;{% trans "Edit" %}</a>
+                                            <a href="{% url 'client:client_archive' client.id %}"
+                                                class="btn btn-outline-danger btn-sm"><em
+                                                    class="icon ni ni-trash-fill"></em>&nbsp;{% trans "Archive" %}</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

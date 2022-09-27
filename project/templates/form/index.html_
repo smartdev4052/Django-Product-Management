@@ -1,0 +1,118 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% block title %}
+Kliensek
+{% endblock %}
+
+{% block content %}
+
+
+<div class="nk-content ">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block">
+          <div class="nk-block-head">
+            <div class="nk-block-between g-3">
+              <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Projects</h3>
+                <div class="nk-block-des text-soft">
+                  <p>You have total 937 invoices.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-preview">
+            <div class="card-inner">
+
+              <h1>Getting started with JSON Form</h1>
+              <form></form>
+              <div id="res" class="alert"></div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- content @e -->
+
+<!--<script src="https://cdn.jsdelivr.net/gh/brutusin/json-forms@1.6.3/dist/js/brutusin-json-forms-bootstrap.min.js"></script>-->
+
+
+<script>
+  $(document).ready(function () {
+
+    var schema = {
+          "comment": {
+            "type": "string",
+            "title": "Your thoughts"
+          },
+          "comment2": {
+            "type": "string",
+            "title": "Your thoughts",
+            "description": "Describe how you feel with a rather long adjective-like series of words"
+          },
+          "comment3": {
+            "type": "number",
+            "title": "Ez egy number típusu..."
+          },
+        }
+
+    var form1 = [
+    {
+      "key": "comment",
+      "type": "textarea",
+      "id": "nahalloooo",
+    },
+    {
+      "key": "comment2",
+      "type": "textarea",
+      "id": "sziaszeva",
+    },
+    {
+      "key": "comment3",
+      "type": "text",
+      "id": "egyedi_id888",
+    },
+    {
+        "type": "submit",
+        "title": "Submit"
+      }
+  ]
+
+
+
+    var value = {
+      comment: 'Sikler Daniel 5', comment2: 'az', comment3: 111
+    }
+
+    $('form').jsonForm({
+      "schema": schema,
+      "form": form1,
+      "value":value,
+      
+
+      "onSubmit": function (errors, values) {
+        if (errors) {
+          alert('Check the form for invalid values!');
+          return;
+        }
+        // "values" follows the schema, yeepee!
+        console.log(values);
+      }
+
+    });
+  })
+</script>
+
+
+
+
+
+
+{% endblock %}

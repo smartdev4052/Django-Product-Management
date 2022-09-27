@@ -1,0 +1,194 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Create document" %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">
+                                                    {% trans "Create document" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktrans %}A new Google Meet consultation will be created
+                                                        with the
+                                                        selected participants.{% endblocktrans %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content"><a
+                                                    href="{% url 'project:project_document_index' project.id %}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left">
+                                                    </em>
+                                                    <span>{% trans "Back"%}
+
+                                                    </span></a><a
+                                                    href="{% url 'project:project_document_index' project.id %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex
+                                                        d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <form method="post" autocomplete="off" enctype="multipart/form-data" id="form">
+                                        {% csrf_token %}
+                                        <div class="image-form">
+                                            {{ form|crispy }}
+                                            <button
+                                                class="align-self-center btn btn-danger delete-image-form">Delete</button>
+
+                                        </div>
+
+                                        <input type="hidden" name="form-TOTAL_FORMS" value="3" id="id_form-TOTAL_FORMS">
+                                        <input type="hidden" name="form-INITIAL_FORMS" value="0"
+                                            id="id_form-INITIAL_FORMS">
+                                        <input type="hidden" name="form-MIN_NUM_FORMS" value="0"
+                                            id="id_form-MIN_NUM_FORMS">
+                                        <input type="hidden" name="form-MAX_NUM_FORMS" value="1000"
+                                            id="id_form-MAX_NUM_FORMS">
+                                        <input type="submit" name="submit" value="Submit" class="btn btn-primary" />
+
+                                        <button id="add-image-form" class="btn btn-primary my-3">Add Another
+                                            Image</button>
+
+
+                                        <div class="py-4 px-3" id="preview"></div>
+
+                                        <button type="submit" id="btn-save" class="btn btn-primary">
+                                            {% trans "Create" %}
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+
+<script>
+
+    const imageForm = document.getElementsByClassName("image-form");
+    const mainForm = document.querySelector("#form");
+    const addImageFormBtn = document.querySelector("#add-image-form");
+    const submitFormBtn = document.querySelector('[type="submit"]');
+    const totalForms = document.querySelector("#id_form-TOTAL_FORMS");
+
+    let formCount = imageForm.length - 1;
+
+    function updateForms() {
+        let count = 0;
+        for (let form of imageForm) {
+            const formRegex = RegExp(`form-(\\d){1}-`, 'g');
+            form.innerHTML = form.innerHTML.replace(formRegex, `form-${count++}-`)
+        }
+    }
+
+    addImageFormBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const newImageForm = imageForm[0].cloneNode(true);
+        const formRegex = RegExp(`form-(\\d){1}-`, 'g');
+
+        formCount++;
+
+        newImageForm.innerHTML = newImageForm.innerHTML.replace(formRegex, `form-${formCount}-`);
+        mainForm.insertBefore(newImageForm, submitFormBtn);
+        totalForms.setAttribute('value', `${formCount + 1}`);
+    });
+
+    mainForm.addEventListener("click", function (event) {
+        if (event.target.classList.contains("delete-image-form")) {
+            event.preventDefault();
+            event.target.parentElement.remove();
+            formCount--;
+            updateForms();
+            totalForms.setAttribute('value', `${formCount + 1}`);
+        }
+    });
+
+
+
+    mainForm.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+
+</script>
+
+
+<script>
+    var preview = document.getElementById('preview')
+
+    $('#id_default_document').change(function () {
+        var id_default_document = $(this).val();
+        console.log(id_default_document)
+        ajax_call(id_default_document)
+
+    });
+
+
+    function ajax_call(id_default_document) {
+        var url = "{% url 'project:project_default_document_clone' %}";
+
+        payload = {
+            "id_default_document": id_default_document,
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            timeout: 5000,
+            dataType: "json",
+            data: payload,
+            success: function (data) {
+                //console.log(data)
+
+                preview.classList.add('border')
+                preview.classList.add('mb-3')
+                preview.innerHTML = data.document
+
+
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                alert("Not valid form")
+            },
+        });
+    }
+</script>
+
+
+
+
+
+{% endblock %}

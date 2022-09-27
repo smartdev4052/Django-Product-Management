@@ -1,0 +1,1250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-17 19:41+0000\n"
+"PO-Revision-Date: 2022-01-18 20:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar_OM\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: account/forms.py:17
+msgid "Ez a felhasználónév nem engedélyezett."
+msgstr "عز a felhasználónév nem engedélyezett."
+
+#: account/forms.py:22
+#, fuzzy
+msgid "Nem engedélyezett karakterek: @ , - , + "
+msgstr "‫Nem engedélyezett karakterek: @، -، +"
+
+#: account/forms.py:27
+msgid "Ez az e-mail cím már foglalt."
+msgstr "Ez az البريد الإلكتروني cím már foglalt."
+
+#: account/forms.py:32
+msgid "Ez a felhasználónév már foglalt."
+msgstr "عز a felhasználónév már foglalt."
+
+#: account/forms.py:37 account/forms.py:72
+#: account/templates/account/index.html:59
+#: account/templates/email/email_password.html:26
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: account/forms.py:39
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+#: account/forms.py:41
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#: account/forms.py:43
+msgid "Last Name"
+msgstr "الاسم الأخير"
+
+#: account/forms.py:45 account/forms.py:75
+msgid "Password"
+msgstr "كلمه السر"
+
+#: account/forms.py:47
+msgid "Password repeat"
+msgstr "تكرار كلمة المرور"
+
+#: account/forms.py:67
+msgid "A jelszavak nem egyeznek, kérjük add meg újra!"
+msgstr "A jelszavak nem egyeznek ، kérjük إضافة meg újra!"
+
+#: account/templates/account/edit.html:20
+#: account/templates/account/index.html:37
+#: account/templates/account/index.html:121
+#: account/templates/password_reset/password_change.html:79
+msgid "Account"
+msgstr "الحساب"
+
+#: account/templates/account/edit.html:34
+msgid "Edit account"
+msgstr "تحرير الحساب"
+
+#: account/templates/account/edit.html:36
+msgid ""
+"Only your first name and last name can be changed.\n"
+"                                                    "
+msgstr ""
+"يمكن تغيير اسمك الأول واسم عائلتك فقط.\n"
+"                                                    "
+
+#: account/templates/account/edit.html:51
+msgid "Save"
+msgstr "يحفظ"
+
+#: account/templates/account/edit.html:78
+msgid "Personal Infomation"
+msgstr "المعلومات الشخصية"
+
+#: account/templates/account/edit.html:86
+#: account/templates/password_reset/password_change.html:37
+#: account/templates/password_reset/password_change_done.html:76
+msgid "Password change"
+msgstr "تغيير كلمة السر"
+
+#: account/templates/account/index.html:20
+#: account/templates/password_reset/password_change.html:20
+msgid "My profile"
+msgstr "ملفي"
+
+#: account/templates/account/index.html:22
+msgid ""
+" This page contains all the information about your account. Your\n"
+"                                        account\n"
+"                                        informations are globally used for "
+"your registration."
+msgstr ""
+" تحتوي هذه الصفحة على كافة المعلومات المتعلقة بحسابك. لك\n"
+"                                        الحساب\n"
+"                                        يتم استخدام المعلومات عالميًا لتسجيلك."
+
+#: account/templates/account/index.html:39
+msgid ""
+"Basic info, like your name and address, that you use\n"
+"                                                    on the\n"
+"                                                    Legisly\n"
+"                                                    Platform."
+msgstr ""
+"المعلومات الأساسية التي تستخدمها ، مثل اسمك وعنوانك\n"
+"                                                    على ال\n"
+"                                                    بشكل قانوني\n"
+"                                                    برنامج."
+
+#: account/templates/account/index.html:55
+msgid "Basics"
+msgstr "الأساسيات"
+
+#: account/templates/account/index.html:66
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#: account/templates/account/index.html:73
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: account/templates/account/index.html:81
+msgid "Last login"
+msgstr "آخر تسجيل دخول"
+
+#: account/templates/account/index.html:92
+msgid "Edit display name"
+msgstr "تعديل اسم العرض"
+
+#: account/templates/account/index.html:128
+#: account/templates/password_reset/password_change.html:87
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#: account/templates/email/email_body_template.html:6
+msgid "Header"
+msgstr "رأس"
+
+#: account/templates/email/email_body_template.html:11
+#: account/templates/email/email_confirm.html:14
+#: account/templates/email/email_document.html:11
+#: account/templates/email/email_document_change.html:11
+#: account/templates/email/email_document_file.html:11
+#: account/templates/email/email_form_assignee.html:12
+#: account/templates/email/email_form_fill.html:15
+#: account/templates/email/email_meet.html:13
+#: account/templates/email/email_meet_file.html:13
+#: account/templates/email/email_meet_note.html:14
+#: account/templates/email/email_message.html:11
+#: account/templates/email/email_note.html:12
+#: account/templates/email/email_note_file.html:13
+#: account/templates/email/email_order_bank_transfer.html:12
+#: account/templates/email/email_order_card.html:13
+#: account/templates/email/email_password.html:11
+#: account/templates/email/email_project_invite.html:15
+#: account/templates/email/email_project_invite_calendar.html:15
+#: account/templates/email/email_project_start.html:15
+#: account/templates/email/email_register_success.html:12
+#: account/templates/email/email_task.html:12
+#: account/templates/email/email_task_assignee.html:12
+#: account/templates/email/email_task_file.html:13
+#: account/templates/email/email_task_note.html:12
+msgid "Dear"
+msgstr "العزيز"
+
+#: account/templates/email/email_body_template.html:12
+msgid "Message text here"
+msgstr "نص الرسالة هنا"
+
+#: account/templates/email/email_body_template.html:13
+msgid "button"
+msgstr "زر"
+
+#: account/templates/email/email_body_template.html:22
+#: account/templates/email/email_document.html:22
+#: account/templates/email/email_document_change.html:22
+#: account/templates/email/email_document_file.html:22
+#: account/templates/email/email_form_assignee.html:32
+#: account/templates/email/email_form_fill.html:32
+#: account/templates/email/email_meet.html:32
+#: account/templates/email/email_meet_file.html:30
+#: account/templates/email/email_meet_note.html:31
+#: account/templates/email/email_message.html:23
+#: account/templates/email/email_note.html:27
+#: account/templates/email/email_note_file.html:27
+#: account/templates/email/email_task.html:31
+#: account/templates/email/email_task_assignee.html:32
+#: account/templates/email/email_task_file.html:30
+#: account/templates/email/email_task_note.html:30
+msgid "Details"
+msgstr "تفاصيل"
+
+#: account/templates/email/email_body_template.html:24
+#: account/templates/email/email_document.html:24
+#: account/templates/email/email_document_change.html:24
+#: account/templates/email/email_document_file.html:24
+#: account/templates/email/email_form_fill.html:34
+#: account/templates/email/email_meet.html:39
+#: account/templates/email/email_meet_file.html:39
+#: account/templates/email/email_meet_note.html:38
+#: account/templates/email/email_message.html:25
+#: account/templates/email/email_note.html:29
+#: account/templates/email/email_note_file.html:29
+#: account/templates/email/email_project_invite.html:31
+#: account/templates/email/email_project_invite_calendar.html:31
+#: account/templates/email/email_project_start.html:33
+#: account/templates/email/email_task_file.html:37
+msgid "Case name"
+msgstr "اسم الحالة"
+
+#: account/templates/email/email_body_template.html:25
+#: account/templates/email/email_document.html:25
+#: account/templates/email/email_document_change.html:25
+#: account/templates/email/email_document_file.html:25
+#: account/templates/email/email_form_assignee.html:43
+#: account/templates/email/email_form_fill.html:35
+#: account/templates/email/email_meet.html:40
+#: account/templates/email/email_meet_file.html:40
+#: account/templates/email/email_meet_note.html:39
+#: account/templates/email/email_message.html:27
+#: account/templates/email/email_note.html:31
+#: account/templates/email/email_note_file.html:30
+#: account/templates/email/email_project_invite.html:34
+#: account/templates/email/email_project_invite_calendar.html:35
+#: account/templates/email/email_project_start.html:37
+#: account/templates/email/email_task.html:44
+#: account/templates/email/email_task_assignee.html:45
+#: account/templates/email/email_task_file.html:38
+#: account/templates/email/email_task_note.html:35
+msgid "Case ID"
+msgstr "ID القضية"
+
+#: account/templates/email/email_body_template.html:36
+#: account/templates/email/email_document.html:37
+#: account/templates/email/email_document_change.html:37
+#: account/templates/email/email_document_file.html:39
+#: account/templates/email/email_form_assignee.html:67
+#: account/templates/email/email_form_fill.html:48
+#: account/templates/email/email_meet.html:66
+#: account/templates/email/email_meet_file.html:64
+#: account/templates/email/email_meet_note.html:74
+#: account/templates/email/email_message.html:31
+#: account/templates/email/email_note.html:50
+#: account/templates/email/email_note_file.html:45
+#: account/templates/email/email_order_bank_transfer.html:93
+#: account/templates/email/email_order_card.html:73
+#: account/templates/email/email_password.html:38
+#: account/templates/email/email_register_success.html:66
+#: account/templates/email/email_task.html:65
+#: account/templates/email/email_task_assignee.html:66
+#: account/templates/email/email_task_file.html:50
+#: account/templates/email/email_task_note.html:56
+msgid "Best regards,"
+msgstr "مع أطيب التحيات،"
+
+#: account/templates/email/email_body_template.html:37
+#: account/templates/email/email_document.html:38
+#: account/templates/email/email_document_change.html:38
+#: account/templates/email/email_document_file.html:40
+#: account/templates/email/email_form_assignee.html:68
+#: account/templates/email/email_form_fill.html:49
+#: account/templates/email/email_meet.html:67
+#: account/templates/email/email_meet_file.html:65
+#: account/templates/email/email_meet_note.html:75
+#: account/templates/email/email_message.html:32
+#: account/templates/email/email_note.html:51
+#: account/templates/email/email_note_file.html:46
+#: account/templates/email/email_order_bank_transfer.html:94
+#: account/templates/email/email_order_card.html:74
+#: account/templates/email/email_password.html:39
+#: account/templates/email/email_project_invite.html:39
+#: account/templates/email/email_project_invite_calendar.html:40
+#: account/templates/email/email_project_start.html:236
+#: account/templates/email/email_register_success.html:67
+#: account/templates/email/email_task.html:66
+#: account/templates/email/email_task_assignee.html:67
+#: account/templates/email/email_task_file.html:51
+#: account/templates/email/email_task_note.html:57
+msgid "Legisly Team"
+msgstr "الفريق الشرعي"
+
+#: account/templates/email/email_confirm.html:9
+msgid "Please confirm your email address"
+msgstr "يرجى تأكيد عنوان البريد الإلكتروني الخاص بك"
+
+#: account/templates/email/email_confirm.html:15
+msgid ""
+"thank you for registering at Legisly.com! Please confirm your email address "
+"by clicking the button below to continue."
+msgstr ""
+"شكرا لك على التسجيل في Legisly.com! يرجى تأكيد عنوان بريدك الإلكتروني بالنقر "
+"فوق الزر أدناه للمتابعة."
+
+#: account/templates/email/email_confirm.html:16
+msgid "Confirm e-mail address"
+msgstr "أكد عنوانك الإلكتروني"
+
+#: account/templates/email/email_confirm.html:21
+msgid "or"
+msgstr "أو"
+
+#: account/templates/email/email_confirm.html:26
+msgid ""
+"If the button above does not work, paste this link into your web browser:"
+msgstr "إذا كان الزر أعلاه لا يعمل ، الصق هذا الرابط في متصفح الويب الخاص بك:"
+
+#: account/templates/email/email_document.html:6
+msgid "A new document has been uploaded"
+msgstr "تم تحميل وثيقة جديدة"
+
+#: account/templates/email/email_document.html:12
+msgid "has prepared a new document for you to review. Document name"
+msgstr "أعد لك مستندًا جديدًا لمراجعته. اسم الملف"
+
+#: account/templates/email/email_document.html:13
+#: account/templates/email/email_document_change.html:13
+msgid "Review document"
+msgstr "مراجعة الوثيقة"
+
+#: account/templates/email/email_document.html:26
+#: account/templates/email/email_document_change.html:26
+#: account/templates/email/email_document_file.html:26
+msgid "Document name"
+msgstr "اسم الملف"
+
+#: account/templates/email/email_document_change.html:6
+msgid "A document has been changed"
+msgstr "تم تغيير الوثيقة"
+
+#: account/templates/email/email_document_change.html:12
+msgid "has changed the document for you to review. Document name"
+msgstr "قام بتغيير المستند لتتمكن من مراجعته. اسم الملف"
+
+#: account/templates/email/email_document_file.html:6
+msgid "A file has been uploaded to a document"
+msgstr "تم تحميل ملف إلى وثيقة"
+
+#: account/templates/email/email_document_file.html:12
+msgid "uploaded a file to the document"
+msgstr "قام بتحميل ملف إلى المستند"
+
+#: account/templates/email/email_document_file.html:13
+msgid "View file"
+msgstr "استعراض الملف"
+
+#: account/templates/email/email_document_file.html:27
+#: account/templates/email/email_task_file.html:33
+msgid "File name"
+msgstr "اسم الملف"
+
+#: account/templates/email/email_document_file.html:28
+#: account/templates/email/email_note_file.html:32
+#: account/templates/email/email_task_file.html:34
+msgid "Uploaded by"
+msgstr "تم الرفع بواسطة"
+
+#: account/templates/email/email_footer.html:16
+msgid "Quick links"
+msgstr "روابط سريعة"
+
+#: account/templates/email/email_footer.html:17
+msgid "Login to your Legisly account"
+msgstr "تسجيل الدخول إلى حسابك Legisly"
+
+#: account/templates/email/email_footer.html:18
+msgid "My tasks"
+msgstr "مهامي"
+
+#: account/templates/email/email_footer.html:19
+msgid "My cases"
+msgstr "حالاتي"
+
+#: account/templates/email/email_footer.html:20
+msgid "My upcomig consultations"
+msgstr "استشاراتي upcomig"
+
+#: account/templates/email/email_footer.html:22
+msgid "Open a new legal case"
+msgstr "فتح قضية قانونية جديدة"
+
+#: account/templates/email/email_footer.html:24
+msgid "Have a question?"
+msgstr "لدي سؤال؟"
+
+#: account/templates/email/email_footer.html:34
+msgid "Copyright © 2020 Legisly Solutions Kft. All rights reserved."
+msgstr "حقوق النشر © 2020 Legisly Solutions Kft. كل الحقوق محفوظة."
+
+#: account/templates/email/email_footer.html:42
+msgid "This e-mail was sent to you as a registered member of"
+msgstr "تم إرسال هذا البريد الإلكتروني إليك كعضو مسجل في"
+
+#: account/templates/email/email_footer.html:43
+msgid "The e-mail was automaticaly generated, please do not reply to it."
+msgstr "تم إنشاء البريد الإلكتروني تلقائيًا ، يرجى عدم الرد عليه."
+
+#: account/templates/email/email_form_assignee.html:7
+msgid "You have been assigned a new form"
+msgstr "لقد تم تخصيص نموذج جديد لك"
+
+#: account/templates/email/email_form_assignee.html:15
+msgid ""
+" has a new\n"
+"            form for you. Please log in to your account and respond to the "
+"form as soon as possible. You can find the\n"
+"            major details below. You have been nominated for this form."
+msgstr ""
+" لديه جديد\n"
+"            شكل لك. يرجى تسجيل الدخول إلى حسابك والرد على النموذج في أسرع "
+"وقت ممكن. يمكنك العثور على ملف\n"
+"            التفاصيل الرئيسية أدناه. لقد تم ترشيحك لهذا النموذج."
+
+#: account/templates/email/email_form_assignee.html:20
+msgid "Go to the form"
+msgstr "انتقل إلى النموذج"
+
+#: account/templates/email/email_form_assignee.html:22
+#: account/templates/email/email_form_assignee.html:44
+#: account/templates/email/email_task.html:21
+#: account/templates/email/email_task.html:45
+#: account/templates/email/email_task_assignee.html:22
+#: account/templates/email/email_task_assignee.html:46
+#: account/templates/email/email_task_note.html:36
+msgid "Due date"
+msgstr "تاريخ الاستحقاق"
+
+#: account/templates/email/email_form_assignee.html:34
+#: account/templates/email/email_form_fill.html:36
+msgid "Form name"
+msgstr "اسم النموذج"
+
+#: account/templates/email/email_form_assignee.html:35
+#: account/templates/email/email_task.html:34
+#: account/templates/email/email_task_assignee.html:35
+msgid "Assignee"
+msgstr "الوكيل"
+
+#: account/templates/email/email_form_assignee.html:37
+#: account/templates/email/email_task.html:36
+#: account/templates/email/email_task_assignee.html:37
+msgid "Collaborators"
+msgstr "المتعاونون"
+
+#: account/templates/email/email_form_assignee.html:42
+#: account/templates/email/email_task.html:43
+#: account/templates/email/email_task_assignee.html:44
+msgid "Case"
+msgstr "قضية"
+
+#: account/templates/email/email_form_assignee.html:50
+msgid "Form description"
+msgstr "وصف النموذج"
+
+#: account/templates/email/email_form_fill.html:9
+msgid "A form has been completed"
+msgstr "تم استكمال النموذج"
+
+#: account/templates/email/email_form_fill.html:16
+msgid "has filled out the form"
+msgstr "قام بتعبئة النموذج"
+
+#: account/templates/email/email_form_fill.html:19
+msgid "Go to form"
+msgstr "اذهب إلى النموذج"
+
+#: account/templates/email/email_form_fill.html:37
+msgid "Name of editor"
+msgstr "اسم المحرر"
+
+#: account/templates/email/email_meet.html:7
+msgid "You have been invited to a consultation"
+msgstr "لقد تمت دعوتك للتشاور"
+
+#: account/templates/email/email_meet.html:15
+msgid "invited you to a consultation. Please review the invitation"
+msgstr "دعاك إلى التشاور. يرجى مراجعة الدعوة"
+
+#: account/templates/email/email_meet.html:18
+#: account/templates/email/email_meet_note.html:19
+msgid "Check the consultation"
+msgstr "تحقق من الاستشارة"
+
+#: account/templates/email/email_meet.html:22
+msgid "Join consultation"
+msgstr "الانضمام إلى الاستشارة"
+
+#: account/templates/email/email_meet.html:34
+#: account/templates/email/email_project_invite.html:33
+msgid "Invited by"
+msgstr "بدعوة من"
+
+#: account/templates/email/email_meet.html:35
+#: account/templates/email/email_meet_file.html:33
+#: account/templates/email/email_meet_note.html:34
+msgid "Consultation name"
+msgstr "اسم الاستشارة"
+
+#: account/templates/email/email_meet.html:36
+#: account/templates/email/email_meet_file.html:36
+msgid "Short description"
+msgstr "وصف قصير"
+
+#: account/templates/email/email_meet.html:37
+#: account/templates/email/email_meet_file.html:37
+#: account/templates/email/email_meet_note.html:36
+#: account/templates/email/email_project_invite_calendar.html:33
+msgid "Meet start"
+msgstr "لقاء البدء"
+
+#: account/templates/email/email_meet.html:38
+#: account/templates/email/email_meet_file.html:38
+#: account/templates/email/email_meet_note.html:37
+#: account/templates/email/email_project_invite_calendar.html:34
+msgid "Meet end"
+msgstr "لقاء نهاية"
+
+#: account/templates/email/email_meet.html:51
+#: account/templates/email/email_meet_file.html:51
+#: account/templates/email/email_meet_note.html:58
+msgid "How to join to the consultation?"
+msgstr "كيف تنضم إلى الاستشارة؟"
+
+#: account/templates/email/email_meet.html:54
+#: account/templates/email/email_meet_file.html:53
+#: account/templates/email/email_meet_note.html:61
+msgid ""
+"You can allways check your upcoming consultation on your account by clicking "
+"on the"
+msgstr "يمكنك دائمًا التحقق من استشارتك القادمة بشأن حسابك من خلال النقر على"
+
+#: account/templates/email/email_meet.html:56
+#: account/templates/email/email_meet_file.html:54
+#: account/templates/email/email_meet_note.html:63
+msgid "My consultations"
+msgstr "استشاراتي"
+
+#: account/templates/email/email_meet.html:57
+msgid ""
+"To join a consultation simply click on the join button. <strong>Please "
+"always be\n"
+"                accurate!</strong>"
+msgstr ""
+"للانضمام إلى استشارة ، ما عليك سوى النقر على زر الانضمام. <strong>من فضلك كن "
+"دقيقا دائما!</strong>"
+
+#: account/templates/email/email_meet_file.html:7
+msgid "A new file has been uploaded to your consultation"
+msgstr "تم تحميل ملف جديد إلى استشارتك"
+
+#: account/templates/email/email_meet_file.html:15
+msgid "uploaded a new file to your consultation"
+msgstr "حمّل ملفًا جديدًا إلى استشارتك"
+
+#: account/templates/email/email_meet_file.html:18
+msgid "Go to the consultation"
+msgstr "اذهب إلى الاستشارة"
+
+#: account/templates/email/email_meet_file.html:34
+#: account/templates/email/email_note_file.html:31
+msgid "File name(s)"
+msgstr "اسم (أسماء) الملف"
+
+#: account/templates/email/email_meet_file.html:35
+#: account/templates/email/email_task.html:41
+#: account/templates/email/email_task_assignee.html:42
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#: account/templates/email/email_meet_file.html:55
+msgid ""
+"To join a\n"
+"            consultation simply click on the join button. <strong>Please "
+"always be accurate!</strong>"
+msgstr ""
+"للانضمام إلى استشارة ، ما عليك سوى النقر على زر الانضمام. <strong>من فضلك كن "
+"دقيقا دائما!</strong>"
+
+#: account/templates/email/email_meet_note.html:9
+msgid "A new note has been added to your consultation"
+msgstr "تمت إضافة ملاحظة جديدة إلى استشارتك"
+
+#: account/templates/email/email_meet_note.html:16
+msgid "added a new note to your consultation"
+msgstr "أضاف ملاحظة جديدة إلى استشارتك"
+
+#: account/templates/email/email_meet_note.html:33
+#: account/templates/email/email_note.html:30
+msgid "Note created by"
+msgstr "تم إنشاء الملاحظة بواسطة"
+
+#: account/templates/email/email_meet_note.html:35
+msgid "Consultation description"
+msgstr "وصف الاستشارة"
+
+#: account/templates/email/email_meet_note.html:44
+#: account/templates/email/email_note.html:37
+#: account/templates/email/email_task_note.html:42
+msgid "Content of note"
+msgstr "محتوى المذكرة"
+
+#: account/templates/email/email_meet_note.html:65
+msgid ""
+"To join a consultation simply click on the join button.\n"
+"            <strong>Please always be accurate!</strong>"
+msgstr ""
+"للانضمام إلى استشارة ، ما عليك سوى النقر على زر الانضمام. <strong>من فضلك كن "
+"دقيقا دائما!</strong>"
+
+#: account/templates/email/email_message.html:6
+msgid "New message(s)"
+msgstr "رسائل جديدة)"
+
+#: account/templates/email/email_message.html:12
+msgid "You have received new message(s) for your case"
+msgstr "لقد تلقيت رسالة (رسائل) جديدة لحالتك"
+
+#: account/templates/email/email_message.html:16
+msgid "Message board"
+msgstr "رسالة المجلس"
+
+#: account/templates/email/email_message.html:26
+#: account/templates/email/email_project_invite.html:32
+#: account/templates/email/email_project_invite_calendar.html:32
+#: account/templates/email/email_project_start.html:41
+msgid "Client name"
+msgstr "اسم العميل"
+
+#: account/templates/email/email_note.html:6
+msgid "New note has been added"
+msgstr "تمت إضافة ملاحظة جديدة"
+
+#: account/templates/email/email_note.html:14
+msgid "added a new note to the"
+msgstr "أضاف ملاحظة جديدة إلى"
+
+#: account/templates/email/email_note.html:17
+msgid "Go to the note"
+msgstr "انتقل إلى الملاحظة"
+
+#: account/templates/email/email_note_file.html:7
+msgid "A new file has been uploaded to a public note"
+msgstr "تم تحميل ملف جديد إلى ملاحظة عامة"
+
+#: account/templates/email/email_note_file.html:15
+msgid "uploaded a new file to a note in the case"
+msgstr "حمّل ملفًا جديدًا إلى ملاحظة في القضية"
+
+#: account/templates/email/email_note_file.html:18
+msgid "Check the note"
+msgstr "تحقق من الملاحظة"
+
+#: account/templates/email/email_note_file.html:33
+msgid "File description"
+msgstr "وصف الملف"
+
+#: account/templates/email/email_note_file.html:34
+msgid "Upload date"
+msgstr "تاريخ الرفع"
+
+#: account/templates/email/email_order_bank_transfer.html:7
+#: account/templates/email/email_order_card.html:7
+msgid "Thank you for your order!"
+msgstr "شكرا لطلبك!"
+
+#: account/templates/email/email_order_bank_transfer.html:13
+#: account/templates/email/email_order_card.html:14
+msgid "We have received the following order from you"
+msgstr "لقد تلقينا الطلب التالي منك"
+
+#: account/templates/email/email_order_bank_transfer.html:25
+#: account/templates/email/email_order_bank_transfer.html:47
+#: account/templates/email/email_order_bank_transfer.html:71
+#: account/templates/email/email_order_card.html:26
+#: account/templates/email/email_order_card.html:52
+msgid "Price"
+msgstr "السعر"
+
+#: account/templates/email/email_order_bank_transfer.html:27
+msgid "Payment is not done yet"
+msgstr "الدفع لم يتم بعد"
+
+#: account/templates/email/email_order_bank_transfer.html:41
+msgid "Payment details"
+msgstr "بيانات الدفع"
+
+#: account/templates/email/email_order_bank_transfer.html:42
+msgid "Name of beneficiary"
+msgstr "اسم المستفيد"
+
+#: account/templates/email/email_order_bank_transfer.html:43
+msgid "Name of bank"
+msgstr "اسم البنك"
+
+#: account/templates/email/email_order_bank_transfer.html:44
+msgid "Account number"
+msgstr "رقم حساب"
+
+#: account/templates/email/email_order_bank_transfer.html:45
+msgid "Amount to transfer"
+msgstr "المبلغ لنقل"
+
+#: account/templates/email/email_order_bank_transfer.html:46
+msgid "Announce"
+msgstr "أعلن"
+
+#: account/templates/email/email_order_bank_transfer.html:61
+#: account/templates/email/email_order_card.html:42
+msgid "Billing details"
+msgstr "تفاصيل الفاتورة"
+
+#: account/templates/email/email_order_bank_transfer.html:62
+#: account/templates/email/email_order_card.html:43
+msgid "Buyer name"
+msgstr "اسم المشتري"
+
+#: account/templates/email/email_order_bank_transfer.html:63
+#: account/templates/email/email_order_card.html:44
+msgid "Buyer address"
+msgstr "عنوان المشتري"
+
+#: account/templates/email/email_order_bank_transfer.html:66
+#: account/templates/email/email_order_card.html:47
+msgid "VAT-number (if given)"
+msgstr "رقم ضريبة القيمة المضافة (إذا تم تقديمه)"
+
+#: account/templates/email/email_order_bank_transfer.html:69
+#: account/templates/email/email_order_card.html:50
+msgid "Contact name"
+msgstr "اسم جهة الاتصال"
+
+#: account/templates/email/email_order_bank_transfer.html:75
+msgid "Please note, your case will not started until the payment is missing."
+msgstr "يرجى ملاحظة أن قضيتك لن تبدأ حتى يتم فقد الدفعة."
+
+#: account/templates/email/email_order_bank_transfer.html:79
+#: account/templates/email/email_order_card.html:59
+msgid "Check my orders"
+msgstr "تحقق من أوامري"
+
+#: account/templates/email/email_order_bank_transfer.html:82
+#: account/templates/email/email_order_card.html:62
+msgid "Legisly Wiki"
+msgstr "الويكي القانوني"
+
+#: account/templates/email/email_order_bank_transfer.html:84
+#: account/templates/email/email_order_card.html:64
+msgid "Need help? Check out our Wikipedia!"
+msgstr "تحتاج مساعدة؟ تحقق من ويكيبيديا لدينا!"
+
+#: account/templates/email/email_order_card.html:28
+msgid "Payment done by card"
+msgstr "الدفع بالبطاقة"
+
+#: account/templates/email/email_password.html:6
+msgid "Password reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: account/templates/email/email_password.html:12
+msgid ""
+"We have received a password reset request for your account. If the request "
+"was made by your please click the bottom below to reset your password. If "
+"you did not requested reseting your password please contact us by reply to "
+"this e-mail."
+msgstr ""
+"لقد تلقينا طلب إعادة تعيين كلمة المرور لحسابك. إذا تم تقديم الطلب بواسطتك ، "
+"فيرجى النقر فوق الجزء السفلي أدناه لإعادة تعيين كلمة المرور الخاصة بك. إذا "
+"لم تطلب إعادة تعيين كلمة المرور الخاصة بك ، فيرجى الاتصال بنا عن طريق الرد "
+"على هذا البريد الإلكتروني."
+
+#: account/templates/email/email_password.html:13
+msgid "Set new password"
+msgstr "قم بتعيين كلمة مرور جديدة"
+
+#: account/templates/email/email_password.html:22
+msgid "Your account details"
+msgstr "تفاصيل حسابك"
+
+#: account/templates/email/email_password.html:24
+msgid "First name"
+msgstr "الاسم الاول"
+
+#: account/templates/email/email_password.html:25
+msgid "Last name"
+msgstr "الكنية"
+
+#: account/templates/email/email_password.html:27
+msgid "E-mail address"
+msgstr "عنوان البريد الالكترونى"
+
+#: account/templates/email/email_project_invite.html:10
+msgid "You have been invited to collaborate in a legal case"
+msgstr "لقد تمت دعوتك للتعاون في قضية قانونية"
+
+#: account/templates/email/email_project_invite.html:18
+msgid "invited you to join a legal case named:"
+msgstr "دعاك للانضمام إلى قضية قانونية باسم:"
+
+#: account/templates/email/email_project_invite.html:21
+msgid "Check invite"
+msgstr "تحقق دعوة"
+
+#: account/templates/email/email_project_invite.html:28
+#: account/templates/email/email_project_invite_calendar.html:28
+msgid "Details:"
+msgstr "تفاصيل:"
+
+#: account/templates/email/email_project_invite.html:38
+#: account/templates/email/email_project_invite_calendar.html:39
+#: account/templates/email/email_project_start.html:235
+msgid "Best regards"
+msgstr "مع أطيب التحيات"
+
+#: account/templates/email/email_project_invite_calendar.html:10
+msgid "You have been invited to collaborate in a legal consultation"
+msgstr "لقد تمت دعوتك للتعاون في استشارة قانونية"
+
+#: account/templates/email/email_project_invite_calendar.html:18
+msgid "invited you to join a legal consultation named:"
+msgstr "دعاك للانضمام إلى استشارة قانونية باسم:"
+
+#: account/templates/email/email_project_invite_calendar.html:21
+msgid "Respond the invite"
+msgstr "استجب للدعوة"
+
+#: account/templates/email/email_project_start.html:10
+msgid "Congratulation! Your case is started!"
+msgstr "تهنئة! بدأت قضيتك!"
+
+#: account/templates/email/email_project_start.html:16
+msgid "we have great news! Your case"
+msgstr "لدينا أخبار رائعة! حالتك"
+
+#: account/templates/email/email_project_start.html:18
+msgid "has been started and our professionals are already working on it!"
+msgstr "وقد بدأ المحترفون لدينا يعملون عليه بالفعل!"
+
+#: account/templates/email/email_project_start.html:20
+msgid "So what's next?"
+msgstr "إذا ما هو التالي؟"
+
+#: account/templates/email/email_project_start.html:21
+msgid ""
+"To help you on your way with your legal case, we collected all the things "
+"you\n"
+"                    should know or do to success. Let's dive in to the "
+"Legisly Platform!"
+msgstr ""
+"لمساعدتك في طريقك في قضيتك القانونية ، قمنا بجمع كل الأشياء الخاصة بك\n"
+"                    يجب أن تعرف أو تفعل للنجاح. دعنا نتعمق في النظام الأساسي "
+"Legisly!"
+
+#: account/templates/email/email_project_start.html:30
+msgid "Basic info about your case"
+msgstr "معلومات أساسية عن قضيتك"
+
+#: account/templates/email/email_project_start.html:45
+msgid "Client type"
+msgstr "نوع العميل"
+
+#: account/templates/email/email_project_start.html:49
+msgid "Client address"
+msgstr "عنوان العميل"
+
+#: account/templates/email/email_project_start.html:56
+msgid "Case panel"
+msgstr "لوحة حالة"
+
+#: account/templates/email/email_project_start.html:59
+msgid "Invite someone(s) to this case"
+msgstr "قم بدعوة شخص (أشخاص) لهذه الحالة"
+
+#: account/templates/email/email_project_start.html:62
+msgid "Write a note"
+msgstr "اكتب ملاحظة"
+
+#: account/templates/email/email_project_start.html:74
+msgid "Your tasks to do"
+msgstr "المهام الخاصة بك للقيام بها"
+
+#: account/templates/email/email_project_start.html:76
+#, fuzzy
+msgid ""
+"These tasks are automaticaly generated as the specified case has been\n"
+"                        started. Please always set the task as <i>Done</i> "
+"if you have completed it already.\n"
+"                        "
+msgstr ""
+"يتم إنشاء هذه المهام تلقائيًا عند بدء الحالة المحددة. يرجى دائمًا تعيين المهمة "
+"على أنها <i>تم</i> إذا كنت قد أكملتها بالفعل."
+
+#: account/templates/email/email_project_start.html:91
+msgid "Go to task"
+msgstr "انتقل إلى المهمة"
+
+#: account/templates/email/email_project_start.html:109
+msgid "Go to task manager"
+msgstr "انتقل إلى مدير المهام"
+
+#: account/templates/email/email_project_start.html:113
+#: account/templates/email/email_project_start.html:160
+msgid "Need help? Check our knowledge base!"
+msgstr "تحتاج مساعدة؟ تحقق من قاعدة المعرفة لدينا!"
+
+#: account/templates/email/email_project_start.html:125
+msgid "Forms to fill"
+msgstr "نماذج لملء"
+
+#: account/templates/email/email_project_start.html:127
+msgid ""
+"Completing the form(s) is the number one request for information to "
+"complete\n"
+"                        the order."
+msgstr ""
+"إكمال النموذج (النماذج) هو الطلب الأول للحصول على معلومات لإكماله\n"
+"                        الأمر - الطلب."
+
+#: account/templates/email/email_project_start.html:129
+#, fuzzy
+msgid ""
+"Please fill in the required form(s) as soon as possible, otherwise we\n"
+"                            can\n"
+"                            not start the work.</span>"
+msgstr ""
+"يرجى ملء النموذج (النماذج) المطلوبة في أسرع وقت ممكن ، وإلا فلن نتمكن من بدء "
+"العمل."
+
+#: account/templates/email/email_project_start.html:142
+msgid "Fill the form"
+msgstr "املأ النموذج"
+
+#: account/templates/email/email_project_start.html:156
+msgid "Go to form manager"
+msgstr "انتقل إلى مدير النموذج"
+
+#: account/templates/email/email_project_start.html:172
+msgid "Upcoming consultation details"
+msgstr "تفاصيل الاستشارة القادمة"
+
+#: account/templates/email/email_project_start.html:174
+msgid ""
+"Joining the consultations is very simple, but if you still have\n"
+"                        difficulties, you will find help in our knowledge "
+"base."
+msgstr ""
+"الانضمام إلى المشاورات أمر بسيط للغاية ، ولكن إذا كنت لا تزال كذلك\n"
+"                        الصعوبات ، سوف تجد المساعدة في قاعدة المعرفة لدينا."
+
+#: account/templates/email/email_project_start.html:176
+#, fuzzy
+msgid ""
+"Please always be accurate to\n"
+"                            the minute, our staff will be waiting at the "
+"agreed time.</span>"
+msgstr ""
+"الرجاء توخي الدقة دائمًا في كل دقيقة ، سينتظر موظفونا في الوقت المتفق عليه."
+
+#: account/templates/email/email_project_start.html:184
+msgid "Join<sup>*</sup>"
+msgstr "انضمام <sup>*</sup>"
+
+#: account/templates/email/email_project_start.html:214
+msgid ""
+"Please note, as this is az online meeting, the virtual room\n"
+"                            is already exist, but our professional will only "
+"join at the scheduled time.\n"
+"                            "
+msgstr ""
+"يرجى ملاحظة أن هذا هو اجتماع عبر الإنترنت من الألف إلى الياء ، الغرفة "
+"الافتراضية\n"
+"                            موجود بالفعل ، لكن محترفنا سينضم فقط في الوقت "
+"المحدد.\n"
+"                            "
+
+#: account/templates/email/email_register_success.html:6
+msgid "Welcome to the Legisly!"
+msgstr "مرحبا بكم في Legisly!"
+
+#: account/templates/email/email_register_success.html:13
+msgid ""
+"your registration to Legisly has been successful and now you can\n"
+"            log in to check your open cases or start a new at any time"
+msgstr ""
+"لقد كان تسجيلك في Legisly ناجحًا والآن يمكنك ذلك\n"
+"            قم بتسجيل الدخول للتحقق من الحالات المفتوحة أو ابدأ جديدة في أي "
+"وقت"
+
+#: account/templates/email/email_register_success.html:17
+msgid "Log in to your account"
+msgstr "تسجيل الدخول إلى حسابك"
+
+#: account/templates/email/email_register_success.html:28
+msgid ""
+"Starters\n"
+"                guide\""
+msgstr ""
+"المقبلات\n"
+"                يرشد\""
+
+#: account/templates/email/email_register_success.html:32
+msgid "Knowdledge base"
+msgstr "قاعدة المعرفة"
+
+#: account/templates/email/email_register_success.html:33
+msgid "Please check out our ever-expanding knowledge base for help."
+msgstr "يرجى التحقق من قاعدة المعرفة لدينا دائمة التوسع للحصول على المساعدة."
+
+#: account/templates/email/email_register_success.html:35
+msgid "AND"
+msgstr "و"
+
+#: account/templates/email/email_register_success.html:55
+msgid ""
+"Follow us if you are interested in exciting everyday-law stories and "
+"articles."
+msgstr "تابعنا إذا كنت مهتمًا بقصص ومقالات مثيرة عن القانون اليومي."
+
+#: account/templates/email/email_task.html:7
+#: account/templates/email/email_task_assignee.html:7
+msgid "You have been assigned a new task"
+msgstr "لقد تم تكليفك بمهمة جديدة"
+
+#: account/templates/email/email_task.html:15
+#, fuzzy
+msgid " has a added a new task "
+msgstr "  تمت إضافة مهمة جديدة"
+
+#: account/templates/email/email_task.html:15
+msgid ""
+"and\n"
+"            marked you as a <strong>collaborator</strong>."
+msgstr "وتمييزك <strong>كمتعاون</strong> ."
+
+#: account/templates/email/email_task.html:19
+#: account/templates/email/email_task_assignee.html:20
+#: account/templates/email/email_task_file.html:19
+#: account/templates/email/email_task_note.html:18
+msgid "Go to the task"
+msgstr "انتقل إلى المهمة"
+
+#: account/templates/email/email_task.html:33
+#: account/templates/email/email_task_assignee.html:34
+#: account/templates/email/email_task_file.html:32
+#: account/templates/email/email_task_note.html:32
+msgid "Task name"
+msgstr "اسم المهمة"
+
+#: account/templates/email/email_task.html:50
+#: account/templates/email/email_task_assignee.html:51
+msgid "Task description"
+msgstr "وصف المهمة"
+
+#: account/templates/email/email_task_assignee.html:15
+msgid ""
+" has a new\n"
+"            task for you. Please log in to your account and respond to the "
+"task as soon as possible. You can find the\n"
+"            major details below. You have been nominated for this task."
+msgstr ""
+" لديه جديد\n"
+"            مهمة لك. يرجى تسجيل الدخول إلى حسابك والرد على المهمة في أسرع "
+"وقت ممكن. يمكنك العثور على ملف\n"
+"            التفاصيل الرئيسية أدناه. لقد تم ترشيحك لهذه المهمة."
+
+#: account/templates/email/email_task_file.html:7
+msgid "New file has been uploaded to your task"
+msgstr "تم تحميل ملف جديد لمهمتك"
+
+#: account/templates/email/email_task_file.html:16
+msgid "has a uploaded a new file for the task"
+msgstr "قام بتحميل ملف جديد للمهمة"
+
+#: account/templates/email/email_task_file.html:21
+#: account/templates/email/email_task_file.html:36
+#: account/templates/email/email_task_note.html:20
+msgid "Task due date"
+msgstr "تاريخ استحقاق المهمة"
+
+#: account/templates/email/email_task_file.html:35
+msgid "Date of crate"
+msgstr "تاريخ الصندوق"
+
+#: account/templates/email/email_task_note.html:7
+msgid "New note has been added to your task"
+msgstr "تمت إضافة ملاحظة جديدة إلى مهمتك"
+
+#: account/templates/email/email_task_note.html:14
+msgid "added a new note to the task named"
+msgstr "أضاف ملاحظة جديدة إلى المهمة المسماة"
+
+#: account/templates/email/email_task_note.html:33
+msgid "Task created by"
+msgstr "تم إنشاء المهمة بواسطة"
+
+#: account/templates/email/email_task_note.html:34
+msgid "Affected case"
+msgstr "الحالة المتضررة"
+
+#: account/templates/password_reset/password_change.html:22
+msgid ""
+"This page contains all the information about your account. Your\n"
+"                                        account\n"
+"                                        informations are globally used for "
+"your registration"
+msgstr ""
+"تحتوي هذه الصفحة على كافة المعلومات المتعلقة بحسابك. لك\n"
+"                                        الحساب\n"
+"                                        يتم استخدام المعلومات عالميًا لتسجيلك"
+
+#: account/templates/password_reset/password_change.html:53
+msgid "Change"
+msgstr "يتغير"
+
+#: account/templates/password_reset/password_change_done.html:36
+msgid "Your password has been succesfully changed"
+msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح"
+
+#: account/templates/password_reset/password_change_done.html:68
+msgid "PersonalInfomation"
+msgstr "المعلومات الشخصية"
+
+#: account/templates/register/login.html:32
+msgid "Sign-In"
+msgstr "تسجيل الدخول"
+
+#: account/templates/register/login.html:34
+msgid "Access the Legisly panel using your email and passcode."
+msgstr "قم بالوصول إلى لوحة Legisly باستخدام بريدك الإلكتروني ورمز المرور."
+
+#: account/templates/register/login.html:50
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+#: account/templates/register/login.html:51
+msgid "Forgot you password?"
+msgstr "هل نسيت كلمة المرور؟"
+
+#: account/templates/register/login.html:54
+msgid "New on our platform?"
+msgstr "جديد على منصتنا؟"
+
+#: account/templates/register/login.html:57
+#: account/templates/register/login.html:59
+msgid "Create an account"
+msgstr "انشئ حساب"
+
+#: account/templates/register/login.html:72
+#: account/templates/register/register.html:88
+msgid "Terms & Condition"
+msgstr "الشروط والأحكام"
+
+#: account/templates/register/login.html:75
+#: account/templates/register/register.html:54
+#: account/templates/register/register.html:91
+msgid "Privacy Policy"
+msgstr "سياسة الخصوصية"
+
+#: account/templates/register/login.html:78
+#: account/templates/register/register.html:94
+msgid "Help"
+msgstr "يساعد"
+
+#: account/templates/register/login.html:82
+#: account/templates/register/login.html:89
+#: account/templates/register/register.html:98
+#: account/templates/register/register.html:105
+msgid "English"
+msgstr "إنجليزي"
+
+#: account/templates/register/login.html:96
+#: account/templates/register/register.html:112
+msgid "Español"
+msgstr "الاسبانية"
+
+#: account/templates/register/login.html:103
+#: account/templates/register/register.html:119
+msgid "Français"
+msgstr "الفرنسية"
+
+#: account/templates/register/login.html:110
+#: account/templates/register/register.html:126
+msgid "Türkçe"
+msgstr "Türkçe"
+
+#: account/templates/register/login.html:120
+#: account/templates/register/register.html:136
+msgid "2021 Legisly. All Rights Reserved."
+msgstr "2021 قانونيا. كل الحقوق محفوظة."
+
+#: account/templates/register/register.html:34
+#: account/templates/register/register.html:64
+msgid "Register"
+msgstr "يسجل"
+
+#: account/templates/register/register.html:36
+msgid "Create new Legisly account"
+msgstr "إنشاء حساب Legisly جديد"
+
+#: account/templates/register/register.html:54
+#: account/templates/register/register.html:60
+msgid "I agree"
+msgstr "أنا موافق"
+
+#: account/templates/register/register.html:60
+msgid "Terms and Conditions"
+msgstr "الأحكام والشروط"
+
+#: account/templates/register/register.html:67
+msgid "Already have an account?"
+msgstr "هل لديك حساب؟"
+
+#: account/templates/register/register.html:71
+#: account/templates/register/register.html:73
+msgid "Sign in instead"
+msgstr "قم بتسجيل الدخول بدلاً من ذلك"
+
+#: account/views.py:63
+msgid "Saved"
+msgstr "أنقذ"
+
+#: account/views.py:152 account/views.py:215
+msgid "Welcome to legisly.com"
+msgstr "مرحبا بكم في"
+
+#: account/views.py:157
+msgid "Welcome to Legisly"
+msgstr "مرحبا بكم في ليجيسلي"
+
+#: account/views.py:224
+msgid "Error email or token"
+msgstr "خطأ في البريد الإلكتروني أو الرمز المميز"

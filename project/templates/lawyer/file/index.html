@@ -1,0 +1,138 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Files
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                {% include 'section/lawyer_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"><em
+                                                        class="icon ni ni-folder"></em> Files</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>Below can find all the files uploaded to the
+                                                        <strong>{{project.name}}</strong>. Click on the file name to
+                                                        check the details or upload a new file anytime by clicking <a
+                                                            href="{% url 'project:project_file_create' project.id %}">here</a>
+                                                        or the plus button on the right corner.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <table class="datatable-init table">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Filename</th>
+                                                <th>Uploaded by</th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="Files are categorized automaticaly regarding the uploading subpage, such as Tasks, Notes, Google Meets, etc.">
+                                                    Category <index><em class="icon ni ni-help-fill"></em></index>
+                                                </th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="Final release means the file is marked as the definitive 'product' of the project.">
+                                                    Final relase? <index><em class="icon ni ni-help-fill"></em></index>
+                                                </th>
+                                                <th>Archived?</th>
+                                                <th>Upload date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for file in file_obj %}
+                                            <tr class="nk-tb-item">
+                                                <td>
+                                                    {{file.id}}
+                                                </td>
+                                                <td>
+                                                    {% if file.archived == False %}
+                                                    <strong>
+                                                        <a
+                                                            href="{% url 'project:project_lawyer_file_detail' project.id file.id%}">{{file.name}}</a>
+                                                    </strong>
+                                                    {% else %}
+                                                    <strong>
+                                                        {{file.name}}
+                                                    </strong>
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{file.uploaded_by.first_name}} {{file.uploaded_by.last_name}}</td>
+                                                <td>
+                                                    <span class="badge badge-pill badge-primary">
+                                                        {{file.get_file_type_display}}
+                                                    </span>
+
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{file.is_relase}}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {% if file.archived == True %}
+                                                    <span class="badge badge-pill badge-danger">
+                                                        Yes
+                                                    </span>
+                                                    {% else %}
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        No
+                                                    </span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{file.created_at}}</td>
+                                                <td>
+                                                    {% if file.archived == False %}
+                                                    <a href="{% url 'project:project_lawyer_file_detail' project.id file.id%}"
+                                                        class="btn btn-outline-primary btn-sm"><em
+                                                            class="icon ni ni-eye"></em>&nbsp; Details</a>
+                                                    <a href="{% url 'project:project_lawyer_file_edit' project.id file.id%}"
+                                                        class="btn btn-outline-primary btn-sm"><em
+                                                            class="icon ni ni-edit"></em>&nbsp; Edit</a>
+                                                    <a href="{% url 'project:project_lawyer_file_archive' project_id=project.id id=file.id%}"
+                                                        class="btn btn-outline-danger btn-sm"><em
+                                                            class="icon ni ni-trash"></em>&nbsp; Archive</a>
+
+                                                    {% else %}
+
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+{% endblock %}

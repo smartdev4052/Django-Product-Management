@@ -1,0 +1,120 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Project
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-content">
+                            {% include 'section/project_navbar.html' %}
+                            {% include 'section/lawyer_navbar.html' %}
+                            <div class="card-inner">
+                                <div class="nk-block">
+
+                                    <div class="nk-block-head nk-block-head-line">
+                                        <h6 class="title overline-title text-base">Information</h6>
+                                    </div>
+                                    <div class="profile-ud-list">
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span
+                                                    class="profile-ud-label">Name</span><span
+                                                    class="profile-ud-value">{{project.name}}</span></div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span
+                                                    class="profile-ud-label">Client</span><span
+                                                    class="profile-ud-value">{{project.client}}
+                                                </span></div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Created
+                                                    at</span><span
+                                                    class="profile-ud-value">{{project.created_at}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Type of
+                                                    client</span><span
+                                                    class="profile-ud-value">{{project.client.get_type_display}}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">Project / Lawyer/ <strong
+                                                        class="text-primary small">Activite</strong></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline">
+                                        <ul class="timeline-list">
+                                            {% for activity in activities %}
+                                            <li class="timeline-item">
+                                                <div class="timeline-status bg-secondary"></div>
+                                                <div class="timeline-date">{{activity.created_at|date:"M d"}} <em
+                                                        class="icon ni ni-alarm-alt"></em>
+                                                </div>
+                                                <div class="timeline-data">
+                                                    <h6 class="timeline-title">{{activity.name}}</h6>
+                                                    <div class="timeline-des">
+                                                        <p>{{activity.description}}</p><span
+                                                            class="time mt-1">{{activity.created_at}}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <a href="{% url 'project:project_lawyer_activity_index' project.id %}"
+                                        class="btn btn-outline-primary btn-sm mt-5">Show all activities</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

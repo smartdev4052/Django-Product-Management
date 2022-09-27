@@ -1,0 +1,95 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Pages" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Pages" %}</h3>
+                                <div class="nk-block-des">
+                                    <p>{% blocktrans %}Static pages can be used for legal consents, privacy policy, etc...{% endblocktrans %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <a href="{% url 'main:page_create' %}"
+                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                        class="icon ni ni-plus"></em><span>{% trans "Create" %}</span></a>
+                                <a href="{% url 'main:page_create' %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex
+                                        d-sm-none"><em class="icon ni ni-plus"></em></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Slug" %}</th>
+                                        <th>{% trans "Draft" %}</th>
+                                        <th>{% trans "Visible" %}</th>
+                                        <th>{% trans "Created_at" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for page in pages %}
+                                    <tr class="nk-tb-item">
+                                        <td>{{page.id}}</td>
+                                        <td><a
+                                                href="{% url 'main:page_detail' page.slug %}"><strong>{{page.name}}</strong></a>
+                                        </td>
+                                        <td>{{page.slug}}</td>
+
+                                        <td>
+                                            <span class="badge badge-pill badge-success">
+                                                {{page.draft}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-pill badge-success">
+                                                {{page.visible}}
+                                            </span>
+                                        </td>
+                                        <td>{{page.created_at}}</td>
+
+                                        <td>
+                                            <a href="{% url 'main:page_detail' page.slug %}"
+                                                class="btn btn-outline-primary btn-sm"><em
+                                                    class="icon ni ni-eye"></em>&nbsp; {% trans "Details" %}</a>
+                                            <a href="{% url 'main:page_edit' page.slug %}"
+                                                class="btn btn-outline-primary btn-sm"><em
+                                                    class="icon ni ni-edit"></em>&nbsp; {% trans "Edit" %}</a>
+                                            <a href="{% url 'main:page_delete' page.slug %}"
+                                                class="btn btn-outline-danger btn-sm"><em class="icon ni ni-trash">
+                                                </em>&nbsp;{% trans "Delete" %}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

@@ -1,0 +1,195 @@
+ {% load static %}
+ <!-- main header @s -->
+ <div class="nk-header nk-header-fixed is-light">
+    <div class="container-fluid">
+        <div class="nk-header-wrap">
+            <div class="nk-menu-trigger d-xl-none ml-n1">
+                <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+            </div>
+            <div class="nk-header-brand d-xl-none">
+                <a href="html/index.html" class="logo-link">
+                    <img class="logo-light logo-img" src="{% static '/assets/auth/images/logo.png' %}" srcset="{% static '/assets/auth/images/logo.png' %} 2x" alt="logo">
+                    <img class="logo-dark logo-img" src="{% static '/assets/auth/images/logo.png' %}" srcset="{% static '/assets/auth/images/logo.png' %} 2x" alt="logo-dark">
+                </a>
+            </div><!-- .nk-header-brand -->
+            <div class="nk-header-search ml-3 ml-xl-0">
+                <em class="icon ni ni-search"></em>
+                <input type="text" class="form-control border-transparent form-focus-none" placeholder="Search anything">
+            </div><!-- .nk-header-news -->
+            <div class="nk-header-tools">
+                <ul class="nk-quick-nav">
+                    <!--
+                        <li class="dropdown language-dropdown d-none d-sm-block mr-n1">
+                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-toggle="dropdown">
+                            <div class="user-avatar xs border border-light">
+                                <img src="./images/flags/english-sq.png" alt="">
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-s1">
+                            <ul class="language-list">
+                                <li>
+                                    <a href="#" class="language-item">
+                                        <img src="./images/flags/english.png" alt="" class="language-flag">
+                                        <span class="language-name">English</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="language-item">
+                                        <img src="./images/flags/spanish.png" alt="" class="language-flag">
+                                        <span class="language-name">Español</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="language-item">
+                                        <img src="./images/flags/french.png" alt="" class="language-flag">
+                                        <span class="language-name">Français</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="language-item">
+                                        <img src="./images/flags/turkey.png" alt="" class="language-flag">
+                                        <span class="language-name">Türkçe</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    -->
+                    
+                    {% if user.is_authenticated %}
+                    <li class="dropdown notification-dropdown">
+                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-toggle="dropdown">
+                            <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right">
+                            <div class="dropdown-head">
+                                <span class="sub-title nk-dropdown-title">Notifications
+                                    {% if profile_notifications_count > 0 %}
+                                      ({{profile_notifications_count}})
+                                      {% endif %}
+                                    </span>
+                               
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="nk-notification">
+                                    {% if profile_notifications_count > 0 %}
+                                    {% for notification in profile_notifications %}
+                                    <div class="nk-notification-item dropdown-inner">
+                                        <div class="nk-notification-icon">
+                                            {% if notification.category == 'SHOP' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-cart"></em>
+                                            {% elif notification.category == 'INFO' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-cart"></em>
+                                                {% elif notification.category == 'SUCCESS' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-check"></em>
+                                                {% elif notification.category == 'ERROR' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-report-fill"></em>
+                                                {% elif notification.category == 'WARNING' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-alert"></em>
+                                                {% elif notification.category == 'REPORT' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-report"></em>
+                                                {% elif notification.category == 'SYSTEM' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-cog"></em>
+                                                {% elif notification.category == 'ORDER' %}
+                                                <em class="icon icon-circle bg-warning-dim ni ni-cc-alt"></em>
+                                            {% endif %}
+                                        </div>
+                                        <a href="{% url 'notification:notification_detail' notification.id %}">
+                                              <div class="nk-notification-content">
+                                            <div class="nk-notification-text">{{ notification.action }} <span>Widthdrawl</span></div>
+                                            <div class="nk-notification-time">{{ notification.create_date|timesince }}</div>
+                                        </div>
+                                        </a>
+                                      
+                                    </div>
+                                {% endfor %}
+                                {% else %}
+                                    <div class="nk-notification-item dropdown-inner">
+                                        <div class="nk-notification-icon">
+                                            <em class="icon icon-circle bg-warning-dim ni ni-check"></em> 
+                                        </div>
+                                        <div class="nk-notification-content">
+                                            <div class="nk-notification-text">No notification</div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                </div><!-- .nk-notification -->
+                            </div><!-- .nk-dropdown-body -->
+                            <div class="dropdown-foot center">
+                                <a href="{% url 'notification:notification_index' %}">View All</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
+                            <div class="user-toggle">
+                                <div class="user-avatar sm">
+                                    <em class="icon ni ni-user-alt"></em>
+                                </div>
+                                <div class="user-info d-none d-xl-block">
+                                    <div class="user-status user-status-unverified">
+                                        {% if user.is_authenticated %}
+                                            {% if request.user.profile.user_role == 2 %}
+                                                Lawyer
+                                            {% elif request.user.profile.user_role == 3 %}
+                                                Office
+                                            {% elif request.user.profile.user_role ==  4%}
+                                                Admin
+                                            {% else %}
+                                                User
+                                            {% endif %}
+                                        {% else %}
+                                            No logged in
+                                        {% endif %}
+                                    </div>
+                                    <div class="user-name dropdown-indicator">
+                                        {% if user.is_authenticated %}
+                                            {{ request.user.username }}
+                                        {% else %}
+                                            Go to dashboard
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                            {% if user.is_authenticated %}
+                                <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                                    <div class="user-card">
+                                        <div class="user-avatar">
+                                            <em class="icon ni ni-user-alt"></em>
+                                        </div>
+                                        <div class="user-info">
+                                            <span class="lead-text">{{ request.user }}</span>
+                                            <span class="sub-text">{{ request.user.email }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-inner">
+                                    <ul class="link-list">
+                                        <li><a href="{% url 'account:account_index' %}"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
+                                        <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-inner">
+                                    <ul class="link-list">
+                                        <li><a href="{% url 'logout' %}"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <div class="dropdown-inner">
+                                    <ul class="link-list">
+                                        <li><a href="{% url 'login' %}"><em class="icon ni ni-user-alt"></em><span>Login</span></a></li>
+                                        <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- .nk-header-wrap -->
+    </div><!-- .container-fliud -->
+</div>
+<!-- main header @e -->

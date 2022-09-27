@@ -1,0 +1,16 @@
+{% load i18n %}
+<ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card bg-light">
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_lawyer_index' project.id %}"><em
+                class="icon ni ni-home"></em><span>{% trans "Overview" %}</span></a></li>
+   
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_lawyer_note_index' project.id %}"><em
+        class="icon ni ni-todo"></em><span>{% trans "Notes" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_lawyer_message_index' project.id %}"><em
+                class="icon ni ni-mail"></em><span>{% trans "Messages" %}</span></a></li>
+
+   <li class="nav-item"><a class="nav-link" href="{% url 'project:project_lawyer_task_index' project.id %}"><em
+                class="icon ni ni-list-check"></em><span>{% trans "Task" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_lawyer_file_index' project.id %}"><em
+                class="icon ni ni-folder"></em><span>{% trans "Files" %}</span></a></li>
+    
+</ul>

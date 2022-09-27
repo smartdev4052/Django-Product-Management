@@ -1,0 +1,236 @@
+{% load i18n %}
+
+<div class="card shadow-none d-none d-lg-block d-xl-block">
+    <div class="card-inner" style="border-bottom:30px solid #F5F6FA;">
+        <div class="card-title mb-4">
+            <h3 class="title">{{project.name}}</h3>
+        </div>
+        <div class="row g-gs">
+            <div class="col-sm-6 col-md-4 col-xxl-3">
+                <div class="fake-class">
+                    <h5 class="title"><em class="icon text-primary ni ni-edit-alt-fill"></em>&nbsp;
+                        {% blocktranslate%}Things to do
+                        {% endblocktranslate %}
+                    </h5>
+                    <ul class="link-list is-compact pb-0">
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Overview and activity of your case.
+                        {% endblocktranslate %}"><a href="{% url 'project:project_detail' project.id %}"><em
+                                    class="icon ni ni-home"></em>&nbsp;<span>{% blocktranslate %}Overview
+                                    {% endblocktranslate %}
+                                </span></a></li>
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Submit the necessary information to resolve your case.
+                        {% endblocktranslate %}"><a href="{% url 'project:project_form_index' project.id %}"><em
+                                    class="icon ni ni-layout2"></em>&nbsp;<span>{% blocktranslate %}Submit forms
+                                    {% endblocktranslate %}
+                                </span></a></li>
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}In order to resolve your case successfully, it is essential that we ask you for a few tasks
+                        {% endblocktranslate %}"><a href="{% url 'project:project_task_index' project.id %}"><em
+                                    class="icon ni ni-list-check"></em>&nbsp;<span>{% blocktranslate %}My tasks
+                                    {% endblocktranslate %}
+                                </span></a></li>
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Prepared documents, contracts in editable and PDF format.
+                        {% endblocktranslate %}"><a href="{% url 'project:project_document_index' project.id %}"><em
+                                    class="icon ni ni-files"></em>&nbsp;<span>{% blocktranslate %}Documents
+                                    {% endblocktranslate %}
+                                </span></a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xxl-3">
+                <div class="fake-class">
+                    <h5 class="title"><em class="icon text-primary ni ni-activity-round-fill"></em>&nbsp;
+                        {% blocktranslate %}Interaction
+                        {% endblocktranslate %}
+                    </h5>
+                    <ul class="link-list is-compact pb-0">
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Invite or manage participants of your case.
+                        {% endblocktranslate %}"><a href="{% url 'project:project_team_index' project.id %}"><em
+                                    class="icon ni ni-users"></em>&nbsp;<span>{% blocktranslate %}My team
+                                    {% endblocktranslate %}
+                                </span></a></li>
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Message board that can be accessed all team members.
+                        {% endblocktranslate %}"><a href="{% url 'project:project_message_index' project.id %}"><em
+                                    class="icon ni ni-mail"></em><span>&nbsp;{% blocktranslate %}Message center
+                                    {% endblocktranslate %}
+                                </span></a></li>
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Upcoming consultations of your case.
+                        {% endblocktranslate %}"><a href="{% url 'project:project_meet_index' project.id %}"><em
+                                    class="icon ni ni-video-fill"></em>&nbsp;<span>{% blocktranslate %}Consultations
+                                    {% endblocktranslate %}</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xxl-3">
+                <div class="fake-class">
+                    <h5 class="title"><em class="icon text-primary ni ni-setting-fill"></em>&nbsp;
+                        {% blocktranslate %}Tools
+                        {% endblocktranslate %}
+                    </h5>
+                    <ul class="link-list is-compact pb-0">
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Create or read your private or public notes
+                        {% endblocktranslate %}"><a href="{% url 'project:project_note_index' project.id %}"><em
+                                    class="icon ni ni-notes"></em>&nbsp;<span>{% blocktranslate %}Notes
+                                    {% endblocktranslate %}</span></a></li>
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}List of all files uploaded to the case.
+                        {% endblocktranslate %}"><a href="{% url 'project:project_file_index' project.id %}"><em
+                                    class="icon ni ni-folders"></em>&nbsp;<span>{% blocktranslate %}Files
+                                    {% endblocktranslate %}</span></a></li>
+                        {% if request.user.profile.user_role == 2 %}
+                        <li data-toggle="tooltip" data-placement="left" title="{% blocktranslate %}Restricted panel for lawyers
+                        {% endblocktranslate %}"><a href="{% url 'project:project_lawyer_index' project.id %}"><em
+                                    class="icon ni ni-video"></em>&nbsp;<span>{% blocktranslate %}Lawyer panel
+                                    {% endblocktranslate %}</span></a></li>
+                        {%endif%}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xxl-3">
+                <div class="fake-class">
+                    <h5 class="title"></h5>
+                    <div class="nk-block-des text-soft">
+                        <div id="nextMeet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="card-title mb-4"></div>
+-->
+
+
+<!-- mobil menu start -->
+<div class="d-lg-none d-xl-none">
+<ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_detail' project.id %}"><em
+                class="icon ni ni-home"></em><span>{% trans "Overview" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_team_index' project.id %}"><em
+                class="icon ni ni-users"></em><span>{% trans "Team" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_message_index' project.id %}"><em
+                class="icon ni ni-mail"></em><span>{% trans "Messages" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_task_index' project.id %}">
+            <em class="icon ni ni-list-check"></em>
+            <span>{% trans "Tasks" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_document_index' project.id %}">
+            <em class="icon ni ni-files"></em></span>
+            <span>{% trans "Documents" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_file_index' project.id %}"><em
+                class="icon ni ni-folder"></em><span>{% trans "Files" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_form_index' project.id %}"><em
+                class="icon ni ni-text-rich"></em><span>{% trans "Forms" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_meet_index' project.id %}"><em
+                class="icon ni ni-video"></em><span>{% trans "Consultations" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_note_index' project.id %}"><em
+                class="icon ni ni-todo"></em><span>{% trans "Notes" %}</span></a></li>
+
+    {% if request.user.profile.user_role == 2 %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_lawyer_index' project.id %}"><em
+                class="icon ni ni-lock-alt"></em><span>{% trans "Lawyer" %}</span></a></li>
+    {% endif %}
+
+    <li id="nextMeet" class="nav-item nav-item-trigger">
+
+    </li>
+</ul>
+</div>
+
+
+<!-- ezt pattinsd majd be
+    <li id="nextMeet" class="nav-item nav-item-trigger">
+-->
+
+
+
+
+<!-- OLD
+<ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_detail' project.id %}"><em
+                class="icon ni ni-home"></em><span>{% trans "Overview" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_team_index' project.id %}"><em
+                class="icon ni ni-users"></em><span>{% trans "Team" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_message_index' project.id %}"><em
+                class="icon ni ni-mail"></em><span>{% trans "Messages" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_task_index' project.id %}">
+            <em class="icon ni ni-list-check"></em>
+            <span>{% trans "Tasks" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_document_index' project.id %}">
+            <em class="icon ni ni-files"></em></span>
+            <span>{% trans "Documents" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_file_index' project.id %}"><em
+                class="icon ni ni-folder"></em><span>{% trans "Files" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_form_index' project.id %}"><em
+                class="icon ni ni-text-rich"></em><span>{% trans "Forms" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_meet_index' project.id %}"><em
+                class="icon ni ni-video"></em><span>{% trans "Consultations" %}</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_note_index' project.id %}"><em
+                class="icon ni ni-todo"></em><span>{% trans "Notes" %}</span></a></li>
+
+    {% if request.user.profile.user_role == 2 %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'project:project_lawyer_index' project.id %}"><em
+                class="icon ni ni-lock-alt"></em><span>{% trans "Lawyer" %}</span></a></li>
+    {% endif %}
+
+    <li id="nextMeet" class="nav-item nav-item-trigger">
+
+    </li>
+</ul>
+-->
+
+
+<script>
+    function getNextMeet() {
+        var nextMeet = document.getElementById('nextMeet')
+
+        payload = {
+            "project_id": "{{project.id}}",
+        }
+        $.ajax({
+
+            type: "GET",
+            url: "{% url 'project:project_next_meet_ajax' %}",
+            data: payload,
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+                if (data['response'] == "TRUE") {
+                    nextMeet.innerHTML = `
+            
+                    <h5 class="title"><em class="icon ni text-primary ni-video-fill"></em>&nbsp;
+                        {% blocktranslate%}Your next consultation
+                        {% endblocktranslate %}
+                    </h5>
+                    <a href="${data.url}" class="btn btn-primary btn-sm btn-lg mt-4" style="margin-bottom: 5px;">Join meeting</a>
+                    <div class="nk-block-des text-soft">
+                        <em class="icon ni ni-clock"></em>&nbsp;${data.meet_start}
+                    </div>
+    
+            `
+                } else if (data['response'] == "FALSE") {
+
+                    nextMeet.innerHTML = `
+                    <h5 class="title"><em class="icon ni text-primary ni-video-fill"></em>&nbsp;
+                        {% blocktranslate%}Your next consultation
+                        {% endblocktranslate %}
+                        </h5>
+                        <p class="nk-block-des text-soft">
+                        
+                        </p>
+                    `
+
+                } else if (data['response'] != null) {
+                    alert(data['response'])
+                }
+            },
+            error: function (data) {
+                console.error("HIBA...", data)
+                alert("Valami hiba történt.")
+            },
+        });
+
+    }
+
+    getNextMeet()
+</script>

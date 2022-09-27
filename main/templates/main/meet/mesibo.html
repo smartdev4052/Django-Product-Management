@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>mesibo - Messaging, Voice and Video Call API Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script type="text/javascript" src="https://api.mesibo.com/mesibo.js"></script>
+    <!--SCRIPTINCLUDEEND-->
+
+    <script src="mesibo-demo.js"></script>
+
+</head>
+
+<body>
+    <div class="container" style="padding: 10px;">
+        <div class="border-bottom my-3">
+            <h2><span style="color: #00868b;">mesibo</span> - Messaging, Voice and Video Call API Demo</h2>
+        </div>
+        <h3>Instructions</h3>
+        <p>Before using this demo, you need to create a user token, edit <strong>mesibo-demo.js</strong>, set the token
+            and other required parameters.</p>
+        <p>Refer <a href="https://mesibo.com/documentation/tutorials/first-app/">First Tutorial</a> to know how to
+            create a user token.</p>
+
+        <h3>Connection Status</h3>
+        <p>
+            The button below shows you the mesibo connection status. Refer function <span
+                style="color: #00868b;">DemoNotify.prototype.Mesibo_OnConnectionStatus</span> in
+            <strong>mesibo-demo.js</strong> to learn how Mesibo informs your app about the connection status.
+            <p />
+            <button type="button" class="btn btn-danger" id="cstatus">You are offline</button>
+
+        <div style="marging-top: 20px;">
+            <h3>Messaging Demo</h3>
+            <p>The buttons below demonstrate how to send a message, file or read-receipt to the destination configured
+                in <strong>mesibo-demo.js</strong>. Refer <span style="color: #00868b;">sendMessage</span>, <span
+                    style="color: #00868b;">sendFile</span> and <span style="color: #00868b;">sendReadReceipt</span>
+                functions in <strong>mesibo-demo.js</strong> to learn more about the mesibo messaging APIs.
+                <p />
+            <p><strong>Note:</strong> Open your web-browser console to see all the incoming messages, message status,
+                etc.</p>
+
+            <button type="button" id="btn1" class="btn btn-primary" onclick="sendMessage()">Send a Message</button>
+            <label class="btn btn-success" for="filefield" style="margin-top:10px;">
+                <input id="filefield" type=file name='filefield' class="d-none" onchange="sendFile()">
+                Send a File
+            </label>
+            <button type="button" id="btn3" class="btn btn-info" onclick="sendReadReceipt()">Send Read Receipt</button>
+        </div>
+
+        <p />
+        <h3 style="marging-top: 20px; important">Video Call Demo</h3>
+        <p>The buttons below demonstrate how to make a video call to the destination configured in
+            <strong>mesibo-demo.js</strong>.
+        </p>
+        <p>Refer <span style="color: #00868b;">video_call</span>, <span
+                style="color: #00868b;">DemoNotify.prototype.Mesibo_OnCall</span>, and <span
+                style="color: #00868b;">DemoNotify.prototype.Mesibo_OnCallStatus</span> functions in
+            <strong>mesibo-demo.js</strong> to learn more about the mesibo video call APIs.
+            <p />
+
+        <div class="row" style="background-color: #f1f1f1;">
+            <div class="col-6" style="padding: 10px;">
+                <video id="localVideo" playsinline autoplay muted></video>
+
+
+            </div>
+            <div class="col-6" style="padding: 10px;">
+                <video id="remoteVideo" playsinline autoplay></video>
+            </div>
+        </div>
+        <div style="padding-top: 30px;">
+            <button type="button" class="btn btn-primary" onclick="video_call()">Call</button>
+            <button type="button" class="btn btn-danger" onclick="hangup()">Hangup</button>
+            <button type="button" class="btn btn-info" onclick="video_mute_toggle()">Toggle Video Mute</button>
+            <button type="button" class="btn btn-warning" onclick="audio_mute_toggle()">Toggle Audio Mute</button>
+            <button type="button" class="btn btn-info" id="vcstatus" style="float:right;">Call Status: </button>
+        </div>
+
+        <p />
+        <h3 style="marging-top: 20px; important">Voice Call</h3>
+        <p>The buttons below demonstrate how to make a voice call to the destination configured in
+            <strong>mesibo-demo.js</strong>.
+        </p>
+        <p>Refer <span style="color: #00868b;">voice_call</span>, <span
+                style="color: #00868b;">DemoNotify.prototype.Mesibo_OnCall</span>, and <span
+                style="color: #00868b;">DemoNotify.prototype.Mesibo_OnCallStatus</span> functions in
+            <strong>mesibo-demo.js</strong> to learn more about the mesibo video call APIs.
+            <p />
+
+        <div style="padding-top: 30px;">
+            <button type="button" class="btn btn-primary" onclick="voice_call()">Call</button>
+            <button type="button" class="btn btn-danger" onclick="hangup()">Hangup</button>
+            <button type="button" class="btn btn-warning" onclick="audio_mute_toggle()">Toggle Audio Mute</button>
+            <button type="button" class="btn btn-info" id="acstatus" style="float:right;">Call Status: </button>
+        </div>
+        <audio id="audioPlayer" autoplay="autoplay" controls="controls" style="visibility:hidden; height:5px;"></audio>
+        <p />
+
+        <h3>Profile Update Demo</h3>
+        <p>The buttons below demonstrate how to update self profile and publish it.
+            <p />
+        <p><strong>Note:</strong> Open your web-browser console to see all the logs from the listener</p>
+
+        <form class="border p-2 m-2">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" maxlength="32">
+            </div>
+            <div class="form-group">
+                <label class="btn btn-success" for="profileimage" style="margin-top:10px;">
+                    <input id="profileimage" type=file name='profileimage' class="d-none">
+                    Select Profile Image
+                </label>
+            </div>
+        </form>
+
+        <p />
+        <button type="button" id="btn1" class="btn btn-primary m-2" onclick="updateProfile()">Publish Profile</button>
+        <p />
+
+        <h3>Group Creation Demo</h3>
+        <p>The buttons below demonstrate how to create a group and add members.
+            <p />
+        <p><strong>Note:</strong> Open your web-browser console to see all the logs from the listener</p>
+
+        <button type="button" id="btn1" class="btn btn-primary" onclick="createGroup()">Create a Group</button>
+        <p />
+
+        <h3 style="marging-top: 20px; important">On-Premise</h3>
+        <p>If you prefer, you can run the entire Mesibo platform in your own premise OR private cloud. All the messages
+            and calls go through your own data center and stay in your own database. Refer to Mesibo on-premise
+            documentation to download Mesibo On-Premise and run it in your own data center!</strong>.</p>
+
+        <div style="padding-top: 10px;">
+            <a href="https://mesibo.com/on-premise/" class="btn btn-info" role="button">Run Mesibo in your own
+                premise</a>
+        </div>
+        <p />
+        <p />
+        <div class="container">
+
+            <!-- Modal -->
+            <div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="answerModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="answerModalLabel">Incoming Call</h5>
+                            <button type="button" class="close" data-dismiss="modal" onclick="hangup();"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="ansBody">
+                            Incoming Call From
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                onclick="hangup();">Hang-up</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal"
+                                onclick="answer();">Answer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* Refer following tutorial and API documentation to know how to create a user token
+     * https://mesibo.com/documentation/tutorials/first-app/ 
+     */
+        var demo_user_token = '90b0f8915e1dc9d40846fb80c1b33990c690e1962654720a126ebb3d6577';
+        /* App ID used to create a user token. */
+        var demo_appid = 'com.hello.szia';
+        /* A destination where this demo app will send message or make calls */
+        var demo_destination = '123456789';
+
+
+        function MesiboListener(o) {
+            this.api = o;
+        }
+
+        MesiboListener.prototype.Mesibo_OnConnectionStatus = function (status, value) {
+            console.log("Mesibo_OnConnectionStatus: " + status);
+            var s = document.getElementById("cstatus");
+            if (!s) return;
+            if (MESIBO_STATUS_ONLINE == status) {
+                s.classList.replace("btn-danger", "btn-success");
+                s.innerText = "You are online";
+                return;
+            }
+
+            s.classList.replace("btn-success", "btn-danger");
+            switch (status) {
+                case MESIBO_STATUS_CONNECTING:
+                    s.innerText = "Connecting";
+                    break;
+
+                case MESIBO_STATUS_CONNECTFAILURE:
+                    s.innerText = "Connection Failed";
+                    break;
+
+                case MESIBO_STATUS_SIGNOUT:
+                    s.innerText = "Signed out";
+                    break;
+
+                case MESIBO_STATUS_AUTHFAIL:
+                    s.innerText = "Disconnected: Bad Token or App ID";
+                    break;
+
+                default:
+                    s.innerText = "You are offline";
+                    break;
+            }
+        }
+
+        MesiboListener.prototype.Mesibo_OnMessageStatus = function (m) {
+            console.log("Mesibo_OnMessageStatus: from " + m.peer + " status: " + m.status + " id: " + m.id);
+        }
+
+        MesiboListener.prototype.Mesibo_OnMessage = function (m, data) {
+            var s = array2String(data, 0, data.byteLength);
+            console.log("Mesibo_OnMessage: from " + m.peer + " id: " + m.id + " msg: " + s);
+            console.log(data);
+        }
+
+        MesiboListener.prototype.Mesibo_OnCall = function (callid, from, video) {
+            console.log("Mesibo_onCall: " + (video ? "Video" : "Voice") + " call from: " + from);
+            if (video)
+                this.api.setupVideoCall("localVideo", "remoteVideo", true);
+            else
+                this.api.setupVoiceCall("audioPlayer");
+
+            var s = document.getElementById("ansBody");
+            if (s)
+                s.innerText = "Incoming " + (video ? "Video" : "Voice") + " call from: " + from;
+
+            $('#answerModal').modal({ show: true });
+        }
+
+        MesiboListener.prototype.Mesibo_OnCallStatus = function (callid, status) {
+            console.log("Mesibo_onCallStatus: " + status);
+            var v = document.getElementById("vcstatus");
+            var a = document.getElementById("acstatus");
+
+            var s = "";
+            if (status & MESIBO_CALLSTATUS_COMPLETE) {
+                s = "Complete";
+                console.log("closing");
+                $('#answerModal').modal("hide");
+            }
+
+            switch (status) {
+                case MESIBO_CALLSTATUS_RINGING:
+                    s = "Ringing";
+                    break;
+
+                case MESIBO_CALLSTATUS_ANSWER:
+                    s = "Answered";
+                    break;
+
+                case MESIBO_CALLSTATUS_BUSY:
+                    s = "Busy";
+                    break;
+
+                case MESIBO_CALLSTATUS_NOANSWER:
+                    s = "No Answer";
+                    break;
+
+                case MESIBO_CALLSTATUS_INVALIDDEST:
+                    s = "Invalid Destination";
+                    break;
+
+                case MESIBO_CALLSTATUS_UNREACHABLE:
+                    s = "Unreachable";
+                    break;
+
+                case MESIBO_CALLSTATUS_OFFLINE:
+                    s = "Offline";
+                    break;
+            }
+            if (v)
+                v.innerText = "Call Status: " + s;
+
+            if (a)
+                a.innerText = "Call Status: " + s;
+        }
+
+        var api = new Mesibo();
+        api.setAppName(demo_appid);
+        api.setListener(new MesiboListener(api));
+        api.setCredentials(demo_user_token);
+        api.setDatabase("mesibo");
+        api.start();
+
+        var message_index = 0;
+        var profile = api.getProfile(demo_destination, 0);
+
+        function sendMessage() {
+            profile.sendMessage(api.random(), message_index + ": Hello From JS");
+            message_index++;
+        }
+
+        function sendFile() {
+            var msg = {}; //create a rich message
+
+            msg.message = 'Hello from js';
+
+            // You can either specify file element id or enter details manually
+            if (true) {
+                msg.file = 'filefield'; // recommended approach
+            } else {
+
+                msg.filetype = MESIBO_FILETYPE_IMAGE;
+                msg.size = 1023;
+                msg.fileurl = 'https://cdn.pixabay.com/photo/2019/08/02/09/39/mugunghwa-4379251_1280.jpg'
+                msg.title = 'Himalaya';
+            }
+
+            profile.sendFile(api.random(), msg);
+        }
+
+        function sendReadReceipt() {
+            var rs = profile.readDbSession(null, function (count) {
+
+            });
+
+            rs.enableReadReceipt(true);
+            rs.read(100);
+        }
+
+        function video_call() {
+            api.setupVideoCall("localVideo", "remoteVideo", true);
+            api.call(demo_destination);
+        }
+
+        function video_mute_toggle() {
+            api.toggleVideoMute();
+        }
+
+        function audio_mute_toggle() {
+            api.toggleAudioMute();
+        }
+
+        function voice_call() {
+            api.setupVoiceCall("audioPlayer");
+            api.call(demo_destination);
+        }
+
+        function answer() {
+            $('#answerModal').modal("hide");
+            api.answer(true);
+        }
+
+        function hangup() {
+            $('#answerModal').modal("hide");
+            api.hangup(0);
+        }
+
+        function updateProfile() {
+            var sp = api.getSelfProfile();
+            var n = document.getElementById("name");
+            sp.setName(n.value);
+            sp.setStatus("My status");
+
+            // profileimage is in demo.html
+            sp.setImage("profileimage");
+
+            sp.save();
+        }
+
+        function createGroup() {
+            // createGroup function can take listener or function as the last parameter
+            api.createGroup("My Group From JS", 0, function (profile) {
+                console.log("group created");
+                addMembers(profile);
+            });
+        }
+
+        function addMembers(profile) {
+            var gp = profile.getGroupProfile();
+            var members = ["123456", "112233"];
+            gp.addMembers(members, MESIBO_MEMBERFLAG_ALL, 0);
+        }
+    </script>
+
+
+</body>
+
+</html>

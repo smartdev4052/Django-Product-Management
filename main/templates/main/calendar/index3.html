@@ -1,0 +1,149 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Kliens {{client.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'calendar/css/mark-your-calendar.css' %}"/>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{% static 'calendar/js/mark-your-calendar.js' %}"></script>
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Calendar</h3>
+                        </div><!-- .nk-block-head-content -->
+
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="card card-bordered">
+                        <div class="card-inner">
+                            <iframe src="https://calendar.google.com/calendar/embed?src=sikler.sikler%40gmail.com&ctz=Europe%2FBudapest" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+                            <div id="picker"></div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+<script>
+
+const myAvailability = [
+      ['1:00', '2:00', '3:00', '4:00', '5:00'],
+      ['2:00'],
+      ['3:00'],
+      ['4:00'],
+      ['5:00'],
+      ['6:00'],
+      ['7:00']
+]
+
+    $('#picker').markyourcalendar({
+
+      
+
+        availability: myAvailability,
+        isMultiple: false,
+        onClick: function (ev, data) {
+            // data is a list of datetimes
+            console.log(data);
+            var html = ``;
+            $.each(data, function () {
+                var d = this.split(' ')[0];
+                var t = this.split(' ')[1];
+                html += `<p>` + d + ` ` + t + `</p>`;
+            });
+            $('#output').html(html);
+        },
+        onClickNavigator: function (ev, instance) {
+            var arr = [
+                [
+                    ['4:00', '5:00', '6:00', '7:00', '8:00'],
+                    ['1:00', '5:00'],
+                    ['2:00', '5:00'],
+                    ['3:30'],
+                    ['2:00', '5:00'],
+                    ['2:00', '5:00'],
+                    ['2:00', '5:00']
+                ],
+                [
+                    ['2:00', '5:00'],
+                    ['4:00', '5:00', '6:00', '7:00', '8:00'],
+                    ['4:00', '5:00'],
+                    ['2:00', '5:00'],
+                    ['2:00', '5:00'],
+                    ['2:00', '5:00'],
+                    ['2:00', '5:00']
+                ],
+                [
+                    ['4:00', '5:00'],
+                    ['4:00', '5:00'],
+                    ['4:00', '5:00', '6:00', '7:00', '8:00'],
+                    ['3:00', '6:00'],
+                    ['3:00', '6:00'],
+                    ['3:00', '6:00'],
+                    ['3:00', '6:00']
+                ],
+                [
+                    ['4:00', '5:00'],
+                    ['4:00', '5:00'],
+                    ['4:00', '5:00'],
+                    ['4:00', '5:00', '6:00', '7:00', '8:00'],
+                    ['4:00', '5:00'],
+                    ['4:00', '5:00'],
+                    ['4:00', '5:00']
+                ],
+                [
+                    ['4:00', '6:00'],
+                    ['4:00', '6:00'],
+                    ['4:00', '6:00'],
+                    ['4:00', '6:00'],
+                    ['4:00', '5:00', '6:00', '7:00', '8:00'],
+                    ['4:00', '6:00'],
+                    ['4:00', '6:00']
+                ],
+                [
+                    ['3:00', '6:00'],
+                    ['3:00', '6:00'],
+                    ['3:00', '6:00'],
+                    ['3:00', '6:00'],
+                    ['3:00', '6:00'],
+                    ['4:00', '5:00', '6:00', '7:00', '8:00'],
+                    ['3:00', '6:00']
+                ],
+                [
+                    ['3:00', '4:00'],
+                    ['3:00', '4:00'],
+                    ['3:00', '4:00'],
+                    ['3:00', '4:00'],
+                    ['3:00', '4:00'],
+                    ['3:00', '4:00'],
+                    ['4:00', '5:00', '6:00', '7:00', '8:00']
+                ]
+            ]
+            var rn = Math.floor(Math.random() * 10) % 7;
+            instance.setAvailability(arr[rn]);
+        }
+    });
+
+
+</script>
+
+
+{% endblock %}

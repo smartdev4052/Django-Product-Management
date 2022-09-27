@@ -1,0 +1,1709 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-14 15:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: project/forms.py:13 project/forms.py:26
+msgid "Project name"
+msgstr ""
+
+#: project/forms.py:14 project/templates/project/detail.html:44
+#: project/templates/project/index.html:246
+#: project/templates/section/project_header.html:10 project/views.py:318
+msgid "Client"
+msgstr ""
+
+#: project/forms.py:15 project/forms.py:27 project/forms.py:234
+#: project/forms.py:249 project/templates/invite/index.html:49
+#: project/templates/meet/detail.html:109
+#: project/templates/project/index.html:245
+#: project/templates/task/detail.html:110
+msgid "Description"
+msgstr ""
+
+#: project/forms.py:16 project/templates/document/detail.html:61
+#: project/templates/document/index.html:65
+#: project/templates/meet/detail.html:90 project/templates/meet/index.html:71
+#: project/templates/task/detail.html:98 project/templates/task/index.html:279
+msgid "Created by"
+msgstr ""
+
+#: project/forms.py:17 project/templates/document/detail.html:69
+#: project/templates/invite/index.html:53 project/templates/meet/detail.html:75
+#: project/templates/project/detail.html:53
+#: project/templates/project/my_project.html:339
+#: project/templates/task/detail.html:90
+msgid "Created at"
+msgstr ""
+
+#: project/forms.py:44
+msgid "Helllóóóóó"
+msgstr ""
+
+#: project/forms.py:50 project/forms.py:63
+#: project/templates/message/users.html:45
+msgid "Role"
+msgstr ""
+
+#: project/forms.py:51
+msgid "Team type"
+msgstr ""
+
+#: project/forms.py:62
+msgid "Email"
+msgstr ""
+
+#: project/forms.py:66
+msgid "Group to which this message belongs to"
+msgstr ""
+
+#: project/forms.py:72 project/templates/invite/index.html:51
+msgid "Meet start"
+msgstr ""
+
+#: project/forms.py:73 project/templates/invite/index.html:52
+msgid "Meet end"
+msgstr ""
+
+#: project/forms.py:194
+msgid "Clone this document"
+msgstr ""
+
+#: project/forms.py:212
+msgid "Type your message..."
+msgstr "Teszt"
+
+#: project/forms.py:226
+msgid "Project file"
+msgstr ""
+
+#: project/forms.py:235 project/forms.py:250
+#: project/templates/document/index.html:64
+#: project/templates/meet/detail.html:52 project/templates/meet/index.html:70
+#: project/templates/message/users.html:44
+#: project/templates/project/detail.html:35
+#: project/templates/project/index.html:244
+#: project/templates/project/my_project.html:335
+msgid "Name"
+msgstr ""
+
+#: project/forms.py:240
+msgid "File type"
+msgstr ""
+
+#: project/forms.py:251 project/templates/document/detail.html:86
+#: project/templates/note/index.html:105 project/templates/note/index.html:166
+#: project/templates/project/index.html:195
+#: project/templates/project/index.html:248
+#: project/templates/task/detail.html:272
+msgid "Archived"
+msgstr ""
+
+#: project/forms.py:252
+msgid "Is relase?"
+msgstr ""
+
+#: project/forms.py:260 project/forms.py:288
+msgid "How many time duplicate this form?"
+msgstr ""
+
+#: project/models.py:13
+msgid "Reader"
+msgstr ""
+
+#: project/models.py:14
+msgid "Editor"
+msgstr ""
+
+#: project/models.py:18 project/templates/project/index.html:183
+msgid "In progress"
+msgstr ""
+
+#: project/models.py:19
+msgid "Incomplete"
+msgstr ""
+
+#: project/models.py:20
+msgid "Review"
+msgstr ""
+
+#: project/models.py:21
+msgid "Complete"
+msgstr ""
+
+#: project/models.py:25 project/models.py:39
+msgid "Note"
+msgstr ""
+
+#: project/models.py:26 project/models.py:37
+#: project/templates/section/lawyer_navbar.html:12
+#: project/templates/task/detail.html:6 project/templates/task/detail.html:27
+#: project/templates/task/detail.html:127
+#: project/templates/task/detail.html:160
+#: project/templates/task/detail.html:228 project/templates/task/index.html:275
+msgid "Task"
+msgstr ""
+
+#: project/models.py:27
+msgid "Task note"
+msgstr ""
+
+#: project/models.py:28
+msgid "Message"
+msgstr ""
+
+#: project/models.py:29 project/models.py:38
+#: project/templates/meet/detail.html:136
+msgid "Meet"
+msgstr ""
+
+#: project/models.py:30
+msgid "Meet note"
+msgstr ""
+
+#: project/models.py:31 project/models.py:40
+msgid "Form"
+msgstr ""
+
+#: project/models.py:32
+msgid "Form note"
+msgstr ""
+
+#: project/models.py:33
+msgid "Default"
+msgstr ""
+
+#: project/templates/activity/index.html:6
+#: project/templates/lawyer/activity/index.html:6
+msgid "Activity log"
+msgstr ""
+
+#: project/templates/activity/index.html:27
+#: project/templates/lawyer/activity/index.html:28
+msgid "Activities"
+msgstr ""
+
+#: project/templates/activity/index.html:35
+#: project/templates/document/create.html:41
+#: project/templates/document/detail.html:36
+#: project/templates/document/edit.html:41
+#: project/templates/file/create.html:34 project/templates/file/detail.html:35
+#: project/templates/file/edit.html:37 project/templates/form/create.html:41
+#: project/templates/form/duplicate.html:41 project/templates/form/edit.html:41
+#: project/templates/form/responsible.html:41
+#: project/templates/form/upload.html:38
+#: project/templates/lawyer/activity/index.html:37
+#: project/templates/meet/create.html:41 project/templates/meet/detail.html:39
+#: project/templates/meet/edit.html:41 project/templates/meet/invite.html:39
+#: project/templates/meet/upload.html:38
+#: project/templates/message/users.html:32
+#: project/templates/note/create.html:35
+#: project/templates/note/create_form_note.html:36
+#: project/templates/note/upload.html:35
+#: project/templates/section/project_header.html:28
+#: project/templates/task/create.html:36 project/templates/task/detail.html:36
+#: project/templates/task/edit.html:36
+#: project/templates/task/responsible.html:36
+#: project/templates/task/upload.html:38
+#: project/templates/team/office_invite.html:38
+msgid "Back"
+msgstr ""
+
+#: project/templates/document/create.html:6
+#: project/templates/document/create.html:28
+msgid "Create document"
+msgstr ""
+
+#: project/templates/document/create.html:30
+#: project/templates/document/edit.html:30
+#: project/templates/form/create.html:30
+#: project/templates/form/duplicate.html:30 project/templates/form/edit.html:30
+#: project/templates/form/responsible.html:30
+#: project/templates/meet/create.html:30 project/templates/meet/edit.html:30
+msgid ""
+"A new Google Meet consultation will be created\n"
+"                                                        with the\n"
+"                                                        selected "
+"participants."
+msgstr ""
+
+#: project/templates/document/create.html:62
+#: project/templates/form/create.html:64
+#: project/templates/form/duplicate.html:57
+#: project/templates/meet/create.html:54
+msgid "Create"
+msgstr ""
+
+#: project/templates/document/detail.html:6
+#: project/templates/document/detail.html:27
+#: project/templates/document/detail.html:118
+#: project/templates/document/detail.html:151
+#: project/templates/document/detail.html:187
+msgid "Document"
+msgstr ""
+
+#: project/templates/document/detail.html:48
+#: project/templates/file/detail.html:43 project/templates/meet/detail.html:47
+#: project/templates/project/detail.html:28
+#: project/templates/task/detail.html:50
+msgid "Information"
+msgstr ""
+
+#: project/templates/document/detail.html:54
+msgid "Document name"
+msgstr ""
+
+#: project/templates/document/detail.html:76
+msgid "Updated at"
+msgstr ""
+
+#: project/templates/document/detail.html:101
+msgid "Preview"
+msgstr ""
+
+#: project/templates/document/detail.html:119
+#: project/templates/meet/index.html:72
+#: project/templates/project/index.html:247
+#: project/templates/task/detail.html:128
+msgid "Participants"
+msgstr ""
+
+#: project/templates/document/detail.html:152
+#: project/templates/file/index.html:28
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:28
+#: project/templates/meet/index.html:74 project/templates/message/index.html:40
+#: project/templates/section/lawyer_navbar.html:14
+#: project/templates/section/project_navbar.html:16
+#: project/templates/task/detail.html:161
+msgid "Files"
+msgstr ""
+
+#: project/templates/document/detail.html:153
+msgid "Add Document File"
+msgstr ""
+
+#: project/templates/document/detail.html:159
+#: project/templates/document/index.html:63
+#: project/templates/file/index.html:237
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:115
+#: project/templates/invite/index.html:47 project/templates/meet/index.html:69
+#: project/templates/message/users.html:42
+#: project/templates/project/index.html:243
+#: project/templates/project/my_project.html:333
+#: project/templates/task/index.html:274
+msgid "Id"
+msgstr ""
+
+#: project/templates/document/detail.html:160
+msgid "File name"
+msgstr ""
+
+#: project/templates/document/detail.html:161
+#: project/templates/file/detail.html:74 project/templates/file/index.html:239
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:117
+msgid "Uploaded by"
+msgstr ""
+
+#: project/templates/document/detail.html:162
+#: project/templates/file/detail.html:67
+msgid "Type"
+msgstr ""
+
+#: project/templates/document/detail.html:163
+msgid "Archived?"
+msgstr ""
+
+#: project/templates/document/detail.html:164
+#: project/templates/document/index.html:66
+#: project/templates/section/project_header.html:12
+msgid "Date"
+msgstr ""
+
+#: project/templates/document/detail.html:165
+#: project/templates/document/index.html:68
+#: project/templates/file/index.html:251
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:129
+#: project/templates/invite/index.html:48
+#: project/templates/invite/index.html:54 project/templates/meet/index.html:77
+#: project/templates/project/index.html:250
+#: project/templates/project/my_project.html:340
+#: project/templates/task/index.html:285
+msgid "Action"
+msgstr ""
+
+#: project/templates/document/detail.html:188
+#: project/templates/note/index.html:6 project/templates/note/index.html:27
+#: project/templates/section/lawyer_navbar.html:7
+#: project/templates/section/project_navbar.html:22
+#: project/templates/task/detail.html:229
+msgid "Notes"
+msgstr ""
+
+#: project/templates/document/detail.html:189
+msgid "Add document Note"
+msgstr ""
+
+#: project/templates/document/edit.html:6
+#: project/templates/document/edit.html:28
+#: project/templates/document/index.html:91
+msgid "Edit document"
+msgstr ""
+
+#: project/templates/document/edit.html:74 project/templates/file/edit.html:53
+#: project/templates/form/edit.html:60
+#: project/templates/form/responsible.html:60
+#: project/templates/meet/edit.html:54 project/templates/note/edit.html:46
+#: project/templates/note/edit_form_note.html:46
+#: project/templates/note/edit_meet_note.html:46
+#: project/templates/note/edit_task_note.html:46
+#: project/templates/project/edit.html:46
+msgid "Save"
+msgstr ""
+
+#: project/templates/document/index.html:6
+#: project/templates/section/project_navbar.html:14
+msgid "Documents"
+msgstr ""
+
+#: project/templates/document/index.html:67
+msgid "Last update"
+msgstr ""
+
+#: project/templates/document/index.html:90
+msgid "View document"
+msgstr ""
+
+#: project/templates/document/index.html:92
+msgid "Generate PDF document"
+msgstr ""
+
+#: project/templates/document/index.html:94
+msgid "Move to archives - document will not be deleted."
+msgstr ""
+
+#: project/templates/file/create.html:6
+msgid "Upload file to:"
+msgstr ""
+
+#: project/templates/file/create.html:27 project/templates/form/upload.html:6
+#: project/templates/meet/invite.html:6 project/templates/meet/upload.html:6
+msgid "File upload"
+msgstr ""
+
+#: project/templates/file/create.html:44 project/templates/form/upload.html:50
+#: project/templates/meet/upload.html:50
+msgid "Upload"
+msgstr ""
+
+#: project/templates/file/detail.html:6
+msgid "Files - "
+msgstr ""
+
+#: project/templates/file/detail.html:53 project/templates/meet/detail.html:59
+msgid "URL"
+msgstr ""
+
+#: project/templates/file/detail.html:61
+msgid "Uploaded at"
+msgstr ""
+
+#: project/templates/file/detail.html:81
+msgid "Is relase"
+msgstr ""
+
+#: project/templates/file/detail.html:101
+msgid "Additional Information"
+msgstr ""
+
+#: project/templates/file/edit.html:6 project/templates/file/edit.html:28
+msgid "Edit file: "
+msgstr ""
+
+#: project/templates/file/edit.html:30
+msgid "Below you can edit the name or description of the uploaded file."
+msgstr ""
+
+#: project/templates/file/edit.html:45
+msgid "Is this file a final release?"
+msgstr ""
+
+#: project/templates/file/edit.html:46
+msgid "Set the file as \\"
+msgstr ""
+
+#: project/templates/file/index.html:6
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:6
+msgid "Files: "
+msgstr ""
+
+#: project/templates/file/index.html:30
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:30
+msgid ""
+"Below can find all the files uploaded to the\"\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/file/index.html:33
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:33
+msgid ""
+"Click on the file name to check the details or\n"
+"                                                        upload\n"
+"                                                        a new file anytime "
+"by clicking on the plus button on the right\n"
+"                                                        corner."
+msgstr ""
+
+#: project/templates/file/index.html:132
+#: project/templates/lawyer/note/index.html:217
+#: project/templates/meet/detail.html:243
+#: project/templates/message/files.html:98
+#: project/templates/note/index.html:287
+msgid ""
+"File has been archived. Please unarchive if is you would like to view it."
+msgstr ""
+
+#: project/templates/file/index.html:137
+#: project/templates/lawyer/note/index.html:222
+#: project/templates/meet/detail.html:248
+#: project/templates/message/files.html:103
+#: project/templates/note/index.html:292
+msgid "Final release file."
+msgstr ""
+
+#: project/templates/file/index.html:141
+#: project/templates/lawyer/note/index.html:226
+#: project/templates/meet/detail.html:252
+#: project/templates/message/files.html:107
+#: project/templates/note/index.html:296
+msgid "Preparatory version."
+msgstr ""
+
+#: project/templates/file/index.html:156
+msgid "Date and time when the file has updated."
+msgstr ""
+
+#: project/templates/file/index.html:168
+#: project/templates/lawyer/note/index.html:251
+#: project/templates/meet/detail.html:278
+#: project/templates/message/files.html:132
+#: project/templates/note/index.html:322
+msgid "This has has not been set as the final version of the uploaded files."
+msgstr ""
+
+#: project/templates/file/index.html:208 project/templates/file/index.html:291
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:169
+#: project/templates/lawyer/note/index.html:291
+#: project/templates/meet/detail.html:319
+#: project/templates/meet/detail.html:380
+#: project/templates/message/files.html:171
+#: project/templates/note/index.html:362 project/templates/note/index.html:419
+#: project/templates/task/detail.html:206
+msgid "This is an archivated file. Click here to unarchive it."
+msgstr ""
+
+#: project/templates/file/index.html:238
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:116
+msgid "Filename"
+msgstr ""
+
+#: project/templates/file/index.html:240
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:118
+msgid "Upload date"
+msgstr ""
+
+#: project/templates/file/index.html:243
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:121
+msgid "Category"
+msgstr ""
+
+#: project/templates/file/index.html:248
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:126
+msgid "Final relase?"
+msgstr ""
+
+#: project/templates/file/index.html:267
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:145
+msgid ""
+"This is an archivated file, that means it is inactive. Unarchive it if you "
+"would like to set it active again."
+msgstr ""
+
+#: project/templates/file/index.html:286
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:164
+#: project/templates/meet/detail.html:372 project/templates/note/index.html:411
+#: project/templates/task/detail.html:198
+msgid "Open file in browser"
+msgstr ""
+
+#: project/templates/file/index.html:287
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:165
+#: project/templates/meet/detail.html:373 project/templates/note/index.html:412
+#: project/templates/task/detail.html:199
+msgid "View details of this file."
+msgstr ""
+
+#: project/templates/file/index.html:288
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:166
+#: project/templates/meet/detail.html:375 project/templates/note/index.html:414
+#: project/templates/task/detail.html:201
+msgid "Edit file properties, like name, description, etc..."
+msgstr ""
+
+#: project/templates/file/index.html:289
+#: project/templates/file/index_máté_backup_ne_nyúlj_bele.html:167
+#: project/templates/meet/detail.html:376 project/templates/note/index.html:415
+#: project/templates/task/detail.html:202
+msgid ""
+"Move to archives. File will not be deleted and can be unarchive anytime."
+msgstr ""
+
+#: project/templates/form/create.html:6 project/templates/form/create.html:28
+msgid "Create form"
+msgstr ""
+
+#: project/templates/form/duplicate.html:6
+#: project/templates/form/duplicate.html:28
+msgid "Duplicate form"
+msgstr ""
+
+#: project/templates/form/edit.html:6 project/templates/form/edit.html:28
+msgid "Edit form"
+msgstr ""
+
+#: project/templates/form/index.html:6
+#: project/templates/section/project_navbar.html:18
+msgid "Forms"
+msgstr ""
+
+#: project/templates/form/index.html:30
+msgid ""
+"Below you can find all the forms added to\n"
+"                                                        this case."
+msgstr ""
+
+#: project/templates/form/index.html:59
+msgid ""
+" ow to use the forms?\n"
+"                                                "
+msgstr ""
+
+#: project/templates/form/index.html:74 project/templates/form/index.html:104
+msgid ""
+"About the user roles\n"
+"                                                            "
+msgstr ""
+
+#: project/templates/form/index.html:81
+msgid ""
+"How to use Multiple forms?\n"
+"                                                                "
+msgstr ""
+
+#: project/templates/form/index.html:84
+msgid ""
+"1. Invite additional participants to\n"
+"                                                                your case "
+"(click here).<br>\n"
+"                                                                2. Wait for "
+"your request to be accepted and join the\n"
+"                                                                case.<br>\n"
+"                                                                3. In the "
+"table below, click \"Clone a form\" and specify\n"
+"                                                                how many "
+"forms\n"
+"                                                                you want."
+"<br>\n"
+"                                                                4. Assign "
+"the new forms created in the \"Select\n"
+"                                                                responsible "
+"person\"\n"
+"                                                                option."
+msgstr ""
+
+#: project/templates/form/index.html:111
+msgid ""
+"We distinguish two user levels:\n"
+"                                                                "
+msgstr ""
+
+#: project/templates/form/index.html:114
+msgid ""
+"<strong>Responsible person:</strong>\n"
+"                                                                The person\n"
+"                                                                responsible "
+"for completing\n"
+"                                                                the form. It "
+"is typical to send an ownership inquiry\n"
+"                                                                form to the "
+"exact\n"
+"                                                                owner. The "
+"purpose of this role is to make it clear to\n"
+"                                                                everyone who "
+"we\n"
+"                                                                expect the "
+"final solution from."
+msgstr ""
+
+#: project/templates/form/index.html:123
+msgid ""
+"<strong>Participator:</strong> they\n"
+"                                                                are the "
+"people who\n"
+"                                                                can see the "
+"form and\n"
+"                                                                the "
+"information you enter. They are usually people we\n"
+"                                                                expect to "
+"help you\n"
+"                                                                fill out the "
+"form. For example: an assistant holding a\n"
+"                                                                real estate "
+"form\n"
+"                                                                will help "
+"the owner (who is present here as the person\n"
+"                                                                in charge) "
+"to provide\n"
+"                                                                the "
+"information requested about the title deed.</p>\n"
+"                                                            "
+msgstr ""
+
+#: project/templates/form/index.html:167
+msgid ""
+"Form Name\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/form/index.html:172
+msgid ""
+"Responsible\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/form/index.html:177
+msgid ""
+"Collaborators\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/form/index.html:182
+msgid ""
+"Last update\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/form/index.html:187
+msgid ""
+"Due date\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/form/index.html:214
+msgid ""
+"Form is marked as done and locked. Please ask the lawyer to open if you need "
+"to edit.\n"
+"                                                            "
+msgstr ""
+
+#: project/templates/form/index.html:264
+msgid ""
+"Set responsible person - he is the responsible for completing the form. \n"
+"                                                                "
+msgstr ""
+
+#: project/templates/form/index.html:274
+msgid ""
+"Set responsible person.\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/form/index.html:304
+msgid ""
+"Set\n"
+"                                                            collaborator(s)\n"
+"                                                            "
+msgstr ""
+
+#: project/templates/form/index.html:311
+msgid ""
+"Set collaborators - they can view and edit to help the responsible person to "
+"complete the form.\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/form/index.html:339
+msgid ""
+"Fill the form\n"
+"                                                "
+msgstr ""
+
+#: project/templates/form/index.html:350
+msgid ""
+"Edit form and collaborators\n"
+"                                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:355
+msgid ""
+"Set a responsible person\n"
+"                                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:362
+msgid ""
+"Clone form for more submissions\n"
+"                                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:370
+msgid ""
+"Help with this form\n"
+"                                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:374
+msgid ""
+"Knowledge base\n"
+"                                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:405
+msgid ""
+"Form name\n"
+"                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:410
+msgid ""
+"Responsible\n"
+"                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:415
+msgid ""
+"Collaborators\n"
+"                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:420
+msgid ""
+"Last update\n"
+"                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:425
+msgid ""
+"Due date\n"
+"                                                    "
+msgstr ""
+
+#: project/templates/form/index.html:598
+msgid "Draft"
+msgstr ""
+
+#: project/templates/form/responsible.html:6
+#: project/templates/form/responsible.html:28
+msgid "Responsible add/edit form"
+msgstr ""
+
+#: project/templates/form/upload.html:27 project/templates/meet/upload.html:27
+#: project/templates/note/upload.html:45 project/templates/task/upload.html:6
+#: project/templates/task/upload.html:28 project/templates/task/upload.html:50
+msgid "Upload file"
+msgstr ""
+
+#: project/templates/invite/index.html:5 project/templates/invite/index.html:20
+msgid "Invites received"
+msgstr ""
+
+#: project/templates/invite/index.html:23
+msgid ""
+"Below you can find all the invites you received for cases and consultations. "
+"Want to send invitations? You can send from consultation and team subpages "
+"of cases."
+msgstr ""
+
+#: project/templates/invite/index.html:50
+msgid "Invite by"
+msgstr ""
+
+#: project/templates/lawyer/note/index.html:238
+#: project/templates/meet/detail.html:264
+#: project/templates/message/files.html:119
+#: project/templates/note/index.html:309
+msgid "Date the file was updated."
+msgstr ""
+
+#: project/templates/meet/create.html:6 project/templates/meet/create.html:28
+#: project/templates/meet/edit.html:6
+msgid "Create a consultation"
+msgstr ""
+
+#: project/templates/meet/detail.html:6 project/templates/meet/detail.html:29
+msgid "Consultation details"
+msgstr ""
+
+#: project/templates/meet/detail.html:65 project/templates/meet/index.html:113
+msgid "Join"
+msgstr ""
+
+#: project/templates/meet/detail.html:82
+msgid "Starts"
+msgstr ""
+
+#: project/templates/meet/detail.html:98
+msgid "Ends"
+msgstr ""
+
+#: project/templates/meet/detail.html:137
+msgid "Participant"
+msgstr ""
+
+#: project/templates/meet/detail.html:362 project/templates/note/index.html:401
+#: project/templates/task/detail.html:188
+msgid ""
+"This is an archivated file, that means it is inactive. Unarchivate it if you "
+"would like to set it active again."
+msgstr ""
+
+#: project/templates/meet/edit.html:28
+msgid "Edit consultation"
+msgstr ""
+
+#: project/templates/meet/index.html:6 project/templates/meet/index.html:28
+#: project/templates/section/project_navbar.html:20
+msgid "Consultations"
+msgstr ""
+
+#: project/templates/meet/index.html:30
+#, python-format
+msgid ""
+"\n"
+"                                                        Below you can listed "
+"all the future and past\n"
+"                                                        consultations for "
+"the\n"
+"                                                        <strong>"
+"%(project.name)s</strong>.\n"
+"                                                        Click on the join "
+"button to join the meeting.\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/meet/index.html:52
+msgid "Add New consultation"
+msgstr ""
+
+#: project/templates/meet/index.html:73
+msgid "Start - end time"
+msgstr ""
+
+#: project/templates/meet/index.html:76
+msgid ""
+"Need help? Move your cursor over the action button for more information."
+msgstr ""
+
+#: project/templates/meet/index.html:109
+msgid "Click to open this consultation in a new window within your webbrowser."
+msgstr ""
+
+#: project/templates/meet/index.html:134
+msgid ""
+"View details of this\n"
+"                                                        consultation."
+msgstr ""
+
+#: project/templates/meet/index.html:139
+msgid ""
+"Send an invitation to\n"
+"                                                        more participants."
+msgstr ""
+
+#: project/templates/meet/index.html:144
+msgid ""
+"Upload file for this\n"
+"                                                        consultation. Files "
+"will be listed under the case\\'s Files\n"
+"                                                        aswell."
+msgstr ""
+
+#: project/templates/meet/index.html:152
+msgid ""
+"Cancel this consultation\n"
+"                                                        by deleting it. "
+"Warning, this is not reversible"
+msgstr ""
+
+#: project/templates/meet/invite.html:27
+msgid "Invite Consultation"
+msgstr ""
+
+#: project/templates/meet/invite.html:51
+msgid "Invite"
+msgstr ""
+
+#: project/templates/message/files.html:6
+msgid "Messages / Files"
+msgstr ""
+
+#: project/templates/message/files.html:28
+msgid "Files attached to messages "
+msgstr ""
+
+#: project/templates/message/index.html:6
+#: project/templates/section/lawyer_navbar.html:9
+#: project/templates/section/project_navbar.html:8
+msgid "Messages"
+msgstr ""
+
+#: project/templates/message/index.html:35
+msgid "Users"
+msgstr ""
+
+#: project/templates/message/index.html:105
+msgid "Download"
+msgstr ""
+
+#: project/templates/message/index.html:117
+msgid "You"
+msgstr ""
+
+#: project/templates/message/index.html:202
+msgid ""
+"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem "
+"similique\n"
+"                    earum necessitatibus\n"
+"                    nesciunt! Quia id expedita asperiores voluptatem odit "
+"quis fugit sapiente assumenda sunt\n"
+"                    voluptatibus atque facere autem, omnis explicabo."
+msgstr ""
+
+#: project/templates/message/users.html:6
+msgid "Messages / Users"
+msgstr ""
+
+#: project/templates/message/users.html:25
+msgid "Users in chat"
+msgstr ""
+
+#: project/templates/message/users.html:27
+msgid "Messages and files can be accessed by the following users"
+msgstr ""
+
+#: project/templates/message/users.html:43
+msgid "E-mail"
+msgstr ""
+
+#: project/templates/message/users.html:46
+#: project/templates/task/index.html:280
+msgid "Status"
+msgstr ""
+
+#: project/templates/message/users.html:47
+msgid "Removable"
+msgstr ""
+
+#: project/templates/message/users.html:48
+msgid "Legisly staff"
+msgstr ""
+
+#: project/templates/note/create.html:6 project/templates/note/create.html:27
+#: project/templates/note/create.html:46
+#: project/templates/note/create_form_note.html:27
+#: project/templates/note/create_form_note.html:47
+#: project/templates/note/create_meet_note.html:27
+#: project/templates/note/create_meet_note.html:47
+#: project/templates/note/create_task_note.html:28
+#: project/templates/note/create_task_note.html:48
+msgid "Create note"
+msgstr ""
+
+#: project/templates/note/create_form_note.html:6
+#: project/templates/note/create_meet_note.html:6
+msgid "Create note for consultation"
+msgstr ""
+
+#: project/templates/note/create_task_note.html:6
+msgid "Create note for task"
+msgstr ""
+
+#: project/templates/note/edit.html:6 project/templates/note/edit.html:27
+#: project/templates/note/edit_form_note.html:6
+#: project/templates/note/edit_form_note.html:27
+#: project/templates/note/edit_meet_note.html:6
+#: project/templates/note/edit_meet_note.html:27
+#: project/templates/note/edit_task_note.html:6
+#: project/templates/note/edit_task_note.html:27 project/views.py:1006
+#: project/views.py:2521
+msgid "Edit note"
+msgstr ""
+
+#: project/templates/note/index.html:29
+#, python-format
+msgid ""
+"Below %(SITE_URL)s can find all the notes related\n"
+"                                                    to the\n"
+"                                                    "
+msgstr ""
+
+#: project/templates/note/index.html:33
+msgid ""
+"Notes can not be edited or removed, only archivated.\n"
+"                                                    You\n"
+"                                                    can create a new not "
+"anytime by clicking the plus button on the\n"
+"                                                    right corner."
+msgstr ""
+
+#: project/templates/note/index.html:52 project/views.py:1478
+msgid "Add new note"
+msgstr ""
+
+#: project/templates/note/index.html:121 project/templates/task/detail.html:282
+msgid "Added on"
+msgstr ""
+
+#: project/templates/note/index.html:130 project/templates/note/index.html:192
+#: project/templates/task/detail.html:291
+msgid "Upload file for this note"
+msgstr ""
+
+#: project/templates/note/index.html:182
+msgid "Private note added on"
+msgstr ""
+
+#: project/templates/note/upload.html:6 project/templates/note/upload.html:27
+msgid "Upload file for note"
+msgstr ""
+
+#: project/templates/project/create.html:6
+#: project/templates/project/create.html:20
+#: project/templates/project/create_admin.html:6
+#: project/templates/project/create_admin.html:20
+msgid "Create a new case"
+msgstr ""
+
+#: project/templates/project/detail.html:6
+msgid "Case details"
+msgstr ""
+
+#: project/templates/project/detail.html:61
+msgid "Type of client"
+msgstr ""
+
+#: project/templates/project/detail.html:93
+#: project/templates/project/my_project.html:338
+msgid "Project"
+msgstr ""
+
+#: project/templates/project/detail.html:94
+msgid "Activite"
+msgstr ""
+
+#: project/templates/project/detail.html:121
+msgid "Show all activities"
+msgstr ""
+
+#: project/templates/project/edit.html:6 project/templates/project/edit.html:22
+msgid "Edit case"
+msgstr ""
+
+#: project/templates/project/index.html:5
+#: project/templates/project/index.html:21
+msgid "Cases"
+msgstr ""
+
+#: project/templates/project/index.html:78
+msgid ""
+"Project name has been automatically generated. You can change it by editing "
+"the order."
+msgstr ""
+
+#: project/templates/project/index.html:143
+msgid "This order does not contain legal consultation."
+msgstr ""
+
+#: project/templates/project/index.html:154
+msgid "Beginning of the requested consultation."
+msgstr ""
+
+#: project/templates/project/index.html:161
+msgid "Ending of the requested consultation."
+msgstr ""
+
+#: project/templates/project/index.html:176
+msgid "Pending"
+msgstr ""
+
+#: project/templates/project/index.html:189
+#: project/templates/project/index.html:249
+msgid "Closed"
+msgstr ""
+
+#: project/templates/project/index.html:201
+msgid "Canceled"
+msgstr ""
+
+#: project/templates/project/index.html:214
+#: project/templates/project/my_project.html:366
+msgid "Details"
+msgstr ""
+
+#: project/templates/project/index.html:220
+#: project/templates/project/index.html:291
+#: project/templates/project/my_project.html:370
+#: project/templates/task/responsible.html:47
+msgid "Edit"
+msgstr ""
+
+#: project/templates/project/index.html:285
+msgid "Show details"
+msgstr ""
+
+#: project/templates/project/my_project.html:5
+#: project/templates/project/my_project.html:20
+msgid "My cases"
+msgstr ""
+
+#: project/templates/project/my_project.html:73
+msgid "Having a legal problem?"
+msgstr ""
+
+#: project/templates/project/my_project.html:75
+msgid ""
+"Start a new project anytime in our webshop and let us find\n"
+"                                            the\n"
+"                                            best solution for you! "
+msgstr ""
+
+#: project/templates/project/my_project.html:83
+msgid "Browse webshop"
+msgstr ""
+
+#: project/templates/project/my_project.html:147
+msgid "Case has been closed. Please contact our operator to reopen it."
+msgstr ""
+
+#: project/templates/section/lawyer_navbar.html:4
+#: project/templates/section/project_navbar.html:4
+msgid "Overview"
+msgstr ""
+
+#: project/templates/section/project_header.html:6
+msgid "Case"
+msgstr ""
+
+#: project/templates/section/project_header.html:18
+msgid "Join meeting"
+msgstr ""
+
+#: project/templates/section/project_header.html:19
+msgid "Copy link"
+msgstr ""
+
+#: project/templates/section/project_header.html:20
+msgid "Help"
+msgstr ""
+
+#: project/templates/section/project_navbar.html:6
+msgid "Team"
+msgstr ""
+
+#: project/templates/section/project_navbar.html:11
+#: project/templates/task/index.html:6 project/templates/task/index.html:28
+msgid "Tasks"
+msgstr ""
+
+#: project/templates/section/project_navbar.html:26 project/views.py:539
+msgid "Lawyer"
+msgstr ""
+
+#: project/templates/task/create.html:6 project/templates/task/create.html:27
+msgid "Create a new task"
+msgstr ""
+
+#: project/templates/task/create.html:47
+msgid "Add task"
+msgstr ""
+
+#: project/templates/task/detail.html:57
+msgid "Task name"
+msgstr ""
+
+#: project/templates/task/detail.html:64 project/templates/task/index.html:276
+msgid "Assignee"
+msgstr ""
+
+#: project/templates/task/detail.html:73
+msgid "Start date"
+msgstr ""
+
+#: project/templates/task/detail.html:80 project/templates/task/index.html:278
+msgid "Due date"
+msgstr ""
+
+#: project/templates/task/detail.html:163
+msgid "Add Task File"
+msgstr ""
+
+#: project/templates/task/detail.html:231
+msgid "Add Task Note"
+msgstr ""
+
+#: project/templates/task/detail.html:258
+msgid "Uploaded files:"
+msgstr ""
+
+#: project/templates/task/edit.html:6 project/templates/task/edit.html:27
+#: project/templates/task/index.html:195 project/templates/task/index.html:376
+msgid "Edit task"
+msgstr ""
+
+#: project/templates/task/edit.html:47
+msgid "Save task"
+msgstr ""
+
+#: project/templates/task/index.html:32
+msgid ""
+"Below can find all the tasks related to tasks for\n"
+"                                                        the\n"
+"                                                        "
+msgstr ""
+
+#: project/templates/task/index.html:36
+msgid ""
+"Click on the task name to check the details or\n"
+"                                                        create\n"
+"                                                        a new task anytime "
+"by clicking the plus button on the right\n"
+"                                                        corner"
+msgstr ""
+
+#: project/templates/task/index.html:49
+msgid "Create new task"
+msgstr ""
+
+#: project/templates/task/index.html:97
+msgid "Number of files"
+msgstr ""
+
+#: project/templates/task/index.html:104
+msgid "Number of comments"
+msgstr ""
+
+#: project/templates/task/index.html:121 project/templates/task/index.html:228
+#: project/templates/task/index.html:301 project/templates/task/index.html:394
+msgid ""
+"This is an archivated task, that means it is inactive. Unarchivate it if you "
+"would like to set it active again."
+msgstr ""
+
+#: project/templates/task/index.html:143
+msgid "The person, who is repsonsible for this task."
+msgstr ""
+
+#: project/templates/task/index.html:187 project/templates/task/index.html:371
+msgid "Open task for more options"
+msgstr ""
+
+#: project/templates/task/index.html:202
+msgid ""
+"Select task assignee - choose a person, who is responsible to complete this "
+"task\"\n"
+"                                                                "
+msgstr ""
+
+#: project/templates/task/index.html:212 project/templates/task/index.html:386
+msgid ""
+"Move to archives - task will not be deleted and can be set as active anytime"
+msgstr ""
+
+#: project/templates/task/index.html:277
+msgid "Collaborators"
+msgstr ""
+
+#: project/templates/task/index.html:353
+msgid "Yes"
+msgstr ""
+
+#: project/templates/task/index.html:357
+msgid "No"
+msgstr ""
+
+#: project/templates/task/index.html:380
+msgid ""
+"Select task assignee - choose a person, who is responsible to complete this "
+"task\"\n"
+"                                            "
+msgstr ""
+
+#: project/templates/task/responsible.html:6
+#: project/templates/task/responsible.html:27
+msgid "Edit responsible"
+msgstr ""
+
+#: project/templates/team/index.html:128
+msgid "Invite more participants."
+msgstr ""
+
+#: project/templates/team/index.html:134
+msgid "Remove this participant from the case."
+msgstr ""
+
+#: project/templates/team/office_invite.html:6
+#: project/templates/team/office_invite.html:26
+msgid "Invite lawyer to case"
+msgstr ""
+
+#: project/templates/team/office_invite.html:28
+msgid ""
+"Please choose the correct lawyer to start the\n"
+"                                                        case. If the person "
+"has no Google Calender ID saved or have no\n"
+"                                                        free slot in the "
+"target time range the system will show an error\n"
+"                                                        message."
+msgstr ""
+
+#: project/templates/team/office_invite.html:47
+msgid "What will happen?"
+msgstr ""
+
+#: project/templates/team/office_invite.html:49
+msgid ""
+"The lawyer of your choice will receive an email\n"
+"                                                notification of the "
+"invitation, which will include basic information\n"
+"                                                about the case. The e-mail "
+"also contains the necessary steps to accept\n"
+"                                                the case, which you can do "
+"or reject under the Invitations tab after\n"
+"                                                logging in. The attorney "
+"will not see the data stored in the case until\n"
+"                                                the invitation is accepted. "
+"The following intel will be shared with the\n"
+"                                                lawyer:"
+msgstr ""
+
+#: project/templates/team/office_invite.html:72
+msgid "Invite lawyer to the case"
+msgstr ""
+
+#: project/views.py:185 project/views.py:1312
+msgid ""
+"{user.first_name} {user.last_name} {_('invited you to a consultation on')} "
+"{meet.meet_start}. {_('Case:')} {project.name}."
+msgstr ""
+
+#: project/views.py:229
+msgid "Joined to project"
+msgstr ""
+
+#: project/views.py:263
+msgid "Declined invitation"
+msgstr ""
+
+#: project/views.py:331 project/views.py:750 project/views.py:785
+#: project/views.py:872 project/views.py:936 project/views.py:1012
+#: project/views.py:1449 project/views.py:1491 project/views.py:2261
+#: project/views.py:2306 project/views.py:2340 project/views.py:2443
+#: project/views.py:2482 project/views.py:2527
+msgid "Succesfully saved!"
+msgstr ""
+
+#: project/views.py:369
+msgid "Succesfully saved"
+msgstr ""
+
+#: project/views.py:424 project/views.py:501
+msgid "Already added the team. Please another people"
+msgstr ""
+
+#: project/views.py:438 project/views.py:515
+msgid "Invite send!"
+msgstr ""
+
+#: project/views.py:446 project/views.py:529 project/views.py:638
+#: project/views.py:668
+msgid "Invite new people"
+msgstr ""
+
+#: project/views.py:458 project/views.py:650 project/views.py:680
+msgid "You have been invited to collaborate in a legal case"
+msgstr ""
+
+#: project/views.py:466 project/views.py:1285 project/views.py:1365
+#: project/views.py:1391 project/views.py:1634 project/views.py:2623
+#: project/views.py:2655
+msgid "User"
+msgstr ""
+
+#: project/views.py:524
+msgid "Legisly system"
+msgstr ""
+
+#: project/views.py:590
+msgid "The email is not useable"
+msgstr ""
+
+#: project/views.py:610
+msgid "User is already in your team! Please select another e-mail!"
+msgstr ""
+
+#: project/views.py:630
+msgid "Invite sent succesfully!"
+msgstr ""
+
+#: project/views.py:665
+msgid "The invite sent successfully!"
+msgstr ""
+
+#: project/views.py:704
+msgid "Deleted invitation"
+msgstr ""
+
+#: project/views.py:707
+msgid "The invite is deleted!"
+msgstr ""
+
+#: project/views.py:710
+msgid "The invite is NOT deleted!"
+msgstr ""
+
+#: project/views.py:858
+msgid "Note created"
+msgstr ""
+
+#: project/views.py:869
+msgid "New note has been added"
+msgstr ""
+
+#: project/views.py:940
+msgid "Upload new file to note"
+msgstr ""
+
+#: project/views.py:953
+msgid "A new file has been uploaded to a Task note"
+msgstr ""
+
+#: project/views.py:972
+msgid "A new file has been uploaded to a Meet note"
+msgstr ""
+
+#: project/views.py:1050
+msgid "New message"
+msgstr ""
+
+#: project/views.py:1061
+msgid "New note has been added to your task"
+msgstr ""
+
+#: project/views.py:1090 project/views.py:2565
+msgid "Archive task"
+msgstr ""
+
+#: project/views.py:1096
+msgid "Task archived"
+msgstr ""
+
+#: project/views.py:1113
+msgid "Unarchived task"
+msgstr ""
+
+#: project/views.py:1119
+msgid "Task unarchived"
+msgstr ""
+
+#: project/views.py:1253
+msgid "Meet created"
+msgstr ""
+
+#: project/views.py:1263
+msgid "You have been invited to a consultation"
+msgstr ""
+
+#: project/views.py:1274
+msgid ""
+"{user.first_name} {user.last_name} {_('invited you to a consultation on')} "
+"{meet_start}. {_('Case:')} {project.name}."
+msgstr ""
+
+#: project/views.py:1278
+msgid "Sucessfully created"
+msgstr ""
+
+#: project/views.py:1285
+msgid "E-mail címet adjon meg"
+msgstr ""
+
+#: project/views.py:1307
+msgid "User already added to meet"
+msgstr ""
+
+#: project/views.py:1318
+msgid "Invite meet"
+msgstr ""
+
+#: project/views.py:1358
+msgid "Sucessfully invited"
+msgstr ""
+
+#: project/views.py:1383
+msgid "Sucessfully save"
+msgstr ""
+
+#: project/views.py:1435
+msgid "Upload new file to meet"
+msgstr ""
+
+#: project/views.py:1447
+msgid "A new file has been uploaded to your consultation"
+msgstr ""
+
+#: project/views.py:1489
+msgid "Added a new note to your consultation"
+msgstr ""
+
+#: project/views.py:1509
+msgid "Meet deleted"
+msgstr ""
+
+#: project/views.py:1516
+msgid ""
+"{user.first_name} {user.last_name} {_('deleted the consultation')}. "
+"{_('Case:')} {project.name}."
+msgstr ""
+
+#: project/views.py:1546
+msgid "Deleted"
+msgstr ""
+
+#: project/views.py:1602 project/views.py:2609
+msgid "Added new task"
+msgstr ""
+
+#: project/views.py:1621 project/views.py:1738
+msgid "You have been assigned a new task"
+msgstr ""
+
+#: project/views.py:1624 project/views.py:1801 project/views.py:2615
+#: project/views.py:2687
+msgid "Successfully created"
+msgstr ""
+
+#: project/views.py:1688 project/views.py:2642
+msgid "Edited task"
+msgstr ""
+
+#: project/views.py:1693 project/views.py:2648
+msgid "Successfully saved"
+msgstr ""
+
+#: project/views.py:1723
+msgid "Responsible user added"
+msgstr ""
+
+#: project/views.py:1729
+msgid ""
+"{user.first_name} {user.last_name} {_('added responsible user to task:')} "
+"{task.name}. {_('Case:')} {project.name}."
+msgstr ""
+
+#: project/views.py:1742
+msgid "Successfully"
+msgstr ""
+
+#: project/views.py:1749
+msgid "Responsible user"
+msgstr ""
+
+#: project/views.py:1779
+msgid "Upload new file to task"
+msgstr ""
+
+#: project/views.py:1790
+msgid "Uploaded a new file for the task"
+msgstr ""
+
+#: project/views.py:1838
+msgid "You have received new message(s) for your case"
+msgstr ""
+
+#: project/views.py:1855 project/views.py:2877
+msgid "Upload new file"
+msgstr ""
+
+#: project/views.py:1861 project/views.py:2883
+msgid "Upload success"
+msgstr ""
+
+#: project/views.py:1984 project/views.py:2790
+msgid "Edit file"
+msgstr ""
+
+#: project/views.py:1990 project/views.py:2796
+msgid "File saved"
+msgstr ""
+
+#: project/views.py:2023 project/views.py:2822
+msgid "Archive file"
+msgstr ""
+
+#: project/views.py:2064
+msgid "Unarchived file"
+msgstr ""
+
+#: project/views.py:2098
+msgid "File deleted"
+msgstr ""
+
+#: project/views.py:2184
+msgid "Succesfully created!"
+msgstr ""
+
+#: project/views.py:2216 project/views.py:2238
+msgid "Succesfully duplicated!"
+msgstr ""
+
+#: project/views.py:2300
+msgid "Upload file to project form"
+msgstr ""
+
+#: project/views.py:2335
+msgid "Add note to project form"
+msgstr ""
+
+#: project/views.py:2437
+msgid "Created note"
+msgstr ""
+
+#: project/views.py:2486
+msgid "Upload file to note"
+msgstr ""
+
+#: project/views.py:2570 project/views.py:2828
+msgid "File archived"
+msgstr ""
+
+#: project/views.py:2681
+msgid "Upload file to task"
+msgstr ""
+
+#: project/views.py:2714
+msgid "Add note to task"
+msgstr ""

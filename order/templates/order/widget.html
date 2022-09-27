@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teszt</title>
+    <link rel="stylesheet" href="{% static 'theme/assets/css/dashlite.css' %}">
+    <link id="skin-default" rel="stylesheet" href="{% static 'theme/assets/css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'calendar/css/vanilla-calendar.css' %}">
+    <script src="{% static 'calendar/js/vanilla-calendar.js' %}"></script>
+    <script src="{% static 'theme/assets/js/bundle.js'%}"></script>
+    <script src="{% static 'theme/assets/js/scripts.js'%}"></script>
+</head>
+<body style="background: #fff;">
+    <div id="myCalendar" class="vanilla-calendar"></div>
+<div id="slots"></div>
+
+
+<a href="" target="_blank" id="currentDate" class="btn btn-block btn-primary d-none">Choosed Data</a>
+
+
+
+<div id="settings" data-url="{% url 'login' %}"></div>
+
+<script>
+    var settings = document.getElementById('settings')
+    var url_base = settings.dataset.url
+    console.log(url_base)
+    let myCalendar = new VanillaCalendar({
+
+        selector: "#myCalendar",
+        pastDates: false,
+        datesFilter: true,
+        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        shortWeekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+
+        availableWeekDays: [
+            { day: 'monday' },
+            { day: 'tuesday' },
+            { day: 'wednesday' },
+            { day: 'thursday' },
+            { day: 'friday' },
+        ],
+
+        onSelect: (data, elem) => {
+            console.log(data, elem)
+
+            ajax_call(data)
+        }
+    })
+</script>
+
+<script>
+
+
+    function ajax_call(data) {
+        var url = "{% url 'order:json_slot' %}";
+        var calendly_date = data.date
+        var product_id = '{{product.id}}'
+        var divSlots = document.getElementById("slots")
+
+
+        payload = {
+            "calendly_date": calendly_date,
+            "product_id": product_id
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            timeout: 5000,
+            dataType: "json",
+            data: payload,
+            success: function (data) {
+                console.log("SUCCESS", data)
+                if (data['response'] == "True") {
+                    divSlots.innerHTML = `
+                        <ul id="slot2" class="list-inline">
+                            ${data.slots.map((slot) => `
+                            <li class="list-inline-item slot" id='slot' data-date='${calendly_date}' data-time='${slot}'>${slot}</li>
+                            `).join("")}
+
+                        </ul>
+                        `
+                    $('#slot2').on('click', 'li', function (e) {
+                        var start_date = $(this).data('date');
+                        var start_time = $(this).data('time');
+                        var btn_send = document.getElementById('currentDate')
+                        btn_send.classList.add('d-block');
+                        btn_send.href = `${url_base}?start_date=${start_date}&date_time=${start_time}&product_id=${product_id}`;
+                        btn_send.innerHTML = `Choosed date: ${start_date} ${start_time}`
+                        //document.getElementById('id_date_start').value = start_date
+                        //document.getElementById('id_time_start').value = start_time
+                        //document.getElementById('id_duration').value = data.duration
+                        $(this).addClass('slot-active').siblings().removeClass('slot-active');
+                        return false;
+                    });
+
+                } else if (data['response'] == "False") {
+
+                } else if (data['response'] != null) {
+                    alert(data['response'])
+                }
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                alert("Something went wrong.")
+            },
+        });
+    }
+
+</script>
+</body>
+
+
+</html>

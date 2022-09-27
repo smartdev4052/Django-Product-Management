@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-17 19:41+0000\n"
+"PO-Revision-Date: 2022-01-18 20:59+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar_OM\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: client/models.py:37
+msgid "Person"
+msgstr "شخص"
+
+#: client/models.py:38
+msgid "Company"
+msgstr "شركة"
+
+#: client/templates/client/create.html:6 client/templates/client/create.html:21
+#: client/templates/client/create.html:45
+msgid "Create client"
+msgstr "إنشاء العميل"
+
+#: client/templates/client/create.html:23 client/templates/client/index.html:23
+#: client/templates/client/my_client.html:23
+msgid ""
+"Clients (like you as a person or your company) are used to manage and "
+"cooperate cases. You can add, remove and manage roles of members of your "
+"client anytime. Please allways choose carefuly who to invite to your cases "
+"as the persons will see the messages and uploaded files."
+msgstr ""
+"يتم استخدام العملاء (مثلك كشخص أو شركتك) لإدارة الحالات والتعاون فيها. يمكنك "
+"إضافة وإزالة وإدارة أدوار أعضاء عميلك في أي وقت. يرجى دائمًا اختيار من تريد "
+"دعوته إلى الحالات الخاصة بك بعناية حيث سيرى الأشخاص الرسائل والملفات التي تم "
+"تحميلها."
+
+#: client/templates/client/create.html:30
+#: client/templates/client/detail.html:27 client/templates/client/edit.html:28
+msgid "Back"
+msgstr "عودة"
+
+#: client/templates/client/detail.html:6 client/templates/client/detail.html:20
+msgid "Client"
+msgstr "عميل"
+
+#: client/templates/client/detail.html:42
+msgid "Basics information"
+msgstr "معلومات أساسية"
+
+#: client/templates/client/detail.html:47
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+#: client/templates/client/detail.html:52
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: client/templates/client/detail.html:57
+#: client/templates/client/my_client.html:44
+msgid "Type"
+msgstr "نوع"
+
+#: client/templates/client/detail.html:63
+msgid "First name"
+msgstr "الاسم الاول"
+
+#: client/templates/client/detail.html:69
+msgid "Last name"
+msgstr "الكنية"
+
+#: client/templates/client/detail.html:75
+msgid "Mother name"
+msgstr "اسم الأم"
+
+#: client/templates/client/detail.html:80
+msgid "Country"
+msgstr "دولة"
+
+#: client/templates/client/detail.html:85
+msgid "State"
+msgstr "ولاية"
+
+#: client/templates/client/detail.html:90
+msgid "Address"
+msgstr "العنوان"
+
+#: client/templates/client/detail.html:99
+msgid "Billing information"
+msgstr "بيانات الدفع"
+
+#: client/templates/client/detail.html:104
+msgid "Billing name"
+msgstr "اسم الفواتير"
+
+#: client/templates/client/detail.html:110
+msgid "Billing country"
+msgstr "بلد إرسال الفواتير"
+
+#: client/templates/client/detail.html:116
+msgid "Billing state"
+msgstr "حالة الفوترة"
+
+#: client/templates/client/detail.html:122
+msgid "Billing address"
+msgstr "عنوان وصول الفواتير"
+
+#: client/templates/client/detail.html:128
+msgid "Tax number"
+msgstr "الرقم الضريبي"
+
+#: client/templates/client/edit.html:6 client/templates/client/edit.html:21
+msgid "Edit client"
+msgstr "تحرير العميل"
+
+#: client/templates/client/edit.html:43
+msgid "Save client"
+msgstr "حفظ العميل"
+
+#: client/templates/client/index.html:6 client/templates/client/index.html:21
+msgid "Clients"
+msgstr "العملاء"
+
+#: client/templates/client/index.html:36
+msgid "Add New client"
+msgstr "إضافة عميل جديد"
+
+#: client/templates/client/index.html:52
+#: client/templates/client/my_client.html:42
+msgid "Id"
+msgstr "بطاقة تعريف"
+
+#: client/templates/client/index.html:53
+msgid "Name"
+msgstr "اسم"
+
+#: client/templates/client/index.html:54
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+#: client/templates/client/index.html:55
+msgid "Invite"
+msgstr "يدعو"
+
+#: client/templates/client/index.html:56
+#: client/templates/client/my_client.html:45
+msgid "Action"
+msgstr "مزاد"
+
+#: client/templates/client/index.html:68
+#: client/templates/client/my_client.html:59
+msgid "Details"
+msgstr "تفاصيل"
+
+#: client/templates/client/index.html:70
+#: client/templates/client/my_client.html:62
+msgid "Edit"
+msgstr "تحرير"
+
+#: client/templates/client/index.html:72
+#: client/templates/client/my_client.html:65
+msgid "Archive"
+msgstr "أرشيف"
+
+#: client/templates/client/my_client.html:6
+msgid "My clients"
+msgstr "موكلي"
+
+#: client/templates/client/my_client.html:30
+msgid "Add client"
+msgstr "إضافة عميل"
+
+#: client/templates/client/my_client.html:43
+msgid "Client name"
+msgstr "اسم العميل"
+
+#: client/views.py:38
+msgid "Client created"
+msgstr "تم إنشاء العميل"
+
+#: client/views.py:73
+msgid "Archived"
+msgstr "مؤرشف"
+
+#: client/views.py:85
+msgid "Kliens siekresen törölve"
+msgstr "Kliens siekresen törölve"

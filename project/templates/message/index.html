@@ -1,0 +1,225 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Messages" %}: {{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner p-0">
+
+                                    <div class="nk-content p-0">
+                                        <div class="nk-content-inner">
+                                            <div class="nk-content-body">
+                                                <div class="nk-chat">
+
+                                                    <div class="nk-chat-body">
+                                                        <div class="nk-chat-head">
+                                                            <a href="{% url 'project:project_message_users' project.id %}"
+                                                                class="btn btn-secondary d-none d-sm-inline-flex"><em
+                                                                    class="icon ni ni-users"></em>
+                                                                <span>{% trans "Users" %}</span></a>
+
+                                                            <a href="{% url 'project:project_message_files' project.id %}"
+                                                                class="btn btn-secondary d-none
+                                                                    d-sm-inline-flex"><em class="icon ni ni-file"></em>
+                                                                <span>{% trans "Files" %}</span></a>
+                                                        </div>
+                                                        <div class="nk-chat-panel" data-simplebar="init">
+                                                            <div class="simplebar-wrapper" style="margin: -20px -28px;">
+
+                                                                <div class="simplebar-mask">
+                                                                    <div class="simplebar-offset"
+                                                                        style="right: 0px; bottom: 0px;">
+                                                                        <div class="simplebar-content-wrapper"
+                                                                            tabindex="0" role="region"
+                                                                            aria-label="scrollable content"
+                                                                            style="height: 100%; overflow: hidden scroll;">
+                                                                            <div class="simplebar-content"
+                                                                                style="padding: 20px 28px;">
+                                                                                {% for message in message_obj %}
+                                                                                {% if message.user != request.user %}
+                                                                                <div class="chat is-you">
+                                                                                    <div class="chat-avatar">
+                                                                                        <div class="user-avatar">
+                                                                                            <em
+                                                                                                class="icon ni ni-user-alt"></em>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="chat-content">
+                                                                                        <div class="chat-bubbles">
+                                                                                            <div class="chat-bubble">
+                                                                                                <div class="chat-msg">
+                                                                                                    {{message.content}}
+                                                                                                    {% if message.url %}
+                                                                                                    - <a
+                                                                                                        href="{{message.url}}">
+                                                                                                        <span
+                                                                                                            class="badge badge-pill badge-secondary">
+                                                                                                            {% trans
+                                                                                                            "Download"
+                                                                                                            %}
+                                                                                                        </span>
+                                                                                                    </a>
+                                                                                                    {% endif %}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <ul class="chat-meta">
+                                                                                            <li>{{message.created_at|timesince}}
+                                                                                                -
+                                                                                                {{message.user.first_name}}
+                                                                                                {{message.user.last_name}}
+
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                {% else %}
+                                                                                <div class="chat is-me">
+                                                                                    <div class="chat-content">
+                                                                                        <div class="chat-bubbles">
+
+                                                                                            <div class="chat-bubble">
+                                                                                                <div class="chat-msg">
+                                                                                                    {{message.content}}
+                                                                                                    {% if message.url %}
+                                                                                                    - <a
+                                                                                                        href="{{message.url}}">
+                                                                                                        <span
+                                                                                                            class="badge badge-pill badge-secondary">
+                                                                                                            {% blocktranslate %}Download{% endblocktranslate %}
+                                                                                                        </span>
+                                                                                                    </a>
+                                                                                                    {% endif %}
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <ul class="chat-meta">
+                                                                                            <li>
+                                                                                                <span>{{message.created_at|timesince}}
+                                                                                                    -
+                                                                                                    {% trans "You"%}
+                                                                                                </span>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                {% endif %}
+                                                                                {% endfor %}
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="simplebar-placeholder"
+                                                                    style="width: auto; height: 740px;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="simplebar-track simplebar-horizontal"
+                                                                style="visibility: hidden;">
+                                                                <div class="simplebar-scrollbar"
+                                                                    style="width: 0px; display: none;"></div>
+                                                            </div>
+                                                            <div class="simplebar-track simplebar-vertical"
+                                                                style="visibility: visible;">
+                                                                <div class="simplebar-scrollbar"
+                                                                    style="height: 160px; transform: translate3d(0px, 0px, 0px); display: block;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {% if x.role == '2' %}
+                                                        <form class="nk-chat-editor" method="post">
+                                                            {% csrf_token %}
+                                                            <div class="nk-chat-editor-upload  ml-n1">
+                                                                <a data-toggle="modal" data-target="#modalZoom"
+                                                                    class="btn btn-sm btn-icon btn-trigger text-primary toggle-opt">
+                                                                    <em class="icon ni ni-plus-circle-fill"></em>
+                                                                </a>
+
+                                                            </div>
+                                                            <div class="nk-chat-editor-form">
+                                                                <div class="form-control-wrap">
+                                                                    {{ form|crispy }}
+
+                                                                </div>
+                                                            </div>
+                                                            <ul class="nk-chat-editor-tools g-2">
+                                                                <li><button
+                                                                        class="btn btn-round btn-primary btn-icon"><em
+                                                                            class="icon ni ni-send-alt"></em></button>
+                                                                </li>
+                                                            </ul>
+                                                        </form>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+<div class="modal fade zoom" tabindex="-1" id="modalZoom" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">File upload</h5><a href="#" class="close" data-dismiss="modal"
+                    aria-label="Close"><em class="icon ni ni-cross"></em></a>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="form">
+                    {% csrf_token %}
+                    {{ formUpload|crispy }}
+                    <button type="submit" class="btn btn-primary btn-block" id="btn-save">Feltöltés</button>
+                </form>
+                <p>{% blocktranslate %}Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem similique
+                    earum necessitatibus
+                    nesciunt! Quia id expedita asperiores voluptatem odit quis fugit sapiente assumenda sunt
+                    voluptatibus atque facere autem, omnis explicabo.{% endblocktranslate %}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-save')
+
+    form.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+</script>
+
+
+{% endblock %}

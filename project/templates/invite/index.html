@@ -1,0 +1,103 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Invites received" %}: {{project.name}}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Invites received" %}</h3>
+                                <div class="nk-block-des text-soft">
+                                    <p>
+                                        {% blocktranslate %}Below you can find all the invites you received for cases and consultations. Want to send invitations? You can send from consultation and team subpages of cases.{% endblocktranslate %}
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="alert alert-pro alert-danger">
+                        <div class="alert-text">
+                          <h6>Attention!</h6>
+                          <p>
+                            Please note you can not view details of cases or join to meetings without accepting the invitation!
+                          </p>
+                        </div>
+                      </div>
+
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                        <th>{% trans "Description" %}</th>
+                                        <th>{% trans "Invite by" %}</th>
+                                        <th>{% trans "Meet start" %}</th>
+                                        <th>{% trans "Meet end" %}</th>
+                                        <th>{% trans "Created at" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for invite in invites %}
+                                    <tr class="nk-tb-item">
+                                        <td>{{invite.id}} </td>
+                                        <td>{{invite.action}}</td>
+                                        <td>{{invite.description}}</td>
+                                        <td>{{invite.sender.first_name}} {{invite.sender.last_name}}</td>
+                                        <td>
+                                            {% if invite.meet_start %}
+                                            {{invite.meet_start}}
+                                            {% else %}
+                                            <em class="icon ni ni-video-off" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Case invite, it does not contain meeting details." style="font-size: large;" ></em> 
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if invite.meet_end %}
+                                            {{invite.meet_end}}
+                                            {% else %}
+                                            <em class="icon ni ni-video-off" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Case invite, it does not contain meeting details." style="font-size: large;" ></em> 
+                                            {% endif %}
+                                        </td>
+                                        <td>{{invite.create_date}}</td>
+
+                                        <td>
+                                            <a href="{% url 'project:invite_accept' invite.project.id %}"
+                                                class="btn btn-outline-primary btn-sm" style="margin: 2px;" ><em
+                                                    class="icon ni ni-check-fill-c"></em>&nbsp;Accept</a>
+                                            <a href="{% url 'project:invite_decline' invite.project.id %}"
+                                                class="btn btn-outline-danger btn-sm" style="margin: 2px;"><em
+                                                    class="icon ni ni-cross-fill-c"></em>&nbsp;Decline</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

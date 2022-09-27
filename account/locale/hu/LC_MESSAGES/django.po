@@ -1,0 +1,1159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-14 15:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/forms.py:17
+msgid "Ez a felhasználónév nem engedélyezett."
+msgstr ""
+
+#: account/forms.py:22
+msgid "Nem engedélyezett karakterek: @ , - , + "
+msgstr ""
+
+#: account/forms.py:27
+msgid "Ez az e-mail cím már foglalt."
+msgstr ""
+
+#: account/forms.py:32
+msgid "Ez a felhasználónév már foglalt."
+msgstr ""
+
+#: account/forms.py:37 account/forms.py:72
+#: account/templates/account/index.html:59
+#: account/templates/email/email_password.html:26
+msgid "Username"
+msgstr ""
+
+#: account/forms.py:39
+msgid "E-mail"
+msgstr ""
+
+#: account/forms.py:41
+msgid "First Name"
+msgstr ""
+
+#: account/forms.py:43
+msgid "Last Name"
+msgstr ""
+
+#: account/forms.py:45 account/forms.py:75
+msgid "Password"
+msgstr ""
+
+#: account/forms.py:47
+msgid "Password repeat"
+msgstr ""
+
+#: account/forms.py:67
+msgid "A jelszavak nem egyeznek, kérjük add meg újra!"
+msgstr ""
+
+#: account/templates/account/edit.html:20
+#: account/templates/account/index.html:37
+#: account/templates/account/index.html:121
+#: account/templates/password_reset/password_change.html:79
+msgid "Account"
+msgstr ""
+
+#: account/templates/account/edit.html:34
+msgid "Edit account"
+msgstr ""
+
+#: account/templates/account/edit.html:36
+msgid ""
+"Only your first name and last name can be changed.\n"
+"                                                    "
+msgstr ""
+
+#: account/templates/account/edit.html:51
+msgid "Save"
+msgstr ""
+
+#: account/templates/account/edit.html:78
+msgid "Personal Infomation"
+msgstr ""
+
+#: account/templates/account/edit.html:86
+#: account/templates/password_reset/password_change.html:37
+#: account/templates/password_reset/password_change_done.html:76
+msgid "Password change"
+msgstr ""
+
+#: account/templates/account/index.html:20
+#: account/templates/password_reset/password_change.html:20
+msgid "My profile"
+msgstr ""
+
+#: account/templates/account/index.html:22
+msgid ""
+" This page contains all the information about your account. Your\n"
+"                                        account\n"
+"                                        informations are globally used for "
+"your registration."
+msgstr ""
+
+#: account/templates/account/index.html:39
+msgid ""
+"Basic info, like your name and address, that you use\n"
+"                                                    on the\n"
+"                                                    Legisly\n"
+"                                                    Platform."
+msgstr ""
+
+#: account/templates/account/index.html:55
+msgid "Basics"
+msgstr ""
+
+#: account/templates/account/index.html:66
+msgid "Display Name"
+msgstr ""
+
+#: account/templates/account/index.html:73
+msgid "Email"
+msgstr ""
+
+#: account/templates/account/index.html:81
+msgid "Last login"
+msgstr ""
+
+#: account/templates/account/index.html:92
+msgid "Edit display name"
+msgstr ""
+
+#: account/templates/account/index.html:128
+#: account/templates/password_reset/password_change.html:87
+msgid "Change password"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:6
+msgid "Header"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:11
+#: account/templates/email/email_confirm.html:14
+#: account/templates/email/email_document.html:11
+#: account/templates/email/email_document_change.html:11
+#: account/templates/email/email_document_file.html:11
+#: account/templates/email/email_form_fill.html:15
+#: account/templates/email/email_meet.html:13
+#: account/templates/email/email_meet_file.html:13
+#: account/templates/email/email_meet_note.html:14
+#: account/templates/email/email_message.html:11
+#: account/templates/email/email_note.html:12
+#: account/templates/email/email_note_file.html:13
+#: account/templates/email/email_order_bank_transfer.html:12
+#: account/templates/email/email_order_card.html:13
+#: account/templates/email/email_password.html:11
+#: account/templates/email/email_project_invite.html:15
+#: account/templates/email/email_project_invite_calendar.html:15
+#: account/templates/email/email_project_start.html:15
+#: account/templates/email/email_register_success.html:12
+#: account/templates/email/email_task.html:12
+#: account/templates/email/email_task_assignee.html:12
+#: account/templates/email/email_task_file.html:13
+#: account/templates/email/email_task_note.html:12
+msgid "Dear"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:12
+msgid "Message text here"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:13
+msgid "button"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:22
+#: account/templates/email/email_document.html:22
+#: account/templates/email/email_document_change.html:22
+#: account/templates/email/email_document_file.html:22
+#: account/templates/email/email_form_fill.html:32
+#: account/templates/email/email_meet.html:32
+#: account/templates/email/email_meet_file.html:30
+#: account/templates/email/email_meet_note.html:31
+#: account/templates/email/email_message.html:23
+#: account/templates/email/email_note.html:27
+#: account/templates/email/email_note_file.html:27
+#: account/templates/email/email_task.html:31
+#: account/templates/email/email_task_assignee.html:32
+#: account/templates/email/email_task_file.html:30
+#: account/templates/email/email_task_note.html:30
+msgid "Details"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:24
+#: account/templates/email/email_document.html:24
+#: account/templates/email/email_document_change.html:24
+#: account/templates/email/email_document_file.html:24
+#: account/templates/email/email_form_fill.html:34
+#: account/templates/email/email_meet.html:39
+#: account/templates/email/email_meet_file.html:39
+#: account/templates/email/email_meet_note.html:38
+#: account/templates/email/email_message.html:25
+#: account/templates/email/email_note.html:29
+#: account/templates/email/email_note_file.html:29
+#: account/templates/email/email_project_invite.html:31
+#: account/templates/email/email_project_invite_calendar.html:31
+#: account/templates/email/email_project_start.html:33
+#: account/templates/email/email_task_file.html:37
+msgid "Case name"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:25
+#: account/templates/email/email_document.html:25
+#: account/templates/email/email_document_change.html:25
+#: account/templates/email/email_document_file.html:25
+#: account/templates/email/email_form_fill.html:35
+#: account/templates/email/email_meet.html:40
+#: account/templates/email/email_meet_file.html:40
+#: account/templates/email/email_meet_note.html:39
+#: account/templates/email/email_message.html:27
+#: account/templates/email/email_note.html:31
+#: account/templates/email/email_note_file.html:30
+#: account/templates/email/email_project_invite.html:34
+#: account/templates/email/email_project_invite_calendar.html:35
+#: account/templates/email/email_project_start.html:37
+#: account/templates/email/email_task.html:44
+#: account/templates/email/email_task_assignee.html:45
+#: account/templates/email/email_task_file.html:38
+#: account/templates/email/email_task_note.html:35
+msgid "Case ID"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:36
+#: account/templates/email/email_document.html:37
+#: account/templates/email/email_document_change.html:37
+#: account/templates/email/email_document_file.html:39
+#: account/templates/email/email_form_fill.html:48
+#: account/templates/email/email_meet.html:66
+#: account/templates/email/email_meet_file.html:64
+#: account/templates/email/email_meet_note.html:74
+#: account/templates/email/email_message.html:31
+#: account/templates/email/email_note.html:50
+#: account/templates/email/email_note_file.html:45
+#: account/templates/email/email_order_bank_transfer.html:93
+#: account/templates/email/email_order_card.html:73
+#: account/templates/email/email_password.html:38
+#: account/templates/email/email_register_success.html:66
+#: account/templates/email/email_task.html:65
+#: account/templates/email/email_task_assignee.html:66
+#: account/templates/email/email_task_file.html:50
+#: account/templates/email/email_task_note.html:56
+msgid "Best regards,"
+msgstr ""
+
+#: account/templates/email/email_body_template.html:37
+#: account/templates/email/email_document.html:38
+#: account/templates/email/email_document_change.html:38
+#: account/templates/email/email_document_file.html:40
+#: account/templates/email/email_form_fill.html:49
+#: account/templates/email/email_meet.html:67
+#: account/templates/email/email_meet_file.html:65
+#: account/templates/email/email_meet_note.html:75
+#: account/templates/email/email_message.html:32
+#: account/templates/email/email_note.html:51
+#: account/templates/email/email_note_file.html:46
+#: account/templates/email/email_order_bank_transfer.html:94
+#: account/templates/email/email_order_card.html:74
+#: account/templates/email/email_password.html:39
+#: account/templates/email/email_project_invite.html:39
+#: account/templates/email/email_project_invite_calendar.html:40
+#: account/templates/email/email_project_start.html:236
+#: account/templates/email/email_register_success.html:67
+#: account/templates/email/email_task.html:66
+#: account/templates/email/email_task_assignee.html:67
+#: account/templates/email/email_task_file.html:51
+#: account/templates/email/email_task_note.html:57
+msgid "Legisly Team"
+msgstr ""
+
+#: account/templates/email/email_confirm.html:9
+msgid "Please confirm your email address"
+msgstr ""
+
+#: account/templates/email/email_confirm.html:15
+msgid ""
+"thank you for registering at Legisly.com! Please confirm your email address "
+"by clicking the button below to continue."
+msgstr ""
+
+#: account/templates/email/email_confirm.html:16
+msgid "Confirm e-mail address"
+msgstr ""
+
+#: account/templates/email/email_confirm.html:21
+msgid "or"
+msgstr ""
+
+#: account/templates/email/email_confirm.html:26
+msgid ""
+"If the button above does not work, paste this link into your web browser:"
+msgstr ""
+
+#: account/templates/email/email_document.html:6
+msgid "A new document has been uploaded"
+msgstr ""
+
+#: account/templates/email/email_document.html:12
+msgid "has prepared a new document for you to review. Document name"
+msgstr ""
+
+#: account/templates/email/email_document.html:13
+#: account/templates/email/email_document_change.html:13
+msgid "Review document"
+msgstr ""
+
+#: account/templates/email/email_document.html:26
+#: account/templates/email/email_document_change.html:26
+#: account/templates/email/email_document_file.html:26
+msgid "Document name"
+msgstr ""
+
+#: account/templates/email/email_document_change.html:6
+msgid "A document has been changed"
+msgstr ""
+
+#: account/templates/email/email_document_change.html:12
+msgid "has changed the document for you to review. Document name"
+msgstr ""
+
+#: account/templates/email/email_document_file.html:6
+msgid "A file has been uploaded to a document"
+msgstr ""
+
+#: account/templates/email/email_document_file.html:12
+msgid "uploaded a file to the document"
+msgstr ""
+
+#: account/templates/email/email_document_file.html:13
+msgid "View file"
+msgstr ""
+
+#: account/templates/email/email_document_file.html:27
+#: account/templates/email/email_task_file.html:33
+msgid "File name"
+msgstr ""
+
+#: account/templates/email/email_document_file.html:28
+#: account/templates/email/email_note_file.html:32
+#: account/templates/email/email_task_file.html:34
+msgid "Uploaded by"
+msgstr ""
+
+#: account/templates/email/email_footer.html:16
+msgid "Quick links"
+msgstr ""
+
+#: account/templates/email/email_footer.html:17
+msgid "Login to your Legisly account"
+msgstr ""
+
+#: account/templates/email/email_footer.html:18
+msgid "My tasks"
+msgstr ""
+
+#: account/templates/email/email_footer.html:19
+msgid "My cases"
+msgstr ""
+
+#: account/templates/email/email_footer.html:20
+msgid "My upcomig consultations"
+msgstr ""
+
+#: account/templates/email/email_footer.html:22
+msgid "Open a new legal case"
+msgstr ""
+
+#: account/templates/email/email_footer.html:24
+msgid "Have a question?"
+msgstr ""
+
+#: account/templates/email/email_footer.html:34
+msgid "Copyright © 2020 Legisly Solutions Kft. All rights reserved."
+msgstr ""
+
+#: account/templates/email/email_footer.html:42
+msgid "This e-mail was sent to you as a registered member of"
+msgstr ""
+
+#: account/templates/email/email_footer.html:43
+msgid "The e-mail was automaticaly generated, please do not reply to it."
+msgstr ""
+
+#: account/templates/email/email_form_fill.html:9
+msgid "A form has been completed"
+msgstr ""
+
+#: account/templates/email/email_form_fill.html:16
+msgid "has filled out the form"
+msgstr ""
+
+#: account/templates/email/email_form_fill.html:19
+msgid "Go to form"
+msgstr ""
+
+#: account/templates/email/email_form_fill.html:36
+msgid "Form name"
+msgstr ""
+
+#: account/templates/email/email_form_fill.html:37
+msgid "Name of editor"
+msgstr ""
+
+#: account/templates/email/email_meet.html:7
+msgid "You have been invited to a consultation"
+msgstr ""
+
+#: account/templates/email/email_meet.html:15
+msgid "invited you to a consultation. Please review the invitation"
+msgstr ""
+
+#: account/templates/email/email_meet.html:18
+#: account/templates/email/email_meet_note.html:19
+msgid "Check the consultation"
+msgstr ""
+
+#: account/templates/email/email_meet.html:22
+msgid "Join consultation"
+msgstr ""
+
+#: account/templates/email/email_meet.html:34
+#: account/templates/email/email_project_invite.html:33
+msgid "Invited by"
+msgstr ""
+
+#: account/templates/email/email_meet.html:35
+#: account/templates/email/email_meet_file.html:33
+#: account/templates/email/email_meet_note.html:34
+msgid "Consultation name"
+msgstr ""
+
+#: account/templates/email/email_meet.html:36
+#: account/templates/email/email_meet_file.html:36
+msgid "Short description"
+msgstr ""
+
+#: account/templates/email/email_meet.html:37
+#: account/templates/email/email_meet_file.html:37
+#: account/templates/email/email_meet_note.html:36
+#: account/templates/email/email_project_invite_calendar.html:33
+msgid "Meet start"
+msgstr ""
+
+#: account/templates/email/email_meet.html:38
+#: account/templates/email/email_meet_file.html:38
+#: account/templates/email/email_meet_note.html:37
+#: account/templates/email/email_project_invite_calendar.html:34
+msgid "Meet end"
+msgstr ""
+
+#: account/templates/email/email_meet.html:51
+#: account/templates/email/email_meet_file.html:51
+#: account/templates/email/email_meet_note.html:58
+msgid "How to join to the consultation?"
+msgstr ""
+
+#: account/templates/email/email_meet.html:54
+#: account/templates/email/email_meet_file.html:53
+#: account/templates/email/email_meet_note.html:61
+msgid ""
+"You can allways check your upcoming consultation on your account by clicking "
+"on the"
+msgstr ""
+
+#: account/templates/email/email_meet.html:56
+#: account/templates/email/email_meet_file.html:54
+#: account/templates/email/email_meet_note.html:63
+msgid "My consultations"
+msgstr ""
+
+#: account/templates/email/email_meet.html:57
+msgid ""
+"To join a consultation simply click on the join button. <strong>Please "
+"always be\n"
+"                accurate!</strong>"
+msgstr ""
+
+#: account/templates/email/email_meet_file.html:7
+msgid "A new file has been uploaded to your consultation"
+msgstr ""
+
+#: account/templates/email/email_meet_file.html:15
+msgid "uploaded a new file to your consultation"
+msgstr ""
+
+#: account/templates/email/email_meet_file.html:18
+msgid "Go to the consultation"
+msgstr ""
+
+#: account/templates/email/email_meet_file.html:34
+#: account/templates/email/email_note_file.html:31
+msgid "File name(s)"
+msgstr ""
+
+#: account/templates/email/email_meet_file.html:35
+#: account/templates/email/email_task.html:41
+#: account/templates/email/email_task_assignee.html:42
+msgid "Created by"
+msgstr ""
+
+#: account/templates/email/email_meet_file.html:55
+msgid ""
+"To join a\n"
+"            consultation simply click on the join button. <strong>Please "
+"always be accurate!</strong>"
+msgstr ""
+
+#: account/templates/email/email_meet_note.html:9
+msgid "A new note has been added to your consultation"
+msgstr ""
+
+#: account/templates/email/email_meet_note.html:16
+msgid "added a new note to your consultation"
+msgstr ""
+
+#: account/templates/email/email_meet_note.html:33
+#: account/templates/email/email_note.html:30
+msgid "Note created by"
+msgstr ""
+
+#: account/templates/email/email_meet_note.html:35
+msgid "Consultation description"
+msgstr ""
+
+#: account/templates/email/email_meet_note.html:44
+#: account/templates/email/email_note.html:37
+#: account/templates/email/email_task_note.html:42
+msgid "Content of note"
+msgstr ""
+
+#: account/templates/email/email_meet_note.html:65
+msgid ""
+"To join a consultation simply click on the join button.\n"
+"            <strong>Please always be accurate!</strong>"
+msgstr ""
+
+#: account/templates/email/email_message.html:6
+msgid "New message(s)"
+msgstr ""
+
+#: account/templates/email/email_message.html:12
+msgid "You have received new message(s) for your case"
+msgstr ""
+
+#: account/templates/email/email_message.html:16
+msgid "Message board"
+msgstr ""
+
+#: account/templates/email/email_message.html:26
+#: account/templates/email/email_project_invite.html:32
+#: account/templates/email/email_project_invite_calendar.html:32
+#: account/templates/email/email_project_start.html:41
+msgid "Client name"
+msgstr ""
+
+#: account/templates/email/email_note.html:6
+msgid "New note has been added"
+msgstr ""
+
+#: account/templates/email/email_note.html:14
+msgid "added a new note to the"
+msgstr ""
+
+#: account/templates/email/email_note.html:17
+msgid "Go to the note"
+msgstr ""
+
+#: account/templates/email/email_note_file.html:7
+msgid "A new file has been uploaded to a public note"
+msgstr ""
+
+#: account/templates/email/email_note_file.html:15
+msgid "uploaded a new file to a note in the case"
+msgstr ""
+
+#: account/templates/email/email_note_file.html:18
+msgid "Check the note"
+msgstr ""
+
+#: account/templates/email/email_note_file.html:33
+msgid "File description"
+msgstr ""
+
+#: account/templates/email/email_note_file.html:34
+msgid "Upload date"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:7
+#: account/templates/email/email_order_card.html:7
+msgid "Thank you for your order!"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:13
+#: account/templates/email/email_order_card.html:14
+msgid "We have received the following order from you"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:25
+#: account/templates/email/email_order_bank_transfer.html:47
+#: account/templates/email/email_order_bank_transfer.html:71
+#: account/templates/email/email_order_card.html:26
+#: account/templates/email/email_order_card.html:52
+msgid "Price"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:27
+msgid "Payment is not done yet"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:41
+msgid "Payment details"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:42
+msgid "Name of beneficiary"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:43
+msgid "Name of bank"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:44
+msgid "Account number"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:45
+msgid "Amount to transfer"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:46
+msgid "Announce"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:61
+#: account/templates/email/email_order_card.html:42
+msgid "Billing details"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:62
+#: account/templates/email/email_order_card.html:43
+msgid "Buyer name"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:63
+#: account/templates/email/email_order_card.html:44
+msgid "Buyer address"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:66
+#: account/templates/email/email_order_card.html:47
+msgid "VAT-number (if given)"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:69
+#: account/templates/email/email_order_card.html:50
+msgid "Contact name"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:75
+msgid "Please note, your case will not started until the payment is missing."
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:79
+#: account/templates/email/email_order_card.html:59
+msgid "Check my orders"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:82
+#: account/templates/email/email_order_card.html:62
+msgid "Legisly Wiki"
+msgstr ""
+
+#: account/templates/email/email_order_bank_transfer.html:84
+#: account/templates/email/email_order_card.html:64
+msgid "Need help? Check out our Wikipedia!"
+msgstr ""
+
+#: account/templates/email/email_order_card.html:28
+msgid "Payment done by card"
+msgstr ""
+
+#: account/templates/email/email_password.html:6
+msgid "Password reset"
+msgstr ""
+
+#: account/templates/email/email_password.html:12
+msgid ""
+"We have received a password reset request for your account. If the request "
+"was made by your please click the bottom below to reset your password. If "
+"you did not requested reseting your password please contact us by reply to "
+"this e-mail."
+msgstr ""
+
+#: account/templates/email/email_password.html:13
+msgid "Set new password"
+msgstr ""
+
+#: account/templates/email/email_password.html:22
+msgid "Your account details"
+msgstr ""
+
+#: account/templates/email/email_password.html:24
+msgid "First name"
+msgstr ""
+
+#: account/templates/email/email_password.html:25
+msgid "Last name"
+msgstr ""
+
+#: account/templates/email/email_password.html:27
+msgid "E-mail address"
+msgstr ""
+
+#: account/templates/email/email_project_invite.html:10
+msgid "You have been invited to collaborate in a legal case"
+msgstr ""
+
+#: account/templates/email/email_project_invite.html:18
+msgid "invited you to join a legal case named:"
+msgstr ""
+
+#: account/templates/email/email_project_invite.html:21
+msgid "Check invite"
+msgstr ""
+
+#: account/templates/email/email_project_invite.html:28
+#: account/templates/email/email_project_invite_calendar.html:28
+msgid "Details:"
+msgstr ""
+
+#: account/templates/email/email_project_invite.html:38
+#: account/templates/email/email_project_invite_calendar.html:39
+#: account/templates/email/email_project_start.html:235
+msgid "Best regards"
+msgstr ""
+
+#: account/templates/email/email_project_invite_calendar.html:10
+msgid "You have been invited to collaborate in a legal consultation"
+msgstr ""
+
+#: account/templates/email/email_project_invite_calendar.html:18
+msgid "invited you to join a legal consultation named:"
+msgstr ""
+
+#: account/templates/email/email_project_invite_calendar.html:21
+msgid "Respond the invite"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:10
+msgid "Congratulation! Your case is started!"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:16
+msgid "we have great news! Your case"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:18
+msgid "has been started and our professionals are already working on it!"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:20
+msgid "So what's next?"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:21
+msgid ""
+"To help you on your way with your legal case, we collected all the things "
+"you\n"
+"                    should know or do to success. Let's dive in to the "
+"Legisly Platform!"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:30
+msgid "Basic info about your case"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:45
+msgid "Client type"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:49
+msgid "Client address"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:56
+msgid "Case panel"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:59
+msgid "Invite someone(s) to this case"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:62
+msgid "Write a note"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:74
+msgid "Your tasks to do"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:76
+msgid ""
+"These tasks are automaticaly generated as the specified case has been\n"
+"                        started. Please always set the task as <i>Done</i> "
+"if you have completed it already.\n"
+"                        "
+msgstr ""
+
+#: account/templates/email/email_project_start.html:91
+msgid "Go to task"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:109
+msgid "Go to task manager"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:113
+#: account/templates/email/email_project_start.html:160
+msgid "Need help? Check our knowledge base!"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:125
+msgid "Forms to fill"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:127
+msgid ""
+"Completing the form(s) is the number one request for information to "
+"complete\n"
+"                        the order."
+msgstr ""
+
+#: account/templates/email/email_project_start.html:129
+msgid ""
+"Please fill in the required form(s) as soon as possible, otherwise we\n"
+"                            can\n"
+"                            not start the rowk.</span>"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:142
+msgid "Fill the form"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:156
+msgid "Go to form manager"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:172
+msgid "Upcoming consultation details"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:174
+msgid ""
+"Joining the consultations is very simple, but if you still have\n"
+"                        difficulties, you will find help in our knowledge "
+"base."
+msgstr ""
+
+#: account/templates/email/email_project_start.html:176
+msgid ""
+"Please always be accurate to\n"
+"                            the minute, our staff will be waiting at the "
+"agreed time.</span>"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:184
+msgid "Join<sup>*</sup>"
+msgstr ""
+
+#: account/templates/email/email_project_start.html:214
+msgid ""
+"Please note, as this is az online meeting, the virtual room\n"
+"                            is already exist, but our professional will only "
+"join at the scheduled time.\n"
+"                            "
+msgstr ""
+
+#: account/templates/email/email_register_success.html:6
+msgid "Welcome to the Legisly!"
+msgstr ""
+
+#: account/templates/email/email_register_success.html:13
+msgid ""
+"your registration to Legisly has been successful and now you can\n"
+"            log in to check your open cases or start a new at any time"
+msgstr ""
+
+#: account/templates/email/email_register_success.html:17
+msgid "Log in to your account"
+msgstr ""
+
+#: account/templates/email/email_register_success.html:28
+msgid ""
+"Starters\n"
+"                guide\""
+msgstr ""
+
+#: account/templates/email/email_register_success.html:32
+msgid "Knowdledge base"
+msgstr ""
+
+#: account/templates/email/email_register_success.html:33
+msgid "Please check out our ever-expanding knowledge base for help."
+msgstr ""
+
+#: account/templates/email/email_register_success.html:35
+msgid "AND"
+msgstr ""
+
+#: account/templates/email/email_register_success.html:55
+msgid ""
+"Follow us if you are interested in exciting everyday-law stories and "
+"articles."
+msgstr ""
+
+#: account/templates/email/email_task.html:7
+#: account/templates/email/email_task_assignee.html:7
+msgid "You have been assigned a new task"
+msgstr ""
+
+#: account/templates/email/email_task.html:15
+msgid " has a added a new task "
+msgstr ""
+
+#: account/templates/email/email_task.html:15
+msgid ""
+"and\n"
+"            marked you as a <strong>collaborator</strong>."
+msgstr ""
+
+#: account/templates/email/email_task.html:19
+#: account/templates/email/email_task_assignee.html:20
+#: account/templates/email/email_task_file.html:19
+#: account/templates/email/email_task_note.html:18
+msgid "Go to the task"
+msgstr ""
+
+#: account/templates/email/email_task.html:21
+#: account/templates/email/email_task.html:45
+#: account/templates/email/email_task_assignee.html:22
+#: account/templates/email/email_task_assignee.html:46
+#: account/templates/email/email_task_note.html:36
+msgid "Due date"
+msgstr ""
+
+#: account/templates/email/email_task.html:33
+#: account/templates/email/email_task_assignee.html:34
+#: account/templates/email/email_task_file.html:32
+#: account/templates/email/email_task_note.html:32
+msgid "Task name"
+msgstr ""
+
+#: account/templates/email/email_task.html:34
+#: account/templates/email/email_task_assignee.html:35
+msgid "Assignee"
+msgstr ""
+
+#: account/templates/email/email_task.html:36
+#: account/templates/email/email_task_assignee.html:37
+msgid "Collaborators"
+msgstr ""
+
+#: account/templates/email/email_task.html:43
+#: account/templates/email/email_task_assignee.html:44
+msgid "Case"
+msgstr ""
+
+#: account/templates/email/email_task.html:50
+#: account/templates/email/email_task_assignee.html:51
+msgid "Task description"
+msgstr ""
+
+#: account/templates/email/email_task_assignee.html:15
+msgid ""
+" has a new\n"
+"            task for you. Please log in to your account and respond to the "
+"task as soon as possible. You can find the\n"
+"            major details below. You have been nominated for this task."
+msgstr ""
+
+#: account/templates/email/email_task_file.html:7
+msgid "New file has been uploaded to your task"
+msgstr ""
+
+#: account/templates/email/email_task_file.html:16
+msgid "has a uploaded a new file for the task"
+msgstr ""
+
+#: account/templates/email/email_task_file.html:21
+#: account/templates/email/email_task_file.html:36
+#: account/templates/email/email_task_note.html:20
+msgid "Task due date"
+msgstr ""
+
+#: account/templates/email/email_task_file.html:35
+msgid "Date of crate"
+msgstr ""
+
+#: account/templates/email/email_task_note.html:7
+msgid "New note has been added to your task"
+msgstr ""
+
+#: account/templates/email/email_task_note.html:14
+msgid "added a new note to the task named"
+msgstr ""
+
+#: account/templates/email/email_task_note.html:33
+msgid "Task created by"
+msgstr ""
+
+#: account/templates/email/email_task_note.html:34
+msgid "Affected case"
+msgstr ""
+
+#: account/templates/password_reset/password_change.html:22
+msgid ""
+"This page contains all the information about your account. Your\n"
+"                                        account\n"
+"                                        informations are globally used for "
+"your registration"
+msgstr ""
+
+#: account/templates/password_reset/password_change.html:53
+msgid "Change"
+msgstr ""
+
+#: account/templates/password_reset/password_change_done.html:36
+msgid "Your password has been succesfully changed"
+msgstr ""
+
+#: account/templates/password_reset/password_change_done.html:68
+msgid "PersonalInfomation"
+msgstr ""
+
+#: account/templates/register/login.html:32
+msgid "Sign-In"
+msgstr ""
+
+#: account/templates/register/login.html:34
+msgid "Access the Legisly panel using your email and passcode."
+msgstr ""
+
+#: account/templates/register/login.html:50
+msgid "Sign in"
+msgstr ""
+
+#: account/templates/register/login.html:51
+msgid "Forgot you password?"
+msgstr ""
+
+#: account/templates/register/login.html:54
+msgid "New on our platform?"
+msgstr ""
+
+#: account/templates/register/login.html:57
+#: account/templates/register/login.html:59
+msgid "Create an account"
+msgstr ""
+
+#: account/templates/register/login.html:72
+#: account/templates/register/register.html:88
+msgid "Terms & Condition"
+msgstr ""
+
+#: account/templates/register/login.html:75
+#: account/templates/register/register.html:54
+#: account/templates/register/register.html:91
+msgid "Privacy Policy"
+msgstr ""
+
+#: account/templates/register/login.html:78
+#: account/templates/register/register.html:94
+msgid "Help"
+msgstr ""
+
+#: account/templates/register/login.html:82
+#: account/templates/register/login.html:89
+#: account/templates/register/register.html:98
+#: account/templates/register/register.html:105
+msgid "English"
+msgstr ""
+
+#: account/templates/register/login.html:96
+#: account/templates/register/register.html:112
+msgid "Español"
+msgstr ""
+
+#: account/templates/register/login.html:103
+#: account/templates/register/register.html:119
+msgid "Français"
+msgstr ""
+
+#: account/templates/register/login.html:110
+#: account/templates/register/register.html:126
+msgid "Türkçe"
+msgstr ""
+
+#: account/templates/register/login.html:120
+#: account/templates/register/register.html:136
+msgid "2021 Legisly. All Rights Reserved."
+msgstr ""
+
+#: account/templates/register/register.html:34
+#: account/templates/register/register.html:64
+msgid "Register"
+msgstr ""
+
+#: account/templates/register/register.html:36
+msgid "Create new Legisly account"
+msgstr ""
+
+#: account/templates/register/register.html:54
+#: account/templates/register/register.html:60
+msgid "I agree"
+msgstr ""
+
+#: account/templates/register/register.html:60
+msgid "Terms and Conditions"
+msgstr ""
+
+#: account/templates/register/register.html:67
+msgid "Already have an account?"
+msgstr ""
+
+#: account/templates/register/register.html:71
+#: account/templates/register/register.html:73
+msgid "Sign in instead"
+msgstr ""
+
+#: account/views.py:63
+msgid "Saved"
+msgstr ""
+
+#: account/views.py:152 account/views.py:215
+msgid "Welcome to legisly.com"
+msgstr ""
+
+#: account/views.py:157
+msgid "Welcome to Legisly"
+msgstr ""
+
+#: account/views.py:225
+msgid "Error email or token"
+msgstr ""

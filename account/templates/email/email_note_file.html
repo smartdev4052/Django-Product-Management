@@ -1,0 +1,55 @@
+{% include 'email/email_header.html' %}
+{% load i18n %}
+<!-- BODY BEGIN -->
+<tr>
+    <td style="padding: 30px 30px 15px 30px;">
+        <h2 style="font-size: 18px; color: #FDB913; font-weight: 600; margin: 0;">
+            {% trans "A new file has been uploaded to a public note" %}
+        </h2>
+    </td>
+</tr>
+<tr>
+    <td style="padding: 0 30px 20px">
+        <p style="margin-bottom: 10px;">{% trans "Dear" %} {{user_obj.first_name}} {{user_obj.last_name}},</p>
+        <p style="margin-bottom: 10px;">{{file.uploaded_by.first_name}} {{file.uploaded_by.last_name}}
+            {% trans "uploaded a new file to a note in the case" %} {{file.project.name}}.</p>
+        <a href="{{DOMAIN}}{% url 'project:project_note_index' file.project.id %}" target="_blank"
+            style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:600;line-height:44px;text-align:center;text-decoration:none;text-transform: uppercase; padding: 0 30px; margin: 20px 0px 20px 0px;">
+            {% trans "Check the note" %}</a>
+    </td>
+</tr>
+
+<!-- DETAILS START -->
+
+<tr>
+    <td>
+        <div style="width: 70%; background-color:#f5f6fa; margin: auto; margin-bottom: 30px; border-radius: 8px;">
+            <h2 style="font-size: 14px; font-weight: 600; text-transform: uppercase;">{% trans "Details" %}:</h2>
+            <p>
+                {% trans "Case name" %}: {{file.project.name}}<br>
+                {% trans "Case ID" %}: {{file.project.id}}<br>
+                {% trans "File name(s)" %}: {{file.name}}<br>
+                {% trans "Uploaded by" %}: {{file.uploaded_by.first_name}} {{file.uploaded_by.last_name}}<br>
+                {% trans "File description" %}: {{file.description|safe}}<br>
+                {% trans "Upload date" %}: {{file.created_at}}<br>
+            </p>
+        </div>
+    </td>
+</tr>
+
+<!-- DETAILS END -->
+
+<tr>
+    <td>
+        <p style="margin-bottom: 20px;">
+            {% trans "Best regards," %}<br>
+            {% trans "Legisly Team" %}
+        </p>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<!-- BODY END -->
+
+{% include 'email/email_footer.html' %}

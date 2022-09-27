@@ -1,0 +1,76 @@
+{% include 'email/email_header.html' %}
+{% load i18n %}
+<!-- BODY BEGIN -->
+<tr>
+    <td style="padding: 30px 30px 15px 30px;">
+        <h2 style="font-size: 18px; color: #FDB913; font-weight: 600; margin: 0;">{% trans "Welcome to the Legisly!" %}
+        </h2>
+    </td>
+</tr>
+<tr>
+    <td style="padding: 0 30px 20px">
+        <p style="margin-bottom: 10px;">{% trans "Dear" %} {{first_name}} {{last_name}}</p>
+        <p style="margin-bottom: 10px;">{% blocktrans %}your registration to Legisly has been successful and now you can
+            log in to check your open cases or start a new at any time{% endblocktrans %}</p>
+        <a href="{{DOMAIN}}{% url 'login' %}" target="_blank"
+            style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:600;line-height:44px;text-align:center;text-decoration:none;text-transform: uppercase; padding: 0 30px; margin: 20px 0px 20px 0px;">
+            {% trans "Log in to your account" %}</a>
+    </td>
+</tr>
+
+<!-- DETAILS START -->
+
+<tr>
+    <td>
+        <div
+            style="width: 70%; background-color:#f5f6fa; margin: auto; margin-bottom: 30px; border-radius: 8px; padding: 10px;">
+            <h2 style="font-size: 16px; font-weight: 800; text-transform: uppercase; color: black; ">
+                {% blocktrans%}Starters
+                guide"{% endblocktrans %}:</h2>
+            <a href="#" target="_blank"
+                style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:600;line-height:44px;text-align:center;text-decoration:none;text-transform: uppercase; padding: 0 30px; margin: 20px 0px 0px 0px;">
+                {% trans "Knowdledge base" %}</a>
+            <p>{% trans "Please check out our ever-expanding knowledge base for help." %}</p>
+            <h2 style="font-size: 16px; margin-top: 20px; font-weight: 800; text-transform: uppercase; color: black; ">
+                {% trans "AND" %}:</h2>
+            <ul style="margin: 10px -4px 0;padding: 0;">
+                <li style="display: inline-block; list-style: none; padding: 4px;"><a
+                        style="display: inline-block; height: 30px; width:30px;border-radius: 50%; background-color: #ffffff"
+                        href="https://www.facebook.com/legisly/" target="_blank"><img
+                            src="https://www.legisly.com/email_images/facebook.svg" height="30" alt="Facebook"></a></li>
+                <li style="display: inline-block; list-style: none; padding: 4px;"><a
+                        style="display: inline-block; height: 30px; width:30px;border-radius: 50%; background-color: #ffffff"
+                        href="https://www.instagram.com/legisly" target="_blank"><img
+                            src="https://www.legisly.com/email_images/instagram.svg" height="30" alt="Instragram"></a>
+                </li>
+                <li style="display: inline-block; list-style: none; padding: 4px;"><a
+                        style="display: inline-block; height: 30px; width:30px;border-radius: 50%; background-color: #ffffff"
+                        href="https://www.tiktok.com/@legislylegal" target="_blank"><img
+                            src="https://www.legisly.com/email_images/tiktok.svg" height="30" alt="TikTok"></a></li>
+                <li style="display: inline-block; list-style: none; padding: 4px;"><a
+                        style="display: inline-block; height: 30px; width:30px;border-radius: 50%; background-color: #ffffff"
+                        href="https://www.youtube.com/channel/UC7wcLdab_0c1d6Qc9vxtZWw" target="_blank"><img
+                            src="https://www.legisly.com/email_images/youtube.svg" height="30" alt="YouTube"></a></li>
+            </ul>
+            <p>{% trans "Follow us if you are interested in exciting everyday-law stories and articles." %}</p>
+
+        </div>
+    </td>
+</tr>
+
+<!-- DETAILS END -->
+
+<tr>
+    <td>
+        <p style="margin-bottom: 20px;">
+            {% trans "Best regards," %}<br>
+            {% trans "Legisly Team" %}
+        </p>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<!-- BODY END -->
+
+{% include 'email/email_footer.html' %}

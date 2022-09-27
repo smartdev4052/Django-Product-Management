@@ -1,0 +1,115 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Documents" %}: {{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"> <span class="nk-menu-icon"><em
+                                                            class="icon ni ni-files"></em></span>
+                                                    </em>&nbsp;{% trans "Documents" %}</h3>
+
+                                                <div class="nk-block-des text-soft">
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content">
+                                                <ul class="nk-block-tools g-3">
+                                                    <li>
+                                                        <div class="drodown"><a href="#"
+                                                                class="dropdown-toggle btn btn-icon btn-primary"
+                                                                data-toggle="dropdown"><em
+                                                                    class="icon ni ni-plus"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a
+                                                                            href="{% url 'project:project_document_create' project.id %}">
+                                                                            <span>
+                                                                                {% trans "Add document" %}
+                                                                            </span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans "Id" %}</th>
+                                                <th>{% trans "Name" %}</th>
+                                                <th>{% trans "Created by" %}</th>
+                                                <th>{% trans "Date" %}</th>
+                                                <th>{% trans "Last update" %}</th>
+                                                <th data-toggle="tooltip" data-placement="top" title="Need help? Move your cursor over the action button for more information.">{% trans "Action" %} <index><em class="icon ni ni-help-fill"></em></index></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for document in documents %}
+                                            <tr class="nk-tb-item">
+                                                <td>
+                                                    {{document.id}}
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'project:project_document_detail' project.id document.id %}"><strong>{{document.name}}</strong></a>
+                                                </td>
+                                                <td>
+                                                    {{document.from_user.first_name}} {{document.from_user.last_name}}
+                                                </td>
+                                                <td>
+                                                    {{document.created_at}}
+                                                </td>
+                                                <td>
+                                                    {{document.updated_at}}
+                                                <td>
+
+                                                    <a href="{% url 'project:project_document_detail' project.id document.id %}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% trans "View document" %}" style="margin:2px;"><em class="icon ni ni-eye"></em></em></a>
+                                                    <a href="{% url 'project:project_document_edit' project.id document.id %}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="{% trans "Edit document" %}" style="margin:2px;"><em class="icon ni ni-edit"></em></a>
+                                                    <a href="{% url 'project:project_document_pdf_generate' project.id document.id %}" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="{% trans "Generate PDF document" %}" style="margin:2px;"><em class="icon ni ni-file-pdf"></em></a>
+                                                    {% if request.user.profile.user_role == 2 %}
+                                                    <a href="" class="btn btn-danger btn-sm"  data-toggle="tooltip" data-placement="top" title="{% trans "Move to archives - document will not be deleted." %}" style="margin:2px;"><em class="icon ni ni-archived-fill"></em></a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+{% endblock %}

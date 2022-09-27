@@ -1,0 +1,112 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+Kliens {{client.name}}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Calendly</h3>
+                        </div><!-- .nk-block-head-content -->
+
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="card card-bordered">
+                        <div class="card-inner">
+
+                            <div id="myCalendar" class="vanilla-calendar"></div>
+                            <div id="slots"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+<script>
+    let myCalendar = new VanillaCalendar({
+        selector: "#myCalendar",
+        pastDates: false,
+        onSelect: (data, elem) => {
+            console.log(data, elem)
+
+            ajax_call(data)
+        }
+    })
+</script>
+
+<script>
+
+
+    function ajax_call(data) {
+        var url = "{% url 'main:json_calendly_view' %}";
+        var calendly_date = data.date
+        var divSlots = document.getElementById("slots")
+
+
+        payload = {
+            "calendly_date": calendly_date,
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            timeout: 5000,
+            dataType: "json",
+            data: payload,
+            success: function (data) {
+                console.log("SUCCESS", data)
+                if (data['response'] == "True") {
+                    divSlots.innerHTML = `
+                        <ul id="slot2">
+                            ${data.slots.map((slot) => `
+                            <li id='slot' data-date='${calendly_date}' data-time='${slot}'>${slot}</li>
+                            `).join("")}
+
+                        </ul>
+                        `
+                    $('#slot2').on('click', 'li', function (e) {
+                        var date = $(this).data('date');
+                        var time = $(this).data('time');
+                        return false;
+                    });
+
+                } else if (data['response'] == "False") {
+
+                } else if (data['response'] != null) {
+                    alert(data['response'])
+                }
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                alert("Something went wrong.")
+            },
+        });
+    }
+
+</script>
+
+
+
+
+
+
+
+
+{% endblock %}

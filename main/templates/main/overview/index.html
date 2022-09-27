@@ -1,0 +1,331 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Overview" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Overview" %}</h3>
+                                <div class="nk-block-des text-soft">
+                                </div>
+                            </div>
+                            <!--
+                                <div class="nk-block-head-content">
+                                <a href="{% url 'main:page_index' %}"
+                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                        class="icon ni ni-arrow-left"></em><span>{% trans "Back" %}</span></a>
+                                <a href="{% url 'main:page_index' %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex
+                                        d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                            </div> 
+                            -->
+                        </div>
+                        <div class="card">
+                            <div class="card-inner">
+                                <div class="align-center flex-wrap g-4">
+                                    <div class="nk-block-image w-120px flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 118">
+                                            <path d="M8.916,94.745C-.318,79.153-2.164,58.569,2.382,40.578,7.155,21.69,19.045,9.451,35.162,4.32,46.609.676,58.716.331,70.456,1.845,84.683,3.68,99.57,8.694,108.892,21.408c10.03,13.679,12.071,34.71,10.747,52.054-1.173,15.359-7.441,27.489-19.231,34.494-10.689,6.351-22.92,8.733-34.715,10.331-16.181,2.192-34.195-.336-47.6-12.281A47.243,47.243,0,0,1,8.916,94.745Z" transform="translate(0 -1)" fill="#f6faff"></path>
+                                            <rect x="18" y="32" width="84" height="50" rx="4" ry="4" fill="#fff"></rect>
+                                            <rect x="26" y="44" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                            <rect x="50" y="44" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                            <rect x="74" y="44" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                            <rect x="38" y="60" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                            <rect x="62" y="60" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                            <path d="M98,32H22a5.006,5.006,0,0,0-5,5V79a5.006,5.006,0,0,0,5,5H52v8H45a2,2,0,0,0-2,2v4a2,2,0,0,0,2,2H73a2,2,0,0,0,2-2V94a2,2,0,0,0-2-2H66V84H98a5.006,5.006,0,0,0,5-5V37A5.006,5.006,0,0,0,98,32ZM73,94v4H45V94Zm-9-2H54V84H64Zm37-13a3,3,0,0,1-3,3H22a3,3,0,0,1-3-3V37a3,3,0,0,1,3-3H98a3,3,0,0,1,3,3Z" transform="translate(0 -1)" fill="#798bff"></path>
+                                            <path d="M61.444,41H40.111L33,48.143V19.7A3.632,3.632,0,0,1,36.556,16H61.444A3.632,3.632,0,0,1,65,19.7V37.3A3.632,3.632,0,0,1,61.444,41Z" transform="translate(0 -1)" fill="#6576ff"></path>
+                                            <path d="M61.444,41H40.111L33,48.143V19.7A3.632,3.632,0,0,1,36.556,16H61.444A3.632,3.632,0,0,1,65,19.7V37.3A3.632,3.632,0,0,1,61.444,41Z" transform="translate(0 -1)" fill="none" stroke="#6576ff" stroke-miterlimit="10" stroke-width="2"></path>
+                                            <line x1="40" y1="22" x2="57" y2="22" fill="none" stroke="#fffffe" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+                                            <line x1="40" y1="27" x2="57" y2="27" fill="none" stroke="#fffffe" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+                                            <line x1="40" y1="32" x2="50" y2="32" fill="none" stroke="#fffffe" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+                                            <line x1="30.5" y1="87.5" x2="30.5" y2="91.5" fill="none" stroke="#9cabff" stroke-linecap="round" stroke-linejoin="round"></line>
+                                            <line x1="28.5" y1="89.5" x2="32.5" y2="89.5" fill="none" stroke="#9cabff" stroke-linecap="round" stroke-linejoin="round"></line>
+                                            <line x1="79.5" y1="22.5" x2="79.5" y2="26.5" fill="none" stroke="#9cabff" stroke-linecap="round" stroke-linejoin="round"></line>
+                                            <line x1="77.5" y1="24.5" x2="81.5" y2="24.5" fill="none" stroke="#9cabff" stroke-linecap="round" stroke-linejoin="round"></line>
+                                            <circle cx="90.5" cy="97.5" r="3" fill="none" stroke="#9cabff" stroke-miterlimit="10"></circle>
+                                            <circle cx="24" cy="23" r="2.5" fill="none" stroke="#9cabff" stroke-miterlimit="10"></circle>
+                                        </svg></div>
+                                    <div class="nk-block-content">
+                                        <div class="nk-block-content-head">
+                                            <h5>Having a legal problem?</h5>
+                                            <p class="text-soft">
+                                                Start a new project anytime in our webshop and let us find
+                                                the
+                                                best solution for you! 
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="nk-block-content flex-shrink-0 ml-auto">
+                                        <a href="/shop/" class="btn btn-lg btn-outline-primary">
+                                            Browse webshop</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-gs">
+                         <!--
+                            TASK
+                         -->
+                        {% if tasks.count > 0 %}
+                        <div class="col-lg-6 col-xxl-6">
+                            <div class="card h-100">
+                               <div class="card-inner border-bottom">
+                                  <div class="card-title-group">
+                                     <div class="card-title">
+                                        <h6 class="title"><em class="icon text-primary ni ni-list-check"></em>&nbsp;{% trans "My tasks" %}</h6>
+                                     </div>
+                                     <div class="card-tools"><a href="{% url 'main:task_index' %}" class="btn btn-primary">{% trans "View all" %}</a></div>
+                                  </div>
+                               </div>
+                               <ul class="nk-support">
+                                   {% for task in tasks %}
+                                  <li class="nk-support-item">
+                                    <div class="user-avatar-group">
+                                        {% for x in task.to_user.all %}
+                                        {% if x %}
+                                        <div class="user-avatar sm bg-primary">
+                                            <span style="cursor:pointer;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{x.first_name}} {{x.last_name}}">
+                                                {{x.first_name|make_list|first}}
+                                                {{x.last_name|make_list|first}}</span>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                     <div class="nk-support-content">
+                                        <div class="title">
+                                            <span>
+                                                <a href="{% url 'project:project_task_detail' task.project.id task.id %}">
+                                                    {{task.name|truncatechars:40}}
+                                                </a>
+                                                
+                                            </span>
+                                            <span class="badge badge-dot badge-dot-xs badge-warning ml-1">{{task.get_status_display}}</span></div>
+                                            <span class="time"><em class="icon ni ni-clock"></em>&nbsp;{{task.due_date}}</span>
+                                     </div>
+                                  </li>
+                                  {% endfor %}
+                               </ul>
+                            </div>
+                         </div>
+                         {% endif %}
+
+                         <!--
+                            MEET
+                         -->
+                         {% if meets.count > 0 %}
+                         <div class="col-lg-6 col-xxl-6">
+                             <div class="card h-100">
+                                <div class="card-inner border-bottom">
+                                   <div class="card-title-group">
+                                      <div class="card-title">
+                                         <h6 class="title"><em class="icon text-primary ni ni-video-fill"></em>&nbsp;{% trans "My consultations" %}</h6>
+                                      </div>
+                                      <div class="card-tools"><a href="{% url 'main:meet_index' %}" class="btn btn-primary">{% trans "View all" %}</a></div>
+                                   </div>
+                                </div>
+                                <ul class="nk-support">
+                                    {% for meet in meets %}
+                                   <li class="nk-support-item">
+                                     <div class="user-avatar-group">
+                                         {% for x in meet.to_user.all %}
+                                         {% if x %}
+                                         <div class="user-avatar sm bg-primary">
+                                             <span style="cursor:pointer;" data-toggle="tooltip"
+                                                 data-placement="top"
+                                                 title="{{x.first_name}} {{x.last_name}}">
+                                                 {{x.first_name|make_list|first}}
+                                                 {{x.last_name|make_list|first}}</span>
+                                         </div>
+                                         {% endif %}
+                                         {% endfor %}
+                                     </div>
+                                      <div class="nk-support-content">
+                                         <div class="title">
+                                             <span>
+                                                 <a href="{% url 'project:project_meet_detail' meet.project.id meet.id %}">
+                                                     {{meet.name|truncatechars:40}}
+                                                 </a>
+                                                 
+                                             </span>
+                                             {% if meet.url %}
+                                             <span class="btn btn-primary btn-sm ml-1" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}
+                                             Join meeting in new window.
+                                             {% endblocktranslate %}"><a href="{{meet.url}}" target="_blank"><em class="icon ni text-white ni-video-fill"></em></a></span>
+                                             {% endif %}
+                                        </div>
+                                             <span class="time"><em class="icon ni ni-clock"></em>&nbsp;{{meet.meet_start}} - <em class="icon ni ni-clock"></em>&nbsp;{{meet.meet_end}}</span>
+                                      </div>
+                                   </li>
+                                   {% endfor %}
+                                </ul>
+                             </div>
+                          </div>
+                          {% endif %}
+                        
+                          
+                           <!--
+                            PROJECT
+                         -->
+                        {% if projects.count > 0 %}
+                        <div class="col-lg-6 col-xxl-6">
+                            <div class="card h-100">
+                               <div class="card-inner border-bottom">
+                                  <div class="card-title-group">
+                                     <div class="card-title">
+                                        <h6 class="title"><em class="icon text-primary ni ni-package-fill"></em>&nbsp;{% trans "My cases" %}</h6>
+                                     </div>
+                                     <div class="card-tools"><a href="{% url 'project:project_index' %}" class="btn btn-primary">{% trans "All cases" %}</a></div>
+                                  </div>
+                               </div>
+                               <ul class="nk-support">
+                                   {% for project in projects %}
+                                  <li class="nk-support-item">
+                                    <div class="user-avatar-group">
+                                        {% if project.responsible_user %}
+                                        
+                                        <div class="user-avatar sm bg-primary">
+                                            <span style="cursor:pointer;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{{project.responsible_user.first_name}} {{project.responsible_user.last_name}}">
+                                                {{project.responsible_user.first_name|make_list|first}}
+                                                {{project.responsible_user.last_name|make_list|first}}</span>
+                                        </div>
+                                        {% endif %}
+                                       
+                                    </div>
+                                     <div class="nk-support-content">
+                                        <div class="title">
+                                            <span>
+                                                <a href="{% url 'project:project_detail' project.id %}">
+                                                    {{project.name|truncatechars:40}}
+                                                </a>
+                                                
+                                            </span>
+                                            <span class="badge badge-warning ml-1"><a href="{% url 'order:order_detail' project.order_number %}" class="text-white"> #{{project.order_number}}</a></span></div>
+                                            <b>{% trans "Client:" %}</b> {{project.client}}
+                                            <span class="time"><em class="icon ni ni-clock"></em>&nbsp;{{project.created_at}}</span>
+                                     </div>
+                                  </li>
+                                  {% endfor %}
+                               </ul>
+                            </div>
+                         </div>
+                         {% endif %}
+
+
+
+
+                        <!--
+                            ORDER
+                         -->
+                        {% if orders.count > 0 %}
+                        <div class="col-lg-6 col-xxl-6">
+                            <div class="card h-100">
+                               <div class="card-inner border-bottom">
+                                  <div class="card-title-group">
+                                     <div class="card-title">
+                                        <h6 class="title"><em class="icon text-primary ni ni-cart"></em>&nbsp;{% trans "My orders" %}</h6>
+                                     </div>
+                                     <div class="card-tools"><a href="{% url 'order:order_index' %}" class="btn btn-primary">{% trans "All orders" %}</a></div>
+                                  </div>
+                               </div>
+                               <ul class="nk-support">
+                                   {% for order in orders %}
+                                  <li class="nk-support-item">
+                                    <div class="user-avatar-group">
+                                        {% if order.product.image %}
+                                        
+                                        <div class="user-avatar bg-success"><img src="{{order.product.image.url}}" alt=""></div>
+                                        {% endif %}
+                                       
+                                    </div>
+                                     <div class="nk-support-content">
+                                        <div class="title">
+                                            <span>
+                                                <a href="{% url 'order:order_detail' order.id %}">
+                                                    {{order.name|truncatechars:40}}
+                                                </a>
+                                                
+                                            </span>
+                                            <span class="badge badge-dot badge-dot-xs badge-warning ml-1">{{order.get_status_display}}</span></div>
+                                           
+                                            <span class="time"><em class="icon ni ni-clock"></em>&nbsp;{{order.created_at}}</span>
+                                     </div>
+                                  </li>
+                                  {% endfor %}
+                               </ul>
+                            </div>
+                         </div>
+                         {% endif %}
+
+
+                        <!--
+                            ORDER
+                         -->
+                        {% if invites.count > 0 %}
+                        <div class="col-lg-6 col-xxl-6">
+                            <div class="card h-100">
+                               <div class="card-inner border-bottom">
+                                  <div class="card-title-group">
+                                     <div class="card-title">
+                                        <h6 class="title"><em class="icon text-primary ni ni-ticket-plus"></em>&nbsp;{% trans "My invitations" %}</h6>
+                                     </div>
+                                     <div class="card-tools"><a href="{% url 'project:invite_index' %}" class="btn btn-primary">{% trans "All invitations" %}</a></div>
+                                  </div>
+                               </div>
+                               <ul class="nk-support">
+                                   {% for invite in invites %}
+                                  <li class="nk-support-item">
+                                     <div class="nk-support-content">
+                                        <div class="title">
+                                            <span>
+                                                <a href="{% url 'project:invite_accept' invite.project.id %}">
+                                                    {{invite.project}}
+                                                </a>
+                                                
+                                            </span>
+                                            <div class="card-tools">
+                                            <a href="{% url 'project:invite_accept' invite.project.id %}" class="btn btn-sm btn-primary ml-1"><em class="icon ni ni-check-fill-c"></em>&nbsp;{% trans "Accept" %}</a>
+                                            <a href="{% url 'project:invite_decline' invite.project.id %}" class="btn btn-sm btn-danger ml-1"><em class="icon ni ni-cross-fill-c"></em>&nbsp;{% trans "Refuse" %}</a>
+                                            </div>
+                                        </div>
+                                           
+                                            <span class="time"><span data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Sender of the invitation{% endblocktranslate %}" ><em class="icon ni ni-user"></em>&nbsp;{{invite.sender.first_name}} {{invite.sender.last_name}}</span></span>
+                                     </div>
+                                  </li>
+                                  {% endfor %}
+                               </ul>
+                            </div>
+                         </div>
+                         {% endif %}
+                   
+                         
+                     
+
+                 
+            
+                 
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                        
+
+<!-- content @e -->
+
+
+{% endblock %}

@@ -1,0 +1,403 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "My cases" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "My cases" %}</h3>
+                                <div class="nk-block-des text-soft">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="align-center flex-wrap g-4">
+                                <div class="nk-block-image w-120px flex-shrink-0"><svg
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 118">
+                                        <path
+                                            d="M8.916,94.745C-.318,79.153-2.164,58.569,2.382,40.578,7.155,21.69,19.045,9.451,35.162,4.32,46.609.676,58.716.331,70.456,1.845,84.683,3.68,99.57,8.694,108.892,21.408c10.03,13.679,12.071,34.71,10.747,52.054-1.173,15.359-7.441,27.489-19.231,34.494-10.689,6.351-22.92,8.733-34.715,10.331-16.181,2.192-34.195-.336-47.6-12.281A47.243,47.243,0,0,1,8.916,94.745Z"
+                                            transform="translate(0 -1)" fill="#f6faff"></path>
+                                        <rect x="18" y="32" width="84" height="50" rx="4" ry="4" fill="#fff"></rect>
+                                        <rect x="26" y="44" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                        <rect x="50" y="44" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                        <rect x="74" y="44" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                        <rect x="38" y="60" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                        <rect x="62" y="60" width="20" height="12" rx="1" ry="1" fill="#e5effe"></rect>
+                                        <path
+                                            d="M98,32H22a5.006,5.006,0,0,0-5,5V79a5.006,5.006,0,0,0,5,5H52v8H45a2,2,0,0,0-2,2v4a2,2,0,0,0,2,2H73a2,2,0,0,0,2-2V94a2,2,0,0,0-2-2H66V84H98a5.006,5.006,0,0,0,5-5V37A5.006,5.006,0,0,0,98,32ZM73,94v4H45V94Zm-9-2H54V84H64Zm37-13a3,3,0,0,1-3,3H22a3,3,0,0,1-3-3V37a3,3,0,0,1,3-3H98a3,3,0,0,1,3,3Z"
+                                            transform="translate(0 -1)" fill="#798bff"></path>
+                                        <path
+                                            d="M61.444,41H40.111L33,48.143V19.7A3.632,3.632,0,0,1,36.556,16H61.444A3.632,3.632,0,0,1,65,19.7V37.3A3.632,3.632,0,0,1,61.444,41Z"
+                                            transform="translate(0 -1)" fill="#6576ff"></path>
+                                        <path
+                                            d="M61.444,41H40.111L33,48.143V19.7A3.632,3.632,0,0,1,36.556,16H61.444A3.632,3.632,0,0,1,65,19.7V37.3A3.632,3.632,0,0,1,61.444,41Z"
+                                            transform="translate(0 -1)" fill="none" stroke="#6576ff"
+                                            stroke-miterlimit="10" stroke-width="2"></path>
+                                        <line x1="40" y1="22" x2="57" y2="22" fill="none" stroke="#fffffe"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+                                        <line x1="40" y1="27" x2="57" y2="27" fill="none" stroke="#fffffe"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+                                        <line x1="40" y1="32" x2="50" y2="32" fill="none" stroke="#fffffe"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
+                                        <line x1="30.5" y1="87.5" x2="30.5" y2="91.5" fill="none" stroke="#9cabff"
+                                            stroke-linecap="round" stroke-linejoin="round"></line>
+                                        <line x1="28.5" y1="89.5" x2="32.5" y2="89.5" fill="none" stroke="#9cabff"
+                                            stroke-linecap="round" stroke-linejoin="round"></line>
+                                        <line x1="79.5" y1="22.5" x2="79.5" y2="26.5" fill="none" stroke="#9cabff"
+                                            stroke-linecap="round" stroke-linejoin="round"></line>
+                                        <line x1="77.5" y1="24.5" x2="81.5" y2="24.5" fill="none" stroke="#9cabff"
+                                            stroke-linecap="round" stroke-linejoin="round"></line>
+                                        <circle cx="90.5" cy="97.5" r="3" fill="none" stroke="#9cabff"
+                                            stroke-miterlimit="10"></circle>
+                                        <circle cx="24" cy="23" r="2.5" fill="none" stroke="#9cabff"
+                                            stroke-miterlimit="10"></circle>
+                                    </svg></div>
+                                <div class="nk-block-content">
+                                    <div class="nk-block-content-head">
+                                        <h5>{% trans "Having a legal problem?" %}</h5>
+                                        <p class="text-soft">
+                                            {% blocktrans %}Start a new project anytime in our webshop and let us find
+                                            the
+                                            best solution for you! {%endblocktrans%}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="nk-block-content flex-shrink-0 ml-auto">
+                                    <a href="{% url 'shop:shop_index' %}" class="btn btn-lg btn-outline-primary">
+                                        {% trans "Browse webshop" %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+
+
+
+
+                            <table class="datatable-init nk-tb-list nk-tb-ulist dataTable no-footer"
+                                data-auto-responsive="false" id="DataTables_Table_1"
+                                aria-describedby="DataTables_Table_1_info">
+                                <thead>
+                                    <tr class="nk-tb-item nk-tb-head">
+                                        <th class="nk-tb-col sorting sorting_asc" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="ID: activate to sort column descending" aria-sort="ascending">
+                                            <span class="sub-text">ID</span>
+                                        </th>
+                                        <th class="nk-tb-col sorting" tabindex="0" aria-controls="DataTables_Table_1"
+                                            rowspan="1" colspan="1"
+                                            aria-label="Filename: activate to sort column ascending"><span
+                                                class="sub-text">Case name</span></th>
+                                        <th class="nk-tb-col tb-col-mb sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="
+                                            Uploaded by
+                                        : activate to sort column ascending">
+                                            <span class="sub-text">Participants</span>
+                                        </th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Category: activate to sort column ascending"><span
+                                                class="sub-text">Next consultation</span></th>
+                                        <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="
+                                            Last update
+                                        : activate to sort column ascending">
+                                            <span class="sub-text">Project Start date</span>
+                                        </th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Final release: activate to sort column ascending"><span
+                                                class="sub-text">Status</span></th>
+                                        <th class="nk-tb-col nk-tb-col-tools text-right sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label=": activate to sort column ascending"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for project in projects %}
+                                    <tr class="nk-tb-item odd">
+                                        <td class="nk-tb-col sorting_1"><span
+                                                class="tb-lead">{{project.project.id}}</span>
+
+                                        </td>
+                                        <td class="nk-tb-col">
+
+                                            <span class="tb-lead">
+                                                <strong>
+                                                    {% if project.project.closed == True %}
+                                                    <span data-toggle="tooltip" data-placement="top"
+                                                        title=" {% blocktranslate %}Case has been closed. Please contact our operator to reopen it.{% endblocktranslate %}">
+                                                        <em
+                                                            class="icon ni ni-lock-fill">&nbsp;</em>{{project.project.name}}</span>
+                                                    {% else %}
+                                                    <a
+                                                        href="{% url 'project:project_detail' project.project.id %}">{{project.project.name}}</a>
+                                                    {% endif %}
+
+                                                </strong>
+                                                <span class="dot dot-primary d-md-none ml-1" data-toggle="tooltip"
+                                                    data-placement="top" title=""
+                                                    data-original-title="Preparatory version."></span>
+                                            </span>
+                                            <span><small><em
+                                                        class="icon ni ni-user-alt"></em></em>&nbsp;{{project.project.client}}</small></span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-mb">
+                                            <div class="user-avatar-group">
+                                                {% for x in project.project.team_project.all %}
+                                                {% if x.user %}
+                                                <div class="user-avatar sm bg-primary" data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="{{x.user.first_name}} {{x.user.last_name}}">
+                                                    <span style="cursor:pointer;">
+                                                        {{x.user.first_name|make_list|first}}
+
+                                                        {{x.user.last_name|make_list|first}}
+                                                    </span>
+
+                                                </div>
+
+                                                {% endif %}
+                                                {% endfor %}
+                                            </div>
+
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            {% if project.project.meet_project.last.meet_start%}
+                                            <small><em class="icon ni ni-calender-date"></em>&nbsp;
+                                                {{project.project.meet_project.last.meet_start}}
+                                            </small>
+                                            {% endif %}
+                                        <td class="nk-tb-col tb-col-lg"><small><em
+                                                    class="icon ni ni-calender-date"></em>&nbsp;{{project.created_at}}</small>
+                                        </td>
+
+                                        <td class="nk-tb-col tb-col-md">
+                                            {% if project.project.closed == True %}
+                                            <span class="badge badge-pill badge-secondary">Closed</span>
+                                            {% else %}
+                                            <span class="badge badge-pill badge-success">Open</span>
+                                            {% endif %}
+
+
+
+                                        </td>
+
+
+
+                                        <td class="nk-tb-col nk-tb-col-tools">
+                                            {% if project.project.closed == True %}
+                                            <em class="icon ni ni-lock-fill">
+                                                {% else %}
+                                                <ul class="nk-tb-actions gx-1">
+                                                    <li class="nk-tb-action-hidden"><a
+                                                            href="{% url 'project:project_detail' project.project.id %}"
+                                                            class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                            data-placement="top" title="" data-original-title="Open"><em
+                                                                class="icon ni ni-arrow-right-round-fill"></em>
+                                            </em></a>
+                                            </li>
+                                            {% if request.user.profile.user_role == 2 %}
+                                            <li class="nk-tb-action-hidden"><a
+                                                    href="{% url 'project:project_edit' project.project.id %}"
+                                                    class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                    data-placement="top" title="" data-original-title="Edit"><em
+                                                        class="icon ni ni-edit"></em></a>
+                                            </li>
+                                            {% endif %}
+                                            <div class="drodown"><a href="#"
+                                                    class="dropdown-toggle btn btn-icon btn-trigger"
+                                                    data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <ul class="link-list-opt no-bdr">
+
+                                                        <li><a
+                                                                href="{% url 'project:project_detail' project.project.id %}"><em
+                                                                    class="icon ni ni-home"></em><span>Case
+                                                                    overview</span></a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a
+                                                                href="{% url 'project:project_team_index' project.project.id %}"><em
+                                                                    class="icon ni ni-users"></em><span>Team
+                                                                </span></a></li>
+                                                        <li><a
+                                                                href="{% url 'project:project_message_index' project.project.id %}"><em
+                                                                    class="icon ni ni-mail"></em><span>Message
+                                                                    center</span></a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{% url 'project:project_meet_index' project.project.id %}"><em
+                                                                    class="icon ni ni-video"></em><span>Consultations</span></a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{% url 'project:project_task_index' project.project.id %}"><em
+                                                                    class="icon ni ni-list-check"></em><span>Tasks</span></a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{% url 'project:project_form_index' project.project.id %}"><em
+                                                                    class="icon ni ni-text-rich"></em><span>Forms</span></a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{% url 'project:project_document_index' project.project.id %}"><em
+                                                                    class="icon ni ni-files"></em><span>Documents</span></a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{% url 'project:project_file_index' project.project.id %}"><em
+                                                                    class="icon ni ni-folders"></em><span>Files
+                                                                </span></a></li>
+                                                        {% if request.user.profile.user_role == 2 %}
+                                                        <li class="divider"></li>
+                                                        <li><a
+                                                                href="{% url 'project:project_lawyer_index' project.project.id %}"><em
+                                                                    class="icon ni ni-lock"></em><span>Lawyer
+                                                                    panel</span></a>
+                                                        </li>
+                                                        <li><a
+                                                                href="{% url 'project:project_close' project.project.id %}"><em
+                                                                    class="icon ni ni-lock"></em><span>Close Project</span></a>
+                                                        </li>
+                                                        {% if project.project.archived == False %}
+                                                        <li><a
+                                                                href="{% url 'project:project_archive' project.project.id %}"><em
+                                                                    class="icon ni ni-lock"></em><span>Archive project</span></a>
+                                                        </li>
+                                                        {% else %}
+                                                        <li><a
+                                                                href="{% url 'project:project_unarchive' project.project.id %}"><em
+                                                                    class="icon ni ni-lock"></em><span>Unarchive project</span></a>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% endif %}
+                                                        <li class="divider"></li>
+                                                        <li><a href="http://help.legisly.com" target="_blank"><em
+                                                                    class="icon ni ni-book-read"></em><span>Knowdledge
+                                                                    base
+                                                                </span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            </ul>
+                                            {% endif %}
+                                        </td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!--
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>
+                                            {% trans "Name" %}</th>
+
+
+                                        <th>{% trans "Project" %}</th>
+                                        <th>{% trans "Created at" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for project in projects %}
+                                    <tr class="nk-tb-item">
+                                        <td>
+                                            {{project.project.id}}
+                                        </td>
+                                        <td><a href="{% url 'project:project_detail' project.project.id %}"><strong>
+                                                    {% if project.project.closed == True %}
+                                                    <em class="icon ni ni-lock-fill"></em>
+                                                    {% endif %}
+
+                                                    {{project.project.name}}
+                                                </strong></a>
+                                        </td>
+
+                                        <td>
+                                            {{project.project.client}}
+                                        </td>
+
+                                        <td>{{project.project.created_at}}</td>
+                                        <td>
+                                            <a href="{% url 'project:project_detail' project.project.id %}"
+                                                class="btn btn-outline-primary btn-sm"><em
+                                                    class="icon ni ni-eye"></em>&nbsp;{% trans "Details" %}</a>
+
+                                            {% if request.user.profile.user_role == 2 %}
+                                            <a href="{% url 'project:project_edit' project.project.id %}"
+                                                class="btn btn-outline-primary btn-sm">{% trans "Edit" %}</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            -->
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

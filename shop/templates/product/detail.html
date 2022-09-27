@@ -1,0 +1,13 @@
+
+{% extends "base_shop.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Termék {{product.name}}
+{% endblock %}
+
+
+{% block content %}
+<h2>Termék:  {{product.name}}</h2>
+    Név: {{product.name}}
+{% endblock %}

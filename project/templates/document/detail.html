@@ -1,0 +1,184 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Document" %}: {{document.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-content">
+                            {% include 'section/project_navbar.html' %}
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">{% trans "Document" %} / <strong
+                                                        class="text-primary small">{{document.name}}</strong></h3>
+
+                                            </div>
+                                            <div class="nk-block-head-content"><a
+                                                    href="{% url 'project:project_document_index' project.id %}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left">
+                                                    </em>
+                                                    <span>{% trans "Back"%}</span>
+                                                </a><a href="{% url 'project:project_document_index' project.id %}"
+                                                    class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                                        class="icon ni ni-arrow-left"></em></a>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="nk-block-head nk-block-head-line">
+                                        <h4 class="title overline-title text-base">{% trans "Information" %}</h4>
+                                    </div>
+                                    <div class="profile-ud-list" style="max-width: 100%;">
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Document name" %}</span>
+                                                <span class="profile-ud-value">{{document.name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Created by" %}
+                                                </span><span class="profile-ud-value">{{document.from_user.first_name}}
+                                                    {{document.from_user.last_name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Created at" %}
+                                                </span><span class="profile-ud-value">{{document.created_at}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Updated at" %}</span>
+                                                <span class="profile-ud-value">
+                                                    {{document.updated_at}}
+                                                </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Archived" %}
+                                                </span>
+                                                <span class="profile-ud-value">
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{document.archived}}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="nk-divider divider md"></div>
+                                <div class="nk-block">
+                                    <div class="nk-block-head nk-block-head-line">
+                                        <h4 class="title overline-title text-base">{% trans "Preview" %}</h4>
+                                    </div>
+                                    <span class="profile-ud-label">{{document.content|safe}}</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="nk-block mt-3">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head-content nk-block-between pb-3">
+                                        <h3 class="nk-block-title page-title">{% trans "Document" %} / <strong
+                                                class="text-primary small">{% trans "Files" %}</strong></h3>
+                                        <a href="" class="btn btn-primary btn-xs">+ {% trans "Add Document File" %}</a>
+                                    </div>
+
+                                    <table class="datatable-init table">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans "Id" %}</th>
+                                                <th>{% trans "File name" %}</th>
+                                                <th>{% trans "Uploaded by" %}</th>
+                                                <th>{% trans "Type" %}</th>
+                                                <th>{% trans "Archived?" %}</th>
+                                                <th>{% trans "Date" %}</th>
+                                                <th>{% trans "Action" %}</th>
+                                            </tr>
+                                        </thead>
+
+                                        <!--
+                                            ide hön a cuccos
+                                        -->
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="nk-block mt-3">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head-content nk-block-between pb-3">
+                                        <h3 class="nk-block-title page-title">{% trans "Document" %} / <strong
+                                                class="text-primary small">{% trans "Notes" %}</strong></h3>
+                                        <a href="" class="btn btn-primary btn-xs">+ {% trans "Add document Note" %} </a>
+                                    </div>
+
+                                    <div class="bq-note">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}

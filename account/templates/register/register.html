@@ -1,0 +1,151 @@
+{% extends 'base_auth.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %} Register | Legisly {% endblock title %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="nk-app-root">
+    <!-- main @s -->
+    <div class="nk-main ">
+        <!-- wrap @s -->
+        <div class="nk-wrap nk-wrap-nosidebar">
+            <!-- content @s -->
+            <div class="nk-content ">
+                <div class="nk-block nk-block-middle nk-auth-body wide-xs">
+                    <div class="brand-logo pb-4 text-center">
+                        <a href="/" class="logo-link">
+                            <img class="logo-light logo-img logo-img-lg"
+                                src="{% static '/assets/auth/images/logo.png' %}"
+                                srcset="{% static '/assets/auth/images/logo.png' %} 2x" alt="logo">
+                            <img class="logo-dark logo-img logo-img-lg"
+                                src="{% static '/assets/auth/images/logo.png' %}"
+                                srcset="{% static '/assets/auth/images/logo.png' %} 2x" alt="logo-dark">
+                        </a>
+                    </div>
+                    <div class="card card-bordered">
+                        <div class="card-inner card-inner-lg">
+                            <div class="nk-block-head">
+                                <div class="nk-block-head-content">
+                                    <div style="max-width: 100px; margin: auto; margin-bottom: 30px;">
+                                        <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg"><path d="m40 8h12" fill="none" stroke="#FDB913" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><rect fill="#fff" height="72" rx="2" stroke="#FDB913" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="50" x="23.5" y="3"></rect><path d="m26.5 13h44a0 0 0 0 1 0 0v58a2 2 0 0 1 -2 2h-40a2 2 0 0 1 -2-2v-58a0 0 0 0 1 0 0z" fill="#e3e7fe"></path><rect fill="#fff" height="14" rx="2" stroke="#FDB913" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="48" x="34.5" y="65"></rect><circle cx="23.5" cy="71" fill="#fff" r="16" stroke="#FDB913" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle><circle cx="23.5" cy="71" fill="#e3e7fe" r="12"></circle><path d="m18.44 70h10.12a1.45 1.45 0 0 1 1.44 1.44v5.09a1.45 1.45 0 0 1 -1.44 1.47h-10.12a1.45 1.45 0 0 1 -1.44-1.47v-5.09a1.45 1.45 0 0 1 1.44-1.44z" fill="#FDB913"></path><path d="m20 70v-2.53a3.5 3.5 0 0 1 7 0v2.53" fill="none" stroke="#FDB913" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><circle cx="23.5" cy="73.23" fill="#fff" r="1.5"></circle><path d="m22.5 74.23h2a0 0 0 0 1 0 0v1.24a.76.76 0 0 1 -.76.76h-.47a.76.76 0 0 1 -.76-.76v-1.24a0 0 0 0 1 -.01 0z" fill="#fff"></path><g fill="none" stroke="#FDB913" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m48.5 69.5v5"></path><path d="m50.5 70.79-4 2.52"></path><path d="m50.5 73.31-4-2.52"></path><path d="m57.17 69.5v5"></path><path d="m59.17 70.79-4 2.52"></path><path d="m59.17 73.31-4-2.52"></path><path d="m65.83 69.5v5"></path><path d="m67.83 70.79-4 2.52"></path><path d="m67.83 73.31-4-2.52"></path><path d="m74.5 69.5v5"></path><path d="m76.5 70.79-4 2.52"></path><path d="m76.5 73.31-4-2.52"></path></g><path d="m30.5 36h34v5h-34z" fill="#fff"></path><path d="m30.5 43.75h34v5h-34z" fill="#fff"></path><path d="m30.5 50.5h34v7h-34z" fill="#FDB913"></path><path d="m49.5 52.5-2.75 3-1.25-1.36" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="48.5" cy="23.5" fill="#c4cefe" r="7.5"></circle></svg>
+                                    </div>
+                                    <h4 class="nk-block-title">{% trans "Register" %}</h4>
+                                    <div class="nk-block-des">
+                                        <p>{% trans "Create new Legisly account" %}</p> 
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="" method="post" id="form">
+                                {% if messages %}
+                                {% for message in messages %}
+                                <li>
+                                    {{ message.tags }} -- {{ message }}
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                                {% csrf_token %}
+                                {{ form | crispy }}
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-control-xs custom-checkbox">
+                                        <input type="checkbox" required class="custom-control-input" id="privacy">
+                                        <label class="custom-control-label" for="privacy">{% trans "I agree" %} <a href="./page/privacy-policy" target="_blank">{% trans "Privacy Policy" %}</a></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-control-xs custom-checkbox">
+                                        <input type="checkbox" required class="custom-control-input" id="terms">
+                                        <label class="custom-control-label" for="terms">{% trans "I agree" %} <a href="../page/terms-of-use" target="_blank">{% trans "Terms and Conditions" %}</a></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button id="btn-register" class="btn btn-lg btn-primary btn-block">{% trans "Register" %}</button>
+                                </div>
+                            </form>
+                            <div class="form-note-s2 text-center pt-4">{% trans "Already have an account?" %}
+                                {% if request.GET.start_date and request.GET.date_time and request.GET.product_id %}
+
+                                <a
+                                    href="{% url 'login' %}?start_date={{request.GET.start_date}}&date_time={{request.GET.date_time}}&product_id={{request.GET.product_id}}"><strong>{% trans "Sign in instead" %}</strong></a>
+                                {% else %}
+                                <a href="{% url 'login' %}"><strong>{% trans "Sign in instead" %}</strong></a>
+                                {% endif %}
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="nk-footer nk-auth-footer-full">
+                    <div class="container wide-lg">
+                        <div class="row g-3">
+                            <div class="col-lg-6 order-lg-last">
+                                <ul class="nav nav-sm justify-content-center justify-content-lg-end">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../page/terms-of-use" target="_blank">{% trans "Terms & Condition" %}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../page/privacy-policy" target="_blank">{% trans "Privacy Policy" %}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="http://help.legisly.com" target="_blank">{% trans "Help" %}</a>
+                                    </li>
+                                    <form action="{% url 'set_language' %}" method="post" class="form-inline">{% csrf_token %}
+                                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                                        <div class="form-row align-items-center">
+                                            <div class="col-auto">
+                                                <select name="language" onchange='this.form.submit()' class="form-control form-control-sm">
+                                                    {% get_current_language as LANGUAGE_CODE %}
+                                                    {% get_available_languages as LANGUAGES %}
+                                                    {% get_language_info_list for LANGUAGES as languages %}
+                                                    {% for language in languages %}
+                                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected
+                                                        {%endif %}>
+                                                        {{ language.name_local }} ({{ language.code }})
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <!--
+                                                 <div class="col-auto"><button type="submit" class="btn btn-sm btn-warning"><i
+                                                        class="far fa-check-circle"></i>
+                                                    Kiválaszt</button>
+                                            </div>
+                                            -->
+                                           
+                                        </div>
+                                    
+                                    </form>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="nk-block-content text-center text-lg-left">
+                                    <p class="text-soft">&copy; {% trans "2021 Legisly. All Rights Reserved." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- wrap @e -->
+        </div>
+        <!-- content @e -->
+    </div>
+    <!-- main @e -->
+</div>
+
+
+<script>
+    const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-register')
+
+    form.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+</script>
+{% endblock %}

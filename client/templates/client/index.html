@@ -1,0 +1,89 @@
+{% extends "base_client.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Clients" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Clients" %}</h3>
+                                <div class="nk-block-des text-soft">
+                                    <p>{% trans "Clients (like you as a person or your company) are used to manage and cooperate cases. You can add, remove and manage roles of members of your client anytime. Please allways choose carefuly who to invite to your cases as the persons will see the messages and uploaded files." %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <ul class="nk-block-tools g-3">
+                                    <li>
+                                        <div class="drodown"><a href="#"
+                                                class="dropdown-toggle btn btn-icon btn-primary"
+                                                data-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a
+                                                            href="{% url 'client:client_create' %}"><span>{% trans "Add New client" %}</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{% trans "Id" %}</th>
+                                        <th scope="col">{% trans "Name" %}</th>
+                                        <th scope="col">{% trans "E-mail" %}</th>
+                                        <th scope="col">{% trans "Invite" %}</th>
+                                        <th scope="col">{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for client in clients %}
+                                    <tr>
+                                        <th>{{client.id}}</th>
+                                        <td>{{client.name}}</td>
+                                        <td>{{client.email}}</td>
+                                        <td></td>
+                                        <td>
+                                            <a href="{% url 'client:client_detail' client.id %}"
+                                                class="btn btn-outline-primary btn-sm">{% trans "Details" %}</a>
+                                            <a href="{% url 'client:client_edit' client.id %}"
+                                                class="btn btn-outline-warning btn-sm">{% trans "Edit" %}</a>
+                                            <a href="{% url 'client:client_archive' client.id %}"
+                                                class="btn btn-outline-danger btn-sm">{% trans "Archive" %}</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

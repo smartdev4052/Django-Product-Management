@@ -1,0 +1,168 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Edit document" %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">
+                                                    {% trans "Edit document" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktrans %}A new Google Meet consultation will be created
+                                                        with the
+                                                        selected participants.{% endblocktrans %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content"><a
+                                                    href="{% url 'project:project_document_index' project.id %}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left">
+                                                    </em>
+                                                    <span>{% trans "Back"%}
+
+                                                    </span></a><a
+                                                    href="{% url 'project:project_document_index' project.id %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex
+                                                        d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div id="div_id_variable_list" class="form-group mb-3"> <label
+                                            for="id_variable_list" class=" requiredField">
+                                            Variable list<span class="asteriskField">*</span> </label>
+                                        <div class=""> <select name="variable_list" class="select form-control"
+                                                id="id_variable_list">
+                                                <option value="" selected="">Please select</option>
+                                                {% for form_obj in form_qs %}
+                                                <option value="{{form_obj.id}}">{{form_obj.name}}</option>
+                                                {% endfor %}
+                                            </select> </div>
+                                    </div>
+
+                                    <ul class="preview-list mb-3" id="variable_list">
+
+                                    </ul>
+
+
+                                    <form method="post" autocomplete="off" enctype="multipart/form-data" id="form">
+                                        {% csrf_token %}
+
+                                        {{ form|crispy }}
+                                        <button type="submit" id="btn-save" class="btn btn-primary">
+                                            {% trans "Save" %}
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+
+<script>
+    const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-save')
+
+
+    form.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+
+</script>
+
+<script>
+
+    var variable_list = document.getElementById('variable_list')
+
+    $('#id_variable_list').change(function () {
+        var form_id = $(this).val();
+        //var calendar = document.getElementById('calendar')
+        //console.log(form_id)
+        ajax_call(form_id)
+
+    });
+
+    function copyText(value) {
+        //console.log(value)
+        var input = document.body.appendChild(document.createElement("input"));
+        input.value = value;
+        input.focus();
+        input.select();
+        document.execCommand('copy');
+        input.parentNode.removeChild(input);
+        alert('Copied: ' + value)
+    }
+
+    function ajax_call(form_id) {
+        var url = "{% url 'project:project_document_by_form' %}";
+
+        payload = {
+            "form_id": form_id,
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            timeout: 5000,
+            dataType: "json",
+            data: payload,
+            success: function (data) {
+                //console.log("SUCCESS", data)
+
+                Object.keys(data.form_obj2).forEach(function (k) {
+                    //console.log(k + ' - ' + data.form_obj2[k]);
+                    variable_list.innerHTML += `
+                        <a style="cursor:pointer;" href="#" onclick="copyText('${data.form_obj2[k]}')">
+                                            <li class="preview-item"><span
+                                                    class="badge badge-pill badge-secondary">${k} - ${data.form_obj2[k]}</span></li>
+                                        </a>
+                    `
+                });
+
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                alert("Not valid form")
+            },
+        });
+    }
+</script>
+
+
+
+
+
+
+{% endblock %}

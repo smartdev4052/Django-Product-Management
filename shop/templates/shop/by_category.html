@@ -1,0 +1,150 @@
+{% extends "base_shop.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Products" %} / {{category.name}}
+{% endblock %}
+
+{% block content %}
+
+<!-- content @s -->
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">{% trans "Products" %} / {{category.name}}</h3>
+                        </div><!-- .nk-block-head-content -->
+
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="row g-gs">
+                        {% for product in products %}
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="card card-bordered product-card">
+                                <div class="product-thumb">
+                                    <a href="{% url 'shop:shop_detail' slug=product.slug %}">
+                                        {% if product.image %}
+                                        <img class="card-img-top" src="{{product.image.url}}" alt="">
+                                        {% endif %}
+                                    </a>
+                                    {% if product.label %}
+                                    <ul class="product-badges">
+                                        <li><span class="badge badge-primary badge-success">{{product.label}}</span></li>
+                                    </ul>
+                                    {% endif %}
+
+                                </div>
+                                <div class="card-inner text-center">
+                                    <ul class="product-tags">
+                                        <li><a href="#">{{product.category}}</a></li>
+                                    </ul>
+                                    <h5 class="product-title"><a
+                                            href="{% url 'shop:shop_detail' slug = product.slug %}">{{product.name}}</a>
+                                    </h5>
+                                    <div class="product-price text-primary h5">
+                                        {{product.price}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .col -->
+                        {% endfor%}
+                    </div>
+                </div><!-- .nk-block -->
+                <div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct"
+                    data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h5 class="nk-block-title">{% trans "New Product" %}</h5>
+                            <div class="nk-block-des">
+                                <p>{% trans "Add information and add new product." %}</p>
+                            </div>
+                        </div>
+                    </div><!-- .nk-block-head -->
+                    <div class="nk-block">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="product-title">{% trans "Product Title" %}</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="product-title">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="regular-price">{% trans "Regular Price" %}</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="regular-price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="sale-price">{% trans "Sale Price" %}</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="sale-price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="stock">{% trans "Stock" %}</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="stock">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="SKU">{% trans "SKU" %}</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="SKU">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="category">{% trans "Category" %}</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="category">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="tags">{% trans "Tags" %}</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" id="tags">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="upload-zone small bg-lighter my-2">
+                                    <div class="dz-message">
+                                        <span class="dz-message-text">{% trans "Drag and drop file" %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary"><em
+                                        class="icon ni ni-plus"></em><span>{% trans "Add New" %}</span></button>
+                            </div>
+                        </div>
+                    </div><!-- .nk-block -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+
+
+{% endblock %}

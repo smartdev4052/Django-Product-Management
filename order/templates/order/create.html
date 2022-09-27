@@ -1,0 +1,475 @@
+{% extends "base_order.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %}
+{% trans "Choose your client" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head nk-block-head-sm">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{{product.name}}</h3>
+                                <div class="nk-block-des text-soft">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <a href="{% url 'shop:shop_detail' slug=product.slug %}"
+                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                        class="icon ni ni-arrow-left"></em><span>{% blocktranslate %}Back
+                                            {% endblocktranslate %}</span></a>
+                                <a href="{% url 'shop:shop_detail' slug=product.slug %}"
+                                    class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                        class="icon ni ni-arrow-left"></em></a>
+                            </div>
+                        </div>
+                    </div><!-- .nk-block-head -->
+                    <div class="card card-preview">
+                        <div class="card-inner card-inner-lg">
+                            <div class="preview-block">
+                                <div class="nk-block-head-content">
+                                    <h4 class="nk-block-title">{% trans "Selected product" %}</h4>
+                                    <div class="nk-block-des">
+                                    </div>
+                                </div>
+
+                                <ul class="nk-top-products mt-4">
+
+                                    <li class="item">
+                                        {% if product.image %}
+                                        <div class="user-avatar sq bg-success-dim mr-3"><img src="{{product.image.url}}"
+                                                alt=""></div>
+                                        {% else %}
+                                        <div class="user-avatar sq bg-success-dim mr-3 text-primary"><span>O</span></div>
+                                        {% endif %}
+                                        <div class="info">
+                                            <div class="title">{{product.name}}</div>
+                                            <div class="price">{{product.short_description|truncatechars:200}}</div>
+                                        </div>
+                                        <div class="total">
+                                            <div class="amount">{{product.price}} Ft</div>
+                                            <div class="count">1 piece</div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if product.calendar == True %}
+                    <div class="card card-preview">
+                        <div class="card-inner card-inner-lg">
+                            <div class="preview-block">
+                                <div class="nk-block-head-content">
+                                    <h4 class="nk-block-title">{% trans "Choose date" %}</h4>
+
+                                    <div class="nk-block-des">
+                                    </div>
+                                </div>
+
+
+                                <div id="myCalendar" class="vanilla-calendar"></div>
+                                <div id="slots"></div>
+
+                                <h4 class="mt-3" id="currentDate"></h4>
+
+                                <h4 class="mt-3" id="currentDateWidget"></h4>
+                                <a href="{% url 'order:order_create' product_id %}" id="refresh_calendar"
+                                    class="btn btn-primary mt-2 d-none">{% trans "Choose another date" %}</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="card card-preview">
+                        <div id="info" class=""></div>
+                    </div>
+
+                    <div class="alert alert-pro alert-warning mt-2">
+                        <div class="alert-text">
+                            <h6>{% trans "What will happen next?" %}</h6>
+                            <p>
+                                1.
+                                {% blocktranslate %}If you do not have a client yet, you will have to create it. Do not
+                                worry, it
+                                takes just a few steps. {% endblocktranslate %}<br>
+                                2.
+                                {% blocktranslate %}Once you created your order your online legal case will be started.
+                                You will
+                                receive some automated tasks, like create your e-signatere uf you do not have it yet.
+                                {% endblocktranslate %}<br>
+                                3.
+                                {% blocktranslate %}You will have to fill out some product-specific forms.
+                                {%endblocktranslate %}<br>
+                                4.
+                                <strong>{% blocktranslate %}Do not worry if you stuck or have question, you can contact
+                                    us anytime
+                                    using the messanger of the platform.{% endblocktranslate %}</strong><br>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="card card-preview">
+                        <div class="card-inner card-inner-lg">
+                            <div class="preview-block">
+                                <div class="nk-block-head-content mb-4">
+                                    <h4 class="nk-block-title">{% trans "Please choose your client or create a new one" %} </h4>
+                                    <div class="nk-block-des">
+                                    </div>
+                                </div>
+
+
+                                <form method="post" id="form">
+                                    {% csrf_token %}
+
+                                    {{ form|crispy }}
+                                    {% if request.GET.start_date and request.GET.date_time and request.GET.product_id %}
+                                    <a href="{% url 'client:client_create'%}?start_date={{request.GET.start_date}}&date_time={{request.GET.date_time}}&product_id={{product_id}}"
+                                        class="btn btn-outline-warning btn-md"><small>
+                                            <em class="icon ni ni-user-add-fill"></em>&nbsp;
+                                            {% trans "Don't have a client? Let's create one!" %}
+                                        </small></a>
+
+                                    {% else %}
+                                    <a href="{% url 'client:client_create'%}?product_id={{product_id}}"
+                                        class="btn btn-outline-warning btn-md"><small>
+                                            <em class="icon ni ni-user-add-fill"></em>
+                                            &nbsp;{% trans "Don't have a client? Let's create one!" %}
+                                        </small></a>
+                                    {% endif %}
+
+
+
+                                    <button type="submit" id="btn-save"
+                                        class="mt-3 btn btn-warning btn-lg btn-block"><em
+                                            class="icon ni ni-check-fill-c"></em>&nbsp;
+                                        {% trans "Proceed order and checkout" %}
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="commentState" data-comment-state="{{product.comment}}"></div>
+
+{% if request.GET.start_date and request.GET.date_time and request.GET.product_id %}
+<div id="settings" data-url-start-date="{{request.GET.start_date}}" data-url-date-time="{{request.GET.date_time}}"
+    data-url-product-id="{{request.GET.product_id}}"></div>
+{% else %}
+<div id="settings" data-url-start-date="" data-url-date-time="" data-url-product-id=""></div>
+
+{% endif %}
+
+
+
+
+<script>
+    var commentState = document.getElementById('commentState')
+    const comment = document.getElementById('div_id_comment')
+    const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-save')
+
+    if(commentState.dataset.commentState == 'False'){
+        comment.remove()
+    }
+
+    form.addEventListener('submit', function () {
+
+        btnSave.innerHTML += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <span> </span>'
+        btnSave.setAttribute("disabled", "true")
+    });
+</script>
+
+<script>
+    var settings = document.getElementById('settings')
+    var refreshCalendar = document.getElementById('refresh_calendar')
+
+
+
+    if (settings.dataset.urlStartDate || settings.dataset.urlDateTime || settings.dataset.urlProductId) {
+
+        var url_start_date = settings.dataset.urlStartDate
+        var url_date_time = settings.dataset.urlDateTime
+        var url_product_id = settings.dataset.urlProductId
+        console.log(url_start_date, url_date_time, url_product_id)
+        document.getElementById('id_date_start').value = url_start_date
+        document.getElementById('id_time_start').value = url_date_time
+        document.getElementById('id_duration').value = 60
+        refreshCalendar.classList.remove('d-none')
+        document.getElementById('currentDateWidget').innerHTML = `Choosed date: ${url_start_date} ${url_date_time}`
+
+    } else {
+
+
+
+        let myCalendar = new VanillaCalendar({
+
+            selector: "#myCalendar",
+            pastDates: false,
+            datesFilter: true,
+            months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            shortWeekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+
+
+
+            availableWeekDays: [
+                { day: 'monday' },
+                { day: 'tuesday' },
+                { day: 'wednesday' },
+                { day: 'thursday' },
+                { day: 'friday' },
+            ],
+
+            onSelect: (data, elem) => {
+                console.log(data, elem)
+
+                ajax_call(data)
+            }
+        })
+
+
+    } // elsevége
+</script>
+
+<script>
+
+
+    function ajax_call(data) {
+        var url = "{% url 'order:json_slot' %}";
+        var calendly_date = data.date
+        var product_id = '{{product.id}}'
+        var divSlots = document.getElementById("slots")
+
+
+        payload = {
+            "calendly_date": calendly_date,
+            "product_id": product_id
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            timeout: 5000,
+            dataType: "json",
+            data: payload,
+            success: function (data) {
+                console.log("SUCCESS", data)
+                if (data['response'] == "True") {
+                    divSlots.innerHTML = `
+                        <ul id="slot2" class="list-inline">
+                            ${data.slots.map((slot) => `
+                            <li class="list-inline-item slot" id='slot' data-date='${calendly_date}' data-time='${slot}'>${slot}</li>
+                            `).join("")}
+
+                        </ul>
+                        `
+                    $('#slot2').on('click', 'li', function (e) {
+                        var start_date = $(this).data('date');
+                        var start_time = $(this).data('time');
+                        document.getElementById('currentDate').innerHTML = `Choosed date: ${start_date} ${start_time}`
+                        document.getElementById('id_date_start').value = start_date
+                        document.getElementById('id_time_start').value = start_time
+                        document.getElementById('id_duration').value = data.duration
+                        $(this).addClass('slot-active').siblings().removeClass('slot-active');
+                        return false;
+                    });
+
+                } else if (data['response'] == "False") {
+
+                } else if (data['response'] != null) {
+                    alert(data['response'])
+                }
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                alert("Something went wrong.")
+            },
+        });
+    }
+
+</script>
+
+<script>
+
+    document.getElementById('id_client').addEventListener('change', function () {
+        var client_id = this.value
+
+        payload = {
+            "client_id": client_id,
+        }
+
+        $.ajax({
+            type: 'GET',
+            dataType: "json",
+            url: "{% url 'order:order_ajax_client' %}",
+            data: payload,
+            timeout: 5000,
+            success: function (data) {
+                if (data['response'] == "True") {
+                    console.log(data)
+                    render(data)
+                } else if (data['response'] != null) {
+                    //alert("Kérem válasszon ki egy ")
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Please select client',
+
+                    })
+                }
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                //alert("Something went wrong.")
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Please select client or create another',
+
+                })
+            },
+        });
+
+    });
+
+
+    function render(data) {
+        var product_id = '{{product_id}}'
+        console.log(data.client.id)
+
+        document.getElementById('info').innerHTML = `
+
+        <div class="card-inner card-inner-lg">
+            <div class="nk-block-head nk-block-head-lg">
+                <div class="nk-block-between">
+                    <div class="nk-block-head-content">
+                        <h4 class="nk-block-title">Client Information</h4>
+                        <div class="nk-block-des">
+                        </div>
+                    </div>  
+                </div>
+            </div>
+
+            <div class="nk-block">
+                <div class="nk-data data-list">
+                    <div class="data-head">
+                        <h6 class="overline-title">Basics information</h6>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Full Name</span><span
+                                class="data-value">${data.client.name}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Email</span><span
+                                class="data-value">${data.client.email}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Type</span><span
+                                class="data-value">${data.client.type}{{client.get_type_display}}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">First name</span><span
+                                class="data-value">${data.client.first_name}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Last name</span><span
+                                class="data-value">${data.client.last_name}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Mother name</span><span
+                                class="data-value">${data.client.mother_name}</span></div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Country</span><span
+                                class="data-value">${data.country}</span></div>
+                    </div>
+
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">State</span><span
+                                class="data-value">${data.state}</span></div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">City</span><span
+                                class="data-value">${data.city}</span></div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Address</span><span
+                                class="data-value">${data.client.house_number}</span></div>
+                    </div>
+
+                </div>
+
+                <div class="nk-data data-list">
+                    <div class="data-head">
+                        <h6 class="overline-title">Billing information</h6>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Billing name</span><span
+                                class="data-value">${data.client.name}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Billing country</span><span
+                                class="data-value">${data.billing_country}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Billing state</span><span
+                                class="data-value">${data.billing_state}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Billing city</span><span
+                                class="data-value">${data.billing_city}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Billing address</span><span
+                                class="data-value">${data.client.billing_house_number}</span></div>
+
+                    </div>
+                    <div class="data-item">
+                        <div class="data-col"><span class="data-label">Tax number</span><span
+                                class="data-value">${data.client.tax_number}</span></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+              
+   `
+
+
+
+    }
+
+</script>
+
+{% endblock %}

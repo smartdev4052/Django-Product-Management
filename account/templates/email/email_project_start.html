@@ -1,0 +1,246 @@
+{% include 'email/email_header.html' %}
+{% load i18n %}
+<!-- BODY BEGIN -->
+
+<table style="width:100%;max-width:800px;margin:0 auto;background-color:#ffffff; text-align: center;">
+    <tbody>
+        <tr>
+            <td style="padding: 30px 30px 15px 30px;">
+                <h2 style="font-size: 18px; color: #FDB913; font-weight: 600; margin: 0;">
+                    {% trans "Congratulation! Your case is started!" %}</h2>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0 30px 20px">
+                <p style="margin-bottom: 10px;">{% trans "Dear" %} {{user_obj.first_name}} {{user_obj.last_name}},</p>
+                <p style="margin-bottom: 10px;">{% trans "we have great news! Your case" %}
+                    <strong>{{project.name}}</strong>
+                    {% trans "has been started and our professionals are already working on it!" %}
+                <h3 style="text-align: center; color: black; text-transform: uppercase; margin-top: 20px; ">
+                    {% trans "So what's next?" %}</h3>
+                <p>{% blocktranslate %}To help you on your way with your legal case, we collected all the things you
+                    should know or do to success. Let's dive in to the Legisly Platform!{% endblocktranslate %}</p>
+
+                <!-- CASE DETAILS -->
+
+                <div
+                    style="border-width: 1px; border-color: #eaebf0; border-style: solid; padding: 10px; width: 90%; background-color:#f5f6fa; margin: auto; margin-top: 30px;border-radius: 8px;">
+                    <h2
+                        style="text-align: center; font-size: 1.3m; color: black; text-transform: uppercase; margin-top: 10px; margin-bottom: 10px; ">
+                        {% trans "Basic info about your case" %}</h2>
+                    <table style="background-color: #f5f6fa; text-align: left;">
+                        <tr>
+                            <td><strong>{% trans "Case name" %}:</strong></td>
+                            <td>{{project.name}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{% trans "Case ID" %}:</strong></td>
+                            <td>{{project.id}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{% trans "Client name" %}:</strong></td>
+                            <td>{{client.name}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{% trans "Client type" %}:</strong></td>
+                            <td>{{client.type}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>{% trans "Client address" %}:</strong></td>
+                            <td>{{client.country}} {{client.city}} {{client.state}} {{client.house_number}}</td>
+                        </tr>
+                    </table>
+
+                    <a href="{{DOMAIN}}{% url 'project:project_detail' project.id %}" target="_blank"
+                        style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:10px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-left: 5px; padding-right: 5px; margin: 20px 0px 0px 0px;">
+                        {% trans "Case panel" %}</a>&nbsp;
+                    <a href="{{DOMAIN}}{% url 'project:project_team_invite' project.id %}" target="_blank"
+                        style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:10px;font-weight:700;text-align:ce;text-decoration:none;text-transform: uppercase; padding-left: 5px; padding-right: 5px; margin: 20px 0px 0px 0px;">
+                        {% trans "Invite someone(s) to this case" %}</a>&nbsp;
+                    <a href="{{DOMAIN}}{% url 'project:project_note_create' project.id %}" target="_blank"
+                        style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:10px;font-weight:700;text-align:ce;text-decoration:none;text-transform: uppercase; padding-left: 5px; padding-right: 5px; margin: 20px 0px 0px 0px;">
+                        {% trans "Write a note" %}</a>
+
+                </div>
+
+                <!-- CASE DETAILS END-->
+
+                <!-- TASKS START -->
+
+                <div
+                    style="border-width: 1px; border-color: #eaebf0; border-style: solid; padding: 10px; width: 90%; background-color:#f5f6fa; margin: auto; margin-top: 40px;border-radius: 8px;">
+                    <h2
+                        style="text-align: center; font-size: 1.3m; color: black; text-transform: uppercase; margin-top: 10px; margin-bottom: 10px; ">
+                        {% trans "Your tasks to do" %}</h2>
+                    <p>
+                        {% blocktranslate %}These tasks are automaticaly generated as the specified case has been
+                        started. Please always set the task as <i>Done</i> if you have completed it already.
+                        {% endblocktranslate %}
+                    </p>
+                    <table style="background-color: #f5f6fa; text-align: left;">
+                        {% for task in task_qs %}
+                        <tr>
+                            <td><strong><a
+                                        href="{{DOMAIN}}{% url 'project:project_task_detail' project.id task.id %}">{{task.name}}</strong>
+                            </td>
+                            <td><strong>Due date:</strong> {{task.due_date}}</td>
+                            <td>
+                                <a href="{{DOMAIN}}{% url 'project:project_task_detail' project.id task.id %}"
+                                    target="_blank"
+                                    style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:10px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-left: 5px; padding-right: 5px; margin: 20px 0px 20px 0px;">
+                                    {% trans "Go to task" %}</a>&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: justify;">
+                                <strong>Description:</strong><br>
+                                {{task.description|safe}}
+                                <hr>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+
+
+                    </table>
+
+                    <a href="{{DOMAIN}}{% url 'project:project_task_index' project.id %}" target="_blank"
+                        style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; margin: 20px 0px 0px 0px;">
+                        {% trans "Go to task manager" %}</a>
+                    <br>
+                    <a href="http://help.legisly.com" target="_blank"
+                        style="background-color:green ;border-radius:4px;color:#ffffff;display:inline-block;font-size:11px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-right: 10px; padding-left: 10px; margin: 10px 0px 20px 0px;">
+                        {% trans "Need help? Check our knowledge base!" %}</a>
+
+                </div>
+
+                <!-- TASKS END -->
+
+                <!-- FORMS START -->
+
+                <div
+                    style="border-width: 1px; border-color: #eaebf0; border-style: solid; padding: 10px; width: 90%; background-color:#f5f6fa; margin: auto; margin-top: 30px;border-radius: 8px;">
+                    <h2
+                        style="text-align: center; font-size: 1.3m; color: black; text-transform: uppercase; margin-top: 10px; margin-bottom: 10px; ">
+                        {% trans "Forms to fill" %}</h2>
+                    <p>
+                        {% blocktranslate %}Completing the form(s) is the number one request for information to complete
+                        the order.{% endblocktranslate %} <span style="color: red; font-weight: 600;"><br>
+                            {% blocktranslate %}Please fill in the required form(s) as soon as possible, otherwise we
+                            can
+                            not start the work.</span>{% endblocktranslate %}
+                    </p>
+                    <table style="background-color: #f5f6fa; text-align: left;">
+                        {% for form in form_qs %}
+                        <tr>
+                            <td><strong><a
+                                        href="{{DOMAIN}}{% url 'project:project_form_detail' project.id form.id %}">{{form.name}}</strong>
+                            </td>
+                            <td><a href="{{DOMAIN}}{% url 'project:project_form_detail' project.id form.id %}"
+                                    target="_blank"
+                                    style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:10px;font-weight:700;text-decoration:none;text-transform: uppercase; padding-left: 5px; padding-right: 5px; margin: 20px 0px 20px 0px;">
+                                    {% trans "Fill the form" %}</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: justify;">
+                                <strong>Description:</strong><br>
+                                {{form.description}}
+                                <hr>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                    <a href="{{DOMAIN}}{% url 'project:project_form_index' project.id %}" target="_blank"
+                        style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; margin: 20px 0px 0px 0px;">
+                        {% trans "Go to form manager" %}</a>
+                    <br>
+                    <a href="http://help.legisly.com" target="_blank"
+                        style="background-color:green ;border-radius:4px;color:#ffffff;display:inline-block;font-size:11px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-right: 10px; padding-left: 10px; margin: 10px 0px 20px 0px;">
+                        {% trans "Need help? Check our knowledge base!" %}</a>
+
+                </div>
+
+                <!-- FORMS END -->
+
+                <!-- CONSULTATION START -->
+                <!--
+                   <div
+                    style="border-width: 1px; border-color: #eaebf0; border-style: solid; padding: 10px; width: 90%; background-color:#f5f6fa; margin: auto; margin-top: 40px;border-radius: 8px;">
+                    <h2
+                        style="text-align: center; font-size: 1.3m; color: black; text-transform: uppercase; margin-top: 10px; margin-bottom: 10px; ">
+                        {% trans "Upcoming consultation details" %}</h2>
+                    <p>
+                        {% blocktranslate %}Joining the consultations is very simple, but if you still have
+                        difficulties, you will find help in our knowledge base.{% endblocktranslate %} <span
+                            style="color: red; font-weight: 600;"><br>{% blocktranslate %}Please always be accurate to
+                            the minute, our staff will be waiting at the agreed time.</span>{% endblocktranslate %}
+                    </p>
+                    <table style="background-color: #f5f6fa; text-align: left;">
+                        <tr>
+                            <td><strong><a href="#">(consultation name)</strong></td>
+                            <td><a href="#" target="_blank"
+                                    style="background-color:#FDB913; border-radius:4px;color:#ffffff;display:inline-block;font-size:10px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-right: 10px; padding-left: 10px; margin: 20px 0px 20px 0px;">
+                                    {% trans "Join<sup>*</sup>" %}</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Starting time:</strong>
+                            </td>
+                            <td>
+                                2022.02.03., 18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Ending time:</strong>
+                            </td>
+                            <td>
+                                2022.02.03., 19:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: justify;">
+                                <strong>Description:</strong><br>
+                                Donec interdum scelerisque volutpat. Nullam sed pellentesque nisl. Vivamus at diam
+                                feugiat, scelerisque lectus in, egestas odio. Quisque ut elementum nunc. Nulla iaculis
+                                quis neque non cursus. Ut fermentum eros ac tempor maximus. Sed a imperdiet arcu. Duis
+                                at consequat massa.
+                                <hr>
+                            </td>
+                        </tr>
+                    </table>
+                    <p style="font-size: smaller; margin-top: 5px;">
+                        <i><sup>*</sup>{% blocktranslate %}Please note, as this is az online meeting, the virtual room
+                            is already exist, but our professional will only join at the scheduled time.
+                            {% endblocktranslate %}</i>
+                    </p>
+                    <a href="#" target="_blank"
+                        style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; padding-left: 10px; margin: 20px 0px 0px 0px;">{%
+                        trans "Go to consultation manager" %}</a>
+                    <br>
+                    <a href="http://help.legisly.com" target="_blank"
+                        style="background-color:green ;border-radius:4px;color:#ffffff;display:inline-block;font-size:11px;font-weight:700;text-align:center;text-decoration:none;text-transform: uppercase; padding-right: 10px; padding-left: 10px; margin: 10px 0px 20px 0px;">{%
+                        trans "Need help? Check our knowledge base!" %}</a>
+                </div>  
+                -->
+
+                <!-- CONSULTATION END -->
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="margin-bottom: 20px;">
+                    {% trans "Best regards" %},<br>
+                    {% trans "Legisly Team" %}
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- BODY END -->
+
+{% include 'email/email_footer.html' %}
+

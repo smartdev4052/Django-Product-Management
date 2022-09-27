@@ -1,0 +1,437 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Tasks" %}: {{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"><em
+                                                        class="icon ni ni-list-check"></em>&nbsp;{% trans "Tasks" %}
+                                                </h3>
+
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktrans %}Below can find all the tasks related to tasks for
+                                                        the
+                                                        {% endblocktrans %}.
+                                                        <strong>{{project.name}}</strong>.
+                                                        {% blocktrans %}Click on the task name to check the details or
+                                                        create
+                                                        a new task anytime by clicking the plus button on the right
+                                                        corner{% endblocktrans %}.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            {% if x.role == '2' %}
+                                            <div class="nk-block-head-content">
+
+                                                <a href="{% url 'project:project_task_create' project.id %}"
+                                                    class="btn btn-primary"><em class="icon ni ni-plus-round-fill">
+                                                    </em>
+                                                    <span>{% trans "Create new task" %}
+
+                                                    </span>
+                                                </a>
+
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+                                    <table class="datatable-init nk-tb-list nk-tb-ulist dataTable no-footer"
+                                        data-auto-responsive="false" id="DataTables_Table_1"
+                                        aria-describedby="DataTables_Table_1_info">
+                                        <thead>
+                                            <tr class="nk-tb-item nk-tb-head">
+
+                                                <th class="nk-tb-col sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="User: activate to sort column ascending"><span
+                                                        class="sub-text">Name</span></th>
+                                                <th class="nk-tb-col tb-col-mb sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Balance: activate to sort column ascending"><span
+                                                        class="sub-text">Assignee</span></th>
+                                                <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Phone: activate to sort column ascending"><span
+                                                        class="sub-text">Collaborators</span></th>
+                                                <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Verified: activate to sort column ascending"><span
+                                                        class="sub-text">Description</span></th>
+                                                <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Verified: activate to sort column ascending"><span
+                                                        class="sub-text">Status</span></th>
+                                                <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Last Login: activate to sort column ascending"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="{% blocktranslate %}Number of files{% endblocktranslate %}">
+                                                    <span class="sub-text"><em
+                                                            class="icon ni ni-files-fill"></em></span>
+                                                <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label="Last Login: activate to sort column ascending"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="{% blocktranslate %}Number of comments{% endblocktranslate %}">
+                                                    <span class="sub-text"><em class="icon ni ni-chat-fill"></em></span>
+                                                </th>
+                                                <th class="nk-tb-col nk-tb-col-tools text-right sorting" tabindex="0"
+                                                    aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                    aria-label=": activate to sort column ascending"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for task in tasks %}
+                                            <tr class="nk-tb-item odd">
+                                                <td class="nk-tb-col sorting_1">
+                                                    <div class="user-card">
+
+                                                        {% if task.archived == True %}
+                                                        <div class="user-info"><span class="tb-lead"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="{% blocktranslate %}This is an archivated task, that means it is inactive. Unarchivate it if you would like to set it active again.{% endblocktranslate %}">{{task.name}}&nbsp;<em
+                                                                    class="icon ni ni-archived-fill"></em></span></div>
+                                                        {% else %}
+                                                        <div class="user-info"><span class="tb-lead"><a
+                                                                    href="{% url 'project:project_task_detail' project_id=project.id id=task.id %}">{{task.name}}</a>
+                                                                <span
+                                                                    class="dot dot-success d-md-none ml-1"></span></span><span
+                                                                style="color: red; font-weight: 700;"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="Due date"><em
+                                                                    class="icon ni ni-clock"></em>&nbsp;
+                                                                {{task.due_date}} </span>
+                                                        </div>
+
+                                                        {% endif %}
+
+
+
+                                                    </div>
+                                                </td>
+                                                {% if task.responsible_user %}
+                                                <td class="nk-tb-col tb-col-mb" style="font-weight: 600;"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="{% blocktranslate %}The person, who is repsonsible for this task.{% endblocktranslate %}">
+                                                    
+                                                    <em class="icon ni ni-user-circle-fill"></em>&nbsp;{{task.responsible_user.first_name}}
+                                                    {{task.responsible_user.last_name}}
+                                                    
+                                                   
+                                                </td>
+                                                {% else %}
+                                                <td class="nk-tb-col tb-col-mb" style="font-weight: 600;">    <div class="user-avatar sm bg-secondary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Set responsible person - he is the responsible for completing the form.">
+                                                        <a href="{% url 'project:project_task_responsible' project_id=project.id id=task.id %}">
+                                                    <span style="cursor:pointer;">
+                                                        <em class="icon ni ni-setting-fill"></em>
+                                                    </span>
+                                                     </a>
+                                                    </div>
+                                                    
+                                                </td>
+                                                {% endif %}
+                                                <td class="nk-tb-col tb-col-md">
+                                                    <div class="user-avatar-group">
+                                                        {% for x in task.to_user.all %}
+
+                                                        {% if x %}
+
+
+                                                        <div class="user-avatar sm bg-primary">
+                                                            <span style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{{x.first_name}} {{x.last_name}}">
+                                                                {{x.first_name|make_list|first}}
+                                                                {{x.last_name|make_list|first}}</span>
+                                                        </div>
+
+                                                        {% endif %}
+                                                        {% endfor %}
+
+                                                    </div>
+                                                </td>
+                                                <td class="nk-tb-col tb-col-lg">{{task.description|truncatechars:50}}
+                                                </td>
+                                                <td class="nk-tb-col tb-col-lg"> <span
+                                                        class="badge badge-pill badge-primary">
+                                                        {{task.get_status_display}}
+                                                    </span>
+                                                </td>
+                                                <td class="nk-tb-col tb-col-lg">{{task.file_task.count}}
+                                                </td>
+                                                <td class="nk-tb-col tb-col-lg">{{task.note_task.count}}
+                                                </td>
+                                                <td class="nk-tb-col nk-tb-col-tools">
+                                                    {% if task.archived == False %}
+                                                    <ul class="nk-tb-actions gx-1">
+
+                                                        <li class="nk-tb-action-hidden"><a
+                                                                href="{% url 'project:project_task_detail' project_id=project.id id=task.id %}"
+                                                                class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{% blocktranslate %}Open task for more options{% endblocktranslate %}"
+                                                                data-original-title="Open"><em
+                                                                    class="icon ni ni-eye-fill"></em></a></li>
+                                                        {% if x.role == '2' %}
+                                                        <li class="nk-tb-action-hidden"><a
+                                                                href="{% url 'project:project_task_edit' project_id=project.id id=task.id %}"
+                                                                class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{% blocktranslate %}Edit task{% endblocktranslate %}"
+                                                                data-original-title="Edit"><em
+                                                                    class="icon ni ni-edit-fill"></em></a></li>
+                                                        <li class="nk-tb-action-hidden"><a
+                                                                href="{% url 'project:project_task_responsible' project_id=project.id id=task.id %}"
+                                                                class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{% blocktranslate %}Select task assignee - choose a person, who is responsible to complete this task"
+                                                                {% endblocktranslate %}"
+                                                                data-original-title="Assignee"><em
+                                                                    class="icon ni ni-account-setting-fill"></em></a>
+                                                        </li>
+                                                        {% if task.from_user != None %}
+                                                        <li class="nk-tb-action-hidden"><a
+                                                                href="{% url 'project:project_task_archive' project_id=project.id id=task.id %}"
+                                                                class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{% blocktranslate %}Move to archives - task will not be deleted and can be set as active anytime{% endblocktranslate %}"
+                                                                data-original-title="Archive"><em
+                                                                    class="icon ni ni-archive-fill"></em></a></li>
+                                                        {% endif %}
+                                                        {% endif %}
+                                                        {% else %}
+
+                                                    </ul>
+                                                    {% if x.role == '2' %}
+
+                                                    <ul class="nk-tb-actions gx-1">
+                                                        <span class="badge badge-pill badge-danger">Archived</span>
+                                                        <li class="nk-tb-action-hidden"><a
+                                                                href="{% url 'project:project_task_unarchive' project_id=project.id id=task.id %}"
+                                                                class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{% blocktranslate %}This is an archivated task, that means it is inactive. Unarchivate it if you would like to set it active again.{% endblocktranslate %}"
+                                                                data-original-title="Unarchive"><em
+                                                                    class="icon ni ni-unarchive-fill"></em></a></li>
+                                                    </ul>
+                                                    {% endif %}
+                                                    {% endif %}
+                                                    {% if task.archived == False %}
+                                                    <li>
+                                                        <div class="drodown"><a href="#"
+                                                                class="dropdown-toggle btn btn-icon btn-trigger"
+                                                                data-toggle="dropdown"><em
+                                                                    class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a
+                                                                            href="{% url 'project:project_task_create_file' project.id task.id %}"><em
+                                                                                class="icon ni ni-upload"></em><span>Upload
+                                                                                file</span></a></li>
+                                                                    <li><a
+                                                                            href="{% url 'project:project_note_task_create' project.id task.id %}"><em
+                                                                                class="icon ni ni-todo"></em><span>Add
+                                                                                note</span></a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    {% endif %}
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+
+
+
+
+
+
+
+                                    <!--
+                                    <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                        <thead>
+                                            <tr>
+                                                <th>{% trans "Id" %}</th>
+                                                <th>{% trans "Task" %}</th>
+                                                <th>{% trans "Assignee" %}</th>
+                                                <th>{% trans "Collaborators" %}</th>
+                                                <th>{% trans "Due date" %}</th>
+                                                <th>{% trans "Created by" %}</th>
+                                                <th>{% trans "Status" %}</th>
+                                                <th><em class="icon ni ni-chat-fill" data-toggle="tooltip"
+                                                        data-placement="top" title="Number of comments"></em></th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="Need help? Move your cursor over the action button for more information.">
+                                                    {% trans "Action" %} <index><em class="icon ni ni-help-fill"></em>
+                                                    </index>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for task in tasks %}
+                                            <tr class="nk-tb-item">
+                                                <td scope="row">
+                                                    {{task.id}}
+                                                </td>
+
+                                                <td>
+                                                    {% if task.archived == True %}
+                                                    <span style="font-weight: 400;" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{% blocktranslate %}This is an archivated task, that means it is inactive. Unarchivate it if you would like to set it active again.{% endblocktranslate %}">{{task.name}}&nbsp;<em
+                                                            class="icon ni ni-archived-fill"></em></span>
+                                                    {% else %}
+                                                    <a
+                                                        href="{% url 'project:project_task_detail' project_id=project.id id=task.id %}"><strong>{{task.name}}
+                                                            </stong></a>
+                                                    {% endif %}
+                                                </td>
+
+                                                <td>
+                                                    {{task.responsible_user.first_name}}
+                                                    {{task.responsible_user.last_name}}
+                                                </td>
+
+                                                <td>
+
+
+                                                    <div class="user-avatar-group">
+                                                        {% for x in task.to_user.all %}
+
+                                                        {% if x %}
+
+
+                                                        <div class="user-avatar sm bg-primary">
+                                                            <span style="cursor:pointer;" data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="{{x.first_name}} {{x.last_name}}">
+                                                                {{x.first_name|make_list|first}}
+                                                                {{x.last_name|make_list|first}}</span>
+                                                        </div>
+
+                                                        {% endif %}
+                                                        {% endfor %}
+
+                                                    </div>
+                                                </td>
+
+                                                <td>{{task.due_date}}</td>
+
+                                                <td>
+                                                    {{task.from_user.first_name}} {{task.from_user.last_name}}
+                                                </td>
+
+                                                <td>
+                                                    <span class="badge badge-pill badge-primary">
+                                                        {{task.get_status_display}}
+                                                    </span>
+                                                </td>
+                                                <!-- arcived if start
+                                                <td>
+                                                    {% if task.archived == True %}
+                                                    <span class="badge badge-pill badge-danger">
+                                                        {% trans "Yes" %}
+                                                    </span>
+                                                    {% else %}
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {% trans "No" %}
+                                                    </span>
+                                                    {% endif %}
+                                                </td>
+                                                
+
+                                    <td>
+                                        {{task.note_task.count}}
+                                    </td>
+
+                                    <td>
+                                        {% if task.archived == False %}
+                                        <a href="{% url 'project:project_task_detail' project_id=project.id id=task.id %}"
+                                            class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                                            title="{% blocktranslate %}Open task for more options{% endblocktranslate %}"
+                                            style="margin:2px;"><em class="icon ni ni-eye"></em></em></a>
+                                        {% if x.role == '2' %}
+                                        <a href="{% url 'project:project_task_edit' project_id=project.id id=task.id %}"
+                                            class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                                            title="{% blocktranslate %}Edit task{% endblocktranslate %}"
+                                            style="margin:2px;"><em class="icon ni ni-edit"></em></a>
+                                        <a href="{% url 'project:project_task_responsible' project_id=project.id id=task.id %}"
+                                            class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top"
+                                            title="{% blocktranslate %}Select task assignee - choose a person, who is responsible to complete this task"
+                                            {% endblocktranslate %} style="margin:2px;"><em
+                                                class="icon ni ni-account-setting"></em></a>
+                                        {% if task.from_user != None %}
+                                        <a href="{% url 'project:project_task_archive' project_id=project.id id=task.id %}"
+                                            class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                                            title="{% blocktranslate %}Move to archives - task will not be deleted and can be set as active anytime{% endblocktranslate %}"
+                                            style="margin:2px;"><em class="icon ni ni-archive"></em></a>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% else %}
+                                        {% if x.role == '2' %}
+                                        <a href="{% url 'project:project_task_unarchive' project_id=project.id id=task.id %}"
+                                            class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                                            title="{% blocktranslate %}This is an archivated task, that means it is inactive. Unarchivate it if you would like to set it active again.{% endblocktranslate %}"
+                                            style="margin:2px;"><em class="icon ni ni-unarchive"></em></a>
+                                        {% endif %}
+                                        {% endif %}
+                                    </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    </table>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-14 15:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: order/models.py:9
+msgid "Bank transfer"
+msgstr ""
+
+#: order/models.py:10
+msgid "Card"
+msgstr ""
+
+#: order/models.py:14
+msgid "Pending"
+msgstr ""
+
+#: order/models.py:15
+msgid "In progress"
+msgstr ""
+
+#: order/models.py:16
+msgid "Closed"
+msgstr ""
+
+#: order/models.py:17
+msgid "Archived"
+msgstr ""
+
+#: order/templates/order/create.html:6 order/templates/order/create.html:20
+msgid "Choose your client"
+msgstr ""
+
+#: order/templates/order/create.html:29
+msgid "Product detail"
+msgstr ""
+
+#: order/templates/order/create.html:79
+msgid "Choose another date"
+msgstr ""
+
+#: order/templates/order/create.html:93
+msgid "What will happen next?"
+msgstr ""
+
+#: order/templates/order/create.html:96
+msgid ""
+"If you do not have a client yet, you will have to create it. Do not\n"
+"                                worry, it\n"
+"                                takes just a few steps. "
+msgstr ""
+
+#: order/templates/order/create.html:100
+msgid ""
+"Once you created your order your online legal case will be started.\n"
+"                                You will\n"
+"                                receive some automated tasks, like create "
+"your e-signatere uf you do not have it yet.\n"
+"                                "
+msgstr ""
+
+#: order/templates/order/create.html:105
+msgid ""
+"You will have to fill out some product-specific forms.\n"
+"                                "
+msgstr ""
+
+#: order/templates/order/create.html:108
+msgid ""
+"Do not worry if you stuck or have question, you can contact\n"
+"                                    us anytime\n"
+"                                    using the messanger of the platform."
+msgstr ""
+
+#: order/templates/order/create.html:134 order/templates/order/create.html:141
+msgid "Don't have a client? Let's create one!"
+msgstr ""
+
+#: order/templates/order/create.html:150
+msgid "Proceed order and checkout"
+msgstr ""
+
+#: order/templates/order/detail.html:6 order/templates/order/detail.html:19
+#: order/templates/order/detail.html:46 order/templates/order/index.html:304
+#: order/templates/order/my_order.html:65
+msgid "Order details"
+msgstr ""
+
+#: order/templates/order/detail.html:24
+msgid "Order date"
+msgstr ""
+
+#: order/templates/order/detail.html:32 order/templates/order/edit.html:31
+msgid "Back"
+msgstr ""
+
+#: order/templates/order/detail.html:51
+msgid "Customer"
+msgstr ""
+
+#: order/templates/order/detail.html:56 order/templates/order/index.html:272
+#: order/templates/order/my_order.html:36
+msgid "Product"
+msgstr ""
+
+#: order/templates/order/detail.html:61 order/templates/order/index.html:273
+#: order/templates/order/my_order.html:37
+msgid "Price"
+msgstr ""
+
+#: order/templates/order/detail.html:67
+msgid "Quantity"
+msgstr ""
+
+#: order/templates/order/detail.html:72 order/templates/order/index.html:289
+#: order/templates/order/my_order.html:51
+msgid "Paid"
+msgstr ""
+
+#: order/templates/order/detail.html:78
+msgid "Order created"
+msgstr ""
+
+#: order/templates/order/detail.html:87
+msgid "Basics information"
+msgstr ""
+
+#: order/templates/order/detail.html:92
+msgid "Full Name"
+msgstr ""
+
+#: order/templates/order/detail.html:97
+msgid "Email"
+msgstr ""
+
+#: order/templates/order/detail.html:102
+msgid "Type"
+msgstr ""
+
+#: order/templates/order/detail.html:108
+msgid "First name"
+msgstr ""
+
+#: order/templates/order/detail.html:114
+msgid "Last name"
+msgstr ""
+
+#: order/templates/order/detail.html:120
+msgid "Mother name"
+msgstr ""
+
+#: order/templates/order/detail.html:125
+msgid "Country"
+msgstr ""
+
+#: order/templates/order/detail.html:130
+msgid "State"
+msgstr ""
+
+#: order/templates/order/detail.html:135
+msgid "Address"
+msgstr ""
+
+#: order/templates/order/detail.html:144
+msgid "Billing information"
+msgstr ""
+
+#: order/templates/order/detail.html:149
+msgid "Billing name"
+msgstr ""
+
+#: order/templates/order/detail.html:155
+msgid "Billing country"
+msgstr ""
+
+#: order/templates/order/detail.html:161
+msgid "Billing state"
+msgstr ""
+
+#: order/templates/order/detail.html:167
+msgid "Billing address"
+msgstr ""
+
+#: order/templates/order/detail.html:174
+msgid "Tax number"
+msgstr ""
+
+#: order/templates/order/edit.html:6 order/templates/order/edit.html:21
+msgid "Edit order"
+msgstr ""
+
+#: order/templates/order/edit.html:47
+msgid "Save"
+msgstr ""
+
+#: order/templates/order/index.html:5 order/templates/order/index.html:18
+msgid "Orders"
+msgstr ""
+
+#: order/templates/order/index.html:20
+msgid "Below you can see all the orders placed by clients."
+msgstr ""
+
+#: order/templates/order/index.html:82
+msgid ""
+"Project name has been automatically generated. You can change it by editing "
+"the order."
+msgstr ""
+
+#: order/templates/order/index.html:136
+msgid "This order does not contain legal consultation."
+msgstr ""
+
+#: order/templates/order/index.html:147
+msgid "Beginning of the requested consultation."
+msgstr ""
+
+#: order/templates/order/index.html:155
+msgid "Ending of the requested consultation."
+msgstr ""
+
+#: order/templates/order/index.html:269 order/templates/order/my_order.html:34
+msgid "Id"
+msgstr ""
+
+#: order/templates/order/index.html:270
+msgid "Project"
+msgstr ""
+
+#: order/templates/order/index.html:271
+msgid "Client"
+msgstr ""
+
+#: order/templates/order/index.html:274 order/templates/order/my_order.html:38
+msgid "Is paid?"
+msgstr ""
+
+#: order/templates/order/index.html:276 order/templates/order/my_order.html:39
+msgid "Is active?"
+msgstr ""
+
+#: order/templates/order/index.html:277 order/templates/order/my_order.html:40
+msgid "Action"
+msgstr ""
+
+#: order/templates/order/index.html:291 order/templates/order/my_order.html:53
+msgid "No paid"
+msgstr ""
+
+#: order/templates/order/index.html:297 order/templates/order/my_order.html:58
+msgid "Active"
+msgstr ""
+
+#: order/templates/order/index.html:299 order/templates/order/my_order.html:60
+msgid "Inactive"
+msgstr ""
+
+#: order/templates/order/index.html:306
+msgid "Edit"
+msgstr ""
+
+#: order/templates/order/index.html:312 order/templates/order/index.html:316
+msgid "Start case"
+msgstr ""
+
+#: order/templates/order/index.html:322
+msgid "Start project"
+msgstr ""
+
+#: order/templates/order/index.html:324
+msgid "Order delete"
+msgstr ""
+
+#: order/templates/order/my_order.html:5 order/templates/order/my_order.html:18
+msgid "My orders"
+msgstr ""
+
+#: order/templates/order/my_order.html:20
+msgid ""
+"Below you can find all your orders. Please note, once an order is\n"
+"                                    accepted\n"
+"                                    by Legisly a new case will be started "
+"based on your order. You can check your open\n"
+"                                    cases under your"
+msgstr ""
+
+#: order/templates/order/my_order.html:24
+msgid "Cases"
+msgstr ""
+
+#: order/templates/order/my_order.html:35
+msgid "Buyer"
+msgstr ""
+
+#: order/views.py:152
+msgid "Project is created"
+msgstr ""
+
+#: order/views.py:154
+msgid "Team created"
+msgstr ""
+
+#: order/views.py:172
+msgid "Your case is started!"
+msgstr ""
+
+#: order/views.py:176 order/views.py:178
+msgid "Thank you for your order!"
+msgstr ""
+
+#: order/views.py:180
+msgid "Order created!"
+msgstr ""
+
+#: order/views.py:188
+msgid "Choose client"
+msgstr ""
+
+#: order/views.py:209
+msgid "Saved"
+msgstr ""
+
+#: order/views.py:228
+msgid "Kliens siekresen törölve"
+msgstr ""
+
+#: order/views.py:346
+msgid "Invalid product. Please try another product ID"
+msgstr ""

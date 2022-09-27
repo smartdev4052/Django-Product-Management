@@ -1,0 +1,60 @@
+{% extends "base_client.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Create client" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head nk-block-head-sm">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Create client" %}</h3>
+                                <div class="nk-block-des text-soft">
+                                    <p>{% trans "Clients (like you as a person or your company) are used to manage and cooperate cases. You can add, remove and manage roles of members of your client anytime. Please allways choose carefuly who to invite to your cases as the persons will see the messages and uploaded files." %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <a href="{% url 'client:client_index' %}"
+                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                        class="icon ni ni-arrow-left"></em><span>{% trans "Back" %}</span></a>
+                                <a href="{% url 'client:client_index' %}"
+                                    class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                        class="icon ni ni-arrow-left"></em></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <div class="preview-block">
+
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+
+                                    <button type="submit" class="btn btn-primary">{% trans "Create client" %}</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+{% endblock %}

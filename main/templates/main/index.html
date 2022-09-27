@@ -1,0 +1,84 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="./images/favicon.png">
+    <!-- Page Title  -->
+    <title>{% block title %} {% endblock title %}</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="{% static '/assets/main/css/dashlite.css' %}">
+    <link id="skin-default" rel="stylesheet" href="{% static '/assets/main/css/theme.css' %}">
+</head>
+
+<body class="nk-body npc-invest bg-lighter ">
+    <div class="nk-app-root">
+        <!-- wrap @s -->
+        <div class="nk-wrap ">
+           
+            {% include 'section/navbar.html' %}
+
+            {% block content %}
+
+            {% endblock %}
+           
+
+            <!-- footer @s -->
+            <div class="nk-footer nk-footer-fluid bg-lighter">
+                <div class="container-xl">
+                    <div class="nk-footer-wrap">
+                        <div class="nk-footer-copyright"> &copy; 2021 Legisly Solutions Kft
+                        </div>
+                        <div class="nk-footer-links">
+                            <ul class="nav nav-sm">
+                                <li class="nav-item dropup">
+                                    <a herf="#" class="dropdown-toggle dropdown-indicator has-indicator nav-link" data-toggle="dropdown" data-offset="0,10"><span>English</span></a>
+                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                        <ul class="language-list">
+                                            <li>
+                                                <a href="#" class="language-item">
+                                                    <span class="language-name">English</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="language-item">
+                                                    <span class="language-name">Español</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="language-item">
+                                                    <span class="language-name">Français</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="language-item">
+                                                    <span class="language-name">Türkçe</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer @e -->
+        </div>
+        <!-- wrap @e -->
+    </div>
+    <!-- app-root @e -->
+   
+    <!-- JavaScript -->
+    <script src="{% static '/assets/main/js/bundle.js'%}"></script>
+    <script src="{% static '/assets/main/js/scripts.js'%}"></script>
+</body>
+
+</html>

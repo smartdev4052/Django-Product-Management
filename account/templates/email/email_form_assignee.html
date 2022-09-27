@@ -1,0 +1,77 @@
+{% include 'email/email_header.html' %}
+{% load i18n %}
+<!-- BODY BEGIN -->
+<tr>
+    <td style="padding: 30px 30px 15px 30px;">
+        <h2 style="font-size: 18px; color: #FDB913; font-weight: 600; margin: 0;">
+            {% trans "You have been assigned a new form" %}</h2>
+    </td>
+</tr>
+<tr>
+    <td style="padding: 0 30px 20px">
+        <p style="margin-bottom: 10px;"><strong>{% trans "Dear" %} {{user_obj.first_name}}
+                {{user_obj.last_name}},</strong></p>
+        <p style="margin-bottom: 10px;">{{from_user.first_name}} {{from_user.last_name}}
+            {% blocktrans %} has a new
+            form for you. Please log in to your account and respond to the form as soon as possible. You can find the
+            major details below. You have been nominated for this form.{% endblocktrans %}</p>
+        <a href="{{DOMAIN}}{% url 'project:project_form_detail' form_obj.project.id form_obj.id %}" target="_blank"
+            style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:600;line-height:44px;text-align:center;text-decoration:none;text-transform: uppercase; padding: 0 30px; margin: 20px 0px 20px 0px;">
+            {% trans "Go to the form" %}</a>
+        <div style="padding: 5px; width: 50%; background-color:#eccaca; margin: auto; border-radius: 8px;">
+            <p style="color:black"><strong>{% trans "Due date" %}: {{form_obj.due_date}}</strong></p>
+        </div>
+    </td>
+
+    <!-- DETAILS START -->
+
+<tr>
+    <td>
+        <div
+            style="padding: 10px; width: 70%; background-color:#f5f6fa; margin: auto; margin-bottom: 30px; border-radius: 8px;">
+            <h2 style="font-size: 14px; font-weight: 600; text-transform: uppercase; ">{% trans "Details" %}:</h2>
+            <p>
+                <strong>{% trans "Form name" %}:</strong> {{form_obj.name}}<br>
+                <strong style="color: red;">{% trans "Assignee" %}: {{form_obj.responsible_user.first_name}}
+                    {{form_obj.esponsible_user.last_name}}</strong><br>
+                <strong>{% trans "Collaborators" %}:</strong>
+                {% for x in form_obj.to_user.all %}
+                {{x.first_name}} {{x.last_name}} <br>
+                {% endfor %}
+                <br>
+                <strong>{% trans "Case" %}:</strong> {{form_obj.project.name}}<br>
+                <strong>{% trans "Case ID" %}:</strong> {{form_obj.project.id}} <br>
+                <strong>{% trans "Due date" %}:</strong> {{form_obj.due_date}} <br>
+            </p>
+        </div>
+        <!--
+            <div
+            style="padding: 10px; width: 70%; background-color:#f5f6fa; margin: auto; margin-bottom: 30px; border-radius: 8px;">
+            <h2 style="font-size: 14px; font-weight: 600; text-transform: uppercase;">{% trans "Form description" %}:
+            </h2>
+            <p>
+                ide jön a leírás ha vsn
+            </p>
+        </div>
+        -->
+        
+    </td>
+</tr>
+
+<!-- DETAILS END -->
+
+</tr>
+<tr>
+    <td>
+        <p style="margin-bottom: 20px;">
+            {% trans "Best regards," %}<br>
+            {% trans "Legisly Team" %}
+        </p>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<!-- BODY END -->
+
+{% include 'email/email_footer.html' %}

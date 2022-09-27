@@ -1,0 +1,76 @@
+{% include 'email/email_header.html' %}
+{% load i18n %}
+<!-- BODY BEGIN -->
+<tr>
+    <td style="padding: 30px 30px 15px 30px;">
+        <h2 style="font-size: 18px; color: #FDB913; font-weight: 600; margin: 0;">
+            {% trans "You have been assigned a new task" %}</h2>
+    </td>
+</tr>
+<tr>
+    <td style="padding: 0 30px 20px">
+        <p style="margin-bottom: 10px;"><strong>{% trans "Dear" %} {{user_obj.first_name}}
+                {{user_obj.last_name}},</strong></p>
+        <p style="margin-bottom: 10px;">{{task.from_user.first_name}} {{task.from_user.last_name}}
+            {% blocktrans %} has a new
+            task for you. Please log in to your account and respond to the task as soon as possible. You can find the
+            major details below. You have been nominated for this task.{% endblocktrans %}</p>
+        <a href="{{DOMAIN}}{% url 'project:project_task_detail' task.project.id task.id %}" target="_blank"
+            style="background-color:#FDB913;border-radius:4px;color:#ffffff;display:inline-block;font-size:13px;font-weight:600;line-height:44px;text-align:center;text-decoration:none;text-transform: uppercase; padding: 0 30px; margin: 20px 0px 20px 0px;">
+            {% trans "Go to the task" %}</a>
+        <div style="padding: 5px; width: 50%; background-color:#eccaca; margin: auto; border-radius: 8px;">
+            <p style="color:black"><strong>{% trans "Due date" %}: {{task.due_date}}</strong></p>
+        </div>
+    </td>
+
+    <!-- DETAILS START -->
+
+<tr>
+    <td>
+        <div
+            style="padding: 10px; width: 70%; background-color:#f5f6fa; margin: auto; margin-bottom: 30px; border-radius: 8px;">
+            <h2 style="font-size: 14px; font-weight: 600; text-transform: uppercase; ">{% trans "Details" %}:</h2>
+            <p>
+                <strong>{% trans "Task name" %}:</strong> {{task.name}}<br>
+                <strong style="color: red;">{% trans "Assignee" %}: {{task.responsible_user.first_name}}
+                    {{task.esponsible_user.last_name}}</strong><br>
+                <strong>{% trans "Collaborators" %}:</strong>
+                {% for x in task.to_user.all %}
+                {{x.first_name}} {{x.last_name}} <br>
+                {% endfor %}
+                <br>
+                <strong>{% trans "Created by" %}:</strong> {{task.from_user.first_name}}
+                {{task.from_user.last_name}}<br>
+                <strong>{% trans "Case" %}:</strong> {{task.project.name}}<br>
+                <strong>{% trans "Case ID" %}:</strong> {{task.project.id}} <br>
+                <strong>{% trans "Due date" %}:</strong> {{task.due_date}} <br>
+            </p>
+        </div>
+        <div
+            style="padding: 10px; width: 70%; background-color:#f5f6fa; margin: auto; margin-bottom: 30px; border-radius: 8px;">
+            <h2 style="font-size: 14px; font-weight: 600; text-transform: uppercase;">{% trans "Task description" %}:
+            </h2>
+            <p>
+                {{task.description|safe}}
+            </p>
+        </div>
+    </td>
+</tr>
+
+<!-- DETAILS END -->
+
+</tr>
+<tr>
+    <td>
+        <p style="margin-bottom: 20px;">
+            {% trans "Best regards," %}<br>
+            {% trans "Legisly Team" %}
+        </p>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<!-- BODY END -->
+
+{% include 'email/email_footer.html' %}

@@ -1,0 +1,180 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "My upcoming consultations" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h4 class="nk-block-title page-title">{% trans "My upcoming consultations" %}</h4>
+                            <div class="nk-block-des">
+                                <p>
+                                    {% blocktranslate %}
+                                    Below you can listed all the future and past consultations. Click on the
+                                    join button to join the meeting or the details to see further information.
+                                    {% endblocktranslate %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Created by" %}</th>
+
+                                        <th>{% trans "Participant" %}</th>
+                                        <th>{% trans "Start" %}</th>
+                                        <th>{% trans "End" %}</th>
+                                        <th>{% trans "Files" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for meet in meets %}
+                                    <tr class="nk-tb-item">
+                                        <td>{{meet.id}}</td>
+                                        <td><a
+                                                href="{% url 'project:project_meet_detail' project_id=meet.project.id id=meet.id %}"><strong>{{meet.name}}</strong></a>
+                                        </td>
+                                        <td>{{meet.from_user.first_name}} {{meet.from_user.last_name}}</td>
+
+                                        <td>{% for x in meet.to_user.all %}
+                                            {% if x %}
+                                            {{x.first_name}} {{x.last_name}}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>{{meet.meet_start}}</td>
+                                        <td>{{meet.meet_end}}</td>
+                                        <td>
+                                            {% if meet.file_meet.count > 0 %}
+                                            {{ meet.file_meet.count }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{meet.url}}" target="_blank" class="btn btn-primary btn-sm"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Opens in new window"><em
+                                                    class="icon ni ni-arrow-right-round-fill"></em>&nbsp;
+                                                {% trans "Join" %}</a>
+                                            <a href="{% url 'project:project_meet_detail' project_id=meet.project.id id=meet.id %}"
+                                                class="btn btn-outline-primary btn-sm"><em
+                                                    class="icon ni ni-eye"></em>&nbsp; {% trans "Details" %}</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-inner">
+
+                            <div id='calendar'></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+  <a href="#" onclick="x()">Teszt</a>  
+-->
+
+
+<div id="mydata">
+    {{ data|json_script:"room-name"}}
+</div>
+
+<script>
+    const mydata = JSON.parse(document.getElementById('mydata').textContent);
+    console.log(mydata)
+
+    x = JSON.stringify(mydata)
+    console.log(x)
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+
+            timeZone: 'local',
+            initialView: 'timeGridSevenDay',
+            headerToolbar: {
+                left: 'prev,next',
+                center: 'title',
+                right: 'timeGridDay,timeGridSevenDay'
+            },
+
+
+
+            nowIndicator: true,
+            views: {
+                timeGridSevenDay: {
+                    type: 'timeGrid',
+                    duration: {
+                        days: 7
+                    },
+                    buttonText: '7 day'
+                }
+            },
+
+            events: JSON.parse(x),
+            allDaySlot: false,
+            editable: false
+        });
+
+        x = function () {
+            calendar.addEvent({
+                title: 'dynamic event',
+                start: '2021-12-06' + 'T00:00:00',
+                allDay: false
+            });
+        },
+
+            calendar.render();
+    });
+
+    /*
+     slotMinTime: "09:00:00",
+            slotMaxTime: "17:00:00",
+
+            businessHours: {
+                // days of week. an array of zero-based day of week integers (0=Sunday)
+                daysOfWeek: [1, 2, 3, 4, 5], // Monday - Thursday
+
+                startTime: '09:00', // a start time (10am in this example)
+                endTime: '17:00', // an end time (6pm in this example)
+            },
+*/
+</script>
+
+{% endblock %}

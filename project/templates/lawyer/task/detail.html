@@ -1,0 +1,301 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Files
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-content">
+                            {% include 'section/project_navbar.html' %}
+                            {% include 'section/lawyer_navbar.html' %}
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">Task / <strong
+                                                        class="text-primary small">{{task.name}}</strong></h3>
+
+                                            </div>
+                                            <div class="nk-block-head-content"><a
+                                                    href="{% url 'project:project_lawyer_task_index' project.id %}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left"></em><span>Back</span></a><a
+                                                    href="{% url 'project:project_lawyer_task_index' project.id %}"
+                                                    class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                                        class="icon ni ni-arrow-left"></em></a></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="nk-block-head nk-block-head-line">
+                                        <h4 class="title overline-title text-base">Information</h4>
+                                    </div>
+                                    <div class="profile-ud-list" style="max-width: 100%;">
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Task
+                                                    name</span><span class="profile-ud-value">{{task.name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Created
+                                                    by</span><span
+                                                    class="profile-ud-value">{{task.from_user.first_name}}
+                                                    {{task.from_user.last_name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Start date
+                                                </span><span class="profile-ud-value">{{task.start_date}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Due
+                                                    date</span><span class="profile-ud-value">
+                                                    {{task.due_date}}</span>
+                                                </span></div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Created
+                                                    at</span><span class="profile-ud-value">{{task.created_at}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider"><span class="profile-ud-label">Status</span>
+                                                <span class="profile-ud-value">
+                                                    <span class="badge badge-pill badge-primary">
+                                                        {{task.get_status_display}}
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nk-divider divider md"></div>
+                                <div class="nk-block">
+                                    <div class="nk-block-head nk-block-head-line">
+                                        <h4 class="title overline-title text-base">Description</h4>
+                                    </div>
+                                    <span class="profile-ud-label">{{task.description}}</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="nk-block mt-3">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head-content">
+                                        <h3 class="nk-block-title page-title">Task /
+                                            <strong class="text-primary small">Participant</strong>
+                                        </h3>
+                                    </div>
+                                    <div class="row g-4 py-3">
+                                        {% for task_user in task.to_user.all %}
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="user-card">
+                                                <div class="user-avatar">
+                                                    <em class="icon ni ni-user-alt"></em>
+                                                </div>
+                                                <div class="user-info">
+                                                    <span class="lead-text">{{task_user.first_name}}
+                                                        {{task_user.last_name}}</span>
+                                                    <span class="sub-text">{{task_user.email}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="nk-block mt-3">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head-content nk-block-between pb-3">
+                                        <h3 class="nk-block-title page-title">Task / <strong
+                                                class="text-primary small">Files</strong></h3>
+                                        <a href="{% url 'project:project_lawyer_task_create_file' project.id task.id %}"
+                                            class="btn btn-primary btn-xs">+ Add Task File</a>
+                                    </div>
+
+                                    <table class="datatable-init table">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>File name</th>
+                                                <th>Created by</th>
+                                                <th>Type</th>
+                                                <th>Archived?</th>
+                                                <th>Created at</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for file in task.file_task.all %}
+                                            <tr class="nk-tb-item">
+                                                <td>
+                                                    {{file.id}}
+                                                </td>
+                                                <td>{{file.name}}</td>
+                                                <td>{{file.uploaded_by.first_name}} {{file.uploaded_by.last_name}}</td>
+                                                <td>
+                                                    <span class="badge badge-pill badge-primary">
+                                                        {{file.get_file_type_display}}</span>
+                                                </td>
+                                                <td>
+                                                    {% if file.archived == True %}
+                                                    <span class="badge badge-pill badge-danger">
+                                                        Yes
+                                                    </span>
+                                                    {% else %}
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        No
+                                                    </span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{file.created_at}}</td>
+                                                <td>
+                                                    {% if file.archived == False %}
+                                                    <a href="{% url 'project:project_lawyer_file_detail' project.id file.id%}?task_id={{task.id}}"
+                                                        class="btn btn-outline-primary btn-sm">Show</a>
+
+                                                    <a href="{% url 'project:project_lawyer_file_edit' project.id file.id%}?task_id={{task.id}}"
+                                                        class="btn btn-outline-warning btn-sm">Edit</a>
+                                                    <a href="{% url 'project:project_lawyer_file_archive' project.id file.id%}?task_id={{task.id}}"
+                                                        class="btn btn-outline-danger btn-sm"><em
+                                                            class="icon ni ni-trash"></em>&nbsp; Archive</a>
+
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="nk-block mt-3">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-inner">
+                                <div class="nk-block">
+                                    <div class="nk-block-head-content nk-block-between pb-3">
+                                        <h3 class="nk-block-title page-title">Task / <strong
+                                                class="text-primary small">Notes</strong></h3>
+                                        <a href="{% url 'project:project_lawyer_note_task_create' project.id task.id %}"
+                                            class="btn btn-primary btn-xs">+ Add Task Note </a>
+                                    </div>
+
+                                    <div class="bq-note">
+                                        {% for note in notes %}
+                                        {% if note.visible == True %}
+                                        <div class="bq-note-item">
+                                            {% if note.private == True %}
+                                            <div class="bq-note-text bg-secondary text-white">
+                                                {% else %}
+                                                {% if note.user.profile.user_role == 1 %}
+                                                <div class="bq-note-text shadow-sm"
+                                                    style="border-left: 5px solid #3c8efe;">
+                                                    {% elif note.user.profile.user_role > 1 %}
+                                                    <div class="bq-note-text shadow-sm"
+                                                        style="border-left: 5px solid #FDB913;">
+                                                        {% endif %}
+
+                                                        {% endif %}
+
+                                                        <p>{{note.content}}</p>
+
+                                                        {% if note.file_note.count > 0 %}
+                                                        <hr
+                                                            style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid #e5e5e5">
+                                                        <span>Uploaded files: </span>
+
+                                                        <ul>
+                                                            <li>{% for x in note.file_note.all %}</li>
+                                                        </ul>
+                                                        {{x.project_file_name}}
+                                                        {% if x.archived == False %}
+                                                        <a href="{{x.project_file.url}}"><span
+                                                                class="badge badge-outline-dark"><em
+                                                                    class="icon ni ni-file-text-fill"></em>&nbsp;<strong>{{x}}</strong></span>
+                                                        </a>
+                                                        {% else %}
+                                                        <span class="badge badge-outline-danger"><em
+                                                                class="icon ni ni-file-text-fill"></em>&nbsp;<strong>{{x}}
+                                                                - Archived</strong></span>
+
+                                                        {% endif %}
+
+                                                        {% endfor %}
+                                                        {% endif %}
+
+
+                                                    </div>
+                                                    <div class="bq-note-meta" align="right">
+                                                        <span class="bq-note-added">Added on <span
+                                                                class="date">{{note.created_at}}
+                                                                <span class="bq-note-sep sep">|</span>
+                                                                <span class="text-primary font-weight-bold">by
+                                                                    {{note.user.first_name}}
+                                                                    {{note.user.last_name}}</span>
+                                                                {% if note.user == request.user %}
+                                                                <a href="{% url 'project:project_lawyer_note_create_file' project_id=project.id id=note.id %}?task_id={{task.id}}"
+                                                                    class="btn btn-primary btn-xs">Upload file for this
+                                                                    note</a>
+
+
+
+                                                                {% endif %}
+                                                    </div>
+                                                </div>
+                                                {% else %}
+
+                                                {% endif %}
+                                                {% endfor %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+        {% endblock %}

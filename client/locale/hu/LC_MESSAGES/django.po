@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-14 15:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: client/models.py:37
+msgid "Person"
+msgstr ""
+
+#: client/models.py:38
+msgid "Company"
+msgstr ""
+
+#: client/templates/client/create.html:6 client/templates/client/create.html:21
+#: client/templates/client/create.html:45
+msgid "Create client"
+msgstr ""
+
+#: client/templates/client/create.html:23 client/templates/client/index.html:23
+#: client/templates/client/my_client.html:23
+msgid ""
+"Clients (like you as a person or your company) are used to manage and "
+"cooperate cases. You can add, remove and manage roles of members of your "
+"client anytime. Please allways choose carefuly who to invite to your cases "
+"as the persons will see the messages and uploaded files."
+msgstr ""
+
+#: client/templates/client/create.html:30
+#: client/templates/client/detail.html:27 client/templates/client/edit.html:28
+msgid "Back"
+msgstr ""
+
+#: client/templates/client/detail.html:6 client/templates/client/detail.html:20
+msgid "Client"
+msgstr ""
+
+#: client/templates/client/detail.html:42
+msgid "Basics information"
+msgstr ""
+
+#: client/templates/client/detail.html:47
+msgid "Full Name"
+msgstr ""
+
+#: client/templates/client/detail.html:52
+msgid "Email"
+msgstr ""
+
+#: client/templates/client/detail.html:57
+#: client/templates/client/my_client.html:44
+msgid "Type"
+msgstr ""
+
+#: client/templates/client/detail.html:63
+msgid "First name"
+msgstr ""
+
+#: client/templates/client/detail.html:69
+msgid "Last name"
+msgstr ""
+
+#: client/templates/client/detail.html:75
+msgid "Mother name"
+msgstr ""
+
+#: client/templates/client/detail.html:80
+msgid "Country"
+msgstr ""
+
+#: client/templates/client/detail.html:85
+msgid "State"
+msgstr ""
+
+#: client/templates/client/detail.html:90
+msgid "Address"
+msgstr ""
+
+#: client/templates/client/detail.html:99
+msgid "Billing information"
+msgstr ""
+
+#: client/templates/client/detail.html:104
+msgid "Billing name"
+msgstr ""
+
+#: client/templates/client/detail.html:110
+msgid "Billing country"
+msgstr ""
+
+#: client/templates/client/detail.html:116
+msgid "Billing state"
+msgstr ""
+
+#: client/templates/client/detail.html:122
+msgid "Billing address"
+msgstr ""
+
+#: client/templates/client/detail.html:128
+msgid "Tax number"
+msgstr ""
+
+#: client/templates/client/edit.html:6 client/templates/client/edit.html:21
+msgid "Edit client"
+msgstr ""
+
+#: client/templates/client/edit.html:43
+msgid "Save client"
+msgstr ""
+
+#: client/templates/client/index.html:6 client/templates/client/index.html:21
+msgid "Clients"
+msgstr ""
+
+#: client/templates/client/index.html:36
+msgid "Add New client"
+msgstr ""
+
+#: client/templates/client/index.html:52
+#: client/templates/client/my_client.html:42
+msgid "Id"
+msgstr ""
+
+#: client/templates/client/index.html:53
+msgid "Name"
+msgstr ""
+
+#: client/templates/client/index.html:54
+msgid "E-mail"
+msgstr ""
+
+#: client/templates/client/index.html:55
+msgid "Invite"
+msgstr ""
+
+#: client/templates/client/index.html:56
+#: client/templates/client/my_client.html:45
+msgid "Action"
+msgstr ""
+
+#: client/templates/client/index.html:68
+#: client/templates/client/my_client.html:59
+msgid "Details"
+msgstr ""
+
+#: client/templates/client/index.html:70
+#: client/templates/client/my_client.html:62
+msgid "Edit"
+msgstr ""
+
+#: client/templates/client/index.html:72
+#: client/templates/client/my_client.html:65
+msgid "Archive"
+msgstr ""
+
+#: client/templates/client/my_client.html:6
+msgid "My clients"
+msgstr ""
+
+#: client/templates/client/my_client.html:30
+msgid "Add client"
+msgstr ""
+
+#: client/templates/client/my_client.html:43
+msgid "Client name"
+msgstr ""
+
+#: client/views.py:38
+msgid "Client created"
+msgstr ""
+
+#: client/views.py:73
+msgid "Archived"
+msgstr ""
+
+#: client/views.py:85
+msgid "Kliens siekresen törölve"
+msgstr ""

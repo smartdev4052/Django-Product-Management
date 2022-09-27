@@ -1,0 +1,310 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Cases" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">
+                                    <em class="icon ni ni-package-fill"></em>&nbsp;{%trans "Cases" %}
+                                </h3>
+                                <div class="nk-block-des text-soft">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+
+
+                            <table class="datatable-init nk-tb-list nk-tb-ulist dataTable no-footer"
+                                data-auto-responsive="false" id="DataTables_Table_1"
+                                aria-describedby="DataTables_Table_1_info">
+                                <thead>
+                                    <tr class="nk-tb-item nk-tb-head">
+                                        <th class="nk-tb-col nk-tb-col-check sorting sorting_asc" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-sort="ascending" aria-label=": activate to sort column descending">
+
+                                        </th>
+                                        <th class="nk-tb-col sorting" tabindex="0" aria-controls="DataTables_Table_1"
+                                            rowspan="1" colspan="1"
+                                            aria-label="User: activate to sort column ascending"><span
+                                                class="sub-text">Case</span></th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Phone: activate to sort column ascending"><span
+                                                class="sub-text">Lawyer</span></th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Phone: activate to sort column ascending"><span
+                                                class="sub-text">Participants</span></th>
+                                        <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Verified: activate to sort column ascending"><span
+                                                class="sub-text">Type</span></th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Status: activate to sort column ascending"><span
+                                                class="sub-text">Status</span></th>
+                                        <th class="nk-tb-col nk-tb-col-tools text-right sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label=": activate to sort column ascending"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for project in projects %}
+                                    <tr class="nk-tb-item odd">
+                                        <td class="nk-tb-col nk-tb-col-check sorting_1">
+                                            {{project.id}}
+                                        </td>
+                                        <td class="nk-tb-col">
+                                            <div class="user-card">
+                                                <div class="user-info"><span class="tb-lead" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{% blocktranslate %}Project name has been automatically generated. You can change it by editing the order.{% endblocktranslate %}">{{project.name}}
+                                                    </span>
+                                                    <small>
+                                                        <span data-toggle="tooltip" data-placement="top"
+                                                            title="Name of the buyer"><em
+                                                                class="icon text-primary ni ni-user-circle-fill"></em>&nbsp;{{project.client.name}}</span>
+                                                        <br>
+                                                        <span data-toggle="tooltip" data-placement="top"
+                                                            title="E-mail address of the client"><em
+                                                                class="icon text-primary ni ni-mail-fill"></em>&nbsp;{{project.client.email}}</span>
+                                                        </span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <div class="user-card">
+                                                {% if project.responsible_user %}
+                                                <div class="user-info"><span class="tb-lead">
+                                                        {{project.responsible_user.first_name}}
+                                                        {{project.responsible_user.last_name}}
+                                                        <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                    {% if project.responsible_user.profile.office %}
+                                                    <span data-placement="top" data-toggle="tooltip"
+                                                        title="Lawyer's office"><em
+                                                            class="icon text-primary ni ni-briefcase"></em>&nbsp;{{project.responsible_user.profile.office}}
+                                                    </span>
+                                                    {% endif %}
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+
+                                            <div class="user-avatar-group">
+                                                {% for x in project.team_project.all %}
+                                                {{x.count}}
+                                                {% if x %}
+
+                                                {% if x.user.profile.user_role %}
+
+                                                <div class="user-avatar sm bg-primary">
+                                                    <span style="cursor:pointer;" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{{x.user.first_name}} {{x.user.last_name}}">
+                                                        {{x.user.first_name|make_list|first}}
+
+                                                        {{x.user.last_name|make_list|first}}
+                                                    </span>
+
+                                                </div>
+
+                                                {% endif %}
+
+                                                {% endif %}
+                                                {% endfor %}
+
+                                            </div>
+
+                                        </td>
+                                        <td class="nk-tb-col tb-col-lg">
+
+                                            <small>
+                                                <span data-toggle="tooltip" data-placement="left"
+                                                    title="{% blocktranslate %}This order does not contain legal consultation.{% endblocktranslate %}"><em
+                                                        class="icon text-primary ni ni-package-fill"></em>&nbsp;
+                                                    {% if project.order_project.last.calendar == False %}
+                                                    Dobozos termék
+                                                    {% else %}
+                                                    Időpont
+                                                    {% endif %}
+                                                </span><br>
+                                                <!-- Ha van konzultáció, akkor az alsó két sort jelenyítse meg, amúgy a fenti egy sort.-->
+                                                {% if project.order_project.last.calendar == True %}
+                                                <span data-toggle="tooltip" data-placement="left"
+                                                    title="{% blocktranslate %}Beginning of the requested consultation.{% endblocktranslate %}"><em
+                                                        class="icon text-primary ni ni-clock"></em>&nbsp;
+                                                    {% if project.order_project.last.date_start %}
+                                                    {{project.order_project.last.date_start}}
+                                                    {% endif %}
+                                                </span><br>
+                                                <span data-toggle="tooltip" data-placement="left"
+                                                    title="{% blocktranslate %}Ending of the requested consultation.{% endblocktranslate %}"><em
+                                                        class="icon text-primary ni ni-last"></em>&nbsp;
+                                                    {% if project.order_project.last.date_end %}
+                                                    {{project.order_project.last.date_end}}
+                                                    {% endif %}
+                                                </span>
+                                                {% endif %}
+                                            </small>
+                                        </td>
+
+                                        <td class="nk-tb-col tb-col-md">
+
+                                            {% if project.order_project.last.status == 'PENDING' %}
+                                            <span class="badge badge-pill badge-secondary" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{% blocktranslate %}Pending{% endblocktranslate %}"><em
+                                                    class="icon ni ni-clock-fill"></em></span>
+
+                                            {% elif project.order_project.last.status == 'IN_PROGRESS' %}
+
+                                            <span class="badge badge-pill badge-success" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{% blocktranslate %}In progress{% endblocktranslate %}"><em
+                                                    class="icon ni ni-check-thick"></em></span>
+
+                                            {% elif project.order_project.last.status == 'CLOSED' %}
+                                            <span class="badge badge-pill badge-info" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{% blocktranslate %}Closed{% endblocktranslate %}"><em
+                                                    class="icon ni ni-cross"></em></span>
+
+                                            {% elif project.order_project.last.status == 'ARCHIVED' %}
+                                            <span class="badge badge-pill badge-light" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{% blocktranslate %}Archived{% endblocktranslate %}"><em
+                                                    class="icon ni ni-archive"></em></span>
+
+                                            {% elif project.order_project.last.status == 'CANCELED' %}
+                                            <span class="badge badge-pill badge-danger" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{% blocktranslate %}Canceled{% endblocktranslate %}"><em
+                                                    class="icon ni ni-na"></em></span>
+                                            {%else%}
+                                            {%endif%}
+
+                                        </td>
+                                        <td class="nk-tb-col nk-tb-col-tools">
+                                            {% if project.closed == False %}
+                                            <ul class="nk-tb-actions gx-1">
+                                                <li class="nk-tb-action"><a
+                                                        href="{% url 'project:project_detail' project.id %}"
+                                                        class="btn btn-success" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{% blocktranslate %}Details{% endblocktranslate %}"><em
+                                                            class="icon ni ni-eye-fill"></em></a>
+                                                <li class="nk-tb-action"><a
+                                                        href="{% url 'project:project_edit' project.id %}"
+                                                        class="btn btn-primary" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{% blocktranslate %}Edit{% endblocktranslate %}"><em
+                                                            class="icon ni ni-edit-fill"></em></a>
+
+                                            </ul>
+                                            {%else%}
+                                            <ul class="nk-tb-actions gx-1">
+
+                                                <li class="nk-tb-action"><a href="{% url 'project:project_unarchive' project.id %}" class="btn btn-danger"
+                                                        data-toggle="tooltip" data-placement="top" title="Unarchive"><em
+                                                            class="icon ni ni-unarchive"></em></a>
+                                                </li>
+                                            </ul>
+                                            {%endif%}
+                                            {% endfor %}
+                                </tbody>
+                            </table>
+
+
+
+                            <!-- Eredeti form
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Description" %}</th>
+                                        <th>{% trans "Client" %}</th>
+                                        <th>{% trans "Participants" %}</th>
+                                        <th>{% trans "Archived" %}</th>
+                                        <th>{% trans "Closed" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for project in projects %}
+                                    <tr class="nk-tb-item">
+                                        <td>
+                                            {{project.id}}
+                                        </td>
+                                        <td>
+                                            {% if project.closed == True %}
+                                            <em class="icon ni ni-lock-fill"></em>
+                                            {% endif %}
+                                            {{project.name}}
+                                        </td>
+                                        <td>{{project.description|truncatechars:100}}</td>
+                                        <td>{{project.client}}</td>
+
+                                        <td>
+                                            {% for x in project.team_project.all %}
+                                            {% if x.user %}
+                                            {{x.user.first_name}} {{x.user.last_name}}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-pill badge-secondary">{{project.archived}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-pill badge-secondary">{{project.closed}}</span>
+                                        </td>
+                                        {% if request.user.profile.user_role != 3 %}
+                                        <td>
+                                            <a href="{% url 'project:project_detail' project.id %}"
+                                                class="btn btn-outline-primary btn-sm">{% trans "Show details" %}</a>
+                                        </td>
+                                        {% endif %}
+
+                                        {% if request.user.profile.user_role == 3 %} <td>
+                                            <a href="{% url 'project:project_edit' project.id %}"
+                                                class="btn btn-outline-primary btn-sm">{% trans "Edit" %}</a>
+
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            -->
+
+                        </div>
+                    </div><!-- .card-preview -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

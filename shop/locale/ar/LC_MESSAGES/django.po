@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-17 19:41+0000\n"
+"PO-Revision-Date: 2022-01-18 20:44+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar_OM\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: shop/models.py:6
+msgid "Default"
+msgstr "تقصير"
+
+#: shop/models.py:7
+msgid "Company"
+msgstr "شركة"
+
+#: shop/models.py:8
+msgid "Appointment"
+msgstr "ميعاد"
+
+#: shop/templates/section/footer.html:59
+msgid "English"
+msgstr "إنجليزي"
+
+#: shop/templates/section/footer.html:64
+msgid "Hungarian"
+msgstr "المجرية"
+
+#: shop/templates/section/header.html:88
+#: shop/templates/section/sidebar_lawyer.html:54
+#: shop/templates/section/sidebar_office.html:76
+#: shop/templates/section/sidebar_user.html:69
+msgid "Notifications"
+msgstr "إشعارات"
+
+#: shop/templates/section/header.html:123
+msgid "No notification"
+msgstr "لا يوجد إشعارات"
+
+#: shop/templates/section/header.html:131
+#: shop/templates/section/header.html:194
+msgid "View All"
+msgstr "مشاهدة الكل"
+
+#: shop/templates/section/header.html:146
+msgid "Activites"
+msgstr "الأنشطة"
+
+#: shop/templates/section/header.html:185
+msgid "No activites"
+msgstr "لا توجد أنشطة"
+
+#: shop/templates/section/header.html:212
+msgid "Lawyer"
+msgstr "محامي"
+
+#: shop/templates/section/header.html:214
+msgid "Office"
+msgstr "مكتب. مقر. مركز"
+
+#: shop/templates/section/header.html:216
+msgid "Admin"
+msgstr "مشرف"
+
+#: shop/templates/section/header.html:218
+msgid "User"
+msgstr "مستخدم"
+
+#: shop/templates/section/header.html:221
+msgid "Not logged in"
+msgstr "لم تقم بتسجيل الدخول"
+
+#: shop/templates/section/header.html:228
+msgid "Go to dashboard"
+msgstr "الذهاب إلى لوحة القيادة"
+
+#: shop/templates/section/header.html:253
+msgid "View Profile"
+msgstr "عرض الصفحة الشخصية"
+
+#: shop/templates/section/header.html:256
+#: shop/templates/section/header.html:273
+msgid "Dark Mode"
+msgstr "الوضع الداكن"
+
+#: shop/templates/section/header.html:263
+msgid "Sign out"
+msgstr "خروج"
+
+#: shop/templates/section/sidebar_admin.html:28
+#: shop/templates/section/sidebar_anonymus.html:28
+#: shop/templates/section/sidebar_user.html:28
+#: shop/templates/shop/by_category.html:6 shop/templates/shop/index.html:6
+msgid "Webshop"
+msgstr "متجر الويب"
+
+#: shop/templates/section/sidebar_admin.html:33
+#: shop/templates/section/sidebar_anonymus.html:33
+#: shop/templates/section/sidebar_user.html:33
+#: shop/templates/shop/by_category.html:19 shop/templates/shop/index.html:19
+msgid "Products"
+msgstr "منتجات"
+
+#: shop/templates/section/sidebar_admin.html:39
+#: shop/templates/section/sidebar_anonymus.html:39
+#: shop/templates/section/sidebar_user.html:39
+#: shop/templates/shop/by_category.html:112
+msgid "Category"
+msgstr "فئة"
+
+#: shop/templates/section/sidebar_admin.html:45
+#: shop/templates/section/sidebar_office.html:40
+#: shop/templates/section/sidebar_user.html:77
+msgid "Orders"
+msgstr "الطلب #٪ s"
+
+#: shop/templates/section/sidebar_admin.html:49
+#: shop/templates/section/sidebar_lawyer.html:28
+#: shop/templates/section/sidebar_office.html:28
+#: shop/templates/section/sidebar_user.html:43
+msgid "Dashboards"
+msgstr "لوحات القيادة"
+
+#: shop/templates/section/sidebar_admin.html:54
+#: shop/templates/section/sidebar_lawyer.html:34
+#: shop/templates/section/sidebar_office.html:34
+#: shop/templates/section/sidebar_user.html:49
+msgid "Overview"
+msgstr "ملخص"
+
+#: shop/templates/section/sidebar_admin.html:60
+#: shop/templates/section/sidebar_lawyer.html:41
+#: shop/templates/section/sidebar_office.html:54
+#: shop/templates/section/sidebar_user.html:56
+msgid "Messages"
+msgstr "الرسائل"
+
+#: shop/templates/section/sidebar_admin.html:69
+#: shop/templates/section/sidebar_office.html:91
+msgid "Account"
+msgstr "الحساب"
+
+#: shop/templates/section/sidebar_admin.html:74
+#: shop/templates/section/sidebar_lawyer.html:126
+#: shop/templates/section/sidebar_office.html:96
+#: shop/templates/section/sidebar_user.html:138
+msgid "My profile"
+msgstr "ملفي"
+
+#: shop/templates/section/sidebar_admin.html:80
+#: shop/templates/section/sidebar_lawyer.html:132
+#: shop/templates/section/sidebar_office.html:102
+#: shop/templates/section/sidebar_user.html:144
+msgid "Help"
+msgstr "يساعد"
+
+#: shop/templates/section/sidebar_lawyer.html:48
+#: shop/templates/section/sidebar_user.html:63
+msgid "Activity"
+msgstr "نشاط"
+
+#: shop/templates/section/sidebar_lawyer.html:62
+#: shop/templates/section/sidebar_user.html:83
+msgid "Clients"
+msgstr "العملاء"
+
+#: shop/templates/section/sidebar_lawyer.html:70
+#: shop/templates/section/sidebar_office.html:47
+#: shop/templates/section/sidebar_user.html:89
+msgid "Cases"
+msgstr "حالات"
+
+#: shop/templates/section/sidebar_lawyer.html:76
+#: shop/templates/section/sidebar_user.html:95
+msgid "Invites"
+msgstr "يدعو"
+
+#: shop/templates/section/sidebar_lawyer.html:83
+#: shop/templates/section/sidebar_user.html:102
+msgid "Next consultations"
+msgstr "المشاورات القادمة"
+
+#: shop/templates/section/sidebar_lawyer.html:90
+#: shop/templates/section/sidebar_user.html:109
+msgid "Tasks"
+msgstr "مهام"
+
+#: shop/templates/section/sidebar_lawyer.html:97
+#: shop/templates/section/sidebar_office.html:69
+msgid "Document templates"
+msgstr "قوالب المستندات"
+
+#: shop/templates/section/sidebar_office.html:62
+msgid "Pages"
+msgstr "الصفحات"
+
+#: shop/templates/shop/by_category.html:62
+msgid "New Product"
+msgstr "منتج جديد"
+
+#: shop/templates/shop/by_category.html:64
+msgid "Add information and add new product."
+msgstr "أضف معلومات وأضف منتجًا جديدًا."
+
+#: shop/templates/shop/by_category.html:72
+msgid "Product Title"
+msgstr "عنوان المنتج"
+
+#: shop/templates/shop/by_category.html:80
+msgid "Regular Price"
+msgstr "سعر عادي"
+
+#: shop/templates/shop/by_category.html:88
+msgid "Sale Price"
+msgstr "سعر البيع"
+
+#: shop/templates/shop/by_category.html:96
+msgid "Stock"
+msgstr "المخزون"
+
+#: shop/templates/shop/by_category.html:104
+msgid "SKU"
+msgstr "SKU"
+
+#: shop/templates/shop/by_category.html:120
+msgid "Tags"
+msgstr "كلمات دليلية Tags"
+
+#: shop/templates/shop/by_category.html:129
+msgid "Drag and drop file"
+msgstr "سحب وإسقاط الملف"
+
+#: shop/templates/shop/by_category.html:135
+msgid "Add New"
+msgstr "اضف جديد"
+
+#: shop/templates/shop/detail.html:6
+msgid "Termék"
+msgstr "Termék"
+
+#: shop/templates/shop/detail.html:28
+msgid "Back"
+msgstr "عودة"
+
+#: shop/templates/shop/detail.html:77
+msgid ""
+"Register and\n"
+"                                                        continue order"
+msgstr ""
+"سجل و\n"
+"                                                        استمر في الطلب"
+
+#: shop/templates/shop/detail.html:80
+msgid ""
+"Login and continue\n"
+"                                                        order"
+msgstr ""
+"تسجيل الدخول والمتابعة\n"
+"                                                        طلب"
+
+#: shop/templates/shop/detail.html:105
+msgid "Watch Video"
+msgstr "شاهد الفيديو"
+
+#: shop/templates/shop/detail.html:112
+msgid "Product details of "
+msgstr "تفاصيل المنتج من"
+
+#: shop/templates/shop/detail.html:126
+msgid "Related Products"
+msgstr "منتجات ذات صله"

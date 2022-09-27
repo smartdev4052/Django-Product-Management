@@ -1,0 +1,57 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Activity details" %}: {{activity.name}}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Activites details" %}</h3>
+                                <div class="nk-block-des text-soft">
+                                </div>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <a href="{% url 'main:activity_index' %}"
+                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                        class="icon ni ni-arrow-left"></em><span>{% trans "Back" %}</span></a>
+                                <a href="{% url 'main:activity_index' %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex
+                                        d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <div class="preview-block">
+
+                                <p><b>{% trans "Activity name" %}:</b> {{activity.name}}</p>
+                                <p><b>{% trans "Project name" %}:</b> {{activity.project}}</p>
+                                <p><b>{% trans "Description" %}:</b> {{activity.description}}</p>
+                                <p><b>{% trans "Date" %}:</b> {{activity.created_at}}</p>
+                                <a href="{% url 'project:project_detail' activity.project.id %}"
+                                    class="btn btn-primary">{% trans "Go to project" %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+{% endblock %}

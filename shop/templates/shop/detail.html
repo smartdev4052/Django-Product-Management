@@ -1,0 +1,209 @@
+{% extends "base_shop.html" %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% blocktranslate %}Termék{% endblocktranslate %}: {{product.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<!-- content @s -->
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between g-3">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">{{product.name}}</h3>
+                            <div class="nk-block-des text-soft">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="nk-block-head-content">
+                            <a href="{% url 'shop:shop_index' %}"
+                                class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-arrow-left"></em><span>{% blocktranslate %}Back
+                                        {% endblocktranslate %}</span></a>
+                            <a href="{% url 'shop:shop_index' %}"
+                                class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-arrow-left"></em></a>
+                        </div>
+                    </div>
+                </div><!-- .nk-block-head -->
+
+                <div class="nk-block">
+                    <div class="card card-bordered">
+                        <div class="card-inner">
+                            <div class="row pb-5">
+                                <!-- .col -->
+                                <div class="col-lg-12">
+                                    <div class="product-info mt-12 mr-xxl-12">
+
+                                        {% if label %}
+                                        <span class="badge badge-primary mb-2">{{product.label}}</span>
+                                        {% endif %}
+
+                                        <h2 class="product-title col-lg-7 d-inline">{{product.name}} </h2>
+
+
+                                        {% if product.price == 0 %}
+                                        <h3 class="product-price col-lg-5 text-primary d-inline h4" style="margin-top: 20px;">{% trans "Free product" %}</h3>
+                                        {%else%}
+                                        <h3 class="product-price col-lg-5 text-primary d-inline h4" style="text-align: right; ">
+                                            {{product.price}} <span class="currency"
+                                                style="font-weight: 700;">{{product.currency}}</span>
+                                        </h3>
+                                        <span class="small">(Bruttó {{product.brutto_price}}
+                                            {{product.currency}})</span>
+                                        {%endif%}
+
+                                        
+                                        <div class="product-excrept text-soft">
+                                            <p class="lead">{{product.short_description}}</p>
+                                        </div>
+
+                                        <hr class="hr border-light">
+                                        <div class="product-excrept text-soft">
+                                            <p>{{product.description}}</p>
+                                        </div>
+
+                                        {% if product.price == 0 %}
+                                        <h3 class="product-price text-primary h4" style="margin-top: 20px;">{% trans "Free product" %}</h3>
+                                        {%else%}
+                                        <h3 class="product-price text-primary h4" style="margin-top: 20px;">
+                                            {{product.price}} <span class="currency"
+                                                style="font-weight: 700;">{{product.currency}}</span>
+                                        </h3>
+                                        <span class="small">(Bruttó {{product.brutto_price}}
+                                            {{product.currency}})</span>
+                                        {%endif%}
+
+                                        <div class="product-meta">
+                                            <ul class="d-flex flex-wrap ailgn-center g-2 pt-1">
+                                                {% if product.price == 0 %}
+                                                <li>
+                                                    {% if user.is_authenticated %}
+
+                                                    <a href="{% url 'order:order_create' slug=product.slug%}"
+                                                        class="btn btn-primary">{% trans "Request consultation" %}</a>
+                                                    {% else %}
+                                                    <a href="{% url 'register' %}?product_id={{product.id}}"
+                                                        class="btn btn-outline-warning btn-md">{% blocktranslate %}Register and
+                                                        continue order{% endblocktranslate %}</a>
+                                                    <a href="{% url 'login' %}?product_id={{product.id}}"
+                                                        class="btn btn-primary btn-md">{% blocktranslate %}Login and
+                                                        continue
+                                                        order{% endblocktranslate %}</a>
+
+                                                    {% endif %}
+
+                                                </li>
+                                                {%else%}
+                                                <li>
+                                                    {% if user.is_authenticated %}
+
+                                                    <a href="{% url 'order:order_create' product.id%}"
+                                                        class="btn btn-primary">Buy</a>
+                                                    {% else %}
+                                                    <a href="{% url 'register' %}?product_id={{product.id}}"
+                                                        class="btn btn-outline-warning btn-md">{% blocktranslate %}Register and
+                                                        continue order{% endblocktranslate %}</a>
+                                                    <a href="{% url 'login' %}?product_id={{product.id}}"
+                                                        class="btn btn-primary btn-md">{% blocktranslate %}Login and
+                                                        continue
+                                                        order{% endblocktranslate %}</a>
+
+                                                    {% endif %}
+
+                                                </li>
+                                                {%endif%}
+
+                                            </ul>
+                                        </div><!-- .product-meta -->
+                                    </div><!-- .product-info -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+
+                            <!-- .row -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nk-block nk-block-lg">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% blocktranslate %}Related Products{% endblocktranslate %}</h3>
+                            </div>
+                        </div>
+                    </div><!-- .nk-block-head -->
+                    <div class="slider-init row"
+                        data-slick='{"slidesToShow": 4, "centerMode": false, "slidesToScroll": 1, "infinite":false, "responsive":[ {"breakpoint": 1540,"settings":{"slidesToShow": 3}},{"breakpoint": 992,"settings":{"slidesToShow": 2}}, {"breakpoint": 576,"settings":{"slidesToShow": 1}} ]}'>
+                        {% for product in products %}
+                        <div class="col">
+                            <div class="card card-bordered product-card">
+                                <div class="product-thumb">
+                                    <a href="{% url 'shop:shop_detail' slug=product.slug %}">
+                                        {% if product.image%}
+                                        <img class="card-img-top" src="{{product.image.url}}" alt="">
+                                        {% endif %}
+                                    </a>
+                                    {% if product.label %}
+                                    <ul class="product-badges">
+                                        <li><span class="badge badge-primary">{{product.label}}</span></li>
+                                    </ul>
+                                    {% endif %}
+
+                                </div>
+                                <div class="card-inner text-center">
+                                    <ul class="product-tags">
+                                        <li><a href="#">{{product.category}}</a></li>
+                                    </ul>
+                                    <h5 class="product-title"><a
+                                            href="{% url 'shop:shop_detail' slug=product.slug %}">{{product.name}}</a>
+                                    </h5>
+                                    <div class="product-price text-primary h5">{{product.price}}</div>
+                                </div>
+                            </div>
+                        </div><!-- .col -->
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="row g-gs flex-lg-row-reverse pt-5">
+                    <div class="nk-notes ff-italic fs-12px text-soft">
+                        <p style="text-align: justify">A www.legisly.com weboldalon keresztül elérhető jogi ügykezelő
+                            platformon nyújtott jogi
+                            szolgáltatásokat a Legisly Solutions Kft.-vel együttműködő Giró Szász és Társai Ügyvédi
+                            Iroda (székhely: 1126 Budapest, Kiss János altábornagy utca 23. I/1.; kamarai nyilvántartási
+                            szám: 240; a továbbiakban: Ügyvédi Iroda) nyújta. Az Ügyvédi Iroda platformszolgáltatás
+                            keretében a korszerű jogi szolgáltatás technikai feltételeit veszi igénybe a Legisly
+                            Solutions Kft-től, amely platformszolgáltató jogi szolgáltatást nem nyújt.</p>
+                        <p style="text-align: justify;">Az Ügyvédi Iroda megbízása kizárólag a www.legisly.com
+                            weboldalon
+                            elérhető webshopon
+                            megrendelt szolgáltatásra - az ott foglalt korlátozásokkal, az Általános Szerződési
+                            Feltételekben meghatározott feltételekkel - terjed ki. Az ingyenes konzultáció célja az,
+                            hogy az Ügyvédi Iroda segítsen eligazodni az igénybe vehető jogi szolgáltatások között és
+                            az, hogy segítsen kiválasztani az adott személynek legmegfelelőbb szolgáltatást. A Legisly
+                            Solutions Kft. vagy az együttműködő Ügyvédi Iroda nem felel a megadott adatok
+                            pontatlanságából, vagy az adatváltozás bejelentésének elmulasztásából eredő károkért. Minden
+                            további szolgáltatási elem hozzáadása esetén a jogi szolgáltató mindenkori díjszabása az
+                            irányadó, amely a www.legisly.com weboldal webshop felületén a megfelelő paraméterek
+                            kiválasztása esetén látható. A jelen tájékoztatás nem teljeskörű és nem minősül
+                            ajánlattételnek. Részletes tájékoztatásért keresse fel a www.legisly.com weboldalt.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+{% endblock %}

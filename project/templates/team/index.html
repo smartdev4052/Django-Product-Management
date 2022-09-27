@@ -1,0 +1,195 @@
+{% extends "base_project.html" %} {% load static %}
+{% load i18n %} {% load crispy_forms_tags %}
+{% block title %} Files {% endblock %} {% block content %}
+
+<script>
+  function myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById("myInput");
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+  }
+</script>
+
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        {% include 'section/project_header.html' %}
+
+        <div class="nk-block">
+          <div class="card">
+            <div class="card-aside-wrap">
+              <div class="card-content">
+                {% include 'section/project_navbar.html' %}
+                <div class="card-inner">
+                  <div class="nk-block-head">
+                    <div class="nk-block-between g-3">
+                      <div class="nk-block-head-content">
+                        <h3 class="nk-block-title page-title">
+                          <em class="icon ni ni-users"></em> Team
+                        </h3>
+                        <div class="nk-block-des text-soft">
+                          <p>
+                            Below can find all the members added to the
+                            <strong>{{project.name}}</strong>. You can add,
+                            remove or edit the rights for each members invited
+                            by you. Want to invite a new member for this
+                            project? Click
+                            <a href="{% url 'project:project_team_invite' project.id %}">here</a>
+                            or the plus button on the right corner.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="nk-block-head-content">
+
+                        {% if x.role == '2' %} <ul class="nk-block-tools g-3">
+                          <li>
+                            <div class="drodown">
+                              <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="dropdown"><em
+                                  class="icon ni ni-plus"></em></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="link-list-opt no-bdr">
+
+                                  {% if request.user.profile.user_role == 1 %}
+                                  <li>
+                                    <a href="{% url 'project:project_team_invite' project.id %}"><span>Add New
+                                        member</span></a>
+                                  </li>
+                                  {% elif request.user.profile.user_role > 1 %}
+                                  <li>
+                                    <a href="{% url 'project:project_team_create' project.id %}"><span>Add New member
+                                        (admin)</span></a>
+                                  </li>
+                                  {% endif %}
+                                </ul>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alert alert-pro alert-danger">
+                    <div class="alert-text">
+                      <h6>Attention!</h6>
+                      <p>
+                        Members added to the projects can see all informations.
+                      </p>
+                    </div>
+                  </div>
+                  <table class="datatable-init table">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>E-mail</th>
+                        <th>Name</th>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Removable?</th>
+                        <th>Type</th>
+                        <th>Token</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for team in teams %}
+                      <tr class="nk-tb-item">
+                        <th scope="row">{{team.id}}</th>
+                        <td>{% if team.email %} {{team.email}} {% endif %}</td>
+                        <td>{{team.user.first_name}} {{team.user.last_name}}</td>
+                        <td>
+                          {% if team.user %}
+                          {{team.user}}
+                          {% endif %}
+                        </td>
+                        <td>{{team.get_role_display}}</td>
+                        <td>
+                          {% if team.active == True %}
+                          <span class="badge badge-pill badge-success">Active</span>
+                          {% else %}
+                          <span class="badge badge-pill badge-danger">Inactive</span>
+                          {% endif %}
+                        </td>
+                        <td>{{team.is_removable}}</td>
+                        <td>{% if team.staff == True %}
+                          <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Legisly staff{% endblocktranslate %}"><em class="icon text-primary ni ni-account-setting-fill"></em></span>
+                          {% else %}
+                          <span class="badge badge-pill badge-light"  data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Client team member{% endblocktranslate %}"><em class="icon ni ni-user"></em></span>
+                          {% endif %}
+                        </td>
+                        <td>
+
+                          {% if team.token %}
+                          <!-- Modal Trigger Code --><button type="button" class="btn btn-sm btn-primary"
+                            data-toggle="modal" data-target="#modalSmall">{% trans "Show token" %}</button>
+                          <!-- Modal Content Code -->
+                          <div class="modal fade" tabindex="-1" id="modalSmall">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content"> <a href="#" class="close" data-dismiss="modal"
+                                  aria-label="Close"> <em class="icon ni ni-cross"></em> </a>
+                                <div class="modal-header">
+                                  <h5 class="modal-title"><em class="icon text-primary ni ni-shield-check"></em>&nbsp;{% trans "Token info" %}</h5>
+                                </div>
+                                <div class="modal-body">
+                                  <p>{% blocktranslate %}The token is used to identify the invitation. If the invited
+                                    person registers by clicking on the link provided in the e-mail, it is not required.
+                                    If you still need it, you can find it below:
+                                    {% endblocktranslate %}
+                                  </p>
+                                  <label class="form-label" for="default-1-03">{% trans "Token code" %}</label>
+                                  <input type="text" class="form-control" id="default-1-03" disabled=""
+                                    value="{{team.token}}">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {% endif %}
+                        </td>
+                        <td>
+
+                          {% if customer.customer == True or customer.staff == True %}
+                          {% if team.is_removable == True %}
+
+                          <a href="{% url 'project:project_team_edit' project_id=project.id id=team.id %}"
+                            class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                            title="{% blocktranslate %}Invite more participants.{% endblocktranslate %}"
+                            style="margin:2px;"><em class="icon ni ni-user-add"></em></a>
+
+                          {% if x.customer == True or x.staff == True %}
+                          <a href="{% url 'project:project_team_invite_delete' project_id=project.id id=team.id %}"
+                            class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                            title="{% blocktranslate %}Remove this participant from the case.{% endblocktranslate %}"
+                            style="margin:2px;"><em class="icon ni ni-user-remove"></em></a>
+                          {% endif %}
+                          {% endif %}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                </>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- content @e -->
+
+  {% endblock %}

@@ -1,0 +1,555 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Forms" %}: {{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"><em
+                                                        class="icon ni ni-text-rich"></em> Forms</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktranslate %}Below you can find all the forms added to
+                                                        your case.{% endblocktranslate %}</p>
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content">
+                                                <ul class="nk-block-tools g-3">
+                                                    <li>
+                                                        <div class="drodown"><a href="#"
+                                                                class="dropdown-toggle btn btn-icon btn-primary"
+                                                                data-toggle="dropdown"><em
+                                                                    class="icon ni ni-plus"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a
+                                                                            href="{% url 'project:project_form_create' project.id %}">
+                                                                            <span>
+                                                                                Add new form
+                                                                            </span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inner-body" style="margin-bottom: 30px;">
+                                        <div class="card-inner">
+
+                                            <div id="accordion-1" class="accordion accordion-s3">
+                                            <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                                    data-toggle="collapse" data-target="#accordion-item-3-1"
+                                                    aria-expanded="false">
+                                                    <h6 class="title">{% blocktranslate %}How to use the forms?
+                                                        {% endblocktranslate %}</h6><span
+                                                        class="accordion-icon"></span>
+                                                </a>
+                                                <div class="accordion-body collapse" id="accordion-item-3-1"
+                                                    data-parent="#accordion-2">
+                                                    <div class="accordion-inner">
+                                                        <p>{% blocktranslate %}There are several type of forms:<br>
+                                                            {% endblocktranslate %}</p>
+                                                            <p>{% blocktranslate %}<strong>One time submission forms:</strong> These forms contain
+                                                            information that we normally expect to submit once. For these, your task
+                                                            is simple, just fill them out.{% endblocktranslate %}</p>
+                                                        <p>{% blocktranslate %}<strong>Multiple time submission forms:</strong> These forms usually
+                                                            contain personal information, belongings, etc ... Because there can be
+                                                            more than one person in a case (e.g., two owners for a company), you
+                                                            have the option to clone them as many times as you want to fill out the
+                                                            form.{% endblocktranslate %}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div id="accordion-2" class="accordion accordion-s3">
+                                                <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                                        data-toggle="collapse" data-target="#accordion-item-3-2"
+                                                        aria-expanded="false">
+                                                        <h6 class="title">{% blocktranslate %}About the user roles
+                                                            {% endblocktranslate %}</h6><span
+                                                            class="accordion-icon"></span>
+                                                    </a>
+                                                    <div class="accordion-body collapse" id="accordion-item-3-2"
+                                                        data-parent="#accordion-2">
+                                                        <div class="accordion-inner">
+                                                            <p>{% blocktranslate %}We distinguish two user levels:
+                                                                {% endblocktranslate %}</p>
+
+                                                            <p>{% blocktranslate %}<strong>Responsible person:</strong>
+                                                                The person
+                                                                responsible for completing
+                                                                the form. It is typical to send an ownership inquiry
+                                                                form to the exact
+                                                                owner. The purpose of this role is to make it clear to
+                                                                everyone who we
+                                                                expect the final solution from.{% endblocktranslate %}
+                                                            </p>
+                                                            <p>{% blocktranslate %}<strong>Participator:</strong> they
+                                                                are the people who
+                                                                can see the form and
+                                                                the information you enter. They are usually people we
+                                                                expect to help you
+                                                                fill out the form. For example: an assistant holding a
+                                                                real estate form
+                                                                will help the owner (who is present here as the person
+                                                                in charge) to provide
+                                                                the information requested about the title deed.</p>
+                                                            {% endblocktranslate %}
+                                                            </p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="accordion-3" class="accordion accordion-s3">
+                                        <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                                data-toggle="collapse" data-target="#accordion-item-3-3"
+                                                aria-expanded="false">
+                                                <h6 class="title">{% blocktranslate %}How to use Multiple forms?
+                                                    {% endblocktranslate %}</h6><span
+                                                    class="accordion-icon"></span>
+                                            </a>
+                                            <div class="accordion-body collapse" id="accordion-item-3-3"
+                                                data-parent="#accordion-2">
+                                                <div class="accordion-inner">
+                                                    <p>{% blocktranslate %}1. Invite additional participants to
+                                                        your case (click here).<br>
+                                                        2. Wait for your request to be accepted and join the
+                                                        case.<br>
+                                                        3. In the table below, click "Clone a form" and specify
+                                                        how many forms
+                                                        you want.<br>
+                                                        4. Assign the new forms created in the "Select
+                                                        responsible person"
+                                                        option.{% endblocktranslate %}</p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+                                <table class="datatable-init nk-tb-list nk-tb-ulist dataTable no-footer"
+                                    data-auto-responsive="false" id="DataTables_Table_1"
+                                    aria-describedby="DataTables_Table_1_info">
+                                    <thead>
+                                        <tr class="nk-tb-item nk-tb-head">
+                                            <th class="nk-tb-col nk-tb-col-check sorting sorting_asc" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-sort="ascending"
+                                                aria-label=": activate to sort column descending">
+                                                <!-- checkbox
+                                                    <div
+                                                    class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="uid"><label class="custom-control-label"
+                                                        for="uid"></label>
+                                                </div>-->
+                                            </th>
+                                            <th class="nk-tb-col sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="User: activate to sort column ascending"><span
+                                                    class="sub-text">{% blocktranslate %}Form Name
+                                                    {% endblocktranslate %}</span></th>
+                                            <th class="nk-tb-col tb-col-mb sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Balance: activate to sort column ascending"><span
+                                                    class="sub-text">{% blocktranslate %}Responsible
+                                                    {% endblocktranslate %}</span></th>
+                                            <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Phone: activate to sort column ascending"><span
+                                                    class="sub-text">{% blocktranslate %}Collaborators
+                                                    {% endblocktranslate %}</span></th>
+                                            <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Verified: activate to sort column ascending"><span
+                                                    class="sub-text">{% blocktranslate %}Last update
+                                                    {% endblocktranslate %}</span></th>
+                                            <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label="Last Login: activate to sort column ascending"><span
+                                                    class="sub-text">{% blocktranslate %}Due date
+                                                    {% endblocktranslate %}</span></th>
+                                            <th class="nk-tb-col nk-tb-col-tools text-right sorting" tabindex="0"
+                                                aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                                aria-label=": activate to sort column ascending"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for form_obj in form_qs %}
+                                        <tr class="nk-tb-item odd">
+                                            <td class="nk-tb-col nk-tb-col-check sorting_1">
+                                                {{form_obj.id}}
+                                                <!-- Checkbox
+                                                <div
+                                                    class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="uid1"><label class="custom-control-label"
+                                                        for="uid1"></label>
+                                                </div>
+                                                -->
+                                            </td>
+                                            <td class="nk-tb-col">
+                                                <div class="user-card">
+
+                                                    <div class="user-info">
+                                                        <span class="tb-lead">
+                                                            {% if form_obj.locked == True %}
+                                                            <span data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Form is marked as done and locked. Please ask the lawyer to open if you need to edit.
+                                                        {% endblocktranslate %}">{{form_obj.name}}&nbsp;<em
+                                                                    class="icon ni ni-lock-fill"></em></a></span>
+                                                            {%else%}
+                                                            <a
+                                                                href="{% url 'project:project_form_detail' project_id=project.id id=form_obj.id %}">{{form_obj.name}}</a>
+                                                            {% endif %}
+
+                                                        </span>
+                                                        <span>
+                                                            <strong>
+
+                                                                {% if form_obj.responsible_user %}
+                                                                <small><em
+                                                                        class="icon text-primary ni ni-user-circle-fill"></em>&nbsp;{{form_obj.responsible_user.first_name}}
+                                                                    {{form_obj.responsible_user.last_name}}</small>
+                                                                {%else%}
+                                                                <small><a
+                                                                        href="{% url 'project:project_form_responsible' project_id=project.id id=form_obj.id %}">
+                                                                        Add responsible person&nbsp;<em
+                                                                            class="icon text-primary ni ni-user-add-fill"></em></a></small>
+                                                                {%endif%}
+
+                                                            </strong>
+                                                            <br>
+                                                        </span>
+
+                                                        <small><em
+                                                                class="icon text-danger ni ni-clock-fill"></em>&nbsp;{{form_obj.due_date}}</small>
+
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                           
+                                            <!-- Mikor létrejön a form akkor a draft az mnidig false és a clone is false clonozás után a clone az True lesz-->
+                                            {% if form_obj.draft == False and form_obj.multiple == True %}
+                                           
+                                            <td class="nk-tb-col" colspan="3">
+                                              
+                                                <div class="alert alert-danger alert-icon">{{form_obj.question}} <a href="{% url 'project:project_form_duplicate' project_id=project.id id=form_obj.id %}" class="btn btn-sm btn-primary">{{form_obj.button_text}}</a></a></div>
+                                                
+                                            </td>
+                                            
+                                            {%else%}
+                                            <td class="nk-tb-col tb-col-mb">
+                                                {% if form_obj.responsible_user %}
+                                                <div class="user-avatar-group">
+                                                    <div class="user-avatar sm bg-primary" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{{form_obj.responsible_user.first_name}} {{form_obj.responsible_user.last_name}}">
+                                                        <span style="cursor:pointer;">
+                                                            {{form_obj.responsible_user.first_name|make_list|first}}
+
+                                                            {{form_obj.responsible_user.last_name|make_list|first}}
+                                                        </span>
+                                                    </div>
+                                                    <a
+                                                        href="{% url 'project:project_form_responsible' project_id=project.id id=form_obj.id %}">
+                                                        <div class="user-avatar sm bg-secondary"
+                                                            data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Set responsible person - he is the responsible for completing the form. 
+                                                            {% endblocktranslate %}">
+                                                            <span style="cursor:pointer;">
+                                                                <em class="icon ni ni-setting-fill"></em>
+                                                            </span>
+                                                    </a>
+                                                </div>
+                                                {%else%}
+                                                <a href="{% url 'project:project_form_responsible' project_id=project.id id=form_obj.id %}"
+                                                    class="btn btn-sm btn-primary">
+                                                    {% blocktranslate %}Set responsible person.
+                                                    {% endblocktranslate %}</a>
+                                                {% endif %}
+                                            </td>
+                                            <td class="nk-tb-col tb-col-md">
+                                                <div class="user-avatar-group">
+                                                    {% for x in form_obj.to_user.all %}
+
+                                                    {% if x %}
+
+                                                    <div class="user-avatar sm bg-primary" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{{x.first_name}} {{x.last_name}}">
+                                                        <span style="cursor:pointer;">
+                                                            {{x.first_name|make_list|first}}
+
+                                                            {{x.last_name|make_list|first}}
+                                                        </span>
+
+                                                    </div>
+
+
+                                                    {% endif %}
+
+
+                                                    {% endfor %}
+
+                                                    {% if form_obj.to_user.count == 0 %}
+                                                    <a href="{% url 'project:project_form_edit_participant' project_id=project.id id=form_obj.id %}"
+                                                        class="btn btn-sm btn-primary">{% blocktranslate %}Set
+                                                        collaborator(s)
+                                                        {% endblocktranslate %}</a>
+                                                    {% else %}
+                                                    <a
+                                                        href="{% url 'project:project_form_edit_participant' project_id=project.id id=form_obj.id %}">
+                                                        <div class="user-avatar sm bg-secondary"
+                                                            data-toggle="tooltip" data-placement="top" title="{% blocktranslate %}Set collaborators - they can view and edit to help the responsible person to complete the form.
+                                                    {% endblocktranslate %}">
+                                                            <span style="cursor:pointer;">
+                                                                <em class="icon ni ni-setting-fill"></em>
+                                                            </span>
+                                                    </a>
+                                                    {% endif %}
+
+                                                </div>
+                            
+
+                                            </td>
+                                            <td class="nk-tb-col tb-col-lg">
+                                                <small><em
+                                                        class="icon text-primary ni ni-histroy"></em>&nbsp;{{form_obj.updated_at}}</small>
+                                            </td>
+                                            {%endif%}
+
+
+
+
+                                            <td class="nk-tb-col tb-col-lg">
+                                                <small style="font-weight: 600;" class="text-danger"><em
+                                                        class="icon text-danger ni ni-clock"
+                                                        style="font-weight: 600;"></em>&nbsp;{{form_obj.due_date}}</small>
+
+                                            </td>
+                                            <td class="nk-tb-col nk-tb-col-tools"><!-- TOOLS -->
+                                                <ul class="nk-tb-actions gx-1">
+                                                    <li class="nk-tb-action-hidden"><a
+                                                            href="{% url 'project:project_form_detail' project_id=project.id id=form_obj.id %}"
+                                                            class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                            data-placement="top" title="{% blocktranslate %}Fill the form
+                                                            {% endblocktranslate %}"><em class="icon ni ni-edit-fill"></em></a></li>
+                                                    <li>
+                                                        <div class="drodown"><a href="#"
+                                                                class="dropdown-toggle btn btn-icon btn-trigger"
+                                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr" style="width: 300px;">
+                                                                    <li><a
+                                                                            href="{% url 'project:project_form_edit' project_id=project.id id=form_obj.id %}"><em
+                                                                                class="icon ni ni-edit-fill"></em><span>
+                                                                                {% blocktranslate %}Edit form
+                                                                                {% endblocktranslate %}</span></a></li>
+                                                                                <li><a
+                                                                                    href="{% url 'project:project_form_edit_participant' project_id=project.id id=form_obj.id %}"><em
+                                                                                        class="icon ni ni-user-add-fill"></em><span>
+                                                                                        {% blocktranslate %}Edit collaborators
+                                                                                        {% endblocktranslate %}</span></a></li>
+                                                                    <li><a
+                                                                            href="{% url 'project:project_form_responsible' project_id=project.id id=form_obj.id %}"><em
+                                                                                class="icon ni ni-user-circle-fill"></em><span>
+                                                                                {% blocktranslate %}Set a responsible person
+                                                                                {% endblocktranslate %}</span></a></li>
+
+
+                                                                    {% if form_obj.multiple == True %}
+                                                                    {% if form_obj.draft == True %}
+                                                                    <li><a
+                                                                            href="{% url 'project:project_form_duplicate' project_id=project.id id=form_obj.id %}"><em
+                                                                                class="icon ni ni-copy-fill"></em><span>
+                                                                                {{form_obj.button_text}}
+                                                                                </span></a>
+                                                                    </li>
+                                                                    {%endif%}
+                                                                    {%endif%}
+                                                                    {% if form_obj.multiple == True %}
+                                                                    {% if form_obj.draft == False %}
+                                                                    <li><a
+                                                                            href="{% url 'project:project_form_duplicate' project_id=project.id id=form_obj.id %}"><em
+                                                                                class="icon ni ni-copy-fill"></em><span>
+                                                                                {% blocktranslate %}Clone form for more submissions
+                                                                                {% endblocktranslate %}</span></a>
+                                                                    </li>
+                                                                    {%endif%}
+                                                                    {%endif%}
+                                                                    <li class="divider"></li>
+                                                                    <li><a href="{{form_obj.help_link}} "><em
+                                                                                class="icon ni ni-help-fill"></em><span>
+                                                                                {% blocktranslate %}Help with this form
+                                                                                {% endblocktranslate %}</span></a>
+                                                                    <li><a href="http://help.legisly.com"><em
+                                                                                class="icon ni ni-book-read"></em><span>
+                                                                                {% blocktranslate %}Knowledge base
+                                                                                {% endblocktranslate %}</span></a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                </table>
+
+                                <!-- Eredeti táblázat 
+                                    <hr style="height: 200px;">
+                                <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Locked</th>
+                                            <th>Start date</th>
+                                            <th>Due date</th>
+                                            <th>Participants</th>
+                                            <th>Responsible</th>
+                                            <th>Updated at</th>
+                                            <th>Created at</th>
+
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for form_obj in form_qs %}
+                                        <tr class="nk-tb-item">
+                                            <td>{{form_obj.id}}</td>
+                                            <td>
+                                                <a
+                                                    href="{% url 'project:project_form_detail' project_id=project.id id=form_obj.id %}">
+                                                    <strong>
+                                                        {{form_obj.name}}
+                                                        {% if form_obj.draft == True %}
+                                                        - <span class="badge badge-pill badge-secondary">
+                                                            {% trans "Draft" %}</span>
+
+                                                        {% endif %}
+                                                    </strong>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                {% if form_obj.locked == True %}
+                                                <span class="badge badge-pill badge-success">Yes</span>
+                                                {% else %}
+                                                <span class="badge badge-pill badge-secondary">No</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{form_obj.start_date}}</td>
+                                            <td>{{form_obj.due_date}}</td>
+
+                                            <td>
+
+
+                                                <div class="user-avatar-group">
+                                                    {% for x in form_obj.to_user.all %}
+
+                                                    {% if x %}
+
+                                                    {% if x.profile.user_role %}
+
+                                                    <div class="user-avatar sm bg-primary">
+                                                        <span style="cursor:pointer;" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="{{x.first_name}} {{x.last_name}}">
+                                                            {{x.first_name|make_list|first}}
+
+                                                            {{x.last_name|make_list|first}}
+                                                        </span>
+
+                                                    </div>
+                                                    {% endif %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                            </td>
+                                            <td>
+                                                {% if form_obj.responsible_user %}
+                                                <div class="user-avatar-group">
+                                                    <div class="user-avatar sm bg-primary">
+                                                        <span style="cursor:pointer;" data-toggle="tooltip"
+                                                            data-placement="top"
+                                                            title="{{form_obj.responsible_user.first_name}} {{form_obj.responsible_user.last_name}}">
+                                                            {{form_obj.responsible_user.first_name|make_list|first}}
+
+                                                            {{form_obj.responsible_user.last_name|make_list|first}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                {% endif %}
+                                            </td>
+                                            <td>{{form_obj.updated_at}}</td>
+                                            <td>{{form_obj.created_at}}</td>
+
+                                            <td>
+                                                <a href="{% url 'project:project_form_detail' project_id=project.id id=form_obj.id %}"
+                                                    class="btn btn-outline-primary btn-sm"><em
+                                                        class="icon ni ni-eye"></em>&nbsp; Details</a>
+
+                                                {% if form_obj.multiple == True %}
+                                                {% if form_obj.draft == False %}
+
+                                                <a
+                                                    href="{% url 'project:project_form_duplicate' project_id=project.id id=form_obj.id %}">Duplicate</a>
+
+
+                                                {% endif %}
+                                                {% endif %}
+                                                <a
+                                                    href="{% url 'project:project_form_edit' project_id=project.id id=form_obj.id %}">Edit</a>
+
+                                                <a
+                                                    href="{% url 'project:project_form_responsible' project_id=project.id id=form_obj.id %}">Responsible</a>
+
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- content @e -->
+
+
+
+{% endblock %}

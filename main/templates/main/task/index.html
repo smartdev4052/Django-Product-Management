@@ -1,0 +1,100 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "My tasks" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h4 class="nk-block-title page-title">{% trans "My tasks" %}</h4>
+                            <div class="nk-block-des">
+                                <p>{% blocktrans %}Below you can listed all the future and past consultations. Click on
+                                    the
+                                    join button to join the meeting or the details to see further information.
+                                    {% endblocktrans %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+<div class="nk-block nk-block-lg"><div class="nk-block-head"><div class="nk-block-head-content"><h4 class="nk-block-title">Data Table with Export</h4><div class="nk-block-des"><p>To intialize datatable with export buttons, use <code class="code-class">.datatable-init-export</code> with <code>table</code> element. <br> <strong class="text-dark">Please Note</strong> By default export libraries is not added globally, so please include <code class="code-class">"js/libs/datatable-btns.js"</code> into your page to active export buttons.</p></div></div></div><div class="card card-preview"><div class="card-inner"><div id="DataTables_Table_3_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row justify-between g-2 with-export"><div class="col-7 col-sm-4 text-left"><div id="DataTables_Table_3_filter" class="dataTables_filter"><label><input type="search" class="form-control form-control-sm" placeholder="Type in to Search" aria-controls="DataTables_Table_3"></label></div></div><div class="col-5 col-sm-8 text-right"><div class="datatable-filter"><div class="d-flex justify-content-end g-2"><div class="dt-export-buttons d-flex align-center"><div class="dt-export-title d-none d-md-inline-block">Export</div><div class="dt-buttons btn-group flex-wrap">      <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button"><span>Copy</span></button> <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button"><span>Excel</span></button> <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button"><span>CSV</span></button> <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_3" type="button"><span>PDF</span></button> </div></div><div class="dataTables_length" id="DataTables_Table_3_length"><label><span class="d-none d-sm-inline-block">Show</span><div class="form-control-select"> <select name="DataTables_Table_3_length" aria-controls="DataTables_Table_3" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> </div></label></div></div></div></div></div><div class="datatable-wrap my-3"><table class="datatable-init-export nowrap table dataTable no-footer dtr-inline" data-export-title="Export" id="DataTables_Table_3" aria-describedby="DataTables_Table_3_info"><thead><tr><th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Name</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Position</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Office</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Age</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Start date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Salary</th></tr></thead><tbody><tr class="odd"><td class="dtr-control sorting_1" tabindex="0">Airi Satou</td><td>Accountant</td><td>Tokyo</td><td>33</td><td>2008/11/28</td><td>$162,700</td></tr><tr class="even"><td class="sorting_1 dtr-control" tabindex="0">Angelica Ramos</td><td>Chief Executive Officer (CEO)</td><td>London</td><td>47</td><td>2009/10/09</td><td>$1,200,000</td></tr></tbody></table></div><div class="row align-items-center"><div class="col-7 col-sm-12 col-md-9"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_3_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_3_previous"><a href="#" aria-controls="DataTables_Table_3" data-dt-idx="0" tabindex="0" class="page-link">Prev</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_3" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_3" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item next" id="DataTables_Table_3_next"><a href="#" aria-controls="DataTables_Table_3" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li></ul></div></div><div class="col-5 col-sm-12 col-md-3 text-left text-md-right"><div class="dataTables_info" id="DataTables_Table_3_info" role="status" aria-live="polite">1 -100 of 120</div></div></div></div></div></div></div>
+
+
+                    <!-- Old
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Created by" %}</th>
+                                        <th>{% trans "Participant" %}</th>
+                                        <th>{% trans "Status" %}</th>
+                                        <th>{% trans "Start" %}</th>
+                                        <th>{% trans "Due Date" %}</th>
+                                        <th>{% trans "Files" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for task in tasks %}
+                                    <tr class="nk-tb-item">
+                                        <td>{{task.id}}</td>
+                                        <td><a
+                                                href="{% url 'project:project_task_detail' project_id=task.project.id id=task.id %}"><strong>{{task.name}}</strong></a>
+                                        </td>
+                                        <td>{{task.from_user.first_name}} {{task.from_user.last_name}}</td>
+
+                                        <td>{% for x in task.to_user.all %}
+                                            {% if x %}
+                                            {{x.first_name}} {{x.last_name}}
+
+                                            {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-pill badge-success">
+                                                {{task.get_status_display}}
+                                            </span>
+                                        </td>
+                                        <td>{{task.start_date}}</td>
+                                        <td>{{task.due_date}}</td>
+                                        <td>
+                                            {% if task.file.count > 0 %}
+                                            {{ task.file.count }}
+                                            {% else %}
+                                            0
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'project:project_task_detail' project_id=task.project.id id=task.id %}"
+                                                class="btn btn-outline-primary btn-sm"><em
+                                                    class="icon ni ni-eye"></em>&nbsp; {% trans "Details" %}</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

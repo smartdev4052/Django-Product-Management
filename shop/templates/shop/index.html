@@ -1,0 +1,113 @@
+{% extends "base_shop.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Webshop" %}
+{% endblock %}
+
+{% block content %}
+
+<!-- content @s -->
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">{% trans "Products" %}</h3>
+                        </div><!-- .nk-block-head-content -->
+
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="row g-gs">
+                        {% for product in products %}
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="card card-bordered product-card">
+                                <div class="product-thumb">
+                                    <a href="{% url 'shop:shop_detail' slug=product.slug %}">
+                                        {% if product.image %}
+                                        <img class="card-img-top" src="{{product.image.url}}" alt="">
+                                        {% endif %}
+                                    </a>
+                                    {% if product.label %}
+                                    <ul class="product-badges">
+                                        <li><span class="badge badge-primary">{{product.label}}</span></li>
+                                    </ul>
+                                    {% endif %}
+
+                                </div>
+                                <div class="card-inner text-center">
+                                    <ul class="product-tags">
+                                        <li><em class="icon ni ni-tag"></em>&nbsp;<a href="#">{{product.category}}</a></li>
+                                    </ul>
+                                    <h5 class="product-title"><a
+                                            href="{% url 'shop:shop_detail' slug=product.slug %}">{{product.name}}</a></h5>
+                                    {% if product.price == 0 %}
+                                        <span>{% trans "Free product" %}</span>
+                                        <br>
+                                        <a href="{% url 'shop:shop_detail' slug=product.slug %}" class="btn btn-sm btn-primary" style="margin-top: 10px;" ><em class="icon ni ni-cart-fill"></em><span>View product</span> </a>
+                                    {% else %}
+                                    <div class="product-price text-primary h6">
+                                            {{product.price}} <span class="currency" style="font-weight: 700;">{{product.currency}}</span>
+                                        </div>
+                                        <span class="small" >(Bruttó {{product.brutto_price}} {{product.currency}})</span>
+                                        <br>
+                                        <a href="{% url 'shop:shop_detail' slug=product.slug %}" class="btn btn-sm btn-primary" style="margin-top: 10px;" ><em class="icon ni ni-cart-fill"></em><span>View product</span> </a>
+                                        {% endif %}
+                                    </div>
+                            </div>
+                        </div><!-- .col -->
+                        {% endfor%}
+                    </div>
+                </div><!-- .nk-block -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+
+<!--
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Név</th>
+            <th scope="col">Leírás</th>
+            <th scope="col">Ár</th>
+            <th scope="col">Művelet</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <th scope="row">
+                <a href="{% url 'shop:shop_detail' product.id %}">
+                    {{product.id}}
+                </a>
+            </th>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>
+               
+                    <a href="{% url 'login' %}?product_id={{product.id}}">Bejelentkezés</a>
+                    <a href="{% url 'register' %}?product_id={{product.id}}">Regisztráció</a>
+
+                    <a href="{% url 'order:order_create' product.id%}">Megvásárol</a>
+               
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+-->
+
+
+
+{% endblock %}

@@ -1,0 +1,222 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Case details" %}: {{project.name}}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+                <div class="nk-block">
+                    <div class="card shadow-none">
+                        <div class="card-content">
+                            {% include 'section/project_navbar.html' %}
+                            <div class="card-inner d-lg-none">
+                                <div class="nk-block">
+
+                                    <div class="nk-block-head nk-block-head-line">
+                                        <h6 class="title overline-title text-base">{% trans "Information" %}</h6>
+                                    </div>
+                                    <div class="profile-ud-list">
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+
+                                                    {% trans "Name"%}
+
+                                                </span>
+                                                <span class="profile-ud-value">{{project.name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Client" %}
+                                                </span>
+                                                <span class="profile-ud-value">{{project.client}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Created at" %}
+                                                </span>
+                                                <span class="profile-ud-value">{{project.created_at}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
+                                                <span class="profile-ud-label">
+                                                    {% trans "Type of client" %}
+                                                </span>
+                                                <span
+                                                    class="profile-ud-value">{{project.client.get_type_display}}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <!--  Help box start -->
+                <div class="nk-block">
+
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">{% trans "Quick" %} <strong
+                                                        class="text-primary small">{% trans "Help" %}</strong></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p style="margin-bottom: 30px;">{% blocktranslate %}New to Legisly? You may have a number of questions, we have tried to gather the most common ones below. If you need further assistance, please visit our Knowledge Base.
+                                        {% endblocktranslate %}
+                                        <a href="http://help.legisly.com" class="btn btn-sm btn-primary" style="float: right;">{% blocktranslate %}Knowledge Base
+                                            {% endblocktranslate %}</a>
+                                    </p>
+                                    <div class="row g-gs">
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-header border-bottom"><em class="icon ni ni-info"></em>&nbsp;{% blocktranslate %}Tasks
+                                                    {% endblocktranslate %}</div>
+                                                <div class="card-inner">
+                                                    <h5 class="card-title"><em class="icon ni ni-list-check"></em>&nbsp;{% blocktranslate %}You have tasks to do!
+                                                        {% endblocktranslate %}</h5>
+                                                    <p class="card-text">{% blocktranslate %}In some cases we need your assistance. Want to delegate some task? Invite team members and ask some favor!
+                                                        {% endblocktranslate %}</p><a href="{% url 'project:project_task_index' project.id %}"
+                                                        class="btn btn-primary">{% blocktranslate %}Task management
+                                                        {% endblocktranslate %}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-header border-bottom"><em class="icon ni ni-info"></em>&nbsp;{% blocktranslate %}Forms
+                                                    {% endblocktranslate %}</div>
+                                                <div class="card-inner">
+                                                    <h5 class="card-title"><em class="icon ni ni-folder"></em>&nbsp;{% blocktranslate %}Fill the forms!
+                                                        {% endblocktranslate %}</h5>
+                                                    <p class="card-text">{% blocktranslate %}We need information to solve your case. Please pay attention to fill all the forms!
+                                                        {% endblocktranslate %}</p><a href="{% url 'project:project_form_index' project.id %}"
+                                                        class="btn btn-primary">{% blocktranslate %}Form management
+                                                        {% endblocktranslate %}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card">
+                                                <div class="card-header border-bottom"><em class="icon ni ni-info"></em>&nbsp;{% blocktranslate %}Team
+                                                    management
+                                                    {% endblocktranslate %}</div>
+                                                <div class="card-inner">
+                                                    <h5 class="card-title"><em
+                                                        class="icon ni ni-users"></em>&nbsp;{% blocktranslate %}Managing your team
+                                                        {% endblocktranslate %}</h5>
+                                                    <p class="card-text">{% blocktranslate %}Do you need the help of
+                                                        another person? Are more people involved? Go to the Team tab and
+                                                        send and invitation!
+                                                        {% endblocktranslate %}</p><a href="{% url 'project:project_team_index' project.id %}"
+                                                        class="btn btn-primary">{% blocktranslate %}Team management
+                                                        {% endblocktranslate %}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Help box start -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                <div class="card-inner">
+
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">{% trans "Project" %} / <strong
+                                                        class="text-primary small">{% trans "Activite" %}</strong></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline">
+                                        <ul class="timeline-list">
+                                            {% for activity in activities %}
+                                            <li class="timeline-item">
+                                                <div class="timeline-status bg-primary"></div>
+                                                <div class="timeline-date">{{activity.created_at|date:"M d"}} <em
+                                                        class="icon ni ni-alarm-alt"></em>
+                                                </div>
+                                                <div class="timeline-data">
+                                                    <h6 class="timeline-title">{{activity.name}}</h6>
+                                                    <div class="timeline-des">
+                                                        <p>{{activity.description}}</p><span
+                                                            class="time mt-1">{{activity.created_at}}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <a href="{% url 'project:project_activity_index' project.id %}"
+                                        class="btn btn-outline-primary btn-sm mt-5">
+                                        {% trans "Show all activities" %}
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

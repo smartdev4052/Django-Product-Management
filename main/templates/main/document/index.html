@@ -1,0 +1,153 @@
+{% extends "base_main.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Documents" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-between g-3">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">{% trans "Document" %}</h3>
+                                <div class="nk-block-des">
+                                    <p>{% blocktrans %}Create, edit or delete document templates{% endblocktrans %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="nk-block-head-content">
+                                <a href="{% url 'main:document_create' %}"
+                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                        class="icon ni ni-plus"></em><span>{% trans "Add document" %}</span></a>
+                                <a href="{% url 'main:document_create' %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex
+                                        d-sm-none"><em class="icon ni ni-plus"></em></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-inner">
+                            <div id="accordion-2" class="accordion accordion-s3">
+                                <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                        data-toggle="collapse" data-target="#accordion-item-2-1" aria-expanded="false">
+                                        <h6 class="title">{% blocktranslate %}Why use document templates? {%endblocktranslate %}</h6><span class="accordion-icon"></span>
+                                    </a>
+                                    <div class="accordion-body collapse" id="accordion-item-2-1"
+                                        data-parent="#accordion-2" style="">
+                                        <div class="accordion-inner">
+                                            <p>{% blocktranslate %}Document templates are practical because you only
+                                                need to prepare them once and then assign them to any case at any time
+                                                later. Templates can still be edited after ordering them, so you can
+                                                fine-tune them. {% endblocktranslate %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                        data-toggle="collapse" data-target="#accordion-item-2-2" aria-expanded="false">
+                                        <h6 class="title">{% blocktranslate %}How can I add client data into a
+                                            document?{% endblocktranslate %}</h6><span class="accordion-icon"></span>
+                                    </a>
+                                    <div class="accordion-body collapse" id="accordion-item-2-2"
+                                        data-parent="#accordion-2" style="">
+                                        <div class="accordion-inner">
+                                            <p>{% blocktranslate %}You can use the templates created here later on the Document subpage within the case. You can extract the data from the forms assigned to the case. To use the data in a selected form, simply select the required form and the values in the fields will be listed above the text editor. Click the labels with the names of the text boxes and the content will be automatically copied to the clipboard. Paste the text in the text where you want it with the right mouse button + paste, or Ctrl + V on Windows, ⌘ + V on Mac. {% endblocktranslate %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                        data-toggle="collapse" data-target="#accordion-item-2-3" aria-expanded="false">
+                                        <h6 class="title">{% blocktranslate %}Can I edit the documents later? {% endblocktranslate %}</h6>
+                                        <span class="accordion-icon"></span>
+                                    </a>
+                                    <div class="accordion-body collapse" id="accordion-item-2-3"
+                                        data-parent="#accordion-2" style="">
+                                        <div class="accordion-inner">
+                                            <p>{% blocktranslate %}On this page, you can edit the document templates, while the templates you insert within the file can always be modified later, so you have the option to rewrite, add content, or fine-tune certain parts. {% endblocktranslate %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item"><a href="#" class="accordion-head collapsed"
+                                        data-toggle="collapse" data-target="#accordion-item-2-4" aria-expanded="false">
+                                        <h6 class="title">{% blocktranslate %}In what formats will the document be available? {% endblocktranslate %}</h6>
+                                        <span class="accordion-icon"></span>
+                                    </a>
+                                    <div class="accordion-body collapse" id="accordion-item-2-4"
+                                        data-parent="#accordion-2" style="">
+                                        <div class="accordion-inner">
+                                            <p>{% blocktranslate %}You can copy and paste the text from a text editor into Word at any time. However, we currently only support PDF export.{% endblocktranslate %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <table class="datatable-init table nk-tb-list nk-tb-ulist">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Id" %}</th>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Description" %}</th>
+                                        <th>{% trans "Created by" %}</th>
+                                        <th>{% trans "Created at" %}</th>
+                                        <th>{% trans "Action" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for document in documents %}
+                                    <tr class="nk-tb-item">
+                                        <td>{{document.id}}</td>
+                                        <td><a
+                                                href="{% url 'main:document_detail' document.id %}"><strong>{{document.name}}</strong></a>
+                                        </td>
+                                        <td>{{document.description|truncatechars:50}} </td>
+                                        <td>
+                                            <span class="badge badge-pill badge-secondary">
+                                                {{document.created_by.first_name}} {{document.created_by.last_name}}
+                                            </span>
+                                        </td>
+
+                                        <td>{{document.created_at}}</td>
+
+                                        <td>
+                                            <a href="{% url 'main:document_detail' document.id %}"
+                                                class="btn btn-primary btn-sm" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{% blocktranslate %}View document{% endblocktranslate %}"
+                                                style="margin:2px;"><em class="icon ni ni-eye"></em></em></a>
+                                            <a href="{% url 'main:document_edit' document.id %}"
+                                                class="btn btn-primary btn-sm" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="{% blocktranslate %}Edit document{% endblocktranslate %}"
+                                                style="margin:2px;"><em class="icon ni ni-edit"></em></a>
+                                            <a href="{% url 'main:document_delete' document.id %}"
+                                                class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                                                title="{% blocktranslate %}Delete document. Warning, this is not reversible!{% endblocktranslate %}"
+                                                style="margin:2px;"><em class="icon ni ni-trash"></em></a>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- .card-preview -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+
+{% endblock %}

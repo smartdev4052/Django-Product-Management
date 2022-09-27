@@ -1,0 +1,350 @@
+{% extends "base_shop.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Orders" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h4 class="nk-block-title page-title">{% trans "Orders" %}</h4>
+                            <div class="nk-block-des">
+                                <p>{% trans "Below you can see all the orders placed by clients." %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-preview">
+                        <div class="card-inner">
+
+
+
+                            <table class="datatable-init nk-tb-list nk-tb-ulist dataTable no-footer"
+                                data-auto-responsive="false" id="DataTables_Table_1"
+                                aria-describedby="DataTables_Table_1_info" id='test'>
+                                <thead>
+                                    <tr class="nk-tb-item nk-tb-head">
+                                        <th class="nk-tb-col nk-tb-col-check sorting sorting_asc" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-sort="ascending" aria-label=": activate to sort column descending">
+
+                                        </th>
+                                        <th class="nk-tb-col sorting" tabindex="0" aria-controls="DataTables_Table_1"
+                                            rowspan="1" colspan="1"
+                                            aria-label="User: activate to sort column ascending"><span
+                                                class="sub-text">Case</span></th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Phone: activate to sort column ascending"><span
+                                                class="sub-text">Product</span></th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Phone: activate to sort column ascending"><span
+                                                class="sub-text">Lawyer</span></th>
+                                        <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Verified: activate to sort column ascending"><span
+                                                class="sub-text">Type</span></th>
+                                        <th class="nk-tb-col tb-col-lg sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Last Login: activate to sort column ascending"><span
+                                                class="sub-text">Price</span></th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Status: activate to sort column ascending"><span
+                                                class="sub-text">Paid</span></th>
+                                        <th class="nk-tb-col tb-col-md sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label="Status: activate to sort column ascending"><span
+                                                class="sub-text">Status</span></th>
+                                        <th class="nk-tb-col nk-tb-col-tools text-right sorting" tabindex="0"
+                                            aria-controls="DataTables_Table_1" rowspan="1" colspan="1"
+                                            aria-label=": activate to sort column ascending"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                    {% if order.project %}
+                                    <tr class="nk-tb-item odd">
+                                        <td class="nk-tb-col nk-tb-col-check sorting_1">
+                                            {{order.project.id}}
+                                        </td>
+                                        <td class="nk-tb-col">
+                                            <div class="user-card">
+                                                <div class="user-info"><span class="tb-lead" data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="{% blocktranslate %}Project name has been automatically generated. You can change it by editing the order.{% endblocktranslate %}">{{order.project.name}}
+                                                    </span>
+
+                                                    <small>
+                                                        {% if order.client.type == 'PERSON' %}
+                                                        <span data-toggle="tooltip" data-placement="top"
+                                                            title="Client name of the buyer"><em
+                                                                class="icon text-primary ni ni-building-fill"></em>&nbsp;{{order.project.client.name}}</span>
+                                                        <br>
+                                                        {% else %}
+                                                        <span data-toggle="tooltip" data-placement="top"
+                                                            title="Name of the buyer"><em
+                                                                class="icon text-primary ni ni-user-circle-fill"></em>&nbsp;{{order.customer}}</span>
+                                                        <br>
+                                                        {% endif %}
+
+                                                        <span data-toggle="tooltip" data-placement="top"
+                                                            title="E-mail address of the client"><em
+                                                                class="icon text-primary ni ni-mail-fill"></em>&nbsp;{{order.client.email}}</span>
+                                                        </span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md"><span class="tb-lead">{{order.product.name}}
+                                            </span>
+                                            <span>{{order.product.category}}</span>
+                                        </td>
+
+                                        <td class="nk-tb-col tb-col-md">
+                                            <div class="user-card">
+                                                {% if order.project.responsible_user %}
+                                                <div class="user-info"><span class="tb-lead">
+
+                                                        {{order.project.responsible_user.first_name}}
+                                                        {{order.project.responsible_user.last_name}}
+
+                                                        <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                    {% if order.project.responsible_user.profile.office %}
+                                                    <span data-placement="top" data-toggle="tooltip"
+                                                        title="Lawyer's office"><em
+                                                            class="icon text-primary ni ni-briefcase">
+                                                        </em>&nbsp;{{order.project.responsible_user.profile.office}}
+                                                    </span>
+                                                    {% endif %}
+                                                </div>
+                                                {% else %}
+                                                    {% trans "No lawyer" %}
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-lg">
+                                            <small>
+                                                <span data-toggle="tooltip" data-placement="left"
+                                                    title="{% blocktranslate %}This order does not contain legal consultation.{% endblocktranslate %}"><em
+                                                        class="icon text-primary ni ni-package-fill"></em>&nbsp;
+                                                    {% if order.calendar == False %}
+                                                    Dobozos termék
+                                                    {% else %}
+                                                    Időpont
+                                                    {% endif %}
+                                                </span><br>
+                                                <!-- Ha van konzultáció, akkor az alsó két sort jelenyítse meg, amúgy a fenti egy sort.-->
+                                                {% if order.calendar == True %}
+                                                <span data-toggle="tooltip" data-placement="left"
+                                                    title="{% blocktranslate %}Beginning of the requested consultation.{% endblocktranslate %}"><em
+                                                        class="icon text-primary ni ni-clock"></em>&nbsp;
+                                                    {% if order.date_start %}
+                                                    {{order.date_start}}
+                                                    {% endif %}
+                                                </span>
+                                                <br>
+                                                <span data-toggle="tooltip" data-placement="left"
+                                                    title="{% blocktranslate %}Ending of the requested consultation.{% endblocktranslate %}"><em
+                                                        class="icon text-primary ni ni-last"></em>&nbsp;
+                                                    {% if order.date_end %}
+                                                    {{order.date_end}}
+                                                    {% endif %}
+                                                </span>
+                                                {% endif %}
+                                            </small>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <div class="user-card">
+                                                <div class="user-info">
+                                                    <span class="tb-lead">
+                                                        <span class="tb-amount">{{order.price}}
+                                                            <span class="currency">HUF</span>
+                                                        </span>
+                                                    </span>
+                                                    <span data-toggle="tooltip" data-placement="top"
+                                                        title="Payment method"><em
+                                                            class="icon text-primary ni ni-wallet-fill">
+                                                        </em>&nbsp;
+                                                        {{ order.get_payment_method_display }}
+
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            {% if order.paid == True %}
+                                            <span class="badge badge-pill badge-success" data-toggle="tooltip"
+                                                data-placement="top" title="Paid"><em
+                                                    class="icon ni ni-check-thick"></em></span>
+                                            {% else %}
+                                            <span class="badge badge-pill badge-danger" data-toggle="tooltip"
+                                                data-placement="top" title="Not paid"><em
+                                                    class="icon ni ni-cross"></em></span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            {% if order.active == True %}
+                                            <span class="badge badge-pill badge-success" data-toggle="tooltip"
+                                                data-placement="top" title="Active"><em
+                                                    class="icon ni ni-check-thick"></em></span>
+                                            {% else %}
+                                            <span class="badge badge-pill badge-danger" data-toggle="tooltip"
+                                                data-placement="top" title="Closed"><em
+                                                    class="icon ni ni-cross"></em></span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="nk-tb-col nk-tb-col-tools">
+                                            {% if order.active == True %}
+                                            <ul class="nk-tb-actions gx-1">
+                                                <li class="nk-tb-action-hidden"><a
+                                                        href="{% url 'order:order_detail' order.id %}"
+                                                        class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                        data-placement="top" title="Order details"><em
+                                                            class="icon ni ni-eye-fill"></em></a></li>
+                                                <li class="nk-tb-action-hidden"><a
+                                                        href="{% url 'order:order_edit' order.id %}"
+                                                        class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                        data-placement="top" title="Edit order"><em
+                                                            class="icon ni ni-edit-fill"></em></a></li>
+                                                <li class="nk-tb-action-hidden"><a
+                                                        href="{% url 'order:order_delete' order.id %}"
+                                                        class="btn btn-trigger btn-icon" data-toggle="tooltip"
+                                                        data-placement="top" title="Archive"><em
+                                                            class="icon ni ni-archive"></em></a></li>
+                                                {% if order.calendar == False %}
+                                                <li class="nk-tb-action"><a
+                                                        href="{% url 'project:project_team_create' order.project.id %}"
+                                                        class="btn btn-primary" data-toggle="tooltip"
+                                                        data-placement="top" title="Start case"><em
+                                                            class="icon ni ni-package-fill"></em></a>
+                                                    {% else %}
+                                                <li class="nk-tb-action"><a
+                                                        href="{% url 'project:project_team_book_create' order.project.id %}?order_id={{order.id}}"
+                                                        class="btn btn-primary" data-toggle="tooltip"
+                                                        data-placement="top" title="Start case"><em
+                                                            class="icon ni ni-video-fill"></em></a>
+                                                </li>
+                                                {% endif %}
+                                            </ul>
+                                            {%else%}
+                                            <ul class="nk-tb-actions gx-1">
+
+                                                <li class="nk-tb-action"><a
+                                                        href="{% url 'order:order_delete' order.id %}"
+                                                        class="btn btn-danger" data-toggle="tooltip"
+                                                        data-placement="top" title="Unarchive"><em
+                                                            class="icon ni ni-unarchive"></em></a>
+                                                </li>
+                                            </ul>
+                                            {%endif%}
+                                            {% endif %}
+                                            {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!--
+                    <table class="datatable-init table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Id" %}</th>
+                                <th>{% trans "Project" %}</th>
+                                <th>{% trans "Client" %}</th>
+                                <th>{% trans "Product" %}</th>
+                                <th>{% trans "Price" %}</th>
+                                <th>{% trans "Is paid?" %}</th>
+
+                                <th>{% trans "Is active?" %}</th>
+                                <th>{% trans "Action" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>{{order.id}} </td>
+                                <td>{{order.project.name}}</td>
+                                <td>{{order.client}}</td>
+                                <td>{{order.product}}</td>
+                                <td>{{order.price}}</td>
+                                <td>{% if order.paid == True %}
+                                    <span class="badge badge-pill badge-success">{% trans "Paid" %}</span>
+                                    {% else %}
+                                    <span class="badge badge-pill badge-danger">{% trans "No paid" %}</span>
+                                    {% endif %}
+                                </td>
+
+                                <td>{% if order.active == True %}
+
+                                    <span class="badge badge-pill badge-success">{% trans "Active" %}</span>
+                                    {% else %}
+                                    <span class="badge badge-pill badge-danger">{% trans "Inactive" %}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'order:order_detail' order.id %}"
+                                        class="btn btn-outline-primary btn-sm">{% trans "Order details" %}</a>
+                                    <a href="{% url 'order:order_edit' order.id %}"
+                                        class="btn btn-outline-primary btn-sm">{% trans "Edit" %}</a>
+
+                                    {% if order.project %}
+                                    {% if order.calendar == True %}
+                                    <a href="{% url 'project:project_team_book_create' order.project.id %}?order_id={{order.id}}"
+                                        class="btn btn-outline-primary btn-sm">
+                                        {% trans "Start case" %}&nbsp;<em class="icon ni ni-calendar-check-fill"></em>
+                                    </a>
+                                    {% else %}
+                                    <a href="{% url 'project:project_team_create' order.project.id %}"
+                                        class="btn btn-outline-primary btn-sm">{% trans "Start case" %}</a>
+                                    {% endif %}
+                                    {% endif %}
+
+                                    {% if order.active == False %}
+                                    <a href="{% url 'project:project_create' client_id=order.client.id product_id=order.product.id order_id=order.id %}"
+                                        class="btn btn-outline-warning btn-sm">{% trans "Start project" %}</a>
+                                    <a href="{% url 'order:order_delete' order.id %}"
+                                        class="btn btn-outline-danger btn-sm">{% trans "Order delete" %}</a>
+                                    {% else %}
+
+                                    {% endif %}
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    -->
+                </div>
+            </div><!-- .card-preview -->
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- content @e -->
+
+
+
+
+{% endblock %}

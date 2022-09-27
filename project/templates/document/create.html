@@ -1,0 +1,160 @@
+{% extends "base_project.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% trans "Create document" %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                {% include 'section/project_header.html' %}
+
+                <div class="nk-block">
+                    <div class="card">
+                        <div class="card-aside-wrap">
+                            <div class="card-content">
+                                {% include 'section/project_navbar.html' %}
+                                <div class="card-inner">
+                                    <div class="nk-block-head">
+                                        <div class="nk-block-between g-3">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">
+                                                    {% trans "Create document" %}</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>{% blocktrans %}A new Google Meet consultation will be created
+                                                        with the
+                                                        selected participants.{% endblocktrans %}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="nk-block-head-content"><a
+                                                    href="{% url 'project:project_document_index' project.id %}"
+                                                    class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                                        class="icon ni ni-arrow-left">
+                                                    </em>
+                                                    <span>{% trans "Back"%}
+
+                                                    </span></a><a
+                                                    href="{% url 'project:project_document_index' project.id %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex
+                                                        d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" id="line_1">
+                                        <div class="form-group col-md-2">
+                                          <label class="control-label">State</label>
+                                          <select class="form-control">
+                                            <option id="Select_1">Select State</option>
+                                            <option id="Selangor_1">Selangor</option>
+                                            <option id="KualaLumpur_1">Kuala Lumpur</option>
+                                            <option id="Malacca_1">Malacca</option>
+                                            <option id="Perak_1">Perak</option>
+                                            <option id="Kedah_1">Kedah</option>
+                                          </select>
+                                        </div>
+                                        <input type="button" class="remove" value="remove" />
+                                      </div>
+                                      
+                                      <a id="cloneButton" class="btn btn-primary">Add State</a>
+                                      
+
+
+
+
+
+
+
+                                    <div class="py-4 px-3" id="preview"></div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- content @e -->
+
+
+
+
+<script>
+
+var template = $('#line_1').clone();
+
+$('#cloneButton').click(function() {
+  var rowId = $('.row').length + 1;
+  var klon = template.clone();
+  klon.attr('id', 'line_' + rowId)
+    .insertAfter($('.row').last())
+    .find('option')
+    .each(function() {
+      $(this).attr('id', $(this).attr('id').replace(/_(\d*)$/, "_" + rowId));
+    })
+});
+
+$(document).on("click", ".remove", function() {
+  $(this).closest(".row").remove();
+});
+</script>
+
+
+<script>
+    var preview = document.getElementById('preview')
+
+    $('#id_default_document').change(function () {
+        var id_default_document = $(this).val();
+        console.log(id_default_document)
+        ajax_call(id_default_document)
+
+    });
+
+
+    function ajax_call(id_default_document) {
+        var url = "{% url 'project:project_default_document_clone' %}";
+
+        payload = {
+            "id_default_document": id_default_document,
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            timeout: 5000,
+            dataType: "json",
+            data: payload,
+            success: function (data) {
+                //console.log(data)
+
+                preview.classList.add('border')
+                preview.classList.add('mb-3')
+                preview.innerHTML = data.document
+
+
+            },
+            error: function (data) {
+                console.error("ERROR...", data)
+                alert("Not valid form")
+            },
+        });
+    }
+</script>
+
+
+
+
+
+{% endblock %}
